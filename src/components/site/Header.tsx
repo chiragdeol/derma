@@ -141,7 +141,7 @@ export function Header() {
                       <Link
                         key={s.to}
                         to={s.to}
-                        className="group block overflow-hidden rounded-xl"
+                        className="group block rounded-xl"
                         onClick={() => setServicesOpen(false)}
                       >
                         <div className="overflow-hidden rounded-xl">

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import heroImg from "@/assets/hero.jpg";
 import interiorImg from "@/assets/interior.jpg";
 import doctor1 from "@/assets/doctor-1.jpg";
@@ -11,6 +11,8 @@ import laserImg from "@/assets/service-laser.jpg";
 import liftingImg from "@/assets/service-lifting.jpg";
 import surgeryImg from "@/assets/service-surgery.jpg";
 import wellnessImg from "@/assets/wellness.jpg";
+import beforeImg from "@/assets/before.jpg";
+import afterImg from "@/assets/after.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -65,6 +67,76 @@ const testimonials = [
   { quote: "Refined, discreet, and deeply professional. The results look like me, just rested.", name: "Sophie L.", detail: "Injectables · Morpheus8" },
   { quote: "From the consultation to follow-up, every detail felt considered. A true sanctuary.", name: "Maya K.", detail: "Laser · Skin boosters" },
 ];
+
+const BeforeAfterSlider = () => {
+  const [position, setPosition] = useState(50);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleMove = (clientX: number) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    setPosition(percentage);
+  };
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (e.buttons === 1) { // Left mouse button held down
+      handleMove(e.clientX);
+    }
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (e.touches[0]) {
+      handleMove(e.touches[0].clientX);
+    }
+  };
+
+  return (
+    <div 
+      ref={containerRef}
+      className="relative aspect-square w-full select-none overflow-hidden rounded-2xl border border-border/50 shadow-lg cursor-ew-resize"
+      onMouseMove={onMouseMove}
+      onTouchMove={onTouchMove}
+      onClick={(e) => handleMove(e.clientX)}
+    >
+      {/* Before Image */}
+      <img 
+        src={beforeImg} 
+        alt="Before treatment"
+        className="absolute inset-0 h-full w-full object-cover"
+        draggable={false}
+      />
+      <span className="absolute bottom-4 left-4 z-10 rounded bg-black/60 px-3 py-1 text-xs uppercase tracking-wider text-white">
+        Before
+      </span>
+
+      {/* After Image (Clipped dynamically) */}
+      <img 
+        src={afterImg} 
+        alt="After treatment"
+        className="absolute inset-0 h-full w-full object-cover"
+        style={{ clipPath: `inset(0 0 0 ${position}%)` }}
+        draggable={false}
+      />
+      <span className="absolute bottom-4 right-4 z-10 rounded bg-[#d2a960] px-3 py-1 text-xs uppercase tracking-wider text-black font-semibold">
+        After
+      </span>
+
+      {/* Slider Bar & Handle */}
+      <div 
+        className="absolute bottom-0 top-0 w-0.5 bg-white/80"
+        style={{ left: `${position}%` }}
+      >
+        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white text-foreground shadow-md border border-border hover:scale-105 transition-transform pointer-events-none">
+          <svg className="h-5 w-5 text-muted-foreground rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l-4 4 4 4m8-8l4 4-4 4" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 function Home() {
   const [form, setForm] = useState({
@@ -318,6 +390,31 @@ function Home() {
                 </div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BEFORE / AFTER COMPARISON */}
+      <section className="bg-forest text-ivory">
+        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
+          <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+            <div>
+              <p className="eyebrow mb-6 text-primary">Real Results</p>
+              <h2 className="font-display text-4xl leading-tight md:text-5xl">
+                See the difference. <br className="hidden sm:inline" />
+                Drag to reveal.
+              </h2>
+              <p className="mt-6 text-base leading-relaxed text-ivory/80">
+                Every result is a real Al Nemah patient, shared with written consent. 
+                Outcomes vary — your consultation sets realistic, honest expectations.
+              </p>
+              <p className="mt-8 text-xs tracking-wider uppercase opacity-60">
+                Slide the handle to compare before & after
+              </p>
+            </div>
+            <div>
+              <BeforeAfterSlider />
+            </div>
           </div>
         </div>
       </section>
