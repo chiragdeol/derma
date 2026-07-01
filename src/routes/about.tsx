@@ -5,9 +5,9 @@ import interiorImg from "@/assets/interior.jpg";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Lumière Clinic" },
-      { name: "description", content: "Discover Lumière Clinic: our philosophy, our team and the multidisciplinary approach behind every transformation." },
-      { property: "og:title", content: "About Lumière Clinic" },
+      { title: "About — Al Nemah Clinic" },
+      { name: "description", content: "Discover Al Nemah Clinic: our philosophy, our team and the multidisciplinary approach behind every transformation." },
+      { property: "og:title", content: "About Al Nemah Clinic" },
       { property: "og:description", content: "A multidisciplinary team united by craft, science and care." },
       { property: "og:image", content: aboutImg },
     ],
@@ -26,12 +26,12 @@ function About() {
   return (
     <>
       <section className="mx-auto max-w-7xl px-6 pt-40 pb-20 lg:px-10">
-        <p className="eyebrow mb-8">About Lumière</p>
+        <p className="eyebrow mb-8">About Al Nemah</p>
         <h1 className="font-display text-5xl leading-[1.05] md:text-7xl lg:text-[5.5rem]">
           A clinic built on <em className="italic">craft,</em><br />science and care.
         </h1>
         <p className="mt-10 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Lumière is a multidisciplinary aesthetic, plastic surgery and wellness
+          Al Nemah is a multidisciplinary aesthetic, laser and dental
           center where scientific expertise and a personalized approach help
           our clients improve their quality of life — from skin and silhouette
           to vitality and longevity.
@@ -44,7 +44,7 @@ function About() {
             <div className="overflow-hidden rounded-2xl">
               <img
                 src={aboutImg}
-                alt="Portrait reflecting Lumière aesthetic"
+                alt="Portrait reflecting Al Nemah aesthetic"
                 loading="lazy"
                 width={1400}
                 height={1600}
@@ -65,7 +65,7 @@ function About() {
                 is considered from every angle.
               </p>
               <p>
-                The Lumière experience is calm by design: a long welcome, an
+                The Al Nemah experience is calm by design: a long welcome, an
                 honest consultation and a clear, gradual plan. We move at the
                 pace of your skin, your body and your life.
               </p>
@@ -95,7 +95,7 @@ function About() {
           <div className="overflow-hidden rounded-2xl">
             <img
               src={interiorImg}
-              alt="Treatment room at Lumière Clinic"
+              alt="Treatment room at Al Nemah Clinic"
               loading="lazy"
               width={1600}
               height={1200}

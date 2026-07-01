@@ -260,6 +260,370 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* SERVICES */}
+      <section id="services" className="bg-secondary/30">
+        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
+          <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <p className="eyebrow mb-4">What we do</p>
+              <h2 className="font-display text-4xl md:text-5xl">
+                Dermatology, refined into <em className="italic">an experience</em>.
+              </h2>
+            </div>
+            <p className="max-w-sm text-sm text-muted-foreground">
+              Six disciplines under one roof — medical-grade skin, injectables, laser,
+              lifting, surgery and longevity.
+            </p>
+          </div>
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((s) => (
+              <Link
+                key={s.num}
+                to={s.to}
+                className="group flex flex-col overflow-hidden rounded-2xl bg-background shadow-soft transition-transform hover:-translate-y-1"
+              >
+                <div className="relative overflow-hidden">
+                  <img
+                    src={s.image}
+                    alt={s.title}
+                    loading="lazy"
+                    width={1024}
+                    height={768}
+                    className="aspect-[4/3] w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                  />
+                  <span className="absolute left-5 top-5 rounded-full bg-background/85 px-3 py-1 text-xs uppercase tracking-[0.22em] text-foreground backdrop-blur-sm">
+                    {s.num}
+                  </span>
+                </div>
+                <div className="flex flex-1 flex-col p-8">
+                  <h3 className="font-display text-2xl text-foreground">{s.title}</h3>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {s.tags.map((t) => (
+                      <span
+                        key={t}
+                        className="rounded-full border border-border/70 px-3 py-1 text-xs text-muted-foreground"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                    {s.body}
+                  </p>
+                  <span className="mt-auto pt-6 inline-flex items-center text-sm text-foreground underline-offset-8 group-hover:underline">
+                    {s.cta} →
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SEASONAL OFFERS */}
+      <section id="offers" className="bg-background">
+        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
+          <div className="mb-14">
+            <p className="eyebrow mb-4 text-primary font-semibold">Current Offers</p>
+            <h2 className="font-display text-4xl md:text-5xl">
+              Seasonal packages, <em className="italic">thoughtfully priced</em>.
+            </h2>
+          </div>
+          
+          <div className="grid gap-8 md:grid-cols-3">
+            {/* Offer 1 */}
+            <div className="bg-background rounded-2xl border border-border/60 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md transition-shadow">
+              <span className="absolute top-4 right-4 bg-[#c2a476]/15 text-[#91713d] text-[10px] font-sans font-semibold tracking-wider px-3 py-1 rounded-full uppercase">
+                Save 30%
+              </span>
+              <div>
+                <h3 className="font-display text-2xl text-foreground mt-4 mb-1">HydraFacial Trio</h3>
+                <p className="text-[11px] text-muted-foreground tracking-wide font-light mb-6">Valid until 30 Sept 2026</p>
+                <div className="flex items-baseline gap-3 mb-8">
+                  <span className="text-sm text-muted-foreground line-through">AED 1,500</span>
+                  <span className="text-2xl font-display font-medium text-foreground font-semibold">AED 1,050</span>
+                </div>
+              </div>
+              <a
+                href="https://wa.me/971543251817?text=Hi,%20I'd%20like%20to%20claim%20the%20HydraFacial%20Trio%20offer."
+                target="_blank"
+                rel="noreferrer"
+                className="w-full text-center rounded-lg border border-border py-3 text-sm font-medium text-foreground hover:bg-muted/50 transition-all cursor-pointer"
+              >
+                Claim offer
+              </a>
+            </div>
+
+            {/* Offer 2 */}
+            <div className="bg-background rounded-2xl border border-border/60 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md transition-shadow">
+              <span className="absolute top-4 right-4 bg-[#c2a476]/15 text-[#91713d] text-[10px] font-sans font-semibold tracking-wider px-3 py-1 rounded-full uppercase">
+                Popular
+              </span>
+              <div>
+                <h3 className="font-display text-2xl text-foreground mt-4 mb-1">Lips + Botox Combo</h3>
+                <p className="text-[11px] text-muted-foreground tracking-wide font-light mb-6">Valid until 30 Sept 2026</p>
+                <div className="flex items-baseline gap-3 mb-8">
+                  <span className="text-sm text-muted-foreground line-through">AED 2,400</span>
+                  <span className="text-2xl font-display font-medium text-foreground font-semibold">AED 1,900</span>
+                </div>
+              </div>
+              <a
+                href="https://wa.me/971543251817?text=Hi,%20I'd%20like%20to%20claim%20the%20Lips%20%2B%20Botox%20Combo%20offer."
+                target="_blank"
+                rel="noreferrer"
+                className="w-full text-center rounded-lg border border-border py-3 text-sm font-medium text-foreground hover:bg-muted/50 transition-all cursor-pointer"
+              >
+                Claim offer
+              </a>
+            </div>
+
+            {/* Offer 3 */}
+            <div className="bg-background rounded-2xl border border-border/60 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md transition-shadow">
+              <span className="absolute top-4 right-4 bg-[#c2a476]/15 text-[#91713d] text-[10px] font-sans font-semibold tracking-wider px-3 py-1 rounded-full uppercase">
+                New
+              </span>
+              <div>
+                <h3 className="font-display text-2xl text-foreground mt-4 mb-1">Morpheus8 — 3 Sessions</h3>
+                <p className="text-[11px] text-muted-foreground tracking-wide font-light mb-6">Valid until 30 Sept 2026</p>
+                <div className="flex items-baseline gap-3 mb-8">
+                  <span className="text-sm text-muted-foreground line-through">AED 6,000</span>
+                  <span className="text-2xl font-display font-medium text-foreground font-semibold">AED 4,200</span>
+                </div>
+              </div>
+              <a
+                href="https://wa.me/971543251817?text=Hi,%20I'd%20like%20to%20claim%20the%20Morpheus8%203%20Sessions%20offer."
+                target="_blank"
+                rel="noreferrer"
+                className="w-full text-center rounded-lg border border-border py-3 text-sm font-medium text-foreground hover:bg-muted/50 transition-all cursor-pointer"
+              >
+                Claim offer
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* DOCTORS */}
+      <section id="doctors" className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
+        <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <p className="eyebrow mb-4">Meet the team</p>
+            <h2 className="font-display text-4xl md:text-5xl">
+              Board-certified <em className="italic">specialists</em>.
+            </h2>
+          </div>
+          <p className="max-w-sm text-sm text-muted-foreground">
+            A multidisciplinary team — trained across Paris, London and the GCC — collaborating
+            on every plan.
+          </p>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-3">
+          {doctors.map((d) => (
+            <article key={d.name} className="group">
+              <div className="overflow-hidden rounded-2xl bg-card">
+                <img
+                  src={d.image}
+                  alt={d.name}
+                  loading="lazy"
+                  width={800}
+                  height={1024}
+                  className="aspect-[4/5] w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                />
+              </div>
+              <div className="mt-6">
+                <h3 className="font-display text-2xl text-foreground">{d.name}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{d.role}</p>
+                <p className="mt-2 text-xs uppercase tracking-[0.18em] text-muted-foreground/80">
+                  {d.credentials}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section id="results" className="bg-secondary/40">
+        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
+          <div className="mb-14 max-w-2xl">
+            <p className="eyebrow mb-4">In their words</p>
+            <h2 className="font-display text-4xl md:text-5xl">
+              Care our clients <em className="italic">return for</em>.
+            </h2>
+          </div>
+          <div className="grid gap-8 md:grid-cols-3">
+            {testimonials.map((t) => (
+              <figure
+                key={t.name}
+                className="flex h-full flex-col justify-between rounded-2xl bg-background p-8 shadow-soft sm:p-10"
+              >
+                <blockquote className="font-display text-2xl leading-snug text-foreground">
+                  "{t.quote}"
+                </blockquote>
+                <figcaption className="mt-8 border-t border-border/60 pt-5">
+                  <p className="text-sm text-foreground">{t.name}</p>
+                  <p className="mt-1 text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                    {t.detail}
+                  </p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BLOGS */}
+      <section id="journal" className="bg-background">
+        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
+          <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <p className="eyebrow mb-4">Our Journal</p>
+              <h2 className="font-display text-4xl md:text-5xl">
+                Insights and guidance on <em className="italic">healthy skin</em>.
+              </h2>
+            </div>
+            <Link
+              to="/about"
+              className="inline-flex items-center gap-2 text-sm tracking-wide text-foreground underline-offset-8 hover:underline"
+            >
+              View all articles →
+            </Link>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-3">
+            {/* Blog Post 1 */}
+            <article className="group flex flex-col overflow-hidden rounded-2xl bg-card border border-border/40 shadow-sm transition-transform hover:-translate-y-1">
+              <div className="overflow-hidden">
+                <img
+                  src={skinImg}
+                  alt="Medical facial treatment"
+                  loading="lazy"
+                  width={800}
+                  height={500}
+                  className="aspect-[16/10] w-full object-cover transition-transform duration-[1200ms] group-hover:scale-102"
+                />
+              </div>
+              <div className="flex flex-1 flex-col p-8">
+                <div className="flex items-center justify-between text-xs text-muted-foreground/80 mb-3 tracking-wider uppercase font-light">
+                  <span>Skin Health</span>
+                  <span>July 1, 2026</span>
+                </div>
+                <h3 className="font-display text-2xl text-foreground group-hover:text-primary transition-colors leading-snug">
+                  Understanding Medical-Grade Facials: The HydraFacial Difference
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground/90">
+                  Why superficial skincare isn't enough, and how multi-step medical protocols restore skin health at a cellular level.
+                </p>
+                <span className="mt-6 inline-flex items-center text-sm text-foreground underline-offset-8 group-hover:underline pt-4 border-t border-border/40">
+                  Read article →
+                </span>
+              </div>
+            </article>
+
+            {/* Blog Post 2 */}
+            <article className="group flex flex-col overflow-hidden rounded-2xl bg-card border border-border/40 shadow-sm transition-transform hover:-translate-y-1">
+              <div className="overflow-hidden">
+                <img
+                  src={injectablesImg}
+                  alt="Cosmetic injectables details"
+                  loading="lazy"
+                  width={800}
+                  height={500}
+                  className="aspect-[16/10] w-full object-cover transition-transform duration-[1200ms] group-hover:scale-102"
+                />
+              </div>
+              <div className="flex flex-1 flex-col p-8">
+                <div className="flex items-center justify-between text-xs text-muted-foreground/80 mb-3 tracking-wider uppercase font-light">
+                  <span>Injectables</span>
+                  <span>June 24, 2026</span>
+                </div>
+                <h3 className="font-display text-2xl text-foreground group-hover:text-primary transition-colors leading-snug">
+                  Cosmetic Injectables: The Art of Subtle Rejuvenation
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground/90">
+                  How our board-certified specialists use advanced mapping to achieve soft, natural movement rather than a frozen look.
+                </p>
+                <span className="mt-6 inline-flex items-center text-sm text-foreground underline-offset-8 group-hover:underline pt-4 border-t border-border/40">
+                  Read article →
+                </span>
+              </div>
+            </article>
+
+            {/* Blog Post 3 */}
+            <article className="group flex flex-col overflow-hidden rounded-2xl bg-card border border-border/40 shadow-sm transition-transform hover:-translate-y-1">
+              <div className="overflow-hidden">
+                <img
+                  src={liftingImg}
+                  alt="Morpheus8 tightning session"
+                  loading="lazy"
+                  width={800}
+                  height={500}
+                  className="aspect-[16/10] w-full object-cover transition-transform duration-[1200ms] group-hover:scale-102"
+                />
+              </div>
+              <div className="flex flex-1 flex-col p-8">
+                <div className="flex items-center justify-between text-xs text-muted-foreground/80 mb-3 tracking-wider uppercase font-light">
+                  <span>Technology</span>
+                  <span>June 15, 2026</span>
+                </div>
+                <h3 className="font-display text-2xl text-foreground group-hover:text-primary transition-colors leading-snug">
+                  Non-Surgical Lifting: Is Morpheus8 Right For You?
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground/90">
+                  A comprehensive guide to RF microneedling, what to expect during recovery, and timeline for optimal results.
+                </p>
+                <span className="mt-6 inline-flex items-center text-sm text-foreground underline-offset-8 group-hover:underline pt-4 border-t border-border/40">
+                  Read article →
+                </span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      {/* SECOND OPINION CTA */}
+      <section className="bg-primary text-ivory">
+        <div className="mx-auto max-w-4xl px-6 py-28 text-center lg:px-10">
+          <p className="eyebrow text-accent mb-6">Begin your consultation</p>
+          <h2 className="font-display text-4xl leading-tight text-white md:text-5xl">
+            Your face deserves a second opinion <br className="hidden sm:inline" />
+            <em className="italic font-light">worth trusting.</em>
+          </h2>
+          <p className="mt-6 max-w-2xl mx-auto text-sm md:text-base leading-relaxed text-white/80">
+            Book a private consultation with one of our doctors. No pressure, no obligation — just honest, expert guidance.
+          </p>
+          <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
+            <a
+              href="https://wa.me/971543251817"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-lg bg-[#526452] px-6 py-3 text-sm font-medium text-white hover:bg-[#5d705d] transition-all shadow-sm cursor-pointer"
+            >
+              Book consultation
+            </a>
+            <a
+              href="https://wa.me/971543251817"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-lg bg-[#184d3e] px-6 py-3 text-sm font-medium text-white hover:opacity-95 transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
+            >
+              <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
+                <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.333 4.982L2 22l5.202-1.364a9.994 9.994 0 0 0 4.81 1.233c5.505 0 9.99-4.477 9.99-9.985C22.002 6.478 17.518 2 12.012 2zm0 18.29a8.27 8.27 0 0 1-4.222-1.155l-.304-.18-3.136.82.834-3.056-.198-.314A8.273 8.273 0 0 1 3.72 11.98c0-4.57 3.719-8.285 8.297-8.285 4.574 0 8.29 3.717 8.29 8.288 0 4.57-3.714 8.29-8.29 8.29-.003 0-.003 0 0 0z"/>
+              </svg>
+              WhatsApp us
+            </a>
+            <a
+              href="tel:+97140000000"
+              className="rounded-lg border border-white/30 px-6 py-3 text-sm font-medium text-white hover:bg-white/10 transition-all cursor-pointer"
+            >
+              Call the clinic
+            </a>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

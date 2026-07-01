@@ -137,8 +137,8 @@ export function Footer() {
               <a href="tel:+971800735463" className="block text-ivory underline-offset-4 hover:underline">
                 +971 800 735 463
               </a>
-              <a href="mailto:hello@lumiere.ae" className="block text-ivory underline-offset-4 hover:underline">
-                hello@lumiere.ae
+              <a href="mailto:hello@alnemah.ae" className="block text-ivory underline-offset-4 hover:underline">
+                hello@alnemah.ae
               </a>
               <p className="pt-2 text-ivory/70">
                 Jumeirah Beach Road, Dubai, United Arab Emirates

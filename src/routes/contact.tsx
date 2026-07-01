@@ -4,9 +4,9 @@ import { useState } from "react";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Lumière Clinic Dubai" },
-      { name: "description", content: "Book a consultation or visit Lumière Clinic in Dubai. Get in touch by WhatsApp, phone or our private inquiry form." },
-      { property: "og:title", content: "Contact Lumière Clinic" },
+      { title: "Contact — Al Nemah Clinic Dubai" },
+      { name: "description", content: "Book a consultation or visit Al Nemah Clinic in Dubai. Get in touch by WhatsApp, phone or our private inquiry form." },
+      { property: "og:title", content: "Contact Al Nemah Clinic" },
       { property: "og:description", content: "Book a consultation or visit our Dubai clinic." },
     ],
   }),
@@ -49,7 +49,7 @@ function Contact() {
             <p className="eyebrow mb-3">Direct</p>
             <ul className="space-y-2 text-sm">
               <li><a href="tel:+971543251817" className="hover:text-foreground text-muted-foreground">+971 54 325 1817</a></li>
-              <li><a href="mailto:hello@lumiere.ae" className="hover:text-foreground text-muted-foreground">hello@lumiere.ae</a></li>
+              <li><a href="mailto:hello@alnemah.ae" className="hover:text-foreground text-muted-foreground">hello@alnemah.ae</a></li>
               <li><a href="https://wa.me/971543251817" target="_blank" rel="noreferrer" className="hover:text-foreground text-muted-foreground">WhatsApp →</a></li>
             </ul>
           </div>
