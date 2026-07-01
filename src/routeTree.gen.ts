@@ -21,6 +21,11 @@ import { Route as ServicesLiftingRouteImport } from './routes/services.lifting'
 import { Route as ServicesLaserRouteImport } from './routes/services.laser'
 import { Route as ServicesInjectablesRouteImport } from './routes/services.injectables'
 import { Route as ServicesAestheticRouteImport } from './routes/services.aesthetic'
+import { Route as ServicesDentalWhiteningRouteImport } from './routes/services.dental.whitening'
+import { Route as ServicesDentalOrthodonticsRouteImport } from './routes/services.dental.orthodontics'
+import { Route as ServicesDentalImplantsRouteImport } from './routes/services.dental.implants'
+import { Route as ServicesDentalGeneralRouteImport } from './routes/services.dental.general'
+import { Route as ServicesDentalCosmeticDentistryRouteImport } from './routes/services.dental.cosmetic-dentistry'
 
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
@@ -82,6 +87,33 @@ const ServicesAestheticRoute = ServicesAestheticRouteImport.update({
   path: '/aesthetic',
   getParentRoute: () => ServicesRoute,
 } as any)
+const ServicesDentalWhiteningRoute = ServicesDentalWhiteningRouteImport.update({
+  id: '/dental/whitening',
+  path: '/dental/whitening',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesDentalOrthodonticsRoute =
+  ServicesDentalOrthodonticsRouteImport.update({
+    id: '/dental/orthodontics',
+    path: '/dental/orthodontics',
+    getParentRoute: () => ServicesRoute,
+  } as any)
+const ServicesDentalImplantsRoute = ServicesDentalImplantsRouteImport.update({
+  id: '/dental/implants',
+  path: '/dental/implants',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesDentalGeneralRoute = ServicesDentalGeneralRouteImport.update({
+  id: '/dental/general',
+  path: '/dental/general',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesDentalCosmeticDentistryRoute =
+  ServicesDentalCosmeticDentistryRouteImport.update({
+    id: '/dental/cosmetic-dentistry',
+    path: '/dental/cosmetic-dentistry',
+    getParentRoute: () => ServicesRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -96,6 +128,11 @@ export interface FileRoutesByFullPath {
   '/services/surgery': typeof ServicesSurgeryRoute
   '/services/wellness': typeof ServicesWellnessRoute
   '/services/': typeof ServicesIndexRoute
+  '/services/dental/cosmetic-dentistry': typeof ServicesDentalCosmeticDentistryRoute
+  '/services/dental/general': typeof ServicesDentalGeneralRoute
+  '/services/dental/implants': typeof ServicesDentalImplantsRoute
+  '/services/dental/orthodontics': typeof ServicesDentalOrthodonticsRoute
+  '/services/dental/whitening': typeof ServicesDentalWhiteningRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -109,6 +146,11 @@ export interface FileRoutesByTo {
   '/services/surgery': typeof ServicesSurgeryRoute
   '/services/wellness': typeof ServicesWellnessRoute
   '/services': typeof ServicesIndexRoute
+  '/services/dental/cosmetic-dentistry': typeof ServicesDentalCosmeticDentistryRoute
+  '/services/dental/general': typeof ServicesDentalGeneralRoute
+  '/services/dental/implants': typeof ServicesDentalImplantsRoute
+  '/services/dental/orthodontics': typeof ServicesDentalOrthodonticsRoute
+  '/services/dental/whitening': typeof ServicesDentalWhiteningRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -124,6 +166,11 @@ export interface FileRoutesById {
   '/services/surgery': typeof ServicesSurgeryRoute
   '/services/wellness': typeof ServicesWellnessRoute
   '/services/': typeof ServicesIndexRoute
+  '/services/dental/cosmetic-dentistry': typeof ServicesDentalCosmeticDentistryRoute
+  '/services/dental/general': typeof ServicesDentalGeneralRoute
+  '/services/dental/implants': typeof ServicesDentalImplantsRoute
+  '/services/dental/orthodontics': typeof ServicesDentalOrthodonticsRoute
+  '/services/dental/whitening': typeof ServicesDentalWhiteningRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -140,6 +187,11 @@ export interface FileRouteTypes {
     | '/services/surgery'
     | '/services/wellness'
     | '/services/'
+    | '/services/dental/cosmetic-dentistry'
+    | '/services/dental/general'
+    | '/services/dental/implants'
+    | '/services/dental/orthodontics'
+    | '/services/dental/whitening'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -153,6 +205,11 @@ export interface FileRouteTypes {
     | '/services/surgery'
     | '/services/wellness'
     | '/services'
+    | '/services/dental/cosmetic-dentistry'
+    | '/services/dental/general'
+    | '/services/dental/implants'
+    | '/services/dental/orthodontics'
+    | '/services/dental/whitening'
   id:
     | '__root__'
     | '/'
@@ -167,6 +224,11 @@ export interface FileRouteTypes {
     | '/services/surgery'
     | '/services/wellness'
     | '/services/'
+    | '/services/dental/cosmetic-dentistry'
+    | '/services/dental/general'
+    | '/services/dental/implants'
+    | '/services/dental/orthodontics'
+    | '/services/dental/whitening'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -262,6 +324,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesAestheticRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/services/dental/whitening': {
+      id: '/services/dental/whitening'
+      path: '/dental/whitening'
+      fullPath: '/services/dental/whitening'
+      preLoaderRoute: typeof ServicesDentalWhiteningRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/dental/orthodontics': {
+      id: '/services/dental/orthodontics'
+      path: '/dental/orthodontics'
+      fullPath: '/services/dental/orthodontics'
+      preLoaderRoute: typeof ServicesDentalOrthodonticsRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/dental/implants': {
+      id: '/services/dental/implants'
+      path: '/dental/implants'
+      fullPath: '/services/dental/implants'
+      preLoaderRoute: typeof ServicesDentalImplantsRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/dental/general': {
+      id: '/services/dental/general'
+      path: '/dental/general'
+      fullPath: '/services/dental/general'
+      preLoaderRoute: typeof ServicesDentalGeneralRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/dental/cosmetic-dentistry': {
+      id: '/services/dental/cosmetic-dentistry'
+      path: '/dental/cosmetic-dentistry'
+      fullPath: '/services/dental/cosmetic-dentistry'
+      preLoaderRoute: typeof ServicesDentalCosmeticDentistryRouteImport
+      parentRoute: typeof ServicesRoute
+    }
   }
 }
 
@@ -274,6 +371,11 @@ interface ServicesRouteChildren {
   ServicesSurgeryRoute: typeof ServicesSurgeryRoute
   ServicesWellnessRoute: typeof ServicesWellnessRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
+  ServicesDentalCosmeticDentistryRoute: typeof ServicesDentalCosmeticDentistryRoute
+  ServicesDentalGeneralRoute: typeof ServicesDentalGeneralRoute
+  ServicesDentalImplantsRoute: typeof ServicesDentalImplantsRoute
+  ServicesDentalOrthodonticsRoute: typeof ServicesDentalOrthodonticsRoute
+  ServicesDentalWhiteningRoute: typeof ServicesDentalWhiteningRoute
 }
 
 const ServicesRouteChildren: ServicesRouteChildren = {
@@ -285,6 +387,11 @@ const ServicesRouteChildren: ServicesRouteChildren = {
   ServicesSurgeryRoute: ServicesSurgeryRoute,
   ServicesWellnessRoute: ServicesWellnessRoute,
   ServicesIndexRoute: ServicesIndexRoute,
+  ServicesDentalCosmeticDentistryRoute: ServicesDentalCosmeticDentistryRoute,
+  ServicesDentalGeneralRoute: ServicesDentalGeneralRoute,
+  ServicesDentalImplantsRoute: ServicesDentalImplantsRoute,
+  ServicesDentalOrthodonticsRoute: ServicesDentalOrthodonticsRoute,
+  ServicesDentalWhiteningRoute: ServicesDentalWhiteningRoute,
 }
 
 const ServicesRouteWithChildren = ServicesRoute._addFileChildren(

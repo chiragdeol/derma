@@ -5,38 +5,88 @@ import heroImg from "@/assets/service-laser.jpg";
 export const Route = createFileRoute("/services/laser")({
   head: () => ({
     meta: [
-      { title: "Laser & Hair Removal — Lumière Clinic Dubai" },
-      { name: "description", content: "Advanced laser platforms for hair removal, pigmentation, vascular lesions and tattoo removal — safe for all skin types." },
-      { property: "og:title", content: "Laser at Lumière" },
-      { property: "og:description", content: "Diode, Nd:YAG and Pico lasers performed by trained physicians." },
+      { title: "Laser Hair Removal in Dubai | Safe All Skin Types — Al Nemah" },
+      { name: "description", content: "Advanced laser in Dubai — hair removal safe on dark skin, plus pigmentation, vascular and tattoo removal. Book a patch test at Al Nemah." },
+      { property: "og:title", content: "Laser & Hair Removal at Al Nemah" },
+      { property: "og:description", content: "Advanced laser platforms for lasting hair reduction and clearer skin." },
       { property: "og:image", content: heroImg },
     ],
   }),
   component: () => (
     <ServiceTemplate
-      heroImage={heroImg}
-      eyebrow="Service · Laser"
-      titleLead="Laser &"
-      titleItalic="Hair Removal."
-      heroSubtitle="Medical-grade laser platforms — calibrated for every Fitzpatrick skin type, performed by dermatology-trained practitioners."
-      promiseTitleLead="Right device, right"
-      promiseTitleItalic="settings."
-      promiseBody="We invest in multi-wavelength platforms so the laser fits the skin — not the other way around. That is what makes treatment effective on darker, Middle-Eastern and South-Asian skin without burns or hypopigmentation."
-      treatmentsTitle="Laser treatments"
+      division="Dermatology & Aesthetics"
+      divisionUrl="/services"
+      categoryName="Laser & Hair Removal"
+      eyebrow="Dermatology · Laser"
+      metaTitle="Laser Hair Removal in Dubai | Safe All Skin Types — Al Nemah"
+      metaDesc="Advanced laser in Dubai — hair removal safe on dark skin, plus pigmentation, vascular and tattoo removal. Book a patch test at Al Nemah."
+      h1="Laser & Hair Removal in Dubai"
+      intro="Advanced laser platforms for lasting hair reduction and clearer skin — calibrated safely for every skin tone."
+      highlights={[
+        ["All tones", "Safe for"],
+        ["No downtime", "Most treatments"],
+        ["From AED 300", "Starting price"],
+      ]}
+      concerns={["Unwanted hair", "Sun spots", "Melasma", "Thread veins", "Redness", "Tattoos"]}
+      txIntro="Our laser menu covers hair, pigment and vascular concerns."
       treatments={[
-        { name: "Diode hair removal", body: "Fast, comfortable full-body sessions — safe for all skin types.", time: "30 – 90 min" },
-        { name: "Pigmentation & melasma", body: "Pico-toning for sun damage, freckles and stubborn pigmentation.", time: "30 min" },
-        { name: "Vascular lasers", body: "Targets redness, broken capillaries and rosacea.", time: "30 min" },
-        { name: "Tattoo removal", body: "Pico-laser for high clearance with fewer sessions.", time: "20 – 45 min" },
-        { name: "Fractional resurfacing", body: "CO₂ and erbium for scars, pores and overall texture.", time: "60 min" },
-        { name: "Laser carbon peel", body: "Instant glow, refined pores and minor pigmentation.", time: "30 min" },
+        {
+          name: "Laser Hair Removal",
+          body: "Long-term hair reduction, safe on brown and dark skin.",
+          tags: ["Face", "Body"],
+          duration: "15–60 min · No downtime",
+          price: "From AED 300",
+        },
+        {
+          name: "Pigmentation Laser",
+          body: "Targets sun spots, melasma and uneven tone.",
+          tags: ["Sun spots", "Melasma"],
+          duration: "30 min · Mild",
+          price: "From AED 500",
+        },
+        {
+          name: "Vascular Laser",
+          body: "Clears thread veins, redness and rosacea.",
+          tags: ["Veins", "Redness"],
+          duration: "30 min · Mild",
+          price: "From AED 500",
+        },
+        {
+          name: "Tattoo Removal",
+          body: "Q-switched laser fades unwanted ink over sessions.",
+          tags: ["Tattoos"],
+          duration: "15–30 min · Mild",
+          price: "From AED 400",
+        },
+        {
+          name: "Carbon Laser Facial",
+          body: "A gentle 'glow' laser for pores and radiance.",
+          tags: ["Pores", "Glow"],
+          duration: "30 min · No downtime",
+          price: "From AED 600",
+        },
       ]}
-      journey={[
-        { step: "Patch test", body: "Always, before the first treatment." },
-        { step: "Plan", body: "Realistic session count and seasonal scheduling." },
-        { step: "Session", body: "Cooling, comfort and licensed-physician oversight." },
-        { step: "Aftercare", body: "SPF, recovery balms and clear lifestyle guidance." },
+      faqs={[
+        {
+          question: "Is it safe for dark skin?",
+          answer: "Yes — our devices are calibrated for brown and dark tones.",
+        },
+        {
+          question: "How many sessions?",
+          answer: "Hair removal usually needs 6–8 sessions.",
+        },
+        {
+          question: "Is it painful?",
+          answer: "A mild snap with built-in cooling; very tolerable.",
+        },
       ]}
+      related={[
+        { slug: "/services/skin", label: "Skin & HydraFacial" },
+        { slug: "/services/injectables", label: "Cosmetic Injectables" },
+        { slug: "/services/lifting", label: "Anti-Aging & Lifting" },
+      ]}
+      heroImage={heroImg}
+      dental={false}
     />
   ),
 });

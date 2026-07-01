@@ -8,6 +8,10 @@ import laserImg from "@/assets/service-laser.jpg";
 import liftingImg from "@/assets/service-lifting.jpg";
 import surgeryImg from "@/assets/service-surgery.jpg";
 import wellnessImg from "@/assets/wellness.jpg";
+import treatmentHandsImg from "@/assets/treatment-hands.jpg";
+import treatmentRoomImg from "@/assets/treatment-room.jpg";
+import interiorImg from "@/assets/interior.jpg";
+import aboutImg from "@/assets/about.jpg";
 
 const simpleNav = [
   { to: "/about", label: "The Clinic" },
@@ -16,50 +20,27 @@ const simpleNav = [
   { to: "/#offers", label: "Offers" },
 ] as const;
 
-const serviceLinks = [
-  {
-    to: "/services/injectables",
-    title: "Cosmetic Injectables",
-    desc: "Botox, fillers & Profhilo",
-    image: injectablesImg,
-  },
-  {
-    to: "/services/skin",
-    title: "Skin & HydraFacial",
-    desc: "Medical-grade facials & peels",
-    image: skinImg,
-  },
-  {
-    to: "/services/laser",
-    title: "Laser & Hair Removal",
-    desc: "Multi-wavelength platforms",
-    image: laserImg,
-  },
-  {
-    to: "/services/lifting",
-    title: "Anti-Aging & Lifting",
-    desc: "Morpheus8, threads & Ultherapy",
-    image: liftingImg,
-  },
-  {
-    to: "/services/surgery",
-    title: "Plastic Surgery",
-    desc: "Board-certified surgeons",
-    image: surgeryImg,
-  },
-  {
-    to: "/services/wellness",
-    title: "Wellness & Longevity",
-    desc: "IV drips & hormone health",
-    image: wellnessImg,
-  },
+const dermaLinks = [
+  { to: "/services/skin", title: "Skin & HydraFacial", desc: "Facials, peels, microneedling", image: skinImg },
+  { to: "/services/injectables", title: "Cosmetic Injectables", desc: "Botox, fillers, Profhilo", image: injectablesImg },
+  { to: "/services/laser", title: "Laser & Hair Removal", desc: "Hair, pigmentation, vascular", image: laserImg },
+  { to: "/services/lifting", title: "Anti-Aging & Lifting", desc: "Morpheus8, Ultherapy, threads", image: liftingImg },
+  { to: "/services/surgery", title: "Plastic Surgery", desc: "Rhinoplasty, liposuction", image: surgeryImg },
+] as const;
+
+const dentalLinks = [
+  { to: "/services/dental/orthodontics", title: "Orthodontics & Invisalign", desc: "Braces, clear aligners", image: wellnessImg },
+  { to: "/services/dental/cosmetic-dentistry", title: "Cosmetic Dentistry & Veneers", desc: "Hollywood smile, bonding", image: treatmentHandsImg },
+  { to: "/services/dental/implants", title: "Dental Implants", desc: "Single & full-arch", image: treatmentRoomImg },
+  { to: "/services/dental/whitening", title: "Teeth Whitening", desc: "In-clinic & take-home", image: interiorImg },
+  { to: "/services/dental/general", title: "General & Preventive", desc: "Check-ups, fillings, root canal", image: aboutImg },
 ] as const;
 
 export function Header() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const servicesTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const servicesTimer = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -134,44 +115,79 @@ export function Header() {
             </button>
 
             {servicesOpen && (
-              <div className="absolute top-full left-1/2 mt-5 w-[720px] -translate-x-1/2 overflow-hidden rounded-2xl border border-border bg-background shadow-2xl">
-                <div className="p-6">
-                  <div className="grid grid-cols-3 gap-4">
-                    {serviceLinks.map((s) => (
-                      <Link
-                        key={s.to}
-                        to={s.to}
-                        className="group block rounded-xl"
-                        onClick={() => setServicesOpen(false)}
-                      >
-                        <div className="overflow-hidden rounded-xl">
-                          <img
-                            src={s.image}
-                            alt={s.title}
-                            className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            width={280}
-                            height={210}
-                          />
-                        </div>
-                        <div className="mt-3">
-                          <p className="text-sm font-medium text-foreground">
-                            {s.title}
-                          </p>
-                          <p className="mt-0.5 text-xs text-muted-foreground">
-                            {s.desc}
-                          </p>
-                        </div>
-                      </Link>
-                    ))}
+              <div 
+                className="absolute top-full left-1/2 mt-5 w-[840px] -translate-x-1/2 overflow-hidden rounded-2xl border border-border bg-background shadow-2xl z-50"
+                onMouseEnter={openServices}
+                onMouseLeave={closeServices}
+              >
+                <div className="grid grid-cols-[1.1fr_1.1fr_0.9fr]">
+                  {/* Division 01 */}
+                  <div className="p-8 border-r border-border/40">
+                    <p className="eyebrow mb-2">Division 01</p>
+                    <h3 className="font-display text-xl text-foreground font-semibold mb-6">Dermatology & Aesthetics</h3>
+                    <ul className="space-y-4">
+                      {dermaLinks.map((s) => (
+                        <li key={s.to}>
+                          <Link
+                            to={s.to}
+                            onClick={() => setServicesOpen(false)}
+                            className="group block rounded-lg hover:bg-muted/30 p-2 -ml-2 transition-all"
+                          >
+                            <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors block">
+                              {s.title}
+                            </span>
+                            <span className="text-[11px] text-muted-foreground block mt-0.5">
+                              {s.desc}
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <div className="mt-5 border-t border-border/40 pt-4 text-center">
-                    <Link
-                      to="/services"
-                      className="inline-flex items-center text-sm font-medium text-foreground underline-offset-8 hover:underline"
+
+                  {/* Division 02 */}
+                  <div className="p-8 border-r border-border/40">
+                    <p className="eyebrow mb-2">Division 02</p>
+                    <h3 className="font-display text-xl text-foreground font-semibold mb-6">Dental Services</h3>
+                    <ul className="space-y-4">
+                      {dentalLinks.map((s) => (
+                        <li key={s.to}>
+                          <Link
+                            to={s.to}
+                            onClick={() => setServicesOpen(false)}
+                            className="group block rounded-lg hover:bg-muted/30 p-2 -ml-2 transition-all"
+                          >
+                            <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors block">
+                              {s.title}
+                            </span>
+                            <span className="text-[11px] text-muted-foreground block mt-0.5">
+                              {s.desc}
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Feature Panel */}
+                  <div className="bg-forest p-8 flex flex-col justify-between text-ivory relative overflow-hidden">
+                    <div className="absolute inset-4 border border-[#d2a960]/30 pointer-events-none rounded-lg" />
+                    <div className="relative z-10">
+                      <p className="eyebrow text-[#d2a960] mb-2">Not sure where to start?</p>
+                      <h4 className="font-display text-xl text-white mb-3">Book a consultation</h4>
+                      <p className="text-xs text-ivory/70 leading-relaxed">
+                        Tell us your goal — our doctors recommend the right pathway across skin and dental.
+                      </p>
+                    </div>
+                    <a
+                      href="https://wa.me/971543251817"
+                      target="_blank"
+                      rel="noreferrer"
                       onClick={() => setServicesOpen(false)}
+                      className="relative z-10 w-full text-center rounded-lg bg-[#1f6b53] hover:opacity-95 py-3 text-xs font-semibold text-white transition-all flex items-center justify-center gap-1.5 shadow-sm mt-8"
                     >
-                      View all services →
-                    </Link>
+                      WhatsApp us
+                    </a>
                   </div>
                 </div>
               </div>
@@ -249,10 +265,11 @@ export function Header() {
                 {n.label}
               </Link>
             ))}
+            
             <p className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">
-              Treatments
+              Dermatology & Aesthetics
             </p>
-            {serviceLinks.map((s) => (
+            {dermaLinks.map((s) => (
               <Link
                 key={s.to}
                 to={s.to}
@@ -262,6 +279,21 @@ export function Header() {
                 {s.title}
               </Link>
             ))}
+
+            <p className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">
+              Dental Services
+            </p>
+            {dentalLinks.map((s) => (
+              <Link
+                key={s.to}
+                to={s.to}
+                onClick={() => setOpen(false)}
+                className="py-1.5 pl-2 text-sm text-foreground/70 hover:text-foreground"
+              >
+                {s.title}
+              </Link>
+            ))}
+
             <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-border/40">
               <a
                 href="tel:+97140000000"

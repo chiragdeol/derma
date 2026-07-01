@@ -5,38 +5,88 @@ import heroImg from "@/assets/service-skin.jpg";
 export const Route = createFileRoute("/services/skin")({
   head: () => ({
     meta: [
-      { title: "Skin & HydraFacial — Lumière Clinic Dubai" },
-      { name: "description", content: "Medical-grade facials, HydraFacial, mesotherapy, peels and microneedling for clear, luminous skin." },
-      { property: "og:title", content: "Skin & HydraFacial at Lumière" },
-      { property: "og:description", content: "Resurfacing and hydration protocols for visibly better skin." },
+      { title: "Skin Treatments & HydraFacial in Dubai — Al Nemah" },
+      { name: "description", content: "Medical-grade skin treatments in Dubai — HydraFacial, chemical peels, mesotherapy, microneedling and skin boosters. Clear, radiant skin with no downtime." },
+      { property: "og:title", content: "Skin & HydraFacial at Al Nemah" },
+      { property: "og:description", content: "Medical-grade facials and skin resurfacing that clear, hydrate and renew." },
       { property: "og:image", content: heroImg },
     ],
   }),
   component: () => (
     <ServiceTemplate
-      heroImage={heroImg}
-      eyebrow="Service · Skin"
-      titleLead="Skin &"
-      titleItalic="HydraFacial."
-      heroSubtitle="A complete skin programme — from medical diagnostics to signature facials that visibly transform tone, texture and clarity."
-      promiseTitleLead="Healthy skin is"
-      promiseTitleItalic="the foundation."
-      promiseBody="Every treatment is matched to a Visia skin analysis and a personalised home routine. We never sell single sessions — we build progressive courses with measurable outcomes."
-      treatmentsTitle="Facials & resurfacing"
+      division="Dermatology & Aesthetics"
+      divisionUrl="/services"
+      categoryName="Skin & HydraFacial"
+      eyebrow="Dermatology · Skin"
+      metaTitle="Skin Treatments & HydraFacial in Dubai — Al Nemah"
+      metaDesc="Medical-grade skin treatments in Dubai — HydraFacial, chemical peels, mesotherapy, microneedling and skin boosters. Clear, radiant skin with no downtime."
+      h1="Skin & HydraFacial in Dubai"
+      intro="Medical-grade facials and skin resurfacing that clear, hydrate and renew — every protocol customised by a dermatologist to your skin."
+      highlights={[
+        ["No downtime", "Most treatments"],
+        ["From AED 400", "Starting price"],
+        ["All skin types", "Safe for"],
+      ]}
+      concerns={["Dullness", "Congestion & acne", "Pigmentation", "Fine lines", "Dehydration", "Enlarged pores", "Acne scars"]}
+      txIntro="Everything in our skin programme — choose a single treatment or combine them into a plan."
       treatments={[
-        { name: "Signature HydraFacial", body: "Cleanse, exfoliate, extract and infuse in one luxurious protocol.", time: "60 min" },
-        { name: "Chemical peels", body: "Customised acid blends for pigmentation, texture and acne.", time: "45 min" },
-        { name: "Microneedling RF", body: "Collagen induction with radiofrequency for firmer, smoother skin.", time: "75 min" },
-        { name: "Mesotherapy", body: "Micro-injected vitamins and amino acids for deep nourishment.", time: "30 min" },
-        { name: "BB Glow", body: "Semi-permanent luminosity through nano-channelling.", time: "60 min" },
-        { name: "Dermaplaning", body: "Gentle exfoliation that leaves skin instantly smoother.", time: "30 min" },
+        {
+          name: "HydraFacial",
+          body: "Deep-cleansing 3-step facial that exfoliates, extracts and hydrates for instant glow.",
+          tags: ["Dullness", "Congestion"],
+          duration: "45–60 min · No downtime",
+          price: "From AED 450",
+        },
+        {
+          name: "Chemical Peels",
+          body: "Resurfacing acid blends that even tone and smooth texture over a course.",
+          tags: ["Pigmentation", "Acne scars"],
+          duration: "30 min · Mild downtime",
+          price: "From AED 400",
+        },
+        {
+          name: "Mesotherapy",
+          body: "Micro-injections of vitamins and antioxidants to revive tired, dehydrated skin.",
+          tags: ["Glow", "Hydration"],
+          duration: "30–45 min · No downtime",
+          price: "From AED 600",
+        },
+        {
+          name: "Microneedling",
+          body: "Collagen-induction therapy that refines scars, pores and overall texture.",
+          tags: ["Scars", "Texture"],
+          duration: "45 min · 1 day redness",
+          price: "From AED 500",
+        },
+        {
+          name: "Skin Boosters",
+          body: "Injectable hydration (incl. Profhilo) that plumps and firms from within.",
+          tags: ["Laxity", "Dehydration"],
+          duration: "30 min · No downtime",
+          price: "From AED 1,200",
+        },
       ]}
-      journey={[
-        { step: "Diagnosis", body: "Visia imaging, dermatologist review and a written plan." },
-        { step: "In-clinic", body: "Course of facials or medical resurfacing as indicated." },
-        { step: "Home routine", body: "Curated cosmeceuticals matched to your skin's needs." },
-        { step: "Re-assessment", body: "Quarterly imaging to track measurable improvement." },
+      faqs={[
+        {
+          question: "How do I know which skin treatment I need?",
+          answer: "A dermatologist assesses your skin and builds a plan — often a combination works best.",
+        },
+        {
+          question: "Is there any downtime?",
+          answer: "Most treatments have none; peels and microneedling may cause a day of mild redness.",
+        },
+        {
+          question: "How soon will I see results?",
+          answer: "HydraFacial glows immediately; peels and microneedling build over a few sessions.",
+        },
       ]}
+      related={[
+        { slug: "/services/injectables", label: "Cosmetic Injectables" },
+        { slug: "/services/laser", label: "Laser & Hair Removal" },
+        { slug: "/services/lifting", label: "Anti-Aging & Lifting" },
+      ]}
+      heroImage={heroImg}
+      dental={false}
     />
   ),
 });

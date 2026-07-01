@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Category Page Template — Al Nemah</title>
+<meta name="description" id="metaDesc" content="" />
+<link rel="canonical" id="canon" href="" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --porcelain:#F4EFE8;--cloud:#FBF8F3;--ink:#23211C;--ink-soft:#5C5648;
+  --olive:#586049;--olive-deep:#373D2C;--champagne:#C9B188;--champagne-soft:#E4D6BC;
+  --mist:#E6DECF;--line:#D8CDBA;--r:2px;--ease:cubic-bezier(.22,.61,.36,1);--maxw:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--porcelain);color:var(--ink);font-family:"Hanken Grotesk",system-ui,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+a{text-decoration:none;color:inherit}
+h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:400;letter-spacing:-.01em;line-height:1.08}
+h1{font-size:clamp(2.2rem,4.6vw,3.4rem)}h2{font-size:clamp(1.7rem,3vw,2.3rem)}h3{font-size:1.2rem}
+.eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--olive)}
+.lede{font-size:clamp(1.02rem,1.4vw,1.15rem);color:var(--ink-soft)}
+em{font-family:"Fraunces",serif;font-style:italic;color:var(--olive)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:"Hanken Grotesk";font-size:.9rem;font-weight:600;padding:.85rem 1.5rem;border-radius:var(--r);border:1px solid transparent;cursor:pointer;transition:transform .3s var(--ease),background .3s,color .3s,border-color .3s}
+.btn-primary{background:var(--olive);color:#F7F3EB}.btn-primary:hover{background:var(--olive-deep);transform:translateY(-2px)}
+.btn-ghost{border-color:var(--line);color:var(--ink)}.btn-ghost:hover{border-color:var(--olive);color:var(--olive)}
+.btn-wa{background:#1f6b53;color:#fff}.btn-wa:hover{background:#185541;transform:translateY(-2px)}
+
+/* demo bar */
+.demobar{background:var(--ink);color:#E8E3D2;font-size:.82rem;padding:10px 28px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center}
+.demobar b{color:var(--champagne);letter-spacing:.1em;text-transform:uppercase;font-size:.72rem}
+.demobar select{background:var(--olive-deep);color:#F1ECDF;border:1px solid var(--champagne);border-radius:var(--r);padding:.4rem .7rem;font-family:inherit;font-size:.85rem;cursor:pointer}
+.demobar span{color:#9B9888}
+
+/* header + mega menu */
+.util{background:var(--olive-deep);color:#D8D2C2;font-size:.78rem}
+.util .wrap{display:flex;justify-content:space-between;align-items:center;height:36px}
+.util .on{color:var(--champagne);font-weight:600}
+@media(max-width:640px){.util-l{display:none}}
+header{position:sticky;top:0;z-index:60;background:rgba(244,239,232,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--mist)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+.brand{font-family:"Fraunces",serif;font-size:1.45rem;letter-spacing:.14em}.brand span{color:var(--champagne)}
+.menu{display:flex;gap:1.8rem;list-style:none;align-items:center;height:70px}
+.menu>li{position:relative;height:100%;display:flex;align-items:center}
+.menu>li>a,.trigger{font-family:inherit;font-size:.92rem;font-weight:500;color:var(--ink);background:none;border:0;cursor:pointer;display:flex;align-items:center;gap:.4rem}
+.menu>li>a:hover,.trigger:hover{color:var(--olive)}
+.chev{width:10px;height:10px;transition:transform .3s var(--ease)}
+.trigger[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.nav-cta{display:flex;gap:.6rem}
+.burger{display:none;background:none;border:0;font-size:1.5rem;cursor:pointer}
+@media(max-width:940px){.menu,.nav-cta .btn-ghost{display:none}.burger{display:block}}
+.mega{position:absolute;left:0;right:0;top:100%;background:var(--cloud);border-top:1px solid var(--mist);box-shadow:0 40px 70px -40px rgba(55,61,44,.5);opacity:0;visibility:hidden;transform:translateY(-10px);transition:.3s var(--ease);z-index:55}
+.mega.open{opacity:1;visibility:visible;transform:none}
+.mega-inner{display:grid;grid-template-columns:1fr 1fr .9fr}
+.mega-col{padding:34px 36px}
+.mega-col+.mega-col{border-left:1px solid var(--mist)}
+.mega-col .eyebrow{display:block;margin-bottom:6px}
+.mega-col h3{font-size:1.3rem;margin-bottom:16px}
+.mega-list{list-style:none}
+.mega-list a{display:block;padding:8px 10px;margin-left:-10px;border-radius:var(--r);font-size:.95rem;font-weight:500;transition:background .2s,transform .25s var(--ease)}
+.mega-list a:hover{background:var(--porcelain);transform:translateX(4px);color:var(--olive)}
+.mega-list a small{display:block;font-weight:400;color:var(--ink-soft);font-size:.76rem}
+.col-all{display:inline-block;margin-top:14px;font-size:.82rem;font-weight:600;color:var(--olive)}
+.mega-feature{background:var(--olive-deep);color:#E8E3D6;padding:34px;display:flex;flex-direction:column;position:relative}
+.mega-feature::before{content:"";position:absolute;inset:12px;border:1px solid rgba(201,177,136,.4)}
+.mega-feature .eyebrow{color:var(--champagne);margin-bottom:10px}
+.mega-feature h4{color:#F4EFE6;font-size:1.4rem;margin-bottom:8px;font-family:"Fraunces",serif;font-weight:400}
+.mega-feature p{font-size:.85rem;color:#C7C2B2;margin-bottom:auto}
+.mega-feature .btn-wa{margin-top:18px;justify-content:center}
+@media(max-width:1080px){.mega-inner{grid-template-columns:1fr 1fr}.mega-feature{grid-column:1/-1;border-top:1px solid var(--mist)}}
+
+/* breadcrumb */
+.crumb{background:var(--cloud);border-bottom:1px solid var(--mist);font-size:.82rem}
+.crumb .wrap{display:flex;gap:.5rem;align-items:center;height:44px;color:var(--ink-soft);flex-wrap:wrap}
+.crumb a:hover{color:var(--olive)}.crumb .sep{color:var(--champagne)}.crumb .here{color:var(--ink);font-weight:600}
+
+/* hero */
+.hero{padding:52px 0 56px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+.hero .eyebrow{display:block;margin-bottom:16px}
+.hero h1{margin-bottom:18px}.hero .lede{margin-bottom:24px;max-width:52ch}
+.hero-cta{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:26px}
+.hl{display:flex;gap:1.6rem;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:20px}
+.hl div{display:flex;flex-direction:column}
+.hl b{font-family:"Fraunces",serif;font-size:1.3rem;color:var(--ink)}
+.hl small{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.hero-media{position:relative}
+.framed{position:relative;padding:14px}.framed::after{content:"";position:absolute;inset:0;border:1px solid var(--champagne)}
+.photo{width:100%;aspect-ratio:4/5;border-radius:var(--r);display:flex;align-items:flex-end;background:radial-gradient(120% 90% at 70% 12%,#ECE0CF 0%,transparent 55%),linear-gradient(160deg,#C9B79C,#9C9079 45%,#6E6A57)}
+.photo.dental{background:linear-gradient(160deg,#E7E4DC,#B7BCAE 55%,#6F7259)}
+.photo .cap{margin:14px;font-size:.72rem;font-style:italic;font-family:"Fraunces",serif;color:#fff;background:rgba(35,33,28,.35);padding:.3rem .6rem}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:34px}.hero-media{order:-1;max-width:400px}}
+
+/* concerns strip */
+.concerns{background:var(--cloud);border-top:1px solid var(--mist);border-bottom:1px solid var(--mist);padding:26px 0}
+.concerns .wrap{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.concerns .lbl{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-right:.5rem}
+.chip{font-size:.85rem;border:1px solid var(--line);padding:.4rem .85rem;border-radius:30px;color:var(--ink);background:var(--porcelain)}
+
+/* treatments in category */
+.block{padding:72px 0}
+.sec-head{max-width:640px;margin-bottom:40px}
+.sec-head .eyebrow{display:block;margin-bottom:12px}
+.tx-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.tx{background:var(--cloud);border:1px solid var(--mist);border-radius:var(--r);padding:28px 26px;display:flex;flex-direction:column;transition:transform .35s var(--ease),border-color .3s,box-shadow .35s;position:relative}
+.tx::before{content:"";position:absolute;left:0;top:26px;bottom:26px;width:2px;background:var(--champagne-soft)}
+.tx:hover{transform:translateY(-4px);border-color:var(--champagne);box-shadow:0 26px 50px -32px rgba(55,61,44,.4)}
+.tx-top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:8px}
+.tx-top h3{font-size:1.3rem}
+.tx-price{font-family:"Fraunces",serif;font-size:.95rem;color:var(--olive);white-space:nowrap}
+.tx-desc{font-size:.92rem;color:var(--ink-soft);margin-bottom:14px}
+.tx-tags{list-style:none;display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:16px}
+.tx-tags li{font-size:.72rem;color:var(--ink-soft);border:1px solid var(--line);padding:.2rem .55rem;border-radius:20px}
+.tx-foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:14px;border-top:1px solid var(--mist)}
+.tx-dur{font-size:.76rem;color:var(--ink-soft)}
+.tx-book{font-size:.82rem;font-weight:600;color:var(--olive)}
+.tx-book:hover{color:var(--olive-deep)}
+@media(max-width:760px){.tx-grid{grid-template-columns:1fr}}
+
+/* why + process */
+.why{background:var(--olive-deep);color:#E8E3D6}
+.why .eyebrow{color:var(--champagne)}.why h2{color:#F4EFE6}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.pillars{display:flex;flex-direction:column}
+.pillar{padding:20px 0;border-top:1px solid rgba(201,177,136,.28);display:grid;grid-template-columns:auto 1fr;gap:16px}
+.pillar:last-child{border-bottom:1px solid rgba(201,177,136,.28)}
+.pillar .pn{font-family:"Fraunces",serif;color:var(--champagne)}
+.pillar h3{color:#F4EFE6;font-size:1.1rem;margin-bottom:4px}
+.pillar p{font-size:.9rem;color:#C7C2B2}
+.why .framed::after{border-color:rgba(201,177,136,.5)}
+@media(max-width:860px){.why-grid{grid-template-columns:1fr;gap:34px}}
+
+/* faq */
+.faq-item{border-bottom:1px solid var(--mist)}
+.faq-item button{width:100%;background:none;border:0;text-align:left;padding:20px 0;font-family:"Fraunces",serif;font-size:1.1rem;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.faq-item .ic{color:var(--champagne);font-size:1.4rem;transition:transform .3s}
+.faq-item.open .ic{transform:rotate(45deg)}
+.faq-body{max-height:0;overflow:hidden;transition:max-height .35s var(--ease)}
+.faq-body.open{max-height:300px}
+.faq-body p{padding-bottom:20px;color:var(--ink-soft);max-width:72ch}
+
+/* related */
+.related{background:var(--cloud);border-top:1px solid var(--mist)}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rel{background:var(--porcelain);border:1px solid var(--mist);border-radius:var(--r);padding:22px;transition:transform .35s var(--ease),border-color .3s}
+.rel:hover{transform:translateY(-4px);border-color:var(--champagne)}
+.rel .eyebrow{font-size:.6rem;display:block;margin-bottom:6px}
+.rel h3{font-size:1.05rem;margin-bottom:6px}.rel .go{font-size:.8rem;font-weight:600;color:var(--olive)}
+@media(max-width:760px){.rel-grid{grid-template-columns:1fr}}
+
+.cta{background:linear-gradient(rgba(55,61,44,.92),rgba(55,61,44,.95)),linear-gradient(140deg,#5a6149,#373d2c);color:#F1ECDF;text-align:center;padding:74px 0}
+.cta .eyebrow{color:var(--champagne)}.cta h2{color:#F6F1E8;margin:12px 0}
+.cta p{color:#CFC9B9;max-width:46ch;margin:0 auto 24px}.cta .btns{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap}
+footer{background:#1c1f16;color:#9B9888;padding:38px 0;font-size:.82rem;text-align:center}
+footer .brand{color:#F1ECDF;font-size:1.4rem;display:inline-block;margin-bottom:8px}
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:80;width:56px;height:56px;border-radius:50%;background:#1f6b53;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px -10px rgba(31,107,83,.6)}
+:focus-visible{outline:2px solid var(--olive);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="demobar">
+  <b>Category preview</b>
+  <span>Each category is its own URL in production — this just swaps the content:</span>
+  <select id="picker" aria-label="Preview category page"></select>
+</div>
+
+<div class="util"><div class="wrap">
+  <div class="util-l">Jumeirah Beach Road, Dubai · Open daily 10am–10pm</div>
+  <div><a href="tel:+97140000000">+971 4 000 0000</a> · <span class="on">EN</span> / <a href="#">العربية</a></div>
+</div></div>
+
+<header>
+  <div class="wrap nav">
+    <a href="/" class="brand">AL&nbsp;NEMAH<span>.</span></a>
+    <nav aria-label="Primary"><ul class="menu">
+      <li class="has-mega" id="megaWrap">
+        <button class="trigger" id="megaTrigger" aria-expanded="false" aria-haspopup="true">Treatments
+          <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      </li>
+      <li><a href="/about">The Clinic</a></li>
+      <li><a href="/#doctors">Doctors</a></li>
+      <li><a href="/#offers">Offers</a></li>
+    </ul></nav>
+    <div class="nav-cta">
+      <a href="tel:+97140000000" class="btn btn-ghost">Call</a>
+      <a href="https://wa.me/971543251817" class="btn btn-primary">Book</a>
+      <button class="burger" aria-label="Menu">☰</button>
+    </div>
+  </div>
+  <div class="mega" id="megaPanel" role="region" aria-label="Treatments">
+    <div class="wrap mega-inner">
+      <div class="mega-col">
+        <span class="eyebrow">Division 01</span><h3>Dermatology &amp; Aesthetics</h3>
+        <ul class="mega-list">
+          <li><a href="/services/skin">Skin &amp; HydraFacial<small>Facials, peels, microneedling</small></a></li>
+          <li><a href="/services/injectables">Cosmetic Injectables<small>Botox, fillers, Profhilo</small></a></li>
+          <li><a href="/services/laser">Laser &amp; Hair Removal<small>Hair, pigmentation, vascular</small></a></li>
+          <li><a href="/services/lifting">Anti-Aging &amp; Lifting<small>Morpheus8, Ultherapy, threads</small></a></li>
+          <li><a href="/services/surgery">Plastic Surgery<small>Rhinoplasty, liposuction</small></a></li>
+        </ul>
+        <a class="col-all" href="/services/dermatology">View all dermatology →</a>
+      </div>
+      <div class="mega-col">
+        <span class="eyebrow">Division 02</span><h3>Dental</h3>
+        <ul class="mega-list">
+          <li><a href="/services/dental/orthodontics">Orthodontics &amp; Invisalign<small>Braces, clear aligners</small></a></li>
+          <li><a href="/services/dental/cosmetic-dentistry">Cosmetic Dentistry &amp; Veneers<small>Hollywood smile, bonding</small></a></li>
+          <li><a href="/services/dental/implants">Dental Implants<small>Single &amp; full-arch</small></a></li>
+          <li><a href="/services/dental/whitening">Teeth Whitening<small>In-clinic &amp; take-home</small></a></li>
+          <li><a href="/services/dental/general">General &amp; Preventive<small>Check-ups, fillings, root canal</small></a></li>
+        </ul>
+        <a class="col-all" href="/services/dental">View all dental →</a>
+      </div>
+      <div class="mega-feature">
+        <div><span class="eyebrow">Not sure where to start?</span><h4>Book a consultation</h4>
+        <p>Tell us your goal — our doctors recommend the right pathway across skin and dental.</p></div>
+        <a href="https://wa.me/971543251817" class="btn btn-wa">WhatsApp the clinic</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="crumb" aria-label="Breadcrumb"><div class="wrap">
+  <a href="/">Home</a><span class="sep">›</span>
+  <a href="/services">Treatments</a><span class="sep">›</span>
+  <a id="cbDiv" href="#">Division</a><span class="sep">›</span>
+  <span class="here" id="cbHere">Category</span>
+</div></nav>
+
+<main>
+<section class="hero"><div class="wrap hero-grid">
+  <div>
+    <span class="eyebrow" id="hEyebrow"></span>
+    <h1 id="hTitle"></h1>
+    <p class="lede" id="hIntro"></p>
+    <div class="hero-cta">
+      <a href="https://wa.me/971543251817" class="btn btn-primary">Book a consultation</a>
+      <a href="https://wa.me/971543251817" class="btn btn-wa">WhatsApp us</a>
+    </div>
+    <div class="hl" id="hl"></div>
+  </div>
+  <div class="hero-media"><div class="framed"><div class="photo" id="hPhoto"><span class="cap" id="hCap"></span></div></div></div>
+</div></section>
+
+<div class="concerns"><div class="wrap"><span class="lbl">Concerns we treat</span><span id="concerns"></span></div></div>
+
+<!-- ALL TREATMENTS IN THIS CATEGORY -->
+<section class="block"><div class="wrap">
+  <div class="sec-head"><span class="eyebrow" id="txEyebrow"></span><h2 id="txTitle"></h2><p class="lede" id="txIntro" style="margin-top:10px"></p></div>
+  <div class="tx-grid" id="txGrid"></div>
+</div></section>
+
+<!-- why -->
+<section class="block why"><div class="wrap why-grid">
+  <div><span class="eyebrow">Why Al Nemah</span><h2>Care you can trust, results that look natural.</h2>
+    <div class="pillars">
+      <div class="pillar"><span class="pn">01</span><div><h3>Doctor-led, always</h3><p>Every treatment is planned and performed by licensed specialists — never delegated.</p></div></div>
+      <div class="pillar"><span class="pn">02</span><div><h3>Honest recommendations</h3><p>We advise what you actually need, and talk you out of what you don't.</p></div></div>
+      <div class="pillar"><span class="pn">03</span><div><h3>DHA &amp; MOH licensed</h3><p>A fully accredited, safety-first clinic on Jumeirah Beach Road.</p></div></div>
+    </div>
+  </div>
+  <div><div class="framed"><div class="photo" style="background:linear-gradient(155deg,#E7DECB,#B9AE93 55%,#6F7259)"><span class="cap">Clinic photography</span></div></div></div>
+</div></section>
+
+<!-- faq -->
+<section class="block"><div class="wrap">
+  <div class="sec-head"><span class="eyebrow">Good to know</span><h2 id="faqTitle">Frequently asked questions.</h2></div>
+  <div id="faqList"></div>
+</div></section>
+
+<!-- related -->
+<section class="block related"><div class="wrap">
+  <div class="sec-head"><span class="eyebrow">Explore more</span><h2>Related categories.</h2></div>
+  <div class="rel-grid" id="relGrid"></div>
+</div></section>
+
+<section class="cta"><div class="wrap">
+  <span class="eyebrow">Ready when you are</span><h2>Book your consultation.</h2>
+  <p>A specialist replies within 15 minutes during clinic hours — no pressure, just honest advice.</p>
+  <div class="btns"><a href="https://wa.me/971543251817" class="btn btn-primary">Book consultation</a><a href="tel:+97140000000" class="btn btn-wa">Call the clinic</a></div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span class="brand">AL&nbsp;NEMAH<span style="color:var(--champagne)">.</span></span>
+<p>© 2026 Al Nemah Clinic · Jumeirah Beach Road, Dubai · M.O.H. Approval No 2FXSIE1V-020725</p></div></footer>
+
+<a href="https://wa.me/971543251817" class="wa-float" aria-label="WhatsApp"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.6.2-.2.3-.7.8-.8 1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.8-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.2.2 1.8 2.8 4.4 3.9 1.6.7 2.2.7 3 .6.5 0 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15l-1.3 4.8L7 20.5A10 10 0 1 0 12 2"/></svg></a>
+
+<script id="ldjson" type="application/ld+json"></script>
+<script>
+var BASE="https://www.alnemah.ae";
+var CATS={
+ "skin":{div:"Dermatology & Aesthetics",divUrl:"/services/dermatology",slug:"/services/skin",dental:false,
+  name:"Skin & HydraFacial",eyebrow:"Dermatology · Skin",
+  metaTitle:"Skin Treatments & HydraFacial in Dubai — Al Nemah",
+  metaDesc:"Medical-grade skin treatments in Dubai — HydraFacial, chemical peels, mesotherapy, microneedling and skin boosters. Clear, radiant skin with no downtime.",
+  h1:"Skin & HydraFacial in Dubai",
+  intro:"Medical-grade facials and skin resurfacing that clear, hydrate and renew — every protocol customised by a dermatologist to your skin.",
+  highlights:[["No downtime","Most treatments"],["From AED 400","Starting price"],["All skin types","Safe for"]],
+  concerns:["Dullness","Congestion & acne","Pigmentation","Fine lines","Dehydration","Enlarged pores","Acne scars"],
+  txIntro:"Everything in our skin programme — choose a single treatment or combine them into a plan.",
+  treatments:[
+   ["HydraFacial","Deep-cleansing 3-step facial that exfoliates, extracts and hydrates for instant glow.",["Dullness","Congestion"],"45–60 min · No downtime","From AED 450"],
+   ["Chemical Peels","Resurfacing acid blends that even tone and smooth texture over a course.",["Pigmentation","Acne scars"],"30 min · Mild downtime","From AED 400"],
+   ["Mesotherapy","Micro-injections of vitamins and antioxidants to revive tired, dehydrated skin.",["Glow","Hydration"],"30–45 min · No downtime","From AED 600"],
+   ["Microneedling","Collagen-induction therapy that refines scars, pores and overall texture.",["Scars","Texture"],"45 min · 1 day redness","From AED 500"],
+   ["Skin Boosters","Injectable hydration (incl. Profhilo) that plumps and firms from within.",["Laxity","Dehydration"],"30 min · No downtime","From AED 1,200"]
+  ],
+  faqs:[["How do I know which skin treatment I need?","A dermatologist assesses your skin and builds a plan — often a combination works best."],["Is there any downtime?","Most treatments have none; peels and microneedling may cause a day of mild redness."],["How soon will I see results?","HydraFacial glows immediately; peels and microneedling build over a few sessions."]],
+  related:[["injectables","Cosmetic Injectables"],["laser","Laser & Hair Removal"],["lifting","Anti-Aging & Lifting"]]},
+
+ "injectables":{div:"Dermatology & Aesthetics",divUrl:"/services/dermatology",slug:"/services/injectables",dental:false,
+  name:"Cosmetic Injectables",eyebrow:"Dermatology · Injectables",
+  metaTitle:"Botox, Fillers & Profhilo in Dubai | Injectables — Al Nemah",
+  metaDesc:"Doctor-administered cosmetic injectables in Dubai — Botox, dermal fillers, Profhilo and lip enhancement for natural, refined results. Book a consultation.",
+  h1:"Cosmetic Injectables in Dubai",
+  intro:"Doctor-administered injectables for soft, natural rejuvenation — smoothing lines and restoring volume without ever looking overdone.",
+  highlights:[["20–40 min","Per session"],["Minimal","Downtime"],["Doctor-led","Every case"]],
+  concerns:["Forehead lines","Crow's feet","Frown lines","Volume loss","Thin lips","Skin laxity"],
+  txIntro:"Our full injectables menu — all mapped and performed by a doctor.",
+  treatments:[
+   ["Anti-Wrinkle (Botox)","Relaxes targeted muscles to soften forehead, frown and eye lines.",["Fine lines","Prevention"],"20 min · No downtime","From AED 900"],
+   ["Dermal Fillers","Restores volume and contour in cheeks, chin, jaw and under-eyes.",["Volume","Contour"],"30–40 min · Minimal","From AED 1,500"],
+   ["Profhilo","Bio-remodelling that hydrates and firms skin across the face.",["Laxity","Glow"],"20 min · No downtime","From AED 1,800"],
+   ["Lip Enhancement","Subtle, balanced lip shaping and hydration.",["Shape","Hydration"],"30 min · Minimal","From AED 1,500"]
+  ],
+  faqs:[["Will I look frozen?","No — we dose conservatively so expression stays natural."],["How long does it last?","Anti-wrinkle 3–4 months; fillers 6–12 months by area."],["Does it hurt?","Minimal; fine needles and numbing keep it comfortable."]],
+  related:[["skin","Skin & HydraFacial"],["lifting","Anti-Aging & Lifting"],["laser","Laser & Hair Removal"]]},
+
+ "laser":{div:"Dermatology & Aesthetics",divUrl:"/services/dermatology",slug:"/services/laser",dental:false,
+  name:"Laser & Hair Removal",eyebrow:"Dermatology · Laser",
+  metaTitle:"Laser Hair Removal in Dubai | Safe All Skin Types — Al Nemah",
+  metaDesc:"Advanced laser in Dubai — hair removal safe on dark skin, plus pigmentation, vascular and tattoo removal. Book a patch test at Al Nemah.",
+  h1:"Laser & Hair Removal in Dubai",
+  intro:"Advanced laser platforms for lasting hair reduction and clearer skin — calibrated safely for every skin tone.",
+  highlights:[["All tones","Safe for"],["No downtime","Most treatments"],["From AED 300","Starting price"]],
+  concerns:["Unwanted hair","Sun spots","Melasma","Thread veins","Redness","Tattoos"],
+  txIntro:"Our laser menu covers hair, pigment and vascular concerns.",
+  treatments:[
+   ["Laser Hair Removal","Long-term hair reduction, safe on brown and dark skin.",["Face","Body"],"15–60 min · No downtime","From AED 300"],
+   ["Pigmentation Laser","Targets sun spots, melasma and uneven tone.",["Sun spots","Melasma"],"30 min · Mild","From AED 500"],
+   ["Vascular Laser","Clears thread veins, redness and rosacea.",["Veins","Redness"],"30 min · Mild","From AED 500"],
+   ["Tattoo Removal","Q-switched laser fades unwanted ink over sessions.",["Tattoos"],"15–30 min · Mild","From AED 400"],
+   ["Carbon Laser Facial","A gentle 'glow' laser for pores and radiance.",["Pores","Glow"],"30 min · No downtime","From AED 600"]
+  ],
+  faqs:[["Is it safe for dark skin?","Yes — our devices are calibrated for brown and dark tones."],["How many sessions?","Hair removal usually needs 6–8 sessions."],["Is it painful?","A mild snap with built-in cooling; very tolerable."]],
+  related:[["skin","Skin & HydraFacial"],["injectables","Cosmetic Injectables"],["lifting","Anti-Aging & Lifting"]]},
+
+ "lifting":{div:"Dermatology & Aesthetics",divUrl:"/services/dermatology",slug:"/services/lifting",dental:false,
+  name:"Anti-Aging & Lifting",eyebrow:"Dermatology · Anti-Aging",
+  metaTitle:"Non-Surgical Lifting in Dubai | Morpheus8, Ultherapy — Al Nemah",
+  metaDesc:"Non-surgical face lifting and skin tightening in Dubai — Morpheus8, Ultherapy, PDO threads and Fotona 4D. Lift and boost collagen without surgery.",
+  h1:"Anti-Aging & Lifting in Dubai",
+  intro:"Tighten, lift and rebuild collagen without surgery — with honest advice on what each technology can achieve for you.",
+  highlights:[["No surgery","Non-invasive"],["1–3 days","Downtime"],["12+ months","Results last"]],
+  concerns:["Jawline laxity","Sagging cheeks","Neck laxity","Loss of firmness","Fine lines"],
+  txIntro:"Our lifting technologies — chosen to match your skin and goals.",
+  treatments:[
+   ["Morpheus8","RF microneedling that tightens and remodels from within.",["Jawline","Texture"],"60 min · 1–2 days","From AED 1,800"],
+   ["Ultherapy","Focused ultrasound that lifts brow, chin and neck.",["Lifting","Neck"],"60–90 min · None","From AED 3,500"],
+   ["PDO Threads","Dissolvable threads for an instant subtle lift.",["Instant lift","Contour"],"45 min · 2–3 days","From AED 3,000"],
+   ["Fotona 4D","Laser facelift that firms inside and out.",["Firmness","Glow"],"60 min · Minimal","From AED 2,000"]
+  ],
+  faqs:[["Is there downtime?","Typically 1–3 days depending on the device."],["When will I see results?","Some lift is immediate; collagen builds over 3–6 months."],["Is it a facelift alternative?","For early laxity, yes; advanced sagging we'll advise honestly."]],
+  related:[["injectables","Cosmetic Injectables"],["skin","Skin & HydraFacial"],["surgery","Plastic Surgery"]]},
+
+ "surgery":{div:"Dermatology & Aesthetics",divUrl:"/services/dermatology",slug:"/services/surgery",dental:false,
+  name:"Plastic Surgery",eyebrow:"Surgery · Board-certified",
+  metaTitle:"Plastic Surgery in Dubai | Rhinoplasty & Body — Al Nemah",
+  metaDesc:"Board-certified plastic surgery in Dubai — rhinoplasty, liposuction, eyelid and breast surgery in an accredited facility. Book a surgical consultation.",
+  h1:"Plastic Surgery in Dubai",
+  intro:"Board-certified surgeons delivering considered, beautifully natural results — in an accredited, fully supported environment.",
+  highlights:[["Certified","Surgeons"],["Accredited","Facility"],["Full","Aftercare"]],
+  concerns:["Nose shape","Stubborn fat","Hooded eyes","Breast shape","Facial balance"],
+  txIntro:"Our surgical procedures, each beginning with an in-depth consultation.",
+  treatments:[
+   ["Rhinoplasty","Nose reshaping for balance and easier breathing.",["Shape","Function"],"Surgery · 1–2 wk recovery","On consultation"],
+   ["Liposuction","Targeted body contouring of stubborn fat.",["Contour","Body"],"Surgery · 1–2 wk recovery","On consultation"],
+   ["Blepharoplasty","Eyelid surgery to refresh a tired, hooded look.",["Eyes","Refresh"],"Surgery · 1 wk recovery","On consultation"],
+   ["Breast Surgery","Augmentation, reduction or lift for natural proportion.",["Shape","Proportion"],"Surgery · 2 wk recovery","On consultation"]
+  ],
+  faqs:[["How do I know if I'm a candidate?","A consultation assesses your health, goals and expectations first."],["What's recovery like?","Most procedures need 1–2 weeks before normal activity."],["Will results look natural?","That's our priority — we plan around your features."]],
+  related:[["lifting","Anti-Aging & Lifting"],["injectables","Cosmetic Injectables"],["skin","Skin & HydraFacial"]]},
+
+ "orthodontics":{div:"Dental",divUrl:"/services/dental",slug:"/services/dental/orthodontics",dental:true,
+  name:"Orthodontics & Invisalign",eyebrow:"Dental · Orthodontics",
+  metaTitle:"Invisalign & Braces in Dubai | Orthodontics — Al Nemah Dental",
+  metaDesc:"Straighten teeth in Dubai with Invisalign clear aligners, ceramic or metal braces. 3D digital planning, flexible payments, free consultation.",
+  h1:"Orthodontics & Invisalign in Dubai",
+  intro:"Straighten your teeth discreetly with clear aligners or modern braces — planned with 3D imaging so you preview the result first.",
+  highlights:[["Free","Consultation"],["3D preview","Planning"],["Payment plans","Available"]],
+  concerns:["Crowded teeth","Gaps","Overbite","Underbite","Crossbite"],
+  txIntro:"Every way we straighten teeth — chosen to fit your case and lifestyle.",
+  treatments:[
+   ["Invisalign Clear Aligners","Nearly invisible removable aligners for adults and teens.",["Discreet","Removable"],"6–18 months","From AED 12,000"],
+   ["Ceramic Braces","Tooth-coloured fixed braces that blend in.",["Subtle","Fixed"],"12–24 months","From AED 9,000"],
+   ["Metal Braces","Reliable fixed braces for complex corrections.",["Effective","Complex cases"],"12–24 months","From AED 8,000"],
+   ["Bite Correction","Fixing over-, under- and crossbites for function.",["Bite","Function"],"Varies","On consultation"]
+  ],
+  faqs:[["Invisalign or braces?","Invisalign suits most adult cases; braces handle complex ones. We advise after a scan."],["How long does it take?","Most cases finish in 6–18 months."],["Is it painful?","Mild pressure after adjustments, settling quickly."]],
+  related:[["cosmetic-dentistry","Cosmetic Dentistry & Veneers"],["whitening","Teeth Whitening"],["general","General & Preventive"]]},
+
+ "cosmetic-dentistry":{div:"Dental",divUrl:"/services/dental",slug:"/services/dental/cosmetic-dentistry",dental:true,
+  name:"Cosmetic Dentistry & Veneers",eyebrow:"Dental · Cosmetic",
+  metaTitle:"Veneers & Hollywood Smile in Dubai — Al Nemah Dental",
+  metaDesc:"Natural veneers, Hollywood smile makeovers and bonding in Dubai with digital smile design. Fix chips, gaps and stains. Book a smile consultation.",
+  h1:"Cosmetic Dentistry & Veneers in Dubai",
+  intro:"Transform your smile with natural-looking veneers and full makeovers — designed digitally so you approve the look before treatment begins.",
+  highlights:[["Digital","Smile design"],["10+ years","Veneer lifespan"],["No downtime","Most cases"]],
+  concerns:["Chipped teeth","Gaps","Discolouration","Uneven shape","Worn teeth"],
+  txIntro:"Our cosmetic dentistry menu, from single fixes to a full smile makeover.",
+  treatments:[
+   ["Porcelain Veneers","Custom-shaded shells that correct shape, colour and gaps.",["Shape","Colour"],"2–3 visits","From AED 1,500 / tooth"],
+   ["Hollywood Smile","A full smile makeover, digitally designed and previewed.",["Full makeover","Preview"],"2–4 visits","From AED 15,000"],
+   ["Composite Bonding","Quick, affordable repair of chips and small gaps.",["Chips","Gaps"],"1 visit","From AED 500"],
+   ["Digital Smile Design","On-screen preview of your new smile before we start.",["Preview","Planning"],"1 visit","Complimentary"]
+  ],
+  faqs:[["Do veneers look natural?","Yes — custom shading and shaping blend them with your smile."],["How long do they last?","Porcelain veneers commonly last 10–15 years."],["Is much tooth removed?","Only a minimal layer; we preserve natural tooth."]],
+  related:[["whitening","Teeth Whitening"],["implants","Dental Implants"],["orthodontics","Orthodontics"]]},
+
+ "implants":{div:"Dental",divUrl:"/services/dental",slug:"/services/dental/implants",dental:true,
+  name:"Dental Implants",eyebrow:"Dental · Implants",
+  metaTitle:"Dental Implants in Dubai | Single & Full-Arch — Al Nemah",
+  metaDesc:"Permanent dental implants in Dubai — single, multiple and full-arch (All-on-4) with 3D-guided placement and a 98% success rate. Book a consultation.",
+  h1:"Dental Implants in Dubai",
+  intro:"Replace missing teeth permanently with implants that look, feel and function like your own — planned with precise 3D guidance.",
+  highlights:[["98%","Success rate"],["20+ years","Longevity"],["3D-guided","Placement"]],
+  concerns:["Missing tooth","Multiple gaps","Loose dentures","Full-arch loss","Bone loss"],
+  txIntro:"From a single tooth to a full arch — our implant options.",
+  treatments:[
+   ["Single Implant","One titanium post and a natural-looking crown.",["1 tooth","Permanent"],"1–4 visits","From AED 4,500"],
+   ["Multiple Implants","Restore several missing teeth with bridges on implants.",["Several teeth"],"Varies","On consultation"],
+   ["Full-Arch (All-on-4)","A fixed full arch supported by four implants.",["Full arch","Fixed"],"1–2 days placement","From AED 25,000"],
+   ["Bone Grafting","Rebuilds bone so implants can be placed securely.",["Bone","Foundation"],"Varies","From AED 2,000"]
+  ],
+  faqs:[["Does it hurt?","Placement is under local anaesthetic; most report little discomfort."],["How long do they last?","With good care, implants can last 20 years or a lifetime."],["Am I a candidate?","A 3D scan confirms bone; if needed we discuss grafting."]],
+  related:[["cosmetic-dentistry","Cosmetic Dentistry & Veneers"],["general","General & Preventive"],["orthodontics","Orthodontics"]]},
+
+ "whitening":{div:"Dental",divUrl:"/services/dental",slug:"/services/dental/whitening",dental:true,
+  name:"Teeth Whitening",eyebrow:"Dental · Whitening",
+  metaTitle:"Teeth Whitening in Dubai | In-Clinic & Home — Al Nemah Dental",
+  metaDesc:"Professional teeth whitening in Dubai — up to 8 shades brighter, enamel-safe, with in-clinic and take-home options. Book your whitening at Al Nemah.",
+  h1:"Teeth Whitening in Dubai",
+  intro:"Brighten your smile safely by up to eight shades — in-clinic for instant results or a take-home kit at your own pace.",
+  highlights:[["Up to 8 shades","Results"],["Enamel-safe","Formula"],["Same day","In-clinic"]],
+  concerns:["Coffee & tea stains","Yellowing","Dull smile","Ageing teeth"],
+  txIntro:"Choose the whitening approach that suits you.",
+  treatments:[
+   ["In-Clinic Whitening","Medical-grade gel activated for an immediate, even lift.",["Fast","Even"],"45–60 min","From AED 900"],
+   ["Take-Home Kit","Custom trays and gel to whiten gradually at home.",["Flexible","Top-up"],"1–2 weeks","From AED 700"],
+   ["Combined Package","In-clinic result plus a take-home kit to maintain it.",["Best value","Lasting"],"45 min + home","From AED 1,300"]
+  ],
+  faqs:[["Is it safe for enamel?","Yes — professional gels whiten without damaging enamel."],["How long do results last?","Typically 12–18 months, longer with a top-up kit."],["Will it cause sensitivity?","Any sensitivity is mild and temporary; we can pre-treat."]],
+  related:[["cosmetic-dentistry","Cosmetic Dentistry & Veneers"],["orthodontics","Orthodontics"],["general","General & Preventive"]]},
+
+ "general":{div:"Dental",divUrl:"/services/dental",slug:"/services/dental/general",dental:true,
+  name:"General & Preventive Dentistry",eyebrow:"Dental · General",
+  metaTitle:"Dentist in Dubai | Check-ups, Cleaning, Fillings — Al Nemah",
+  metaDesc:"Family dentist in Dubai for check-ups, hygiene cleaning, fillings, root canal and children's dentistry — a gentle, pain-free approach. Book your visit.",
+  h1:"General & Preventive Dentistry in Dubai",
+  intro:"Everyday dental care done gently — check-ups, cleaning, fillings and root canal for the whole family.",
+  highlights:[["Every 6 months","Recall"],["All ages","Family care"],["Pain-free","Approach"]],
+  concerns:["Toothache","Cavities","Bleeding gums","Sensitivity","Children's teeth"],
+  txIntro:"The everyday care that keeps your smile healthy.",
+  treatments:[
+   ["Check-up & X-ray","A thorough exam of teeth and gums to catch issues early.",["Prevention","Exam"],"30 min","From AED 250"],
+   ["Scaling & Polishing","Professional hygiene cleaning for healthy gums.",["Hygiene","Gums"],"30–45 min","From AED 300"],
+   ["Tooth-Coloured Fillings","Natural-looking composite fillings that blend in.",["Cavities","Natural"],"30–45 min","From AED 350"],
+   ["Root Canal","Saves an infected tooth, done comfortably.",["Infection","Save tooth"],"1–2 visits","From AED 1,200"],
+   ["Pediatric Dentistry","Gentle, friendly dental care for children.",["Children","Gentle"],"30 min","From AED 250"]
+  ],
+  faqs:[["How often should I visit?","A check-up and clean every six months suits most people."],["Do you treat nervous patients?","Yes — a calm, gentle approach with every step explained."],["Are fillings tooth-coloured?","Yes, we use natural-looking composite fillings."]],
+  related:[["whitening","Teeth Whitening"],["implants","Dental Implants"],["orthodontics","Orthodontics"]]}
+};
+
+function render(key){
+  var c=CATS[key];if(!c)return;
+  document.title=c.metaTitle;
+  document.getElementById('metaDesc').setAttribute('content',c.metaDesc);
+  document.getElementById('canon').setAttribute('href',BASE+c.slug);
+  var cd=document.getElementById('cbDiv');cd.textContent=c.div;cd.setAttribute('href',c.divUrl);
+  document.getElementById('cbHere').textContent=c.name;
+  document.getElementById('hEyebrow').textContent=c.eyebrow;
+  document.getElementById('hTitle').innerHTML=c.h1.replace('Dubai','<em>Dubai</em>');
+  document.getElementById('hIntro').textContent=c.intro;
+  document.getElementById('hPhoto').className='photo'+(c.dental?' dental':'');
+  document.getElementById('hCap').textContent=c.dental?'Dental treatment photography':'Treatment photography';
+  document.getElementById('hl').innerHTML=c.highlights.map(function(h){return '<div><b>'+h[0]+'</b><small>'+h[1]+'</small></div>';}).join('');
+  document.getElementById('concerns').innerHTML=c.concerns.map(function(x){return '<span class="chip">'+x+'</span>';}).join(' ');
+  document.getElementById('txEyebrow').textContent='Treatments in '+c.name;
+  document.getElementById('txTitle').textContent='Everything under '+c.name+'.';
+  document.getElementById('txIntro').textContent=c.txIntro;
+  document.getElementById('txGrid').innerHTML=c.treatments.map(function(t){
+    return '<article class="tx"><div class="tx-top"><h3>'+t[0]+'</h3><span class="tx-price">'+t[4]+'</span></div>'+
+      '<p class="tx-desc">'+t[1]+'</p><ul class="tx-tags">'+t[2].map(function(g){return '<li>'+g+'</li>';}).join('')+'</ul>'+
+      '<div class="tx-foot"><span class="tx-dur">'+t[3]+'</span><a class="tx-book" href="https://wa.me/971543251817">Book →</a></div></article>';
+  }).join('');
+  document.getElementById('faqList').innerHTML=c.faqs.map(function(f){return '<div class="faq-item"><button aria-expanded="false"><span>'+f[0]+'</span><span class="ic">+</span></button><div class="faq-body"><p>'+f[1]+'</p></div></div>';}).join('');
+  bindFaq();
+  document.getElementById('relGrid').innerHTML=c.related.map(function(r){var t=CATS[r[0]];return '<a class="rel" href="'+(t?t.slug:'#')+'"><span class="eyebrow">'+(t?t.div:'')+'</span><h3>'+r[1]+'</h3><span class="go">Explore →</span></a>';}).join('');
+  injectSchema(c);
+  window.scrollTo({top:0});
+}
+function bindFaq(){document.querySelectorAll('.faq-item button').forEach(function(b){b.addEventListener('click',function(){var it=b.parentElement,bd=it.querySelector('.faq-body'),o=it.classList.toggle('open');bd.classList.toggle('open',o);b.setAttribute('aria-expanded',o);});});}
+
+function injectSchema(c){
+  var items=c.treatments.map(function(t,i){return {"@type":"ListItem","position":i+1,"item":{"@type":"MedicalProcedure","name":t[0],"description":t[1]}};});
+  var faqE=c.faqs.map(function(f){return {"@type":"Question","name":f[0],"acceptedAnswer":{"@type":"Answer","text":f[1]}};});
+  var g={"@context":"https://schema.org","@graph":[
+    {"@type":"MedicalWebPage","name":c.h1,"url":BASE+c.slug,"about":c.name},
+    {"@type":"ItemList","name":c.name+" treatments","itemListElement":items},
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":BASE+"/"},
+      {"@type":"ListItem","position":2,"name":"Treatments","item":BASE+"/services"},
+      {"@type":"ListItem","position":3,"name":c.div,"item":BASE+c.divUrl},
+      {"@type":"ListItem","position":4,"name":c.name,"item":BASE+c.slug}]},
+    {"@type":"FAQPage","mainEntity":faqE}]};
+  document.getElementById('ldjson').textContent=JSON.stringify(g,null,2);
+}
+
+/* mega menu */
+var wrap=document.getElementById('megaWrap'),trigger=document.getElementById('megaTrigger'),panel=document.getElementById('megaPanel'),ct;
+function op(){clearTimeout(ct);panel.classList.add('open');trigger.setAttribute('aria-expanded','true');}
+function cl(){panel.classList.remove('open');trigger.setAttribute('aria-expanded','false');}
+wrap.addEventListener('mouseenter',op);wrap.addEventListener('mouseleave',function(){ct=setTimeout(cl,180);});
+panel.addEventListener('mouseenter',function(){clearTimeout(ct);});panel.addEventListener('mouseleave',function(){ct=setTimeout(cl,180);});
+trigger.addEventListener('click',function(e){e.preventDefault();panel.classList.contains('open')?cl():op();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')cl();});
+
+/* picker */
+var picker=document.getElementById('picker');
+var order=[["skin","Skin & HydraFacial"],["injectables","Cosmetic Injectables"],["laser","Laser & Hair Removal"],["lifting","Anti-Aging & Lifting"],["surgery","Plastic Surgery"],["orthodontics","Orthodontics & Invisalign"],["cosmetic-dentistry","Cosmetic Dentistry & Veneers"],["implants","Dental Implants"],["whitening","Teeth Whitening"],["general","General & Preventive Dentistry"]];
+picker.innerHTML=order.map(function(o,i){var grp=(i===0?'<optgroup label="Dermatology & Aesthetics">':'')+(i===5?'</optgroup><optgroup label="Dental">':'');return grp+'<option value="'+o[0]+'">'+o[1]+'</option>';}).join('')+'</optgroup>';
+picker.addEventListener('change',function(){render(picker.value);});
+render('skin');
+</script>
+</body>
+</html>

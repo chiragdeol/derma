@@ -5,40 +5,81 @@ import heroImg from "@/assets/service-surgery.jpg";
 export const Route = createFileRoute("/services/surgery")({
   head: () => ({
     meta: [
-      { title: "Plastic Surgery — Lumière Clinic Dubai" },
-      { name: "description", content: "Rhinoplasty, liposuction, eyelid surgery and breast procedures by board-certified plastic surgeons in Dubai." },
-      { property: "og:title", content: "Plastic Surgery at Lumière" },
-      { property: "og:description", content: "Board-certified surgeons for considered, beautifully natural results." },
+      { title: "Plastic Surgery in Dubai | Rhinoplasty & Body — Al Nemah" },
+      { name: "description", content: "Board-certified plastic surgery in Dubai — rhinoplasty, liposuction, eyelid and breast surgery in an accredited facility. Book a surgical consultation." },
+      { property: "og:title", content: "Plastic Surgery at Al Nemah" },
+      { property: "og:description", content: "Board-certified surgeons delivering considered, beautifully natural results." },
       { property: "og:image", content: heroImg },
     ],
   }),
   component: () => (
     <ServiceTemplate
-      heroImage={heroImg}
-      eyebrow="Service · Surgery"
-      titleLead="Plastic"
-      titleItalic="Surgery."
-      heroSubtitle="A small, board-certified surgical team — chosen for technique, ethics and a deep respect for natural proportion."
-      promiseTitleLead="Considered. Conservative."
-      promiseTitleItalic="Beautiful."
-      promiseBody="We turn down more surgical requests than we accept. Every procedure follows multiple consultations, full medical work-up and a clear understanding of what surgery can — and cannot — change."
-      treatmentsTitle="Surgical procedures"
+      division="Dermatology & Aesthetics"
+      divisionUrl="/services"
+      categoryName="Plastic Surgery"
+      eyebrow="Surgery · Board-certified"
+      metaTitle="Plastic Surgery in Dubai | Rhinoplasty & Body — Al Nemah"
+      metaDesc="Board-certified plastic surgery in Dubai — rhinoplasty, liposuction, eyelid and breast surgery in an accredited facility. Book a surgical consultation."
+      h1="Plastic Surgery in Dubai"
+      intro="Board-certified surgeons delivering considered, beautifully natural results — in an accredited, fully supported environment."
+      highlights={[
+        ["Certified", "Surgeons"],
+        ["Accredited", "Facility"],
+        ["Full", "Aftercare"],
+      ]}
+      concerns={["Nose shape", "Stubborn fat", "Hooded eyes", "Breast shape", "Facial balance"]}
+      txIntro="Our surgical procedures, each beginning with an in-depth consultation."
       treatments={[
-        { name: "Rhinoplasty", body: "Open and preservation techniques tailored to ethnic anatomy.", time: "Surgical" },
-        { name: "Blepharoplasty", body: "Upper and lower eyelid surgery to refresh the eyes.", time: "Surgical" },
-        { name: "Liposuction & VASER", body: "Body contouring with ultrasound-assisted precision.", time: "Surgical" },
-        { name: "Breast surgery", body: "Augmentation, reduction and lift, planned around proportion.", time: "Surgical" },
-        { name: "Mommy makeover", body: "Combined abdominoplasty and breast restoration after childbirth.", time: "Surgical" },
-        { name: "Facelift / deep-plane", body: "Long-lasting structural rejuvenation for advanced laxity.", time: "Surgical" },
+        {
+          name: "Rhinoplasty",
+          body: "Nose reshaping for balance and easier breathing.",
+          tags: ["Shape", "Function"],
+          duration: "Surgery · 1–2 wk recovery",
+          price: "On consultation",
+        },
+        {
+          name: "Liposuction",
+          body: "Targeted body contouring of stubborn fat.",
+          tags: ["Contour", "Body"],
+          duration: "Surgery · 1–2 wk recovery",
+          price: "On consultation",
+        },
+        {
+          name: "Blepharoplasty",
+          body: "Eyelid surgery to refresh a tired, hooded look.",
+          tags: ["Eyes", "Refresh"],
+          duration: "Surgery · 1 wk recovery",
+          price: "On consultation",
+        },
+        {
+          name: "Breast Surgery",
+          body: "Augmentation, reduction or lift for natural proportion.",
+          tags: ["Shape", "Proportion"],
+          duration: "Surgery · 2 wk recovery",
+          price: "On consultation",
+        },
       ]}
-      journey={[
-        { step: "Consultation", body: "Two unhurried sessions before any surgical decision." },
-        { step: "Work-up", body: "Full bloods, imaging and anaesthetic clearance." },
-        { step: "Surgery", body: "Performed in a licensed, accredited hospital setting." },
-        { step: "Recovery", body: "Concierge aftercare, lymphatic drainage and follow-ups." },
+      faqs={[
+        {
+          question: "How do I know if I'm a candidate?",
+          answer: "A consultation assesses your health, goals and expectations first.",
+        },
+        {
+          question: "What's recovery like?",
+          answer: "Most procedures need 1–2 weeks before normal activity.",
+        },
+        {
+          question: "Will results look natural?",
+          answer: "That's our priority — we plan around your features.",
+        },
       ]}
-      ctaTitle="Request a surgical consultation"
-      ctaBody="All surgical enquiries are reviewed personally by our medical director."
+      related={[
+        { slug: "/services/lifting", label: "Anti-Aging & Lifting" },
+        { slug: "/services/injectables", label: "Cosmetic Injectables" },
+        { slug: "/services/skin", label: "Skin & HydraFacial" },
+      ]}
+      heroImage={heroImg}
+      dental={false}
     />
   ),
 });
