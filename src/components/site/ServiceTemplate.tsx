@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import interiorImg from "@/assets/interior.jpg";
+import beforeImg from "@/assets/before.jpg";
+import afterImg from "@/assets/after.jpg";
 
 export type ServiceTreatment = {
   name: string;
@@ -8,6 +10,7 @@ export type ServiceTreatment = {
   tags: string[];
   duration: string;
   price: string;
+  points?: string[];
 };
 
 export type FAQItem = {
@@ -52,12 +55,139 @@ const FAQItemComponent = ({ question, answer }: FAQItem) => {
           +
         </span>
       </button>
-      <div className={`overflow-hidden transition-all duration-350 ${open ? 'max-h-[300px] pb-5' : 'max-h-0'}`}>
+      <div className={`overflow-hidden transition-all duration-300 ${open ? 'max-h-[300px] pb-5' : 'max-h-0'}`}>
         <p className="text-sm text-muted-foreground/95 leading-relaxed max-w-3xl">{answer}</p>
       </div>
     </div>
   );
 };
+
+export function BeforeAfterSection({ treatments }: { treatments: { name: string }[] }) {
+  const [activeTreatment, setActiveTreatment] = useState(treatments[0]?.name || "");
+  const [position, setPosition] = useState(50);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+
+  const handleMove = (clientX: number) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    setPosition(percentage);
+  };
+
+  const handleMouseUp = () => {
+    isDragging.current = false;
+  };
+
+  useEffect(() => {
+    window.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("touchend", handleMouseUp);
+    return () => {
+      window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("touchend", handleMouseUp);
+    };
+  }, []);
+
+  return (
+    <section className="py-20 bg-card border-y border-border/60">
+      <div className="mx-auto max-w-6xl px-6 lg:px-10 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
+        {/* Left Column: Interactive Slider */}
+        <div 
+          ref={containerRef}
+          onMouseDown={(e) => {
+            isDragging.current = true;
+            handleMove(e.clientX);
+          }}
+          onTouchStart={(e) => {
+            isDragging.current = true;
+            handleMove(e.touches[0].clientX);
+          }}
+          onMouseMove={(e) => {
+            if (isDragging.current) handleMove(e.clientX);
+          }}
+          onTouchMove={(e) => {
+            if (isDragging.current) handleMove(e.touches[0].clientX);
+          }}
+          className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-border select-none cursor-ew-resize shadow-sm"
+        >
+          {/* After image */}
+          <div className="absolute inset-0 flex items-end justify-end p-4">
+            <img 
+              src={afterImg}
+              alt="After treatment"
+              className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+            />
+            <span className="relative z-10 text-[10px] uppercase tracking-wider font-semibold text-white bg-black/45 px-3 py-1.5 rounded">
+              After
+            </span>
+          </div>
+          
+          {/* Before image (clipped) */}
+          <div 
+            style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
+            className="absolute inset-0 flex items-end justify-start p-4"
+          >
+            <img 
+              src={beforeImg}
+              alt="Before treatment"
+              className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+            />
+            <span className="relative z-10 text-[10px] uppercase tracking-wider font-semibold text-white bg-black/45 px-3 py-1.5 rounded">
+              Before
+            </span>
+          </div>
+
+          {/* Treatment Label Overlay */}
+          <span className="absolute left-4 top-4 font-display italic text-xs text-white bg-black/40 px-3 py-1.5 rounded shadow">
+            {activeTreatment}
+          </span>
+
+          {/* Slider Line & Knob */}
+          <div 
+            style={{ left: `${position}%` }}
+            className="absolute top-0 bottom-0 w-0.5 bg-[#d2a960] -translate-x-1/2 pointer-events-none"
+          >
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card border border-[#d2a960] shadow-md flex items-center justify-center text-[#d2a960] font-bold text-xs select-none">
+              ⇆
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: Descriptions & Selectors */}
+        <div className="flex flex-col">
+          <p className="eyebrow mb-4">Real results</p>
+          <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
+            See the difference.
+          </h2>
+          <p className="text-base text-muted-foreground/95 leading-relaxed mb-6">
+            Every result is a real Al Nemah patient, shared with written consent. Drag the handle to compare — and pick a treatment below.
+          </p>
+          <p className="font-display italic text-sm text-muted-foreground/80 mb-4">
+            Slide to reveal before & after
+          </p>
+          
+          {/* Thumbnails row */}
+          <div className="flex gap-2 flex-wrap">
+            {treatments.map((t) => (
+              <button
+                key={t.name}
+                onClick={() => setActiveTreatment(t.name)}
+                className={`text-xs px-4 py-2 rounded-full border transition-all duration-300 font-sans cursor-pointer ${
+                  activeTreatment === t.name
+                    ? 'border-[#d2a960] text-primary bg-background font-medium'
+                    : 'border-border/80 text-muted-foreground hover:border-[#d2a960]/60'
+                }`}
+              >
+                {t.name}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export function ServiceTemplate({
   division,
@@ -161,7 +291,7 @@ export function ServiceTemplate({
         </div>
       </div>
 
-      {/* TREATMENTS GRID */}
+      {/* TREATMENTS ROWS */}
       <section className="py-20 lg:py-28">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <div className="max-w-2xl mb-12">
@@ -169,35 +299,87 @@ export function ServiceTemplate({
             <h2 className="font-display text-3xl md:text-4xl">Everything under {categoryName}.</h2>
             <p className="mt-4 text-base text-muted-foreground/90">{txIntro}</p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
-            {treatments.map((t) => (
-              <article key={t.name} className="relative bg-card border border-border/60 hover:border-[#d2a960]/50 rounded-xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-md flex flex-col justify-between">
-                <div className="absolute left-0 top-8 bottom-8 w-0.5 bg-[#d2a960]/40" />
-                <div>
-                  <div className="flex justify-between items-baseline gap-4 mb-3">
-                    <h3 className="font-display text-xl text-foreground font-semibold">{t.name}</h3>
-                    <span className="font-display text-sm font-semibold text-primary">{t.price}</span>
+          <div className="flex flex-col">
+            {treatments.map((t, idx) => (
+              <div key={t.name} className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-14 items-center py-16 border-t border-border/60 first:border-0 first:pt-2">
+                {/* Left Column: Media */}
+                <div className={`relative ${idx % 2 === 1 ? 'lg:order-2' : ''}`}>
+                  <div className="p-3.5 border border-[#d2a960]/40 rounded-2xl relative">
+                    <div className="overflow-hidden rounded-xl aspect-[4/3] bg-gradient-to-br from-[#ECE0CF] to-[#B49E7E] flex items-end">
+                      <span className="m-4 text-[10px] italic font-display text-white bg-black/40 px-3 py-1.5 rounded">
+                        {t.name} — treatment photo
+                      </span>
+                    </div>
+                    {/* Price badge */}
+                    <div className="absolute -right-3 top-8 bg-card border border-border/60 px-4 py-2.5 rounded-lg shadow-md z-10 flex flex-col items-start min-w-[100px]">
+                      <small className="text-[9px] uppercase tracking-wider text-muted-foreground">From</small>
+                      <b className="font-display text-base text-[#d2a960] mt-0.5">{t.price.replace('From ', '')}</b>
+                    </div>
                   </div>
-                  <p className="text-sm text-muted-foreground/95 leading-relaxed mb-4">{t.body}</p>
-                  <ul className="flex gap-1.5 flex-wrap mb-6">
+                </div>
+                
+                {/* Right Column: Content */}
+                <div className="flex flex-col">
+                  <span className="text-xs font-semibold tracking-widest text-[#d2a960] uppercase mb-3">
+                    Treatment 0{idx + 1}
+                  </span>
+                  <h3 className="font-display text-2xl md:text-3xl text-foreground mb-3">{t.name}</h3>
+                  <p className="text-sm md:text-base text-muted-foreground/90 leading-relaxed mb-4 max-w-xl">{t.body}</p>
+                  
+                  {/* Detailed Points (if any) */}
+                  {t.points && t.points.length > 0 && (
+                    <ul className="space-y-2 mb-6">
+                      {t.points.map((p) => (
+                        <li key={p} className="relative pl-6 text-sm text-foreground/90">
+                          <span className="absolute left-0 text-[#d2a960] font-bold">✓</span>
+                          {p}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  
+                  {/* Tags */}
+                  <ul className="flex gap-2 flex-wrap mb-6">
                     {t.tags.map((tag) => (
-                      <li key={tag} className="text-[10px] text-muted-foreground border border-border/70 px-2 py-0.5 rounded-full">
+                      <li key={tag} className="text-xs text-muted-foreground border border-border/85 px-2.5 py-1 rounded-full">
                         {tag}
                       </li>
                     ))}
                   </ul>
+                  
+                  {/* Meta / Duration info split by dot */}
+                  <div className="flex gap-6 flex-wrap py-4 border-y border-border/60 mb-6">
+                    {t.duration.split('·').map((m) => {
+                      const parts = m.trim().split(' ');
+                      const val = parts[0] || '';
+                      const label = parts.slice(1).join(' ') || 'Info';
+                      return (
+                        <div key={m} className="flex flex-col">
+                          <b className="font-display text-base text-foreground font-semibold">{val}</b>
+                          <small className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</small>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  
+                  {/* Buttons */}
+                  <div className="flex gap-3 flex-wrap">
+                    <a href="https://wa.me/971543251817" className="rounded-lg bg-[#d2a960] text-black px-5 py-2.5 text-xs font-semibold hover:opacity-95 transition-all shadow-sm">
+                      Book {t.name}
+                    </a>
+                    <a href="https://wa.me/971543251817" className="rounded-lg bg-[#1f6b53] px-5 py-2.5 text-xs font-semibold text-white hover:opacity-95 transition-all shadow-sm">
+                      WhatsApp
+                    </a>
+                  </div>
                 </div>
-                <div className="flex justify-between items-center border-t border-border/40 pt-4 mt-auto">
-                  <span className="text-[11px] text-muted-foreground/80">{t.duration}</span>
-                  <a href="https://wa.me/971543251817" className="text-xs font-semibold text-primary hover:text-foreground transition-colors">
-                    Book →
-                  </a>
-                </div>
-              </article>
+              </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* BEFORE / AFTER COMPARISON SECTION */}
+      <BeforeAfterSection treatments={treatments} />
 
       {/* WHY AL NEMAH */}
       <section className="py-20 bg-forest text-ivory">

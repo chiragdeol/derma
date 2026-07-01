@@ -36,6 +36,12 @@ export const Route = createFileRoute("/services/skin")({
           tags: ["Dullness", "Congestion"],
           duration: "45–60 min · No downtime",
           price: "From AED 450",
+          points: [
+            "Painless vortex extraction — no manual squeezing",
+            "Customised serums for your skin concern",
+            "Visible glow you can wear straight to an event",
+            "Safe monthly for long-term skin health",
+          ],
         },
         {
           name: "Chemical Peels",
@@ -43,6 +49,12 @@ export const Route = createFileRoute("/services/skin")({
           tags: ["Pigmentation", "Acne scars"],
           duration: "30 min · Mild downtime",
           price: "From AED 400",
+          points: [
+            "Superficial to medium depth, chosen for your skin",
+            "Targets pigmentation, acne marks and dullness",
+            "Best as a course of 3–6 sessions",
+            "Prescription aftercare included",
+          ],
         },
         {
           name: "Mesotherapy",
@@ -50,6 +62,12 @@ export const Route = createFileRoute("/services/skin")({
           tags: ["Glow", "Hydration"],
           duration: "30–45 min · No downtime",
           price: "From AED 600",
+          points: [
+            "A cocktail tailored to skin or hair goals",
+            "Boosts hydration, radiance and firmness",
+            "Virtually no downtime",
+            "Great before a big occasion",
+          ],
         },
         {
           name: "Microneedling",
@@ -57,6 +75,12 @@ export const Route = createFileRoute("/services/skin")({
           tags: ["Scars", "Texture"],
           duration: "45 min · 1 day redness",
           price: "From AED 500",
+          points: [
+            "Stimulates your own collagen production",
+            "Softens acne scars and enlarged pores",
+            "Can be paired with growth-factor serums",
+            "Results build over several sessions",
+          ],
         },
         {
           name: "Skin Boosters",
@@ -64,6 +88,12 @@ export const Route = createFileRoute("/services/skin")({
           tags: ["Laxity", "Dehydration"],
           duration: "30 min · No downtime",
           price: "From AED 1,200",
+          points: [
+            "Deep, long-lasting hydration under the skin",
+            "Improves fine lines and skin quality",
+            "Subtle firming without adding volume",
+            "Typically two sessions, then maintenance",
+          ],
         },
       ]}
       faqs={[
