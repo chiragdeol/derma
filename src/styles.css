@@ -54,8 +54,8 @@
   --popover: oklch(0.985 0.012 75);
   --popover-foreground: oklch(0.22 0.025 50);
 
-  --primary: oklch(0.31 0.033 137);             /* dark forest green */
-  --primary-foreground: oklch(0.985 0.012 75);
+  --primary: oklch(0.74 0.11 82);             /* Al Nemah Gold #d2a960 */
+  --primary-foreground: oklch(0.22 0.025 50);  /* Deep Espresso */
 
   --secondary: oklch(0.93 0.028 70);            /* warm sand */
   --secondary-foreground: oklch(0.28 0.03 45);
@@ -63,7 +63,7 @@
   --muted: oklch(0.94 0.018 75);
   --muted-foreground: oklch(0.48 0.025 55);
 
-  --accent: oklch(0.72 0.11 75);                /* gold accent */
+  --accent: oklch(0.74 0.11 82);                /* Al Nemah Gold */
   --accent-foreground: oklch(0.22 0.025 50);
 
   --destructive: oklch(0.55 0.18 28);
@@ -73,11 +73,11 @@
   --input: oklch(0.9 0.018 70);
   --ring: oklch(0.65 0.08 60);
 
-  --gold: oklch(0.72 0.11 75);
+  --gold: oklch(0.74 0.11 82);
   --sand: oklch(0.9 0.04 75);
   --ivory: oklch(0.985 0.012 75);
-  --forest: oklch(0.31 0.033 137);
-  --teal-dark: oklch(0.35 0.057 165);
+  --forest: oklch(0.20 0.02 60);                /* Deep Charcoal Espresso #201b17 */
+  --teal-dark: oklch(0.15 0.015 60);            /* Very Dark Espresso #14110f */
 }
 
 @layer base {

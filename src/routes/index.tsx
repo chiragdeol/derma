@@ -15,9 +15,9 @@ import wellnessImg from "@/assets/wellness.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Lumière Clinic — Where Advanced Medicine Meets Aesthetic Artistry" },
-      { name: "description", content: "Thoughtfully designed aesthetic, plastic surgery and wellness treatments in Dubai. Natural, refined results from a multidisciplinary clinic." },
-      { property: "og:title", content: "Lumière Clinic" },
+      { title: "Al Nemah Clinic — Where Advanced Medicine Meets Aesthetic Artistry" },
+      { name: "description", content: "Thoughtfully designed aesthetic, laser and dental treatments in Dubai. Natural, refined results from a multidisciplinary clinic." },
+      { property: "og:title", content: "Al Nemah Clinic" },
       { property: "og:description", content: "Where advanced medicine meets aesthetic artistry." },
       { property: "og:image", content: heroImg },
       { name: "twitter:image", content: heroImg },
@@ -80,7 +80,7 @@ function Home() {
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const text = `Hello Lumière Clinic, I'd like to request a consultation.%0A%0AName: ${form.name}%0APhone: ${form.phone}%0AArea of Interest: ${form.service}`;
+    const text = `Hello Al Nemah Clinic, I'd like to request a consultation.%0A%0AName: ${form.name}%0APhone: ${form.phone}%0AArea of Interest: ${form.service}`;
     window.open(`https://wa.me/971543251817?text=${text}`, "_blank");
     setSent(true);
   };
@@ -227,35 +227,7 @@ function Home() {
         </div>
       </section>
 
-      {/* PILLARS */}
-      <section className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-40">
-        <div className="grid gap-14 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <p className="eyebrow mb-6">Our history</p>
-            <h2 className="font-display text-4xl leading-tight text-foreground md:text-5xl">
-              A guide on your <em className="italic">wellness and beauty</em> transformation journey.
-            </h2>
-            <p className="mt-8 max-w-md text-base leading-relaxed text-muted-foreground">
-              Lumière is the meeting point of medical precision and refined hospitality —
-              an environment where science, artistry and care work as one.
-            </p>
-          </div>
-          <div className="lg:col-span-7">
-            <div className="grid gap-px overflow-hidden rounded-2xl bg-border/70 sm:grid-cols-2">
-              {pillars.map((p) => (
-                <article key={p.title} className="bg-background p-8 sm:p-10">
-                  <h3 className="font-display text-2xl text-foreground">{p.title}</h3>
-                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                    {p.body}
-                  </p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* INTERIOR SHOWCASE */}
+      {/* ABOUT US (INTERIOR SHOWCASE) */}
       <section className="relative">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-2 lg:items-center lg:gap-20 lg:px-10">
           <div className="overflow-hidden rounded-2xl">
@@ -269,14 +241,15 @@ function Home() {
             />
           </div>
           <div>
-            <p className="eyebrow mb-6">The Lumière space</p>
+            <p className="eyebrow mb-6">About Al Nemah</p>
             <h2 className="font-display text-4xl leading-tight md:text-5xl">
-              An interior that <em className="italic">restores</em> before treatment begins.
+              Where advanced medicine meets <em className="italic">aesthetic artistry</em>.
             </h2>
             <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-              From the moment you step inside, you feel the difference. Curved walls,
-              warm lighting and an unhurried rhythm create a sanctuary that supports
-              the best possible results.
+              Al Nemah is a multidisciplinary aesthetic, laser and dental center where 
+              scientific expertise and a personalized approach guide every transformation. 
+              Our clinic offers an environment where science, artistry and care work as one 
+              to deliver natural, refined results.
             </p>
             <Link
               to="/about"
@@ -284,261 +257,6 @@ function Home() {
             >
               Discover our story →
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section id="services" className="bg-secondary/30">
-        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
-          <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-            <div>
-              <p className="eyebrow mb-4">What we do</p>
-              <h2 className="font-display text-4xl md:text-5xl">
-                Dermatology, refined into <em className="italic">an experience</em>.
-              </h2>
-            </div>
-            <p className="max-w-sm text-sm text-muted-foreground">
-              Six disciplines under one roof — medical-grade skin, injectables, laser,
-              lifting, surgery and longevity.
-            </p>
-          </div>
-
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((s) => (
-              <Link
-                key={s.num}
-                to={s.to}
-                className="group flex flex-col overflow-hidden rounded-2xl bg-background shadow-soft transition-transform hover:-translate-y-1"
-              >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={s.image}
-                    alt={s.title}
-                    loading="lazy"
-                    width={1024}
-                    height={768}
-                    className="aspect-[4/3] w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
-                  />
-                  <span className="absolute left-5 top-5 rounded-full bg-background/85 px-3 py-1 text-xs uppercase tracking-[0.22em] text-foreground backdrop-blur-sm">
-                    {s.num}
-                  </span>
-                </div>
-                <div className="flex flex-1 flex-col p-8">
-                  <h3 className="font-display text-2xl text-foreground">{s.title}</h3>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {s.tags.map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-full border border-border/70 px-3 py-1 text-xs text-muted-foreground"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-                    {s.body}
-                  </p>
-                  <span className="mt-auto pt-6 inline-flex items-center text-sm text-foreground underline-offset-8 group-hover:underline">
-                    {s.cta} →
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SEASONAL OFFERS */}
-      <section id="offers" className="bg-background">
-        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
-          <div className="mb-14">
-            <p className="eyebrow mb-4 text-primary font-semibold">Current Offers</p>
-            <h2 className="font-display text-4xl md:text-5xl">
-              Seasonal packages, <em className="italic">thoughtfully priced</em>.
-            </h2>
-          </div>
-          
-          <div className="grid gap-8 md:grid-cols-3">
-            {/* Offer 1 */}
-            <div className="bg-background rounded-2xl border border-border/60 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md transition-shadow">
-              <span className="absolute top-4 right-4 bg-[#c2a476]/15 text-[#91713d] text-[10px] font-sans font-semibold tracking-wider px-3 py-1 rounded-full uppercase">
-                Save 30%
-              </span>
-              <div>
-                <h3 className="font-display text-2xl text-foreground mt-4 mb-1">HydraFacial Trio</h3>
-                <p className="text-[11px] text-muted-foreground tracking-wide font-light mb-6">Valid until 30 Sept 2026</p>
-                <div className="flex items-baseline gap-3 mb-8">
-                  <span className="text-sm text-muted-foreground line-through">AED 1,500</span>
-                  <span className="text-2xl font-display font-medium text-foreground font-semibold">AED 1,050</span>
-                </div>
-              </div>
-              <a
-                href="https://wa.me/971543251817?text=Hi,%20I'd%20like%20to%20claim%20the%20HydraFacial%20Trio%20offer."
-                target="_blank"
-                rel="noreferrer"
-                className="w-full text-center rounded-lg border border-border py-3 text-sm font-medium text-foreground hover:bg-muted/50 transition-all cursor-pointer"
-              >
-                Claim offer
-              </a>
-            </div>
-
-            {/* Offer 2 */}
-            <div className="bg-background rounded-2xl border border-border/60 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md transition-shadow">
-              <span className="absolute top-4 right-4 bg-[#c2a476]/15 text-[#91713d] text-[10px] font-sans font-semibold tracking-wider px-3 py-1 rounded-full uppercase">
-                Popular
-              </span>
-              <div>
-                <h3 className="font-display text-2xl text-foreground mt-4 mb-1">Lips + Botox Combo</h3>
-                <p className="text-[11px] text-muted-foreground tracking-wide font-light mb-6">Valid until 30 Sept 2026</p>
-                <div className="flex items-baseline gap-3 mb-8">
-                  <span className="text-sm text-muted-foreground line-through">AED 2,400</span>
-                  <span className="text-2xl font-display font-medium text-foreground font-semibold">AED 1,900</span>
-                </div>
-              </div>
-              <a
-                href="https://wa.me/971543251817?text=Hi,%20I'd%20like%20to%20claim%20the%20Lips%20%2B%20Botox%20Combo%20offer."
-                target="_blank"
-                rel="noreferrer"
-                className="w-full text-center rounded-lg border border-border py-3 text-sm font-medium text-foreground hover:bg-muted/50 transition-all cursor-pointer"
-              >
-                Claim offer
-              </a>
-            </div>
-
-            {/* Offer 3 */}
-            <div className="bg-background rounded-2xl border border-border/60 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md transition-shadow">
-              <span className="absolute top-4 right-4 bg-[#c2a476]/15 text-[#91713d] text-[10px] font-sans font-semibold tracking-wider px-3 py-1 rounded-full uppercase">
-                New
-              </span>
-              <div>
-                <h3 className="font-display text-2xl text-foreground mt-4 mb-1">Morpheus8 — 3 Sessions</h3>
-                <p className="text-[11px] text-muted-foreground tracking-wide font-light mb-6">Valid until 30 Sept 2026</p>
-                <div className="flex items-baseline gap-3 mb-8">
-                  <span className="text-sm text-muted-foreground line-through">AED 6,000</span>
-                  <span className="text-2xl font-display font-medium text-foreground font-semibold">AED 4,200</span>
-                </div>
-              </div>
-              <a
-                href="https://wa.me/971543251817?text=Hi,%20I'd%20like%20to%20claim%20the%20Morpheus8%203%20Sessions%20offer."
-                target="_blank"
-                rel="noreferrer"
-                className="w-full text-center rounded-lg border border-border py-3 text-sm font-medium text-foreground hover:bg-muted/50 transition-all cursor-pointer"
-              >
-                Claim offer
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* DOCTORS */}
-      <section id="doctors" className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
-        <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <div>
-            <p className="eyebrow mb-4">Meet the team</p>
-            <h2 className="font-display text-4xl md:text-5xl">
-              Board-certified <em className="italic">specialists</em>.
-            </h2>
-          </div>
-          <p className="max-w-sm text-sm text-muted-foreground">
-            A multidisciplinary team — trained across Paris, London and the GCC — collaborating
-            on every plan.
-          </p>
-        </div>
-
-        <div className="grid gap-8 md:grid-cols-3">
-          {doctors.map((d) => (
-            <article key={d.name} className="group">
-              <div className="overflow-hidden rounded-2xl bg-card">
-                <img
-                  src={d.image}
-                  alt={d.name}
-                  loading="lazy"
-                  width={800}
-                  height={1024}
-                  className="aspect-[4/5] w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
-                />
-              </div>
-              <div className="mt-6">
-                <h3 className="font-display text-2xl text-foreground">{d.name}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{d.role}</p>
-                <p className="mt-2 text-xs uppercase tracking-[0.18em] text-muted-foreground/80">
-                  {d.credentials}
-                </p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section id="results" className="bg-secondary/40">
-        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
-          <div className="mb-14 max-w-2xl">
-            <p className="eyebrow mb-4">In their words</p>
-            <h2 className="font-display text-4xl md:text-5xl">
-              Care our clients <em className="italic">return for</em>.
-            </h2>
-          </div>
-          <div className="grid gap-8 md:grid-cols-3">
-            {testimonials.map((t) => (
-              <figure
-                key={t.name}
-                className="flex h-full flex-col justify-between rounded-2xl bg-background p-8 shadow-soft sm:p-10"
-              >
-                <blockquote className="font-display text-2xl leading-snug text-foreground">
-                  "{t.quote}"
-                </blockquote>
-                <figcaption className="mt-8 border-t border-border/60 pt-5">
-                  <p className="text-sm text-foreground">{t.name}</p>
-                  <p className="mt-1 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                    {t.detail}
-                  </p>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECOND OPINION CTA */}
-      <section className="bg-primary text-ivory">
-        <div className="mx-auto max-w-4xl px-6 py-28 text-center lg:px-10">
-          <p className="eyebrow text-accent mb-6">Begin your consultation</p>
-          <h2 className="font-display text-4xl leading-tight text-white md:text-5xl">
-            Your face deserves a second opinion <br className="hidden sm:inline" />
-            <em className="italic font-light">worth trusting.</em>
-          </h2>
-          <p className="mt-6 max-w-2xl mx-auto text-sm md:text-base leading-relaxed text-white/80">
-            Book a private consultation with one of our doctors. No pressure, no obligation — just honest, expert guidance.
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
-            <a
-              href="https://wa.me/971543251817"
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-lg bg-[#526452] px-6 py-3 text-sm font-medium text-white hover:bg-[#5d705d] transition-all shadow-sm cursor-pointer"
-            >
-              Book consultation
-            </a>
-            <a
-              href="https://wa.me/971543251817"
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-lg bg-[#184d3e] px-6 py-3 text-sm font-medium text-white hover:opacity-95 transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
-            >
-              <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
-                <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.333 4.982L2 22l5.202-1.364a9.994 9.994 0 0 0 4.81 1.233c5.505 0 9.99-4.477 9.99-9.985C22.002 6.478 17.518 2 12.012 2zm0 18.29a8.27 8.27 0 0 1-4.222-1.155l-.304-.18-3.136.82.834-3.056-.198-.314A8.273 8.273 0 0 1 3.72 11.98c0-4.57 3.719-8.285 8.297-8.285 4.574 0 8.29 3.717 8.29 8.288 0 4.57-3.714 8.29-8.29 8.29-.003 0-.003 0 0 0z"/>
-              </svg>
-              WhatsApp us
-            </a>
-            <a
-              href="tel:+97140000000"
-              className="rounded-lg border border-white/30 px-6 py-3 text-sm font-medium text-white hover:bg-white/10 transition-all cursor-pointer"
-            >
-              Call the clinic
-            </a>
           </div>
         </div>
       </section>

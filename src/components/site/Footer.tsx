@@ -11,11 +11,10 @@ import {
 } from "lucide-react";
 
 const exploreLinks = [
-  { to: "/about", label: "About Lumière" },
+  { to: "/about", label: "About Al Nemah" },
   { to: "/about", label: "Specialists" },
   { to: "/services", label: "Services" },
   { to: "/contact", label: "Contacts" },
-  { to: "/about", label: "Our History" },
   { to: "/", label: "News" },
 ] as const;
 
@@ -79,11 +78,12 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-12">
           {/* Logo */}
           <div className="lg:col-span-3">
-            <Link to="/" className="inline-flex items-balumiere gap-2">
-              <span className="font-display text-5xl italic text-ivory">Lumière</span>
-              <span className="text-[0.65rem] uppercase tracking-[0.32em] text-ivory/70">
-                clinic
-              </span>
+            <Link to="/" className="inline-flex items-center">
+              <img
+                src="/logo-al-nemah.png"
+                alt="Al Nemah Logo"
+                className="h-20 w-auto object-contain brightness-0 invert"
+              />
             </Link>
           </div>
 
@@ -173,7 +173,7 @@ export function Footer() {
             Personal Data Processing Policy
           </a>
           <p>
-            © {new Date().getFullYear()} Lumière Clinic. All rights reserved. M.O.H. Approval No2FXSIE1V-020725
+            © {new Date().getFullYear()} Al Nemah Clinic. All rights reserved. M.O.H. Approval No2FXSIE1V-020725
           </p>
         </div>
       </div>

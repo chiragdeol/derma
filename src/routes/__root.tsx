@@ -80,9 +80,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lumière Clinic — Advanced Medicine meets Aesthetic Artistry" },
-      { name: "description", content: "Lumière Clinic, Dubai: multidisciplinary aesthetic, plastic surgery and wellness center delivering natural, refined results." },
-      { property: "og:title", content: "Lumière Clinic" },
+      { title: "Al Nemah Clinic — Advanced Medicine meets Aesthetic Artistry" },
+      { name: "description", content: "Al Nemah Clinic, Dubai: multidisciplinary aesthetic, laser and dental center delivering natural, refined results." },
+      { property: "og:title", content: "Al Nemah Clinic" },
       { property: "og:description", content: "Where advanced medicine meets aesthetic artistry." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

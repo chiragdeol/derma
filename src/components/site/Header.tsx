@@ -104,13 +104,12 @@ export function Header() {
       </div>
 
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
-        <Link to="/" className="group flex flex-col items-start leading-none gap-0.5">
-          <span className="font-display text-2xl tracking-[0.05em] uppercase text-foreground">
-            Lumière
-          </span>
-          <span className="text-[0.6rem] uppercase tracking-[0.25em] text-muted-foreground pl-0.5">
-            clinic · dubai
-          </span>
+        <Link to="/" className="group flex items-center gap-3">
+          <img
+            src="/logo-al-nemah.png"
+            alt="Al Nemah Logo"
+            className="h-16 w-auto object-contain"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
