@@ -5,8 +5,8 @@ import heroImg from "@/assets/service-injectables.jpg";
 export const Route = createFileRoute("/services/injectables")({
   head: () => ({
     meta: [
-      { title: "Botox, Fillers & Profhilo in Dubai | Injectables — Al Nemah" },
-      { name: "description", content: "Doctor-administered cosmetic injectables in Dubai — Botox, dermal fillers, Profhilo and lip enhancement for natural, refined results. Book a consultation." },
+      { title: "Botox, Fillers & Profhilo in Sharjah | Injectables — Al Nemah" },
+      { name: "description", content: "Doctor-administered cosmetic injectables in Sharjah — Botox, dermal fillers, Profhilo and lip enhancement for natural, refined results. Book a consultation." },
       { property: "og:title", content: "Cosmetic Injectables at Al Nemah" },
       { property: "og:description", content: "Doctor-administered injectables for soft, natural rejuvenation." },
       { property: "og:image", content: heroImg },
@@ -18,9 +18,9 @@ export const Route = createFileRoute("/services/injectables")({
       divisionUrl="/services"
       categoryName="Cosmetic Injectables"
       eyebrow="Dermatology · Injectables"
-      metaTitle="Botox, Fillers & Profhilo in Dubai | Injectables — Al Nemah"
-      metaDesc="Doctor-administered cosmetic injectables in Dubai — Botox, dermal fillers, Profhilo and lip enhancement for natural, refined results. Book a consultation."
-      h1="Cosmetic Injectables in Dubai"
+      metaTitle="Botox, Fillers & Profhilo in Sharjah | Injectables — Al Nemah"
+      metaDesc="Doctor-administered cosmetic injectables in Sharjah — Botox, dermal fillers, Profhilo and lip enhancement for natural, refined results. Book a consultation."
+      h1="Cosmetic Injectables in Sharjah"
       intro="Doctor-administered injectables for soft, natural rejuvenation — smoothing lines and restoring volume without ever looking overdone."
       highlights={[
         ["20–40 min", "Per session"],

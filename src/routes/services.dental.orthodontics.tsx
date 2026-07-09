@@ -5,8 +5,8 @@ import heroImg from "@/assets/wellness.jpg";
 export const Route = createFileRoute("/services/dental/orthodontics")({
   head: () => ({
     meta: [
-      { title: "Invisalign & Braces in Dubai | Orthodontics — Al Nemah Dental" },
-      { name: "description", content: "Straighten teeth in Dubai with Invisalign clear aligners, ceramic or metal braces. 3D digital planning, flexible payments, free consultation." },
+      { title: "Invisalign & Braces in Sharjah | Orthodontics — Al Nemah Dental" },
+      { name: "description", content: "Straighten teeth in Sharjah with Invisalign clear aligners, ceramic or metal braces. 3D digital planning, flexible payments, free consultation." },
       { property: "og:title", content: "Orthodontics & Invisalign at Al Nemah Dental" },
       { property: "og:description", content: "Straighten your teeth discreetly with clear aligners or modern braces." },
       { property: "og:image", content: heroImg },
@@ -18,9 +18,9 @@ export const Route = createFileRoute("/services/dental/orthodontics")({
       divisionUrl="/services"
       categoryName="Orthodontics & Invisalign"
       eyebrow="Dental · Orthodontics"
-      metaTitle="Invisalign & Braces in Dubai | Orthodontics — Al Nemah Dental"
-      metaDesc="Straighten teeth in Dubai with Invisalign clear aligners, ceramic or metal braces. 3D digital planning, flexible payments, free consultation."
-      h1="Orthodontics & Invisalign in Dubai"
+      metaTitle="Invisalign & Braces in Sharjah | Orthodontics — Al Nemah Dental"
+      metaDesc="Straighten teeth in Sharjah with Invisalign clear aligners, ceramic or metal braces. 3D digital planning, flexible payments, free consultation."
+      h1="Orthodontics & Invisalign in Sharjah"
       intro="Straighten your teeth discreetly with clear aligners or modern braces — planned with 3D imaging so you preview the result first."
       highlights={[
         ["Free", "Consultation"],

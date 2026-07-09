@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Al Nemah Clinic — Where Advanced Medicine Meets Aesthetic Artistry" },
-      { name: "description", content: "Thoughtfully designed aesthetic, laser and dental treatments in Dubai. Natural, refined results from a multidisciplinary clinic." },
+      { name: "description", content: "Thoughtfully designed aesthetic, laser and dental treatments in Sharjah. Natural, refined results from a multidisciplinary clinic." },
       { property: "og:title", content: "Al Nemah Clinic" },
       { property: "og:description", content: "Where advanced medicine meets aesthetic artistry." },
       { property: "og:image", content: heroImg },
@@ -145,6 +145,7 @@ function Home() {
     service: "Cosmetic injectables (Botox / Fillers)",
   });
   const [sent, setSent] = useState(false);
+  const [activeVideoUrl, setActiveVideoUrl] = useState<string | null>(null);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -153,7 +154,7 @@ function Home() {
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const text = `Hello Al Nemah Clinic, I'd like to request a consultation.%0A%0AName: ${form.name}%0APhone: ${form.phone}%0AArea of Interest: ${form.service}`;
-    window.open(`https://wa.me/971543251817?text=${text}`, "_blank");
+    window.open(`https://wa.me/971500999324?text=${text}`, "_blank");
     setSent(true);
   };
 
@@ -175,34 +176,29 @@ function Home() {
             
             {/* Left Column: Heading and Stats */}
             <div className="lg:col-span-7 flex flex-col justify-center">
-              <p className="eyebrow text-primary font-semibold mb-4 tracking-[0.25em]">Aesthetic Medicine · Dubai</p>
+              <p className="eyebrow text-primary font-semibold mb-4 tracking-[0.25em]">Aesthetic Medicine · Sharjah</p>
               <h1 className="font-display text-4xl leading-[1.1] text-foreground sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.5rem]">
-                Aesthetic medicine<br />
-                in Dubai, refined by <span className="italic font-light text-primary">artistry.</span>
+                Skin, laser and dental care<br />
+                in Sharjah, refined by <span className="italic font-light text-primary">precision.</span>
               </h1>
               <p className="mt-6 max-w-xl text-base md:text-lg leading-relaxed text-muted-foreground">
-                Doctor-led injectables, skin, laser and surgical care — designed around natural, lasting results and a calm, considered experience.
+                Doctor-led skin, laser and dental treatments — designed around natural, comfortable results and a calm, considered experience.
               </p>
               
               {/* Stats Grid */}
               <div className="mt-12 pt-8 border-t border-border/60 flex flex-wrap items-center gap-x-10 gap-y-6">
                 <div>
-                  <p className="font-display text-3xl font-normal text-foreground">4.9★</p>
-                  <p className="text-[10px] font-sans font-semibold tracking-wider text-muted-foreground uppercase mt-1">1,280 reviews</p>
+                  <p className="font-display text-3xl font-normal text-foreground">50+</p>
+                  <p className="text-[10px] font-sans font-semibold tracking-wider text-muted-foreground uppercase mt-1">Reviews</p>
                 </div>
                 <div className="w-[1px] h-10 bg-border/60 hidden sm:block"></div>
                 <div>
-                  <p className="font-display text-3xl font-normal text-foreground">14</p>
-                  <p className="text-[10px] font-sans font-semibold tracking-wider text-muted-foreground uppercase mt-1">years in dubai</p>
-                </div>
-                <div className="w-[1px] h-10 bg-border/60 hidden sm:block"></div>
-                <div>
-                  <p className="font-display text-3xl font-normal text-foreground">40k+</p>
+                  <p className="font-display text-3xl font-normal text-foreground">10k+</p>
                   <p className="text-[10px] font-sans font-semibold tracking-wider text-muted-foreground uppercase mt-1">treatments</p>
                 </div>
                 <div className="w-[1px] h-10 bg-border/60 hidden sm:block"></div>
                 <div>
-                  <p className="font-display text-3xl font-normal text-foreground">DHA</p>
+                  <p className="font-display text-3xl font-normal text-foreground">MOH</p>
                   <p className="text-[10px] font-sans font-semibold tracking-wider text-muted-foreground uppercase mt-1">licensed doctors</p>
                 </div>
               </div>
@@ -273,7 +269,7 @@ function Home() {
                   </div>
                   
                   <a
-                    href="https://wa.me/971543251817"
+                    href="https://wa.me/971500999324"
                     target="_blank"
                     rel="noreferrer"
                     className="w-full rounded-lg bg-[#125e46] py-3 text-sm font-medium text-white hover:opacity-95 transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
@@ -444,7 +440,7 @@ function Home() {
                 </div>
               </div>
               <a
-                href="https://wa.me/971543251817?text=Hi,%20I'd%20like%20to%20claim%20the%20HydraFacial%20Trio%20offer."
+                href="https://wa.me/971500999324?text=Hi,%20I'd%20like%20to%20claim%20the%20HydraFacial%20Trio%20offer."
                 target="_blank"
                 rel="noreferrer"
                 className="w-full text-center rounded-lg border border-border py-3 text-sm font-medium text-foreground hover:bg-muted/50 transition-all cursor-pointer"
@@ -467,7 +463,7 @@ function Home() {
                 </div>
               </div>
               <a
-                href="https://wa.me/971543251817?text=Hi,%20I'd%20like%20to%20claim%20the%20Lips%20%2B%20Botox%20Combo%20offer."
+                href="https://wa.me/971500999324?text=Hi,%20I'd%20like%20to%20claim%20the%20Lips%20%2B%20Botox%20Combo%20offer."
                 target="_blank"
                 rel="noreferrer"
                 className="w-full text-center rounded-lg border border-border py-3 text-sm font-medium text-foreground hover:bg-muted/50 transition-all cursor-pointer"
@@ -490,7 +486,7 @@ function Home() {
                 </div>
               </div>
               <a
-                href="https://wa.me/971543251817?text=Hi,%20I'd%20like%20to%20claim%20the%20Morpheus8%203%20Sessions%20offer."
+                href="https://wa.me/971500999324?text=Hi,%20I'd%20like%20to%20claim%20the%20Morpheus8%203%20Sessions%20offer."
                 target="_blank"
                 rel="noreferrer"
                 className="w-full text-center rounded-lg border border-border py-3 text-sm font-medium text-foreground hover:bg-muted/50 transition-all cursor-pointer"
@@ -571,6 +567,141 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* INSTAGRAM REELS & VIDEO STORIES */}
+      <section className="bg-background">
+        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
+          <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <p className="eyebrow mb-4">Visual Journeys</p>
+              <h2 className="font-display text-4xl md:text-5xl">
+                Client stories &amp; <em className="italic">reels</em>.
+              </h2>
+            </div>
+            <a
+              href="https://www.instagram.com/alnemahaesthetics/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-sm tracking-wide text-foreground underline-offset-8 hover:underline"
+            >
+              Follow on Instagram →
+            </a>
+          </div>
+
+          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+            {[
+              {
+                title: "Sharjah Clinic Tour",
+                category: "Inside Al Nemah",
+                views: "8.9k views",
+                cover: interiorImg,
+                video: "https://assets.mixkit.co/videos/preview/mixkit-cosmetic-products-on-a-table-41108-large.mp4"
+              },
+              {
+                title: "Client Skincare Journey",
+                category: "Transformations",
+                views: "12.4k views",
+                cover: skinImg,
+                video: "https://assets.mixkit.co/videos/preview/mixkit-young-woman-applying-skincare-cream-on-her-face-41094-large.mp4"
+              },
+              {
+                title: "Advanced Skincare Routine",
+                category: "Doctor's Advice",
+                views: "15.3k views",
+                cover: wellnessImg,
+                video: "https://assets.mixkit.co/videos/preview/mixkit-woman-cleaning-her-face-with-a-sponge-41123-large.mp4"
+              }
+            ].map((reel, idx) => (
+              <div
+                key={idx}
+                onClick={() => setActiveVideoUrl(reel.video)}
+                className="group relative cursor-pointer overflow-hidden rounded-2xl bg-card border border-border/40 shadow-sm aspect-[9/16] transition-transform hover:-translate-y-1"
+              >
+                {/* Cover Image */}
+                <img
+                  src={reel.cover}
+                  alt={reel.title}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                />
+                
+                {/* Dark Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 opacity-90 transition-opacity group-hover:opacity-95" />
+
+                {/* Top Badge: Category */}
+                <div className="absolute top-4 left-4 flex items-center justify-between w-[calc(100%-2rem)]">
+                  <span className="rounded-full bg-white/10 backdrop-blur-md px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
+                    {reel.category}
+                  </span>
+                  <span className="text-[10px] text-white/80 tracking-wide">
+                    {reel.views}
+                  </span>
+                </div>
+
+                {/* Play Button Icon Overlay in Center */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md transition-all group-hover:bg-[#d2a960] group-hover:text-black group-hover:scale-110 shadow-lg">
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="24"
+                      height="24"
+                      fill="currentColor"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Bottom Details */}
+                <div className="absolute bottom-6 left-6 right-6 text-white">
+                  <h3 className="font-display text-xl leading-snug">{reel.title}</h3>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-white/70 mt-2 flex items-center gap-1">
+                    <svg className="w-3.5 h-3.5 stroke-white/60 fill-none" viewBox="0 0 24 24" strokeWidth="2">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                    @alnemahaesthetics
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* VIDEO MODAL LIGHTBOX */}
+      {activeVideoUrl && (
+        <div
+          onClick={() => setActiveVideoUrl(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md transition-all"
+        >
+          <button
+            onClick={() => setActiveVideoUrl(null)}
+            className="absolute top-6 right-6 text-white/80 hover:text-white hover:scale-110 transition-transform p-2 bg-white/10 rounded-full"
+            aria-label="Close video player"
+          >
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+          
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-sm rounded-2xl overflow-hidden aspect-[9/16] bg-black shadow-2xl"
+          >
+            <video
+              autoPlay
+              controls
+              loop
+              playsInline
+              src={activeVideoUrl}
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      )}
 
       {/* BLOGS */}
       <section id="journal" className="bg-background">
@@ -694,7 +825,7 @@ function Home() {
           </p>
           <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
             <a
-              href="https://wa.me/971543251817"
+              href="https://wa.me/971500999324"
               target="_blank"
               rel="noreferrer"
               className="rounded-lg bg-[#526452] px-6 py-3 text-sm font-medium text-white hover:bg-[#5d705d] transition-all shadow-sm cursor-pointer"
@@ -702,7 +833,7 @@ function Home() {
               Book consultation
             </a>
             <a
-              href="https://wa.me/971543251817"
+              href="https://wa.me/971500999324"
               target="_blank"
               rel="noreferrer"
               className="rounded-lg bg-[#184d3e] px-6 py-3 text-sm font-medium text-white hover:opacity-95 transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
@@ -713,7 +844,7 @@ function Home() {
               WhatsApp us
             </a>
             <a
-              href="tel:+97140000000"
+              href="tel:+971500999324"
               className="rounded-lg border border-white/30 px-6 py-3 text-sm font-medium text-white hover:bg-white/10 transition-all cursor-pointer"
             >
               Call the clinic

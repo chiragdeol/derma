@@ -5,8 +5,8 @@ import heroImg from "@/assets/interior.jpg";
 export const Route = createFileRoute("/services/dental/whitening")({
   head: () => ({
     meta: [
-      { title: "Teeth Whitening in Dubai | In-Clinic & Home — Al Nemah Dental" },
-      { name: "description", content: "Professional teeth whitening in Dubai — up to 8 shades brighter, enamel-safe, with in-clinic and take-home options. Book your whitening at Al Nemah." },
+      { title: "Teeth Whitening in Sharjah | In-Clinic & Home — Al Nemah Dental" },
+      { name: "description", content: "Professional teeth whitening in Sharjah — up to 8 shades brighter, enamel-safe, with in-clinic and take-home options. Book your whitening at Al Nemah." },
       { property: "og:title", content: "Teeth Whitening at Al Nemah" },
       { property: "og:description", content: "Brighten your smile safely by up to eight shades." },
       { property: "og:image", content: heroImg },
@@ -18,9 +18,9 @@ export const Route = createFileRoute("/services/dental/whitening")({
       divisionUrl="/services"
       categoryName="Teeth Whitening"
       eyebrow="Dental · Whitening"
-      metaTitle="Teeth Whitening in Dubai | In-Clinic & Home — Al Nemah Dental"
-      metaDesc="Professional teeth whitening in Dubai — up to 8 shades brighter, enamel-safe, with in-clinic and take-home options. Book your whitening at Al Nemah."
-      h1="Teeth Whitening in Dubai"
+      metaTitle="Teeth Whitening in Sharjah | In-Clinic & Home — Al Nemah Dental"
+      metaDesc="Professional teeth whitening in Sharjah — up to 8 shades brighter, enamel-safe, with in-clinic and take-home options. Book your whitening at Al Nemah."
+      h1="Teeth Whitening in Sharjah"
       intro="Brighten your smile safely by up to eight shades — in-clinic for instant results or a take-home kit at your own pace."
       highlights={[
         ["Up to 8 shades", "Results"],

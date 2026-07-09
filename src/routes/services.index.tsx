@@ -9,9 +9,9 @@ import wellness from "@/assets/wellness.jpg";
 export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
-      { title: "Services — Lumière Clinic Dubai" },
-      { name: "description", content: "Dermatology, injectables, laser, lifting, plastic surgery and wellness — six disciplines under one Dubai roof." },
-      { property: "og:title", content: "Services at Lumière Clinic" },
+      { title: "Services — Al Nemah Clinic Sharjah" },
+      { name: "description", content: "Dermatology, injectables, laser, lifting, plastic surgery and wellness — six disciplines under one Sharjah roof." },
+      { property: "og:title", content: "Services at Al Nemah Clinic" },
       { property: "og:description", content: "Six disciplines under one roof, led by board-certified doctors." },
     ],
   }),

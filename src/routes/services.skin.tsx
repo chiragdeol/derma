@@ -5,8 +5,8 @@ import heroImg from "@/assets/service-skin.jpg";
 export const Route = createFileRoute("/services/skin")({
   head: () => ({
     meta: [
-      { title: "Skin Treatments & HydraFacial in Dubai — Al Nemah" },
-      { name: "description", content: "Medical-grade skin treatments in Dubai — HydraFacial, chemical peels, mesotherapy, microneedling and skin boosters. Clear, radiant skin with no downtime." },
+      { title: "Skin Treatments & HydraFacial in Sharjah — Al Nemah" },
+      { name: "description", content: "Medical-grade skin treatments in Sharjah — HydraFacial, chemical peels, mesotherapy, microneedling and skin boosters. Clear, radiant skin with no downtime." },
       { property: "og:title", content: "Skin & HydraFacial at Al Nemah" },
       { property: "og:description", content: "Medical-grade facials and skin resurfacing that clear, hydrate and renew." },
       { property: "og:image", content: heroImg },
@@ -18,9 +18,9 @@ export const Route = createFileRoute("/services/skin")({
       divisionUrl="/services"
       categoryName="Skin & HydraFacial"
       eyebrow="Dermatology · Skin"
-      metaTitle="Skin Treatments & HydraFacial in Dubai — Al Nemah"
-      metaDesc="Medical-grade skin treatments in Dubai — HydraFacial, chemical peels, mesotherapy, microneedling and skin boosters. Clear, radiant skin with no downtime."
-      h1="Skin & HydraFacial in Dubai"
+      metaTitle="Skin Treatments & HydraFacial in Sharjah — Al Nemah"
+      metaDesc="Medical-grade skin treatments in Sharjah — HydraFacial, chemical peels, mesotherapy, microneedling and skin boosters. Clear, radiant skin with no downtime."
+      h1="Skin & HydraFacial in Sharjah"
       intro="Medical-grade facials and skin resurfacing that clear, hydrate and renew — every protocol customised by a dermatologist to your skin."
       highlights={[
         ["No downtime", "Most treatments"],

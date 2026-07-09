@@ -2,10 +2,7 @@ import { Link } from "@tanstack/react-router";
 import {
   MessageCircle,
   Instagram,
-  Linkedin,
-  Send,
-  Youtube,
-  Ghost,
+  Facebook,
   MapPin,
   Phone,
 } from "lucide-react";
@@ -40,12 +37,9 @@ const longevityLinks = [
 ] as const;
 
 const socials = [
-  { href: "https://wa.me/971543251817", label: "WhatsApp", Icon: MessageCircle },
-  { href: "https://instagram.com", label: "Instagram", Icon: Instagram },
-  { href: "https://linkedin.com", label: "LinkedIn", Icon: Linkedin },
-  { href: "https://t.me", label: "Telegram", Icon: Send },
-  { href: "https://youtube.com", label: "YouTube", Icon: Youtube },
-  { href: "https://snapchat.com", label: "Snapchat", Icon: Ghost },
+  { href: "https://wa.me/971500999324", label: "WhatsApp", Icon: MessageCircle },
+  { href: "https://www.instagram.com/alnemahaesthetics/", label: "Instagram", Icon: Instagram },
+  { href: "https://www.facebook.com/alnemahmedicalcenter/", label: "Facebook", Icon: Facebook },
 ];
 
 function FooterColumn({
@@ -134,14 +128,14 @@ export function Footer() {
             </div>
 
             <div className="space-y-2 text-sm">
-              <a href="tel:+971800735463" className="block text-ivory underline-offset-4 hover:underline">
-                +971 800 735 463
+              <a href="tel:+971500999324" className="block text-ivory underline-offset-4 hover:underline">
+                +971 50 099 9324
               </a>
               <a href="mailto:hello@alnemah.ae" className="block text-ivory underline-offset-4 hover:underline">
                 hello@alnemah.ae
               </a>
               <p className="pt-2 text-ivory/70">
-                Jumeirah Beach Road, Dubai, United Arab Emirates
+                Behind Zahia City Center, Al Kawthar Building, Sharjah, UAE
               </p>
             </div>
           </div>
@@ -155,7 +149,7 @@ export function Footer() {
               Request a Call
             </Link>
             <a
-              href="https://maps.google.com/?q=Jumeirah+Beach+Road+Dubai"
+              href="https://maps.google.com/?q=Al+Kawthar+Building+Sharjah"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-ivory px-7 py-4 text-sm font-medium text-foreground transition-opacity hover:opacity-90"

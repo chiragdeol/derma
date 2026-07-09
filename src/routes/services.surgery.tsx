@@ -5,8 +5,8 @@ import heroImg from "@/assets/service-surgery.jpg";
 export const Route = createFileRoute("/services/surgery")({
   head: () => ({
     meta: [
-      { title: "Plastic Surgery in Dubai | Rhinoplasty & Body — Al Nemah" },
-      { name: "description", content: "Board-certified plastic surgery in Dubai — rhinoplasty, liposuction, eyelid and breast surgery in an accredited facility. Book a surgical consultation." },
+      { title: "Plastic Surgery in Sharjah | Rhinoplasty & Body — Al Nemah" },
+      { name: "description", content: "Board-certified plastic surgery in Sharjah — rhinoplasty, liposuction, eyelid and breast surgery in an accredited facility. Book a surgical consultation." },
       { property: "og:title", content: "Plastic Surgery at Al Nemah" },
       { property: "og:description", content: "Board-certified surgeons delivering considered, beautifully natural results." },
       { property: "og:image", content: heroImg },
@@ -18,9 +18,9 @@ export const Route = createFileRoute("/services/surgery")({
       divisionUrl="/services"
       categoryName="Plastic Surgery"
       eyebrow="Surgery · Board-certified"
-      metaTitle="Plastic Surgery in Dubai | Rhinoplasty & Body — Al Nemah"
-      metaDesc="Board-certified plastic surgery in Dubai — rhinoplasty, liposuction, eyelid and breast surgery in an accredited facility. Book a surgical consultation."
-      h1="Plastic Surgery in Dubai"
+      metaTitle="Plastic Surgery in Sharjah | Rhinoplasty & Body — Al Nemah"
+      metaDesc="Board-certified plastic surgery in Sharjah — rhinoplasty, liposuction, eyelid and breast surgery in an accredited facility. Book a surgical consultation."
+      h1="Plastic Surgery in Sharjah"
       intro="Board-certified surgeons delivering considered, beautifully natural results — in an accredited, fully supported environment."
       highlights={[
         ["Certified", "Surgeons"],

@@ -5,7 +5,7 @@ export const Route = createFileRoute("/services/aesthetic")({
   head: () => ({
     meta: [
       { title: "Aesthetic Medicine — Lumière Clinic" },
-      { name: "description", content: "Injectables, advanced facials, laser and skin rejuvenation at Lumière Clinic Dubai — natural, lasting results." },
+      { name: "description", content: "Injectables, advanced facials, laser and skin rejuvenation at Lumière Clinic Sharjah — natural, lasting results." },
       { property: "og:title", content: "Aesthetic Medicine at Lumière" },
       { property: "og:description", content: "Bespoke aesthetic treatments designed for natural harmony." },
       { property: "og:image", content: aestheticImg },

@@ -5,8 +5,8 @@ import heroImg from "@/assets/treatment-hands.jpg";
 export const Route = createFileRoute("/services/dental/cosmetic-dentistry")({
   head: () => ({
     meta: [
-      { title: "Veneers & Hollywood Smile in Dubai — Al Nemah Dental" },
-      { name: "description", content: "Natural veneers, Hollywood smile makeovers and bonding in Dubai with digital smile design. Fix chips, gaps and stains. Book a smile consultation." },
+      { title: "Veneers & Hollywood Smile in Sharjah — Al Nemah Dental" },
+      { name: "description", content: "Natural veneers, Hollywood smile makeovers and bonding in Sharjah with digital smile design. Fix chips, gaps and stains. Book a smile consultation." },
       { property: "og:title", content: "Cosmetic Dentistry & Veneers at Al Nemah" },
       { property: "og:description", content: "Transform your smile with natural-looking veneers and makeovers." },
       { property: "og:image", content: heroImg },
@@ -18,9 +18,9 @@ export const Route = createFileRoute("/services/dental/cosmetic-dentistry")({
       divisionUrl="/services"
       categoryName="Cosmetic Dentistry & Veneers"
       eyebrow="Dental · Cosmetic"
-      metaTitle="Veneers & Hollywood Smile in Dubai — Al Nemah Dental"
-      metaDesc="Natural veneers, Hollywood smile makeovers and bonding in Dubai with digital smile design. Fix chips, gaps and stains. Book a smile consultation."
-      h1="Cosmetic Dentistry & Veneers in Dubai"
+      metaTitle="Veneers & Hollywood Smile in Sharjah — Al Nemah Dental"
+      metaDesc="Natural veneers, Hollywood smile makeovers and bonding in Sharjah with digital smile design. Fix chips, gaps and stains. Book a smile consultation."
+      h1="Cosmetic Dentistry & Veneers in Sharjah"
       intro="Transform your smile with natural-looking veneers and full makeovers — designed digitally so you approve the look before treatment begins."
       highlights={[
         ["Digital", "Smile design"],

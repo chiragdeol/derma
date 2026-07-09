@@ -5,8 +5,8 @@ import heroImg from "@/assets/service-lifting.jpg";
 export const Route = createFileRoute("/services/lifting")({
   head: () => ({
     meta: [
-      { title: "Non-Surgical Lifting in Dubai | Morpheus8, Ultherapy — Al Nemah" },
-      { name: "description", content: "Non-surgical face lifting and skin tightening in Dubai — Morpheus8, Ultherapy, PDO threads and Fotona 4D. Lift and boost collagen without surgery." },
+      { title: "Non-Surgical Lifting in Sharjah | Morpheus8, Ultherapy — Al Nemah" },
+      { name: "description", content: "Non-surgical face lifting and skin tightening in Sharjah — Morpheus8, Ultherapy, PDO threads and Fotona 4D. Lift and boost collagen without surgery." },
       { property: "og:title", content: "Anti-Aging & Lifting at Al Nemah" },
       { property: "og:description", content: "Tighten, lift and rebuild collagen without surgery." },
       { property: "og:image", content: heroImg },
@@ -18,9 +18,9 @@ export const Route = createFileRoute("/services/lifting")({
       divisionUrl="/services"
       categoryName="Anti-Aging & Lifting"
       eyebrow="Dermatology · Anti-Aging"
-      metaTitle="Non-Surgical Lifting in Dubai | Morpheus8, Ultherapy — Al Nemah"
-      metaDesc="Non-surgical face lifting and skin tightening in Dubai — Morpheus8, Ultherapy, PDO threads and Fotona 4D. Lift and boost collagen without surgery."
-      h1="Anti-Aging & Lifting in Dubai"
+      metaTitle="Non-Surgical Lifting in Sharjah | Morpheus8, Ultherapy — Al Nemah"
+      metaDesc="Non-surgical face lifting and skin tightening in Sharjah — Morpheus8, Ultherapy, PDO threads and Fotona 4D. Lift and boost collagen without surgery."
+      h1="Anti-Aging & Lifting in Sharjah"
       intro="Tighten, lift and rebuild collagen without surgery — with honest advice on what each technology can achieve for you."
       highlights={[
         ["No surgery", "Non-invasive"],

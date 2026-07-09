@@ -5,8 +5,8 @@ import heroImg from "@/assets/treatment-room.jpg";
 export const Route = createFileRoute("/services/dental/implants")({
   head: () => ({
     meta: [
-      { title: "Dental Implants in Dubai | Single & Full-Arch — Al Nemah" },
-      { name: "description", content: "Permanent dental implants in Dubai — single, multiple and full-arch (All-on-4) with 3D-guided placement and a 98% success rate. Book a consultation." },
+      { title: "Dental Implants in Sharjah | Single & Full-Arch — Al Nemah" },
+      { name: "description", content: "Permanent dental implants in Sharjah — single, multiple and full-arch (All-on-4) with 3D-guided placement and a 98% success rate. Book a consultation." },
       { property: "og:title", content: "Dental Implants at Al Nemah" },
       { property: "og:description", content: "Replace missing teeth permanently with implants that look, feel and function like your own." },
       { property: "og:image", content: heroImg },
@@ -18,9 +18,9 @@ export const Route = createFileRoute("/services/dental/implants")({
       divisionUrl="/services"
       categoryName="Dental Implants"
       eyebrow="Dental · Implants"
-      metaTitle="Dental Implants in Dubai | Single & Full-Arch — Al Nemah"
-      metaDesc="Permanent dental implants in Dubai — single, multiple and full-arch (All-on-4) with 3D-guided placement and a 98% success rate. Book a consultation."
-      h1="Dental Implants in Dubai"
+      metaTitle="Dental Implants in Sharjah | Single & Full-Arch — Al Nemah"
+      metaDesc="Permanent dental implants in Sharjah — single, multiple and full-arch (All-on-4) with 3D-guided placement and a 98% success rate. Book a consultation."
+      h1="Dental Implants in Sharjah"
       intro="Replace missing teeth permanently with implants that look, feel and function like your own — planned with precise 3D guidance."
       highlights={[
         ["98%", "Success rate"],

@@ -19,7 +19,7 @@ const values = [
   { num: "01", title: "Craft", body: "Every treatment is approached as a work of detail and discipline." },
   { num: "02", title: "Science", body: "Evidence-based protocols, advanced devices and continuous research." },
   { num: "03", title: "Care", body: "An unhurried experience built around the person, not the procedure." },
-  { num: "04", title: "Discretion", body: "A private, considered sanctuary in the heart of Dubai." },
+  { num: "04", title: "Discretion", body: "A private, considered sanctuary in the heart of Sharjah." },
 ];
 
 function About() {

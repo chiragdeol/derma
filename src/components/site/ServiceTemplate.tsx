@@ -228,10 +228,10 @@ export function ServiceTemplate({
           <div>
             <p className="eyebrow mb-4">{eyebrow}</p>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 leading-tight">
-              {h1.includes("Dubai") ? (
+              {h1.includes("Sharjah") ? (
                 <>
-                  {h1.replace("Dubai", "")}
-                  <em className="italic text-[#d2a960] font-light">Dubai</em>
+                  {h1.replace("Sharjah", "")}
+                  <em className="italic text-[#d2a960] font-light">Sharjah</em>
                 </>
               ) : (
                 h1
@@ -241,10 +241,10 @@ export function ServiceTemplate({
               {intro}
             </p>
             <div className="flex gap-4 flex-wrap mb-8">
-              <a href="https://wa.me/971543251817" className="rounded-lg bg-[#d2a960] text-black px-6 py-3.5 text-sm font-semibold hover:opacity-95 transition-all shadow-sm">
+              <a href="https://wa.me/971500999324" className="rounded-lg bg-[#d2a960] text-black px-6 py-3.5 text-sm font-semibold hover:opacity-95 transition-all shadow-sm">
                 Book a consultation
               </a>
-              <a href="https://wa.me/971543251817" className="rounded-lg bg-[#1f6b53] px-6 py-3.5 text-sm font-semibold text-white hover:opacity-95 transition-all shadow-sm flex items-center gap-1.5">
+              <a href="https://wa.me/971500999324" className="rounded-lg bg-[#1f6b53] px-6 py-3.5 text-sm font-semibold text-white hover:opacity-95 transition-all shadow-sm flex items-center gap-1.5">
                 WhatsApp us
               </a>
             </div>
@@ -364,10 +364,10 @@ export function ServiceTemplate({
                   
                   {/* Buttons */}
                   <div className="flex gap-3 flex-wrap">
-                    <a href="https://wa.me/971543251817" className="rounded-lg bg-[#d2a960] text-black px-5 py-2.5 text-xs font-semibold hover:opacity-95 transition-all shadow-sm">
+                    <a href="https://wa.me/971500999324" className="rounded-lg bg-[#d2a960] text-black px-5 py-2.5 text-xs font-semibold hover:opacity-95 transition-all shadow-sm">
                       Book {t.name}
                     </a>
-                    <a href="https://wa.me/971543251817" className="rounded-lg bg-[#1f6b53] px-5 py-2.5 text-xs font-semibold text-white hover:opacity-95 transition-all shadow-sm">
+                    <a href="https://wa.me/971500999324" className="rounded-lg bg-[#1f6b53] px-5 py-2.5 text-xs font-semibold text-white hover:opacity-95 transition-all shadow-sm">
                       WhatsApp
                     </a>
                   </div>
@@ -407,8 +407,8 @@ export function ServiceTemplate({
               <div className="border-t border-ivory/20 pt-5 border-b border-ivory/20 pb-5 flex gap-4">
                 <span className="font-display text-xl text-[#d2a960]">03</span>
                 <div>
-                  <h3 className="font-display text-lg text-white mb-1">DHA &amp; MOH licensed</h3>
-                  <p className="text-sm text-ivory/70 leading-relaxed">A fully accredited, safety-first clinic on Jumeirah Beach Road.</p>
+                  <h3 className="font-display text-lg text-white mb-1">MOH licensed</h3>
+                  <p className="text-sm text-ivory/70 leading-relaxed">A fully accredited, safety-first clinic in Sharjah.</p>
                 </div>
               </div>
             </div>
@@ -474,10 +474,10 @@ export function ServiceTemplate({
             A specialist replies within 15 minutes during clinic hours — no pressure, just honest advice.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <a href="https://wa.me/971543251817" className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-black hover:opacity-90 transition-all">
+            <a href="https://wa.me/971500999324" className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-black hover:opacity-90 transition-all">
               Book consultation
             </a>
-            <a href="tel:+971543251817" className="rounded-lg border border-ivory/30 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-all">
+            <a href="tel:+971500999324" className="rounded-lg border border-ivory/30 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-all">
               Call the clinic
             </a>
           </div>

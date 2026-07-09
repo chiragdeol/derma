@@ -17,7 +17,7 @@ export function InquiryForm() {
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const text = `Hello Al Nemah Clinic, I'd like to enquire.%0A%0AName: ${form.name}%0APhone: ${form.phone}%0AEmail: ${form.email}%0AService: ${form.service}%0AMessage: ${form.message}`;
-    window.open(`https://wa.me/971543251817?text=${text}`, "_blank");
+    window.open(`https://wa.me/971500999324?text=${text}`, "_blank");
     setSent(true);
   };
 
@@ -34,9 +34,9 @@ export function InquiryForm() {
             business day to arrange your private consultation.
           </p>
           <div className="mt-10 space-y-3 text-sm">
-            <p className="text-foreground">📍 Jumeirah · Dubai, UAE</p>
-            <p className="text-foreground">📞 +971 54 325 1817</p>
-            <p className="text-foreground">✉ hello@lumiere.ae</p>
+            <p className="text-foreground">📍 Sharjah, UAE</p>
+            <p className="text-foreground">📞 +971 50 099 9324</p>
+            <p className="text-foreground">✉ hello@alnemah.ae</p>
           </div>
         </div>
 

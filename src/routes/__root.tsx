@@ -81,7 +81,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Al Nemah Clinic — Advanced Medicine meets Aesthetic Artistry" },
-      { name: "description", content: "Al Nemah Clinic, Dubai: multidisciplinary aesthetic, laser and dental center delivering natural, refined results." },
+      { name: "description", content: "Al Nemah Clinic, Sharjah: multidisciplinary aesthetic, laser and dental center delivering natural, refined results." },
       { property: "og:title", content: "Al Nemah Clinic" },
       { property: "og:description", content: "Where advanced medicine meets aesthetic artistry." },
       { property: "og:type", content: "website" },

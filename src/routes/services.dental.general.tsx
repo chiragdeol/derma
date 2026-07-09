@@ -5,8 +5,8 @@ import heroImg from "@/assets/about.jpg";
 export const Route = createFileRoute("/services/dental/general")({
   head: () => ({
     meta: [
-      { title: "Dentist in Dubai | Check-ups, Cleaning, Fillings — Al Nemah" },
-      { name: "description", content: "Family dentist in Dubai for check-ups, hygiene cleaning, fillings, root canal and children's dentistry — a gentle, pain-free approach. Book your visit." },
+      { title: "Dentist in Sharjah | Check-ups, Cleaning, Fillings — Al Nemah" },
+      { name: "description", content: "Family dentist in Sharjah for check-ups, hygiene cleaning, fillings, root canal and children's dentistry — a gentle, pain-free approach. Book your visit." },
       { property: "og:title", content: "General & Preventive Dentistry at Al Nemah" },
       { property: "og:description", content: "Everyday dental care done gently — check-ups, cleaning, fillings and root canal." },
       { property: "og:image", content: heroImg },
@@ -18,9 +18,9 @@ export const Route = createFileRoute("/services/dental/general")({
       divisionUrl="/services"
       categoryName="General & Preventive"
       eyebrow="Dental · General"
-      metaTitle="Dentist in Dubai | Check-ups, Cleaning, Fillings — Al Nemah"
-      metaDesc="Family dentist in Dubai for check-ups, hygiene cleaning, fillings, root canal and children's dentistry — a gentle, pain-free approach. Book your visit."
-      h1="General & Preventive Dentistry in Dubai"
+      metaTitle="Dentist in Sharjah | Check-ups, Cleaning, Fillings — Al Nemah"
+      metaDesc="Family dentist in Sharjah for check-ups, hygiene cleaning, fillings, root canal and children's dentistry — a gentle, pain-free approach. Book your visit."
+      h1="General & Preventive Dentistry in Sharjah"
       intro="Everyday dental care done gently — check-ups, cleaning, fillings and root canal for the whole family."
       highlights={[
         ["Every 6 months", "Recall"],

@@ -1,7 +1,7 @@
 export function WhatsAppFab() {
   return (
     <a
-      href="https://wa.me/971543251817?text=Hello%20Al%20Nemah%20Clinic%2C%20I'd%20like%20to%20book%20a%20consultation."
+      href="https://wa.me/971500999324?text=Hello%20Al%20Nemah%20Clinic%2C%20I'd%20like%20to%20book%20a%20consultation."
       target="_blank"
       rel="noreferrer"
       aria-label="Chat with us on WhatsApp"

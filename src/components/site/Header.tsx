@@ -69,12 +69,12 @@ export function Header() {
       {/* Top Bar */}
       <div className="bg-primary text-ivory text-[11px] py-1.5 px-6 lg:px-10 flex flex-col sm:flex-row justify-between items-center gap-1.5 transition-all duration-300">
         <div className="flex items-center gap-1.5 opacity-90 tracking-wide font-light">
-          <span>Jumeirah Beach Road, Dubai</span>
+          <span>Behind Zahia City Center, Sharjah</span>
           <span className="opacity-45">•</span>
           <span>Open daily 10am–10pm</span>
         </div>
         <div className="flex items-center gap-4 opacity-90 font-light">
-          <a href="tel:+97140000000" className="hover:underline tracking-wide">+971 4 000 0000</a>
+          <a href="tel:+971500999324" className="hover:underline tracking-wide">+971 50 099 9324</a>
           <span className="opacity-30">/</span>
           <div className="flex gap-2">
             <span className="font-semibold text-accent">EN</span>
@@ -180,7 +180,7 @@ export function Header() {
                       </p>
                     </div>
                     <a
-                      href="https://wa.me/971543251817"
+                      href="https://wa.me/971500999324"
                       target="_blank"
                       rel="noreferrer"
                       onClick={() => setServicesOpen(false)}
@@ -209,13 +209,13 @@ export function Header() {
 
         <div className="hidden items-center gap-4 lg:flex">
           <a
-            href="tel:+97140000000"
+            href="tel:+971500999324"
             className="rounded-lg border border-border px-5 py-2 text-sm font-medium text-foreground hover:bg-muted/50 transition-all"
           >
             Call
           </a>
           <a
-            href="https://wa.me/971543251817"
+            href="https://wa.me/971500999324"
             target="_blank"
             rel="noreferrer"
             className="rounded-lg bg-primary px-5 py-2 text-sm font-medium text-primary-foreground hover:opacity-95 transition-all shadow-sm"
@@ -296,13 +296,13 @@ export function Header() {
 
             <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-border/40">
               <a
-                href="tel:+97140000000"
+                href="tel:+971500999324"
                 className="flex justify-center rounded-lg border border-border py-2.5 text-sm font-medium text-foreground"
               >
                 Call
               </a>
               <a
-                href="https://wa.me/971543251817"
+                href="https://wa.me/971500999324"
                 className="flex justify-center rounded-lg bg-primary py-2.5 text-sm font-medium text-primary-foreground"
               >
                 Book consultation
