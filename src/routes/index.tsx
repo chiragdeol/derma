@@ -2,9 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useRef } from "react";
 import heroImg from "@/assets/hero.jpg";
 import interiorImg from "@/assets/interior.jpg";
-import doctor1 from "@/assets/doctor-1.jpg";
-import doctor2 from "@/assets/doctor-2.jpg";
-import doctor3 from "@/assets/doctor-3.jpg";
+import doctorSidra from "@/assets/doctor-sidra.png";
+import doctorNisha from "@/assets/doctor-nisha.png";
+import doctorHijab from "@/assets/doctor-hijab.png";
+import doctorMale from "@/assets/doctor-male.png";
 import injectablesImg from "@/assets/service-injectables.jpg";
 import skinImg from "@/assets/service-skin.jpg";
 import laserImg from "@/assets/service-laser.jpg";
@@ -57,9 +58,10 @@ const services = [
 ] as const;
 
 const doctors = [
-  { name: "Dr. Layla Haddad", role: "Medical Director · Dermatology", credentials: "MD, FAAD — 15+ years", image: doctor1 },
-  { name: "Dr. Adrien Moreau", role: "Aesthetic & Laser Medicine", credentials: "MD, EBCD — Paris trained", image: doctor2 },
-  { name: "Dr. Noor Khalil", role: "Plastic & Reconstructive Surgery", credentials: "MD, FRCS — London board", image: doctor3 },
+  { name: "Dr. Sidra Ejaz", role: "Aesthetic Physician", image: doctorSidra },
+  { name: "Dr. Nisha Sasidharan", role: "General Dentist", image: doctorNisha },
+  { name: "Dr. Menna", role: "General Dentist", image: doctorHijab },
+  { name: "Dr. Sheeraz", role: "Specialist Dermatologist", image: doctorMale },
 ];
 
 const testimonials = [
@@ -177,11 +179,11 @@ function Home() {
             {/* Left Column: Heading and Stats */}
             <div className="lg:col-span-7 flex flex-col justify-center">
               <p className="eyebrow text-primary font-semibold mb-4 tracking-[0.25em]">Aesthetic Medicine · Sharjah</p>
-              <h1 className="font-display text-4xl leading-[1.1] text-foreground sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.5rem]">
+              <h1 className="font-display text-4xl font-bold leading-[1.1] text-foreground sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.5rem]">
                 Skin, laser and dental care<br />
-                in Sharjah, refined by <span className="italic font-light text-primary">precision.</span>
+                in Sharjah, refined by <span className="italic font-bold text-primary">precision.</span>
               </h1>
-              <p className="mt-6 max-w-xl text-base md:text-lg leading-relaxed text-muted-foreground">
+              <p className="mt-6 max-w-xl text-base md:text-lg leading-relaxed text-black">
                 Doctor-led skin, laser and dental treatments — designed around natural, comfortable results and a calm, considered experience.
               </p>
               
@@ -311,13 +313,10 @@ function Home() {
           <div>
             <p className="eyebrow mb-6">About Al Nemah</p>
             <h2 className="font-display text-4xl leading-tight md:text-5xl">
-              Where advanced medicine meets <em className="italic">aesthetic artistry</em>.
+              Where dentistry and dermatology meet <em className="italic">modern artistry</em>.
             </h2>
             <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-              Al Nemah is a multidisciplinary aesthetic, laser and dental center where 
-              scientific expertise and a personalized approach guide every transformation. 
-              Our clinic offers an environment where science, artistry and care work as one 
-              to deliver natural, refined results.
+              AL Nemah is a modern aesthetic clinic in the UAE, bringing together dental excellence and dermatological expertise under one roof. From precision smile design to advanced skin treatments, our specialists blend clinical science with an artist's eye to deliver results that look effortless and feel transformative.
             </p>
             <Link
               to="/about"
@@ -336,12 +335,11 @@ function Home() {
             <div>
               <p className="eyebrow mb-4">What we do</p>
               <h2 className="font-display text-4xl md:text-5xl">
-                Dermatology, refined into <em className="italic">an experience</em>.
+                Dentistry and dermatology, refined into <em className="italic">an experience</em>.
               </h2>
             </div>
             <p className="max-w-sm text-sm text-muted-foreground">
-              Six disciplines under one roof — medical-grade skin, injectables, laser,
-              lifting, surgery and longevity.
+              Six disciplines under one roof — smile design, medical-grade skin, injectables, laser, lifting and surgery.
             </p>
           </div>
 
@@ -397,15 +395,14 @@ function Home() {
             <div>
               <p className="eyebrow mb-6 text-primary">Real Results</p>
               <h2 className="font-display text-4xl leading-tight md:text-5xl">
-                See the difference. <br className="hidden sm:inline" />
-                Drag to reveal.
+                See the transformation. <br className="hidden sm:inline" />
+                Drag to compare.
               </h2>
               <p className="mt-6 text-base leading-relaxed text-ivory/80">
-                Every result is a real Al Nemah patient, shared with written consent. 
-                Outcomes vary — your consultation sets realistic, honest expectations.
+                Every image is a real AL Nemah patient, shown with written consent. Results vary from person to person — your consultation gives you honest, personalized expectations.
               </p>
               <p className="mt-8 text-xs tracking-wider uppercase opacity-60">
-                Slide the handle to compare before & after
+                Slide the handle to compare
               </p>
             </div>
             <div>
@@ -418,11 +415,14 @@ function Home() {
       {/* SEASONAL OFFERS */}
       <section id="offers" className="bg-background">
         <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
-          <div className="mb-14">
+          <div className="mb-14 max-w-2xl">
             <p className="eyebrow mb-4 text-primary font-semibold">Current Offers</p>
-            <h2 className="font-display text-4xl md:text-5xl">
+            <h2 className="font-display text-4xl md:text-5xl mb-4">
               Seasonal packages, <em className="italic">thoughtfully priced</em>.
             </h2>
+            <p className="text-base text-muted-foreground leading-relaxed">
+              Curated combinations of our most-loved dental and dermatology treatments, bundled for the season and priced to make expert care more accessible.
+            </p>
           </div>
           
           <div className="grid gap-8 md:grid-cols-3">
@@ -507,13 +507,12 @@ function Home() {
               Board-certified <em className="italic">specialists</em>.
             </h2>
           </div>
-          <p className="max-w-sm text-sm text-muted-foreground">
-            A multidisciplinary team — trained across Paris, London and the GCC — collaborating
-            on every plan.
+          <p className="max-w-md text-sm text-muted-foreground">
+            A multidisciplinary team of dentists and dermatologists — collaborating so your smile and skin plans work in harmony.
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {doctors.map((d) => (
             <article key={d.name} className="group">
               <div className="overflow-hidden rounded-2xl bg-card">
@@ -529,9 +528,6 @@ function Home() {
               <div className="mt-6">
                 <h3 className="font-display text-2xl text-foreground">{d.name}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{d.role}</p>
-                <p className="mt-2 text-xs uppercase tracking-[0.18em] text-muted-foreground/80">
-                  {d.credentials}
-                </p>
               </div>
             </article>
           ))}
@@ -817,11 +813,11 @@ function Home() {
         <div className="mx-auto max-w-4xl px-6 py-28 text-center lg:px-10">
           <p className="eyebrow text-accent mb-6">Begin your consultation</p>
           <h2 className="font-display text-4xl leading-tight text-white md:text-5xl">
-            Your face deserves a second opinion <br className="hidden sm:inline" />
+            Your face and smile deserve a second opinion <br className="hidden sm:inline" />
             <em className="italic font-light">worth trusting.</em>
           </h2>
           <p className="mt-6 max-w-2xl mx-auto text-sm md:text-base leading-relaxed text-white/80">
-            Book a private consultation with one of our doctors. No pressure, no obligation — just honest, expert guidance.
+            Book a Free consultation with one of our doctors. No pressure, no obligation — just honest, expert guidance.
           </p>
           <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
             <a
