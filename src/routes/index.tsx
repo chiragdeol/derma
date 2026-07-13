@@ -178,12 +178,12 @@ function Home() {
             
             {/* Left Column: Heading and Stats */}
             <div className="lg:col-span-7 flex flex-col justify-center">
-              <p className="eyebrow text-primary font-semibold mb-4 tracking-[0.25em]">Aesthetic Medicine · Sharjah</p>
+              <p className="eyebrow text-primary font-semibold mb-4 tracking-[0.25em]">SKIN · LASER · DENTAL - SHARJAH</p>
               <h1 className="font-display text-4xl font-bold leading-[1.1] text-foreground sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.5rem]">
-                Skin, laser and dental care<br />
-                in Sharjah, refined by <span className="italic font-bold text-primary">precision.</span>
+                Skin, laser and dental care in Sharjah,<br />
+                refined by <span className="italic font-bold text-primary">precision.</span>
               </h1>
-              <p className="mt-6 max-w-xl text-base md:text-lg leading-relaxed text-black">
+              <p className="mt-6 max-w-xl text-base md:text-lg leading-relaxed text-black font-semibold">
                 Doctor-led skin, laser and dental treatments — designed around natural, comfortable results and a calm, considered experience.
               </p>
               
@@ -315,7 +315,7 @@ function Home() {
             <h2 className="font-display text-4xl leading-tight md:text-5xl">
               Where dentistry and dermatology meet <em className="italic">modern artistry</em>.
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+            <p className="mt-6 text-base leading-relaxed text-black font-semibold">
               AL Nemah is a modern aesthetic clinic in the UAE, bringing together dental excellence and dermatological expertise under one roof. From precision smile design to advanced skin treatments, our specialists blend clinical science with an artist's eye to deliver results that look effortless and feel transformative.
             </p>
             <Link
@@ -338,7 +338,7 @@ function Home() {
                 Dentistry and dermatology, refined into <em className="italic">an experience</em>.
               </h2>
             </div>
-            <p className="max-w-sm text-sm text-muted-foreground">
+            <p className="max-w-sm text-sm text-black font-semibold">
               Six disciplines under one roof — smile design, medical-grade skin, injectables, laser, lifting and surgery.
             </p>
           </div>
@@ -398,7 +398,7 @@ function Home() {
                 See the transformation. <br className="hidden sm:inline" />
                 Drag to compare.
               </h2>
-              <p className="mt-6 text-base leading-relaxed text-ivory/80">
+              <p className="mt-6 text-base leading-relaxed text-white font-semibold">
                 Every image is a real AL Nemah patient, shown with written consent. Results vary from person to person — your consultation gives you honest, personalized expectations.
               </p>
               <p className="mt-8 text-xs tracking-wider uppercase opacity-60">
@@ -420,7 +420,7 @@ function Home() {
             <h2 className="font-display text-4xl md:text-5xl mb-4">
               Seasonal packages, <em className="italic">thoughtfully priced</em>.
             </h2>
-            <p className="text-base text-muted-foreground leading-relaxed">
+            <p className="text-base text-black font-semibold leading-relaxed">
               Curated combinations of our most-loved dental and dermatology treatments, bundled for the season and priced to make expert care more accessible.
             </p>
           </div>
@@ -507,7 +507,7 @@ function Home() {
               Board-certified <em className="italic">specialists</em>.
             </h2>
           </div>
-          <p className="max-w-md text-sm text-muted-foreground">
+          <p className="max-w-md text-sm text-black font-semibold">
             A multidisciplinary team of dentists and dermatologists — collaborating so your smile and skin plans work in harmony.
           </p>
         </div>
@@ -816,7 +816,7 @@ function Home() {
             Your face and smile deserve a second opinion <br className="hidden sm:inline" />
             <em className="italic font-light">worth trusting.</em>
           </h2>
-          <p className="mt-6 max-w-2xl mx-auto text-sm md:text-base leading-relaxed text-white/80">
+          <p className="mt-6 max-w-2xl mx-auto text-sm md:text-base leading-relaxed text-white font-semibold">
             Book a Free consultation with one of our doctors. No pressure, no obligation — just honest, expert guidance.
           </p>
           <div className="mt-10 flex flex-wrap justify-center items-center gap-4">

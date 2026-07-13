@@ -67,7 +67,7 @@ function FooterColumn({
 
 export function Footer() {
   return (
-    <footer className="mt-32 bg-[#3a3a36] text-ivory">
+    <footer className="mt-0 bg-[#3a3a36] text-ivory">
       <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-12">
           {/* Logo */}
