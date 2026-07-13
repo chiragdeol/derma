@@ -299,7 +299,7 @@ function Home() {
 
       {/* ABOUT US (INTERIOR SHOWCASE) */}
       <section className="relative">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-2 lg:items-center lg:gap-20 lg:px-10">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-12 lg:grid-cols-2 lg:items-center lg:gap-12 lg:px-10">
           <div className="overflow-hidden rounded-2xl">
             <img
               src={interiorImg}
@@ -330,7 +330,7 @@ function Home() {
 
       {/* SERVICES */}
       <section id="services" className="bg-secondary/30">
-        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
           <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
               <p className="eyebrow mb-4">What we do</p>
@@ -390,7 +390,7 @@ function Home() {
 
       {/* BEFORE / AFTER COMPARISON */}
       <section className="bg-forest text-ivory">
-        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
           <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
             <div>
               <p className="eyebrow mb-6 text-primary">Real Results</p>
@@ -414,7 +414,7 @@ function Home() {
 
       {/* SEASONAL OFFERS */}
       <section id="offers" className="bg-background">
-        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
           <div className="mb-14 max-w-2xl">
             <p className="eyebrow mb-4 text-primary font-semibold">Current Offers</p>
             <h2 className="font-display text-4xl md:text-5xl mb-4">
@@ -499,7 +499,7 @@ function Home() {
       </section>
 
       {/* DOCTORS */}
-      <section id="doctors" className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
+      <section id="doctors" className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
         <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>
             <p className="eyebrow mb-4">Meet the team</p>
@@ -536,7 +536,7 @@ function Home() {
 
       {/* TESTIMONIALS */}
       <section id="results" className="bg-secondary/40">
-        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
           <div className="mb-14 max-w-2xl">
             <p className="eyebrow mb-4">In their words</p>
             <h2 className="font-display text-4xl md:text-5xl">
@@ -566,7 +566,7 @@ function Home() {
 
       {/* INSTAGRAM REELS & VIDEO STORIES */}
       <section className="bg-background">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
+        <div className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-16">
           <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
               <p className="eyebrow mb-4">Visual Journeys</p>
@@ -701,7 +701,7 @@ function Home() {
 
       {/* BLOGS */}
       <section id="journal" className="bg-background">
-        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
           <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
               <p className="eyebrow mb-4">Our Journal</p>
@@ -810,7 +810,7 @@ function Home() {
 
       {/* SECOND OPINION CTA */}
       <section className="bg-primary text-ivory">
-        <div className="mx-auto max-w-4xl px-6 py-28 text-center lg:px-10">
+        <div className="mx-auto max-w-4xl px-6 py-16 text-center lg:px-10">
           <p className="eyebrow text-accent mb-6">Begin your consultation</p>
           <h2 className="font-display text-4xl leading-tight text-white md:text-5xl">
             Your face and smile deserve a second opinion <br className="hidden sm:inline" />
