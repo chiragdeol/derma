@@ -812,9 +812,9 @@ function Home() {
       <section className="bg-primary text-ivory">
         <div className="mx-auto max-w-4xl px-6 py-16 text-center lg:px-10">
           <p className="eyebrow text-accent mb-6">Begin your consultation</p>
-          <h2 className="font-display text-4xl leading-tight text-white md:text-5xl">
-            Your face and smile deserve a second opinion <br className="hidden sm:inline" />
-            <em className="italic font-light">worth trusting.</em>
+          <h2 className="font-display text-4xl leading-tight text-white md:text-5xl text-balance max-w-3xl mx-auto">
+            Your face and smile deserve <br className="hidden sm:inline" />
+            a second opinion <em className="italic font-light">worth trusting.</em>
           </h2>
           <p className="mt-6 max-w-2xl mx-auto text-sm md:text-base leading-relaxed text-white font-semibold">
             Book a Free consultation with one of our doctors. No pressure, no obligation — just honest, expert guidance.
