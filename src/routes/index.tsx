@@ -10,7 +10,7 @@ import injectablesImg from "@/assets/service-injectables.jpg";
 import skinImg from "@/assets/service-skin.jpg";
 import laserImg from "@/assets/service-laser.jpg";
 import liftingImg from "@/assets/service-lifting.jpg";
-import surgeryImg from "@/assets/service-surgery.jpg";
+import dentalImg from "@/assets/service-dental.jpg";
 import wellnessImg from "@/assets/wellness.jpg";
 import beforeImg from "@/assets/before.jpg";
 import afterImg from "@/assets/after.jpg";
@@ -32,7 +32,7 @@ export const Route = createFileRoute("/")({
 const pillars = [
   {
     title: "Excellence in every detail",
-    body: "Lumière Clinic is a multidisciplinary aesthetic, plastic surgery and wellness center where scientific expertise and a personalized approach guide every transformation.",
+    body: "Al Nemah Clinic is a multidisciplinary aesthetic, laser and dental center where scientific expertise and a personalized approach guide every transformation.",
   },
   {
     title: "Health and beauty 360",
@@ -53,7 +53,7 @@ const services = [
   { num: "02", title: "Skin & HydraFacial", image: skinImg, tags: ["HydraFacial", "Chemical peels", "Mesotherapy", "Microneedling"], body: "Medical-grade facials and resurfacing for clear, luminous skin.", to: "/services/skin", cta: "Explore skin" },
   { num: "03", title: "Laser & Hair Removal", image: laserImg, tags: ["Laser hair", "Pigmentation", "Vascular", "Tattoo removal"], body: "Advanced laser platforms, safe across all Fitzpatrick skin types.", to: "/services/laser", cta: "Explore laser" },
   { num: "04", title: "Anti-Aging & Lifting", image: liftingImg, tags: ["Morpheus8", "Ultherapy", "Threads", "Fotona 4D"], body: "Non-surgical tightening and collagen renewal with real downtime answers.", to: "/services/lifting", cta: "Explore lifting" },
-  { num: "05", title: "Plastic Surgery", image: surgeryImg, tags: ["Rhinoplasty", "Liposuction", "Eyelid surgery", "Breast"], body: "Board-certified surgeons for considered, beautifully natural results.", to: "/services/surgery", cta: "Explore surgery" },
+  { num: "05", title: "Dental Services", image: dentalImg, tags: ["Smile design", "Veneers", "Teeth whitening", "Implants"], body: "Comprehensive dental care, cosmetic smile design and whitening for your ultimate confidence.", to: "/services/dental/cosmetic-dentistry", cta: "Explore dental" },
   { num: "06", title: "Wellness & Longevity", image: wellnessImg, tags: ["IV drips", "Hormone health", "Hair restoration", "Skin boosters"], body: "Feel as good as you look — inside-out care for energy and vitality.", to: "/services/wellness", cta: "Explore wellness" },
 ] as const;
 
@@ -252,7 +252,7 @@ function Home() {
                       <option>Skin & HydraFacial</option>
                       <option>Laser & Hair Removal</option>
                       <option>Anti-Aging & Lifting</option>
-                      <option>Plastic Surgery</option>
+                      <option>Dental Care & Smile Design</option>
                       <option>Wellness & Longevity</option>
                     </select>
                   </div>
@@ -339,7 +339,7 @@ function Home() {
               </h2>
             </div>
             <p className="max-w-sm text-sm text-black font-semibold">
-              Six disciplines under one roof — smile design, medical-grade skin, injectables, laser, lifting and surgery.
+              Six disciplines under one roof — smile design, medical-grade skin, injectables, laser, lifting and dental care.
             </p>
           </div>
 

@@ -79,8 +79,8 @@ function Contact() {
                 <label className="eyebrow mb-3 block">Service of interest</label>
                 <select className="w-full rounded-lg border border-input bg-background px-4 py-3 text-sm focus:border-foreground focus:outline-none">
                   <option>Aesthetic Medicine</option>
+                  <option>Dental Services Consultation</option>
                   <option>Wellness & Recovery</option>
-                  <option>Plastic Surgery Consultation</option>
                   <option>Not sure yet</option>
                 </select>
               </div>

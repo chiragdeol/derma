@@ -92,7 +92,7 @@ export function InquiryForm() {
                 <option>Skin & HydraFacial</option>
                 <option>Laser & Hair Removal</option>
                 <option>Anti-Aging & Lifting</option>
-                <option>Plastic Surgery</option>
+                <option>Dental Care & Smile Design</option>
                 <option>Wellness & Longevity</option>
               </select>
             </label>

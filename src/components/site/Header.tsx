@@ -25,7 +25,7 @@ const dermaLinks = [
   { to: "/services/injectables", title: "Cosmetic Injectables", desc: "Botox, fillers, Profhilo", image: injectablesImg },
   { to: "/services/laser", title: "Laser & Hair Removal", desc: "Hair, pigmentation, vascular", image: laserImg },
   { to: "/services/lifting", title: "Anti-Aging & Lifting", desc: "Morpheus8, Ultherapy, threads", image: liftingImg },
-  { to: "/services/surgery", title: "Plastic Surgery", desc: "Rhinoplasty, liposuction", image: surgeryImg },
+  { to: "/services/wellness", title: "Wellness & Longevity", desc: "IV drips, skin boosters", image: wellnessImg },
 ] as const;
 
 const dentalLinks = [

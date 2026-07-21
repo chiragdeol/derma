@@ -3,14 +3,14 @@ import injectables from "@/assets/service-injectables.jpg";
 import skin from "@/assets/service-skin.jpg";
 import laser from "@/assets/service-laser.jpg";
 import lifting from "@/assets/service-lifting.jpg";
-import surgery from "@/assets/service-surgery.jpg";
+import dental from "@/assets/service-dental.jpg";
 import wellness from "@/assets/wellness.jpg";
 
 export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
       { title: "Services — Al Nemah Clinic Sharjah" },
-      { name: "description", content: "Dermatology, injectables, laser, lifting, plastic surgery and wellness — six disciplines under one Sharjah roof." },
+      { name: "description", content: "Dermatology, injectables, laser, lifting, dental services and wellness — six disciplines under one Sharjah roof." },
       { property: "og:title", content: "Services at Al Nemah Clinic" },
       { property: "og:description", content: "Six disciplines under one roof, led by board-certified doctors." },
     ],
@@ -23,7 +23,7 @@ const services = [
   { num: "02", to: "/services/skin", title: "Skin & HydraFacial", body: "Medical-grade facials, peels and resurfacing for luminous skin.", image: skin },
   { num: "03", to: "/services/laser", title: "Laser & Hair Removal", body: "Multi-wavelength laser platforms safe across all skin types.", image: laser },
   { num: "04", to: "/services/lifting", title: "Anti-Aging & Lifting", body: "Morpheus8, Ultherapy, threads and Fotona 4D for non-surgical lift.", image: lifting },
-  { num: "05", to: "/services/surgery", title: "Plastic Surgery", body: "Board-certified surgeons for considered, beautifully natural results.", image: surgery },
+  { num: "05", to: "/services/dental/cosmetic-dentistry", title: "Dental Services", body: "Comprehensive dental care, cosmetic smile design and whitening for your ultimate confidence.", image: dental },
   { num: "06", to: "/services/wellness", title: "Wellness & Longevity", body: "IV drips, hormone health, hair restoration and skin boosters.", image: wellness },
 ] as const;
 
@@ -37,7 +37,7 @@ function ServicesIndex() {
             Six disciplines, <em className="italic">one philosophy.</em>
           </h1>
           <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground">
-            From a single HydraFacial to a full surgical plan, every Lumière service follows
+            From a single HydraFacial to a full smile design plan, every Al Nemah service follows
             the same standard: physician-led, evidence-based, and quietly luxurious.
           </p>
         </div>

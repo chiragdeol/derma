@@ -22,11 +22,11 @@ const aestheticLinks = [
   { to: "/services/lifting", label: "Anti-Aging & Lifting" },
 ] as const;
 
-const surgeryLinks = [
-  { to: "/services/surgery", label: "Plastic Surgery" },
-  { to: "/services/surgery", label: "Rhinoplasty" },
-  { to: "/services/surgery", label: "Liposuction" },
-  { to: "/services/surgery", label: "Blepharoplasty" },
+const dentalLinks = [
+  { to: "/services/dental/cosmetic-dentistry", label: "Cosmetic Dentistry & Veneers" },
+  { to: "/services/dental/whitening", label: "Teeth Whitening" },
+  { to: "/services/dental/implants", label: "Dental Implants" },
+  { to: "/services/dental/orthodontics", label: "Orthodontics & Invisalign" },
 ] as const;
 
 const longevityLinks = [
@@ -99,9 +99,9 @@ export function Footer() {
             <FooterColumn title="Aesthetic Medicine" links={aestheticLinks} />
           </div>
 
-          {/* Surgery + Longevity */}
+          {/* Dental + Longevity */}
           <div className="lg:col-span-2 space-y-8">
-            <FooterColumn title="Plastic Surgery" links={surgeryLinks} />
+            <FooterColumn title="Dental Services" links={dentalLinks} />
           </div>
 
           <div className="lg:col-span-3 space-y-8">
