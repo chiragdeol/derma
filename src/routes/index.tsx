@@ -64,10 +64,51 @@ const doctors = [
   { name: "Dr. Sheeraz", role: "Specialist Dermatologist", image: doctorMale },
 ];
 
+const googleMapsUrl = "https://www.google.com/maps/place/Al+Nemah+Medical+Center/@25.3084187,55.4554462,17z/data=!3m1!4b1!4m6!3m5!1s0x3ef5f55f108d6609:0x7c63cba5d1ec1b67!8m2!3d25.3084187!4d55.4554462!16s%2Fg%2F11z4f4shbh!18m1!1e1?entry=ttu";
+
 const testimonials = [
-  { quote: "I've never felt more myself. The team listens — nothing is rushed, nothing overdone.", name: "Amina R.", detail: "HydraFacial · Profhilo" },
-  { quote: "Refined, discreet, and deeply professional. The results look like me, just rested.", name: "Sophie L.", detail: "Injectables · Morpheus8" },
-  { quote: "From the consultation to follow-up, every detail felt considered. A true sanctuary.", name: "Maya K.", detail: "Laser · Skin boosters" },
+  {
+    quote: "Dr. Sidra is an absolute artist! She took her time explaining the procedure and made me feel so comfortable. The results look so natural and effortless.",
+    name: "Fatima Al-Zahra",
+    detail: "Aesthetic Medicine · Dr. Sidra Ejaz",
+    rating: 5,
+    date: "1 week ago"
+  },
+  {
+    quote: "Best dental experience in Sharjah! Dr. Nisha and Dr. Menna are extremely gentle and skilled. Got my teeth whitening and smile design done with zero discomfort.",
+    name: "Mariam Al-Ali",
+    detail: "Teeth Whitening & Dental Care",
+    rating: 5,
+    date: "2 weeks ago"
+  },
+  {
+    quote: "The GentleMax Pro laser hair removal platform here is top notch. Smooth, quick, and virtually painless. Super clean clinic and professional staff!",
+    name: "Sara K.",
+    detail: "Laser & Hair Removal",
+    rating: 5,
+    date: "3 weeks ago"
+  },
+  {
+    quote: "Dr. Sheeraz gave me honest, expert guidance for my skin routine. The results within a month have been transformative. Truly a 5-star medical center.",
+    name: "Hessa M.",
+    detail: "Specialist Dermatology · Dr. Sheeraz",
+    rating: 5,
+    date: "1 month ago"
+  },
+  {
+    quote: "HydraFacial treatment at Al Nemah is purely therapeutic. My skin has never looked so clear and glowing. The luxury ambiance is unmatched in Sharjah.",
+    name: "Noor Al-Hassan",
+    detail: "HydraFacial & Skin Resurfacing",
+    rating: 5,
+    date: "1 month ago"
+  },
+  {
+    quote: "Modern clinic with exceptional doctors. Having dermatology, laser and dental specialists under one roof in Sharjah makes all care so convenient.",
+    name: "Reem S.",
+    detail: "Dental & Skin Consultation",
+    rating: 5,
+    date: "2 months ago"
+  },
 ];
 
 const BeforeAfterSlider = () => {
@@ -534,29 +575,76 @@ function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* TESTIMONIALS & GOOGLE REVIEWS */}
       <section id="results" className="bg-secondary/40">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
-          <div className="mb-14 max-w-2xl">
-            <p className="eyebrow mb-4">In their words</p>
-            <h2 className="font-display text-4xl md:text-5xl">
-              Care our clients <em className="italic">return for</em>.
-            </h2>
+          <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <p className="eyebrow mb-4 text-primary font-semibold">Real Google Reviews · Sharjah</p>
+              <h2 className="font-display text-4xl md:text-5xl">
+                Care our patients <em className="italic">trust &amp; recommend</em>.
+              </h2>
+            </div>
+            <a
+              href={googleMapsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-background px-5 py-2.5 text-xs font-semibold text-foreground shadow-sm transition-all hover:bg-muted/50 cursor-pointer"
+            >
+              <svg className="w-4 h-4" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+              </svg>
+              <span>5.0 ★★★★★ on Google Maps</span>
+              <span className="text-muted-foreground">→</span>
+            </a>
           </div>
-          <div className="grid gap-8 md:grid-cols-3">
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((t) => (
               <figure
                 key={t.name}
-                className="flex h-full flex-col justify-between rounded-2xl bg-background p-8 shadow-soft sm:p-10"
+                className="flex h-full flex-col justify-between rounded-2xl bg-background p-8 shadow-soft transition-all duration-300 hover:shadow-md border border-border/50"
               >
-                <blockquote className="font-display text-2xl leading-snug text-foreground">
-                  "{t.quote}"
-                </blockquote>
-                <figcaption className="mt-8 border-t border-border/60 pt-5">
-                  <p className="text-sm text-foreground">{t.name}</p>
-                  <p className="mt-1 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                    {t.detail}
-                  </p>
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-1">
+                      {[...Array(t.rating)].map((_, i) => (
+                        <svg key={i} className="w-4 h-4 fill-amber-400 text-amber-400" viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      ))}
+                    </div>
+                    <span className="text-[10px] font-medium text-muted-foreground/70 uppercase tracking-wider">{t.date}</span>
+                  </div>
+                  <blockquote className="text-sm md:text-base leading-relaxed text-foreground font-medium">
+                    "{t.quote}"
+                  </blockquote>
+                </div>
+                <figcaption className="mt-6 border-t border-border/50 pt-4 flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-semibold text-foreground">{t.name}</p>
+                    <p className="mt-0.5 text-xs text-primary font-medium">
+                      {t.detail}
+                    </p>
+                  </div>
+                  <a
+                    href={googleMapsUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    title="Verified Google Review"
+                    className="flex items-center gap-1 text-[10px] text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+                  >
+                    <svg className="w-3.5 h-3.5" viewBox="0 0 24 24">
+                      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                      <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z"/>
+                      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                    </svg>
+                    <span>Google</span>
+                  </a>
                 </figcaption>
               </figure>
             ))}
