@@ -407,7 +407,7 @@ export function ServiceTemplate({
               <div className="border-t border-ivory/20 pt-5 border-b border-ivory/20 pb-5 flex gap-4">
                 <span className="font-display text-xl text-[#d2a960]">03</span>
                 <div>
-                  <h3 className="font-display text-lg text-white mb-1">MOH licensed</h3>
+                  <h3 className="font-display text-lg text-white mb-1">SOH licensed</h3>
                   <p className="text-sm text-ivory/70 leading-relaxed">A fully accredited, safety-first clinic in Sharjah.</p>
                 </div>
               </div>

@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useRef } from "react";
 import heroImg from "@/assets/hero.jpg";
 import interiorImg from "@/assets/interior.jpg";
+import aboutImg from "@/assets/about.jpg";
 import doctorSidra from "@/assets/doctor-sidra.png";
 import doctorNisha from "@/assets/doctor-nisha.png";
 import doctorHijab from "@/assets/doctor-hijab.png";
@@ -241,7 +242,7 @@ function Home() {
                 </div>
                 <div className="w-[1px] h-10 bg-border/60 hidden sm:block"></div>
                 <div>
-                  <p className="font-display text-3xl font-normal text-foreground">MOH</p>
+                  <p className="font-display text-3xl font-normal text-foreground">SOH</p>
                   <p className="text-[10px] font-sans font-semibold tracking-wider text-muted-foreground uppercase mt-1">licensed doctors</p>
                 </div>
               </div>
@@ -338,33 +339,39 @@ function Home() {
         </div>
       </section>
 
-      {/* ABOUT US (INTERIOR SHOWCASE) */}
-      <section className="relative">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-12 lg:grid-cols-2 lg:items-center lg:gap-12 lg:px-10">
-          <div className="overflow-hidden rounded-2xl">
-            <img
-              src={interiorImg}
-              alt="Clinic interior with soft warm lighting"
-              loading="lazy"
-              width={1600}
-              height={1200}
-              className="aspect-[5/6] w-full object-cover transition-transform duration-700 hover:scale-105"
-            />
-          </div>
-          <div>
-            <p className="eyebrow mb-6">About Al Nemah</p>
-            <h2 className="font-display text-4xl leading-tight md:text-5xl">
-              Where dentistry and dermatology meet <em className="italic">modern artistry</em>.
-            </h2>
-            <p className="mt-6 text-base leading-relaxed text-black font-semibold">
-              AL Nemah is a modern aesthetic clinic in the UAE, bringing together dental excellence and dermatological expertise under one roof. From precision smile design to advanced skin treatments, our specialists blend clinical science with an artist's eye to deliver results that look effortless and feel transformative.
-            </p>
-            <Link
-              to="/about"
-              className="mt-10 inline-flex items-center gap-2 text-sm tracking-wide text-foreground underline-offset-8 hover:underline"
-            >
-              Discover our story →
-            </Link>
+      {/* ABOUT US (RECEPTION SHOWCASE) */}
+      <section className="bg-[#FAF7F2] py-16 lg:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
+            {/* Image Column */}
+            <div className="lg:col-span-6">
+              <div className="overflow-hidden rounded-2xl shadow-sm border border-border/40">
+                <img
+                  src={aboutImg}
+                  alt="Al Nemah Medical Center reception desk and wood paneling interior"
+                  loading="lazy"
+                  width={1024}
+                  height={682}
+                  className="aspect-[4/3] sm:aspect-[16/11] w-full object-cover transition-transform duration-700 hover:scale-105"
+                />
+              </div>
+            </div>
+            {/* Content Column */}
+            <div className="lg:col-span-6 lg:py-4">
+              <p className="eyebrow mb-4 tracking-[0.25em] text-[11px] uppercase text-muted-foreground font-medium">ABOUT AL NEMAH</p>
+              <h2 className="font-display text-4xl leading-[1.15] text-foreground md:text-5xl lg:text-6xl">
+                Where dentistry and dermatology meet <em className="italic font-serif">modern artistry</em>.
+              </h2>
+              <p className="mt-6 text-sm md:text-base leading-relaxed text-foreground/90 font-medium">
+                <strong className="font-semibold text-foreground">AL Nemah</strong> is a modern aesthetic clinic in the UAE, bringing together dental excellence and dermatological expertise under one roof. From precision smile design to advanced skin treatments, our specialists blend clinical science with an artist's eye to deliver results that look effortless and feel transformative.
+              </p>
+              <Link
+                to="/about"
+                className="mt-8 inline-flex items-center gap-2 text-sm font-semibold tracking-wide text-foreground underline-offset-8 hover:underline"
+              >
+                Discover our story →
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -457,82 +464,82 @@ function Home() {
       <section id="offers" className="bg-background">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
           <div className="mb-14 max-w-2xl">
-            <p className="eyebrow mb-4 text-primary font-semibold">Current Offers</p>
+            <p className="eyebrow mb-4 text-primary font-semibold">Special Packages</p>
             <h2 className="font-display text-4xl md:text-5xl mb-4">
-              Seasonal packages, <em className="italic">thoughtfully priced</em>.
+              Featured clinic packages, <em className="italic">thoughtfully priced</em>.
             </h2>
             <p className="text-base text-black font-semibold leading-relaxed">
-              Curated combinations of our most-loved dental and dermatology treatments, bundled for the season and priced to make expert care more accessible.
+              Exclusive medical aesthetics and dental treatment combinations available now at Al Nemah Clinic.
             </p>
           </div>
           
-          <div className="grid gap-8 md:grid-cols-3">
-            {/* Offer 1 */}
-            <div className="bg-background rounded-2xl border border-border/60 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md transition-shadow">
+          <div className="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
+            {/* Package 1: Advance Hair Regeneration */}
+            <div className="bg-background rounded-2xl border border-[#d2a960]/40 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md hover:border-[#d2a960] transition-all">
               <span className="absolute top-4 right-4 bg-[#c2a476]/15 text-[#91713d] text-[10px] font-sans font-semibold tracking-wider px-3 py-1 rounded-full uppercase">
-                Save 30%
+                Special Offer
               </span>
               <div>
-                <h3 className="font-display text-2xl text-foreground mt-4 mb-1">HydraFacial Trio</h3>
-                <p className="text-[11px] text-muted-foreground tracking-wide font-light mb-6">Valid until 30 Sept 2026</p>
-                <div className="flex items-baseline gap-3 mb-8">
-                  <span className="text-sm text-muted-foreground line-through">AED 1,500</span>
-                  <span className="text-2xl font-display font-medium text-foreground font-semibold">AED 1,050</span>
+                <p className="text-xs uppercase tracking-widest text-[#d2a960] font-semibold mb-2">Advance Hair Regeneration</p>
+                <h3 className="font-display text-2xl md:text-3xl text-foreground mb-3 font-semibold">PRP + Biotin + GFC + Exosome</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed mb-6 font-medium">
+                  Four Powerful Solutions. One Transformative Result.
+                </p>
+                
+                <div className="bg-muted/30 rounded-xl p-4 mb-6 border border-border/50">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-[10px] uppercase tracking-wider text-muted-foreground block font-medium">Package Price</span>
+                      <span className="text-3xl font-display font-semibold text-foreground">AED 999 <small className="text-sm font-normal text-muted-foreground">Only</small></span>
+                    </div>
+                    <span className="text-[10px] bg-white border border-border px-2.5 py-1 rounded text-muted-foreground font-medium">Tabby / Tamara available</span>
+                  </div>
                 </div>
               </div>
               <a
-                href="https://wa.me/971500999324?text=Hi,%20I'd%20like%20to%20claim%20the%20HydraFacial%20Trio%20offer."
+                href="https://wa.me/971500999324?text=Hi,%20I'd%20like%20to%20book%20the%20Advance%20Hair%20Regeneration%20Package%20(PRP%20%2B%20Biotin%20%2B%20GFC%20%2B%20Exosome)%20for%20AED%20999."
                 target="_blank"
                 rel="noreferrer"
-                className="w-full text-center rounded-lg border border-border py-3 text-sm font-medium text-foreground hover:bg-muted/50 transition-all cursor-pointer"
+                className="w-full text-center rounded-lg bg-primary py-3.5 text-sm font-semibold text-black hover:opacity-90 transition-all cursor-pointer shadow-sm"
               >
-                Claim offer
+                Claim Package via WhatsApp
               </a>
             </div>
 
-            {/* Offer 2 */}
-            <div className="bg-background rounded-2xl border border-border/60 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md transition-shadow">
-              <span className="absolute top-4 right-4 bg-[#c2a476]/15 text-[#91713d] text-[10px] font-sans font-semibold tracking-wider px-3 py-1 rounded-full uppercase">
-                Popular
-              </span>
+            {/* Package 2: Teeth Whitening + Cleaning + Polishing + Free HydraFacial */}
+            <div className="bg-background rounded-2xl border border-[#d2a960]/40 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md hover:border-[#d2a960] transition-all">
+              <div className="flex items-center gap-2 absolute top-4 right-4">
+                <span className="bg-red-500/10 text-red-600 text-[10px] font-sans font-semibold tracking-wider px-3 py-1 rounded-full uppercase">
+                  + Free HydraFacial
+                </span>
+              </div>
               <div>
-                <h3 className="font-display text-2xl text-foreground mt-4 mb-1">Lips + Botox Combo</h3>
-                <p className="text-[11px] text-muted-foreground tracking-wide font-light mb-6">Valid until 30 Sept 2026</p>
-                <div className="flex items-baseline gap-3 mb-8">
-                  <span className="text-sm text-muted-foreground line-through">AED 2,400</span>
-                  <span className="text-2xl font-display font-medium text-foreground font-semibold">AED 1,900</span>
+                <p className="text-xs uppercase tracking-widest text-[#d2a960] font-semibold mb-2">Teeth & Skin Combo</p>
+                <h3 className="font-display text-2xl md:text-3xl text-foreground mb-3 font-semibold leading-snug">Teeth Whitening + Cleaning + Polishing</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed mb-4 font-medium">
+                  A Brighter Smile & Radiant Skin in One Visit!
+                </p>
+                <p className="text-[10px] text-amber-800 bg-amber-50 rounded px-2.5 py-1 inline-block font-semibold mb-6 border border-amber-200">
+                  *Valid for First Time Patients Only
+                </p>
+                
+                <div className="bg-muted/30 rounded-xl p-4 mb-6 border border-border/50">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-[10px] uppercase tracking-wider text-muted-foreground block font-medium">Package Price</span>
+                      <span className="text-3xl font-display font-semibold text-foreground">AED 799 <small className="text-sm font-normal text-muted-foreground">Only</small></span>
+                    </div>
+                    <span className="text-[10px] bg-white border border-border px-2.5 py-1 rounded text-muted-foreground font-medium">Tabby / Tamara available</span>
+                  </div>
                 </div>
               </div>
               <a
-                href="https://wa.me/971500999324?text=Hi,%20I'd%20like%20to%20claim%20the%20Lips%20%2B%20Botox%20Combo%20offer."
+                href="https://wa.me/971500999324?text=Hi,%20I'd%20like%20to%20book%20the%20Teeth%20Whitening%20%2B%20Cleaning%20%2B%20Polishing%20%2B%20Free%20HydraFacial%20Package%20for%20AED%20799."
                 target="_blank"
                 rel="noreferrer"
-                className="w-full text-center rounded-lg border border-border py-3 text-sm font-medium text-foreground hover:bg-muted/50 transition-all cursor-pointer"
+                className="w-full text-center rounded-lg bg-primary py-3.5 text-sm font-semibold text-black hover:opacity-90 transition-all cursor-pointer shadow-sm"
               >
-                Claim offer
-              </a>
-            </div>
-
-            {/* Offer 3 */}
-            <div className="bg-background rounded-2xl border border-border/60 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md transition-shadow">
-              <span className="absolute top-4 right-4 bg-[#c2a476]/15 text-[#91713d] text-[10px] font-sans font-semibold tracking-wider px-3 py-1 rounded-full uppercase">
-                New
-              </span>
-              <div>
-                <h3 className="font-display text-2xl text-foreground mt-4 mb-1">Morpheus8 — 3 Sessions</h3>
-                <p className="text-[11px] text-muted-foreground tracking-wide font-light mb-6">Valid until 30 Sept 2026</p>
-                <div className="flex items-baseline gap-3 mb-8">
-                  <span className="text-sm text-muted-foreground line-through">AED 6,000</span>
-                  <span className="text-2xl font-display font-medium text-foreground font-semibold">AED 4,200</span>
-                </div>
-              </div>
-              <a
-                href="https://wa.me/971500999324?text=Hi,%20I'd%20like%20to%20claim%20the%20Morpheus8%203%20Sessions%20offer."
-                target="_blank"
-                rel="noreferrer"
-                className="w-full text-center rounded-lg border border-border py-3 text-sm font-medium text-foreground hover:bg-muted/50 transition-all cursor-pointer"
-              >
-                Claim offer
+                Claim Package via WhatsApp
               </a>
             </div>
           </div>
@@ -675,25 +682,25 @@ function Home() {
           <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
             {[
               {
-                title: "Sharjah Clinic Tour",
-                category: "Inside Al Nemah",
-                views: "8.9k views",
-                cover: interiorImg,
-                video: "https://assets.mixkit.co/videos/preview/mixkit-cosmetic-products-on-a-table-41108-large.mp4"
+                title: "A Happy Patient is the Best Compliment",
+                category: "Patient Story",
+                views: "14.2k views",
+                cover: aboutImg,
+                video: "/videos/video1.mp4"
               },
               {
-                title: "Client Skincare Journey",
-                category: "Transformations",
-                views: "12.4k views",
-                cover: skinImg,
-                video: "https://assets.mixkit.co/videos/preview/mixkit-young-woman-applying-skincare-cream-on-her-face-41094-large.mp4"
+                title: "Happy Patient After Her Laser Session",
+                category: "Laser Results",
+                views: "19.8k views",
+                cover: laserImg,
+                video: "/videos/video2.mp4"
               },
               {
-                title: "Advanced Skincare Routine",
-                category: "Doctor's Advice",
-                views: "15.3k views",
-                cover: wellnessImg,
-                video: "https://assets.mixkit.co/videos/preview/mixkit-woman-cleaning-her-face-with-a-sponge-41123-large.mp4"
+                title: "Your Smile is Our Greatest Success",
+                category: "Dental & Smile",
+                views: "16.5k views",
+                cover: dentalImg,
+                video: "/videos/video3.mp4"
               }
             ].map((reel, idx) => (
               <div
@@ -701,19 +708,22 @@ function Home() {
                 onClick={() => setActiveVideoUrl(reel.video)}
                 className="group relative cursor-pointer overflow-hidden rounded-2xl bg-card border border-border/40 shadow-sm aspect-[9/16] transition-transform hover:-translate-y-1"
               >
-                {/* Cover Image */}
-                <img
-                  src={reel.cover}
-                  alt={reel.title}
-                  loading="lazy"
+                {/* Auto Play Video Without Sound */}
+                <video
+                  src={reel.video}
+                  poster={reel.cover}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                 />
                 
                 {/* Dark Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 opacity-90 transition-opacity group-hover:opacity-95" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 opacity-80 transition-opacity group-hover:opacity-90 pointer-events-none" />
 
                 {/* Top Badge: Category */}
-                <div className="absolute top-4 left-4 flex items-center justify-between w-[calc(100%-2rem)]">
+                <div className="absolute top-4 left-4 flex items-center justify-between w-[calc(100%-2rem)] z-10">
                   <span className="rounded-full bg-white/10 backdrop-blur-md px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
                     {reel.category}
                   </span>
@@ -722,8 +732,8 @@ function Home() {
                   </span>
                 </div>
 
-                {/* Play Button Icon Overlay in Center */}
-                <div className="absolute inset-0 flex items-center justify-center">
+                {/* Mute Indicator / Play Icon Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
                   <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md transition-all group-hover:bg-[#d2a960] group-hover:text-black group-hover:scale-110 shadow-lg">
                     <svg
                       viewBox="0 0 24 24"
@@ -737,7 +747,7 @@ function Home() {
                 </div>
 
                 {/* Bottom Details */}
-                <div className="absolute bottom-6 left-6 right-6 text-white">
+                <div className="absolute bottom-6 left-6 right-6 text-white z-10">
                   <h3 className="font-display text-xl leading-snug">{reel.title}</h3>
                   <p className="text-[10px] uppercase tracking-[0.2em] text-white/70 mt-2 flex items-center gap-1">
                     <svg className="w-3.5 h-3.5 stroke-white/60 fill-none" viewBox="0 0 24 24" strokeWidth="2">
@@ -786,115 +796,6 @@ function Home() {
           </div>
         </div>
       )}
-
-      {/* BLOGS */}
-      <section id="journal" className="bg-background">
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
-          <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-            <div>
-              <p className="eyebrow mb-4">Our Journal</p>
-              <h2 className="font-display text-4xl md:text-5xl">
-                Insights and guidance on <em className="italic">healthy skin</em>.
-              </h2>
-            </div>
-            <Link
-              to="/about"
-              className="inline-flex items-center gap-2 text-sm tracking-wide text-foreground underline-offset-8 hover:underline"
-            >
-              View all articles →
-            </Link>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-3">
-            {/* Blog Post 1 */}
-            <article className="group flex flex-col overflow-hidden rounded-2xl bg-card border border-border/40 shadow-sm transition-transform hover:-translate-y-1">
-              <div className="overflow-hidden">
-                <img
-                  src={skinImg}
-                  alt="Medical facial treatment"
-                  loading="lazy"
-                  width={800}
-                  height={500}
-                  className="aspect-[16/10] w-full object-cover transition-transform duration-[1200ms] group-hover:scale-102"
-                />
-              </div>
-              <div className="flex flex-1 flex-col p-8">
-                <div className="flex items-center justify-between text-xs text-muted-foreground/80 mb-3 tracking-wider uppercase font-light">
-                  <span>Skin Health</span>
-                  <span>July 1, 2026</span>
-                </div>
-                <h3 className="font-display text-2xl text-foreground group-hover:text-primary transition-colors leading-snug">
-                  Understanding Medical-Grade Facials: The HydraFacial Difference
-                </h3>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground/90">
-                  Why superficial skincare isn't enough, and how multi-step medical protocols restore skin health at a cellular level.
-                </p>
-                <span className="mt-6 inline-flex items-center text-sm text-foreground underline-offset-8 group-hover:underline pt-4 border-t border-border/40">
-                  Read article →
-                </span>
-              </div>
-            </article>
-
-            {/* Blog Post 2 */}
-            <article className="group flex flex-col overflow-hidden rounded-2xl bg-card border border-border/40 shadow-sm transition-transform hover:-translate-y-1">
-              <div className="overflow-hidden">
-                <img
-                  src={injectablesImg}
-                  alt="Cosmetic injectables details"
-                  loading="lazy"
-                  width={800}
-                  height={500}
-                  className="aspect-[16/10] w-full object-cover transition-transform duration-[1200ms] group-hover:scale-102"
-                />
-              </div>
-              <div className="flex flex-1 flex-col p-8">
-                <div className="flex items-center justify-between text-xs text-muted-foreground/80 mb-3 tracking-wider uppercase font-light">
-                  <span>Injectables</span>
-                  <span>June 24, 2026</span>
-                </div>
-                <h3 className="font-display text-2xl text-foreground group-hover:text-primary transition-colors leading-snug">
-                  Cosmetic Injectables: The Art of Subtle Rejuvenation
-                </h3>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground/90">
-                  How our board-certified specialists use advanced mapping to achieve soft, natural movement rather than a frozen look.
-                </p>
-                <span className="mt-6 inline-flex items-center text-sm text-foreground underline-offset-8 group-hover:underline pt-4 border-t border-border/40">
-                  Read article →
-                </span>
-              </div>
-            </article>
-
-            {/* Blog Post 3 */}
-            <article className="group flex flex-col overflow-hidden rounded-2xl bg-card border border-border/40 shadow-sm transition-transform hover:-translate-y-1">
-              <div className="overflow-hidden">
-                <img
-                  src={liftingImg}
-                  alt="Morpheus8 tightning session"
-                  loading="lazy"
-                  width={800}
-                  height={500}
-                  className="aspect-[16/10] w-full object-cover transition-transform duration-[1200ms] group-hover:scale-102"
-                />
-              </div>
-              <div className="flex flex-1 flex-col p-8">
-                <div className="flex items-center justify-between text-xs text-muted-foreground/80 mb-3 tracking-wider uppercase font-light">
-                  <span>Technology</span>
-                  <span>June 15, 2026</span>
-                </div>
-                <h3 className="font-display text-2xl text-foreground group-hover:text-primary transition-colors leading-snug">
-                  Non-Surgical Lifting: Is Morpheus8 Right For You?
-                </h3>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground/90">
-                  A comprehensive guide to RF microneedling, what to expect during recovery, and timeline for optimal results.
-                </p>
-                <span className="mt-6 inline-flex items-center text-sm text-foreground underline-offset-8 group-hover:underline pt-4 border-t border-border/40">
-                  Read article →
-                </span>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
 
       {/* SECOND OPINION CTA */}
       <section className="bg-primary text-ivory">

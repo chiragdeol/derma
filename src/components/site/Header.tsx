@@ -29,11 +29,7 @@ const dermaLinks = [
 ] as const;
 
 const dentalLinks = [
-  { to: "/services/dental/orthodontics", title: "Orthodontics & Invisalign", desc: "Braces, clear aligners", image: wellnessImg },
-  { to: "/services/dental/cosmetic-dentistry", title: "Cosmetic Dentistry & Veneers", desc: "Hollywood smile, bonding", image: treatmentHandsImg },
-  { to: "/services/dental/implants", title: "Dental Implants", desc: "Single & full-arch", image: treatmentRoomImg },
-  { to: "/services/dental/whitening", title: "Teeth Whitening", desc: "In-clinic & take-home", image: interiorImg },
-  { to: "/services/dental/general", title: "General & Preventive", desc: "Check-ups, fillings, root canal", image: aboutImg },
+  { to: "/services/dental/whitening", title: "Teeth Whitening", desc: "In-clinic & take-home whitening", image: interiorImg },
 ] as const;
 
 export function Header() {

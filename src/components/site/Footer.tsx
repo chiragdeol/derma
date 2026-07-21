@@ -23,10 +23,7 @@ const aestheticLinks = [
 ] as const;
 
 const dentalLinks = [
-  { to: "/services/dental/cosmetic-dentistry", label: "Cosmetic Dentistry & Veneers" },
   { to: "/services/dental/whitening", label: "Teeth Whitening" },
-  { to: "/services/dental/implants", label: "Dental Implants" },
-  { to: "/services/dental/orthodontics", label: "Orthodontics & Invisalign" },
 ] as const;
 
 const longevityLinks = [
