@@ -444,36 +444,60 @@ function Home() {
         </div>
       </section>
 
-      {/* BEFORE / AFTER COMPARISON CAROUSEL */}
-      <section id="results" className="bg-forest text-ivory">
+      {/* BEFORE / AFTER COMPARISON */}
+      <section className="bg-forest text-ivory">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+          <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+            <div>
+              <p className="eyebrow mb-6 text-primary">Real Results</p>
+              <h2 className="font-display text-4xl leading-tight md:text-5xl">
+                See the transformation. <br className="hidden sm:inline" />
+                Drag to compare.
+              </h2>
+              <p className="mt-6 text-base leading-relaxed text-white font-semibold">
+                Every image is a real AL Nemah patient, shown with written consent. Results vary from person to person — your consultation gives you honest, personalized expectations.
+              </p>
+              <p className="mt-8 text-xs tracking-wider uppercase opacity-60">
+                Slide the handle to compare
+              </p>
+            </div>
+            <div>
+              <BeforeAfterSlider />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NEW CLINICAL RESULTS GALLERY SECTION */}
+      <section id="results" className="bg-[#FAF7F2] border-y border-border/40 text-foreground">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-12 mb-12">
             <div className="max-w-2xl">
-              <p className="eyebrow mb-4 text-[#d2a960]">Real Results Gallery</p>
-              <h2 className="font-display text-4xl leading-tight md:text-5xl">
-                Transformational Case Studies.
+              <p className="eyebrow mb-4 text-[#91713d]">Clinical Portfolio</p>
+              <h2 className="font-display text-4xl leading-tight md:text-5xl text-foreground">
+                Before & After Patient Gallery
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-white/90 font-light">
-                Explore real clinical outcomes performed by the specialists at Al Nemah Clinic. Click the navigation arrows to browse cases, and use the slider or split view to compare before and after.
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground font-light">
+                Explore real, unretouched case studies representing actual clinical outcomes from Al Nemah Clinic. Click the navigation arrows to browse cases, and use the slider or split view to compare before and after.
               </p>
             </div>
             
             {/* Carousel Navigation Buttons */}
             <div className="flex items-center gap-4">
-              <span className="text-sm font-sans tracking-widest text-[#d2a960]/80 uppercase font-semibold">
+              <span className="text-sm font-sans tracking-widest text-[#91713d] uppercase font-semibold">
                 Case {activeCase + 1} of 6
               </span>
               <div className="flex gap-2">
                 <button
                   onClick={() => setActiveCase((prev) => (prev === 0 ? 5 : prev - 1))}
-                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 hover:border-[#d2a960] hover:text-[#d2a960] bg-transparent text-white transition-all cursor-pointer"
+                  className="flex h-12 w-12 items-center justify-center rounded-full border border-border/80 hover:border-[#91713d] hover:text-[#91713d] bg-background text-foreground transition-all cursor-pointer shadow-sm"
                   aria-label="Previous Case"
                 >
                   ←
                 </button>
                 <button
                   onClick={() => setActiveCase((prev) => (prev === 5 ? 0 : prev + 1))}
-                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 hover:border-[#d2a960] hover:text-[#d2a960] bg-transparent text-white transition-all cursor-pointer"
+                  className="flex h-12 w-12 items-center justify-center rounded-full border border-border/80 hover:border-[#91713d] hover:text-[#91713d] bg-background text-foreground transition-all cursor-pointer shadow-sm"
                   aria-label="Next Case"
                 >
                   →
@@ -501,17 +525,17 @@ function Home() {
                     onClick={() => setActiveCase(idx)}
                     className={`w-full text-left p-3.5 rounded-xl border transition-all duration-300 flex items-center justify-between cursor-pointer ${
                       activeCase === idx
-                        ? "bg-white/10 border-[#d2a960] text-white shadow-md"
-                        : "bg-transparent border-white/10 text-white/50 hover:border-white/20 hover:text-white"
+                        ? "bg-[#91713d]/10 border-[#91713d] text-foreground shadow-sm"
+                        : "bg-background border-border/60 text-muted-foreground hover:border-[#91713d]/40 hover:text-foreground"
                     }`}
                   >
                     <div>
-                      <span className="text-[8px] uppercase tracking-wider text-[#d2a960] font-semibold">
+                      <span className="text-[8px] uppercase tracking-wider text-[#91713d] font-semibold">
                         {item.badge}
                       </span>
-                      <h4 className="font-display text-base mt-1 text-white">{item.title}</h4>
+                      <h4 className="font-display text-base mt-1 text-foreground">{item.title}</h4>
                     </div>
-                    <span className="text-[10px] font-sans font-semibold text-[#d2a960]">
+                    <span className="text-[10px] font-sans font-semibold text-[#91713d]">
                       {activeCase === idx ? "Active" : "View"}
                     </span>
                   </button>
@@ -519,8 +543,8 @@ function Home() {
               </div>
 
               {/* Case Details for Mobile */}
-              <div className="md:hidden bg-white/5 border border-white/10 rounded-xl p-5">
-                <span className="text-[10px] uppercase tracking-widest text-[#d2a960] font-semibold bg-white/10 px-2 py-0.5 rounded">
+              <div className="md:hidden bg-background border border-border/60 rounded-xl p-5 shadow-sm">
+                <span className="text-[10px] uppercase tracking-widest text-[#91713d] font-semibold bg-[#91713d]/10 px-2 py-0.5 rounded">
                   {[
                     "Skin / Dermatology",
                     "Cosmetic Dental",
@@ -530,7 +554,7 @@ function Home() {
                     "Cosmetic Dental"
                   ][activeCase]}
                 </span>
-                <h4 className="font-display text-xl text-white mt-3">
+                <h4 className="font-display text-xl text-foreground mt-3">
                   {[
                     "Specialist Acne Therapy",
                     "Teeth Gap Closure & Alignment",
@@ -540,7 +564,7 @@ function Home() {
                     "Bite Realignment & Veneers"
                   ][activeCase]}
                 </h4>
-                <p className="text-xs text-white/70 mt-2 font-light leading-relaxed">
+                <p className="text-xs text-muted-foreground mt-2 font-light leading-relaxed">
                   {[
                     "Personalized skin program targeting active acne, redness, and texture, performed by specialist dermatologist Dr. Sidra Ejaz.",
                     "Non-surgical gap realignment and cosmetic bonding restoring front bite symmetry and structural harmony.",
@@ -560,14 +584,14 @@ function Home() {
                   <div className="w-full h-full animate-fadeIn">
                     <BeforeAfterSlider before={beforeImg} after={afterImg} />
                     <div className="mt-4 text-center">
-                      <p className="text-sm font-semibold text-white">Acne Therapy & Skin Texture</p>
-                      <p className="text-[11px] text-white/60 mt-1">4 Weeks Program · Specialist: Dr. Sidra Ejaz</p>
+                      <p className="text-sm font-semibold text-foreground">Acne Therapy & Skin Texture</p>
+                      <p className="text-[11px] text-muted-foreground mt-1">4 Weeks Program · Specialist: Dr. Sidra Ejaz</p>
                     </div>
                   </div>
                 )}
                 {activeCase === 1 && (
                   <div className="w-full h-full animate-fadeIn">
-                    <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/20 shadow-lg bg-black">
+                    <div className="relative aspect-square rounded-2xl overflow-hidden border border-border/80 shadow-lg bg-black">
                       <img
                         src={baDental5}
                         alt="Teeth Gap Closure Before and After"
@@ -581,14 +605,14 @@ function Home() {
                       </span>
                     </div>
                     <div className="mt-4 text-center">
-                      <p className="text-sm font-semibold text-white">Teeth Gap Closure & Alignment</p>
-                      <p className="text-[11px] text-white/60 mt-1">Composite Bonding · Al Nemah Dental Specialists</p>
+                      <p className="text-sm font-semibold text-foreground">Teeth Gap Closure & Alignment</p>
+                      <p className="text-[11px] text-muted-foreground mt-1">Composite Bonding · Al Nemah Dental Specialists</p>
                     </div>
                   </div>
                 )}
                 {activeCase === 2 && (
                   <div className="w-full h-full animate-fadeIn">
-                    <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/20 shadow-lg bg-black">
+                    <div className="relative aspect-square rounded-2xl overflow-hidden border border-border/80 shadow-lg bg-black">
                       <img
                         src={baDental6}
                         alt="Smile Crown Restoration Before and After"
@@ -602,14 +626,14 @@ function Home() {
                       </span>
                     </div>
                     <div className="mt-4 text-center">
-                      <p className="text-sm font-semibold text-white">Crown & Smile Restoration</p>
-                      <p className="text-[11px] text-white/60 mt-1">Full Aesthetic Veneers makeover</p>
+                      <p className="text-sm font-semibold text-foreground">Crown & Smile Restoration</p>
+                      <p className="text-[11px] text-muted-foreground mt-1">Full Aesthetic Veneers makeover</p>
                     </div>
                   </div>
                 )}
                 {activeCase === 3 && (
                   <div className="w-full h-full animate-fadeIn">
-                    <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/20 shadow-lg bg-black">
+                    <div className="relative aspect-square rounded-2xl overflow-hidden border border-border/80 shadow-lg bg-black">
                       <img
                         src={baDental7}
                         alt="Dental Implant Before and After"
@@ -623,14 +647,14 @@ function Home() {
                       </span>
                     </div>
                     <div className="mt-4 text-center">
-                      <p className="text-sm font-semibold text-white">Single Tooth Dental Implant</p>
-                      <p className="text-[11px] text-white/60 mt-1">Surgical Implant restoration</p>
+                      <p className="text-sm font-semibold text-foreground">Single Tooth Dental Implant</p>
+                      <p className="text-[11px] text-muted-foreground mt-1">Surgical Implant restoration</p>
                     </div>
                   </div>
                 )}
                 {activeCase === 4 && (
                   <div className="w-full h-full animate-fadeIn">
-                    <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/20 shadow-lg bg-black">
+                    <div className="relative aspect-square rounded-2xl overflow-hidden border border-border/80 shadow-lg bg-black">
                       <img
                         src={baDental1}
                         alt="Teeth Whitening Before and After"
@@ -644,14 +668,14 @@ function Home() {
                       </span>
                     </div>
                     <div className="mt-4 text-center">
-                      <p className="text-sm font-semibold text-white">In-Clinic Laser Teeth Whitening</p>
-                      <p className="text-[11px] text-white/60 mt-1">1 Session (60 mins) · Teeth Cleaning & Polishing</p>
+                      <p className="text-sm font-semibold text-foreground">In-Clinic Laser Teeth Whitening</p>
+                      <p className="text-[11px] text-muted-foreground mt-1">1 Session (60 mins) · Teeth Cleaning & Polishing</p>
                     </div>
                   </div>
                 )}
                 {activeCase === 5 && (
                   <div className="w-full h-full animate-fadeIn">
-                    <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/20 shadow-lg bg-black">
+                    <div className="relative aspect-square rounded-2xl overflow-hidden border border-border/80 shadow-lg bg-black">
                       <img
                         src={baDental8}
                         alt="Porcelain Veneers Before and After"
@@ -665,8 +689,8 @@ function Home() {
                       </span>
                     </div>
                     <div className="mt-4 text-center">
-                      <p className="text-sm font-semibold text-white">Bite Realignment & Veneers</p>
-                      <p className="text-[11px] text-white/60 mt-1">Cosmetic Porcelain Veneers</p>
+                      <p className="text-sm font-semibold text-foreground">Bite Realignment & Veneers</p>
+                      <p className="text-[11px] text-muted-foreground mt-1">Cosmetic Porcelain Veneers</p>
                     </div>
                   </div>
                 )}
