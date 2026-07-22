@@ -198,6 +198,13 @@ function Home() {
   const [sent, setSent] = useState(false);
   const [activeVideoUrl, setActiveVideoUrl] = useState<string | null>(null);
   const [activeCase, setActiveCase] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const scrollCarousel = (direction: "left" | "right") => {
+    if (carouselRef.current) {
+      const scrollAmount = direction === "left" ? -380 : 380;
+      carouselRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -469,234 +476,103 @@ function Home() {
       </section>
 
       {/* NEW CLINICAL RESULTS GALLERY SECTION */}
-      <section id="results" className="bg-[#FAF7F2] border-y border-border/40 text-foreground">
+      <section id="results" className="bg-[#FAF7F2] border-y border-border/40 text-foreground overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-12 mb-12">
-            <div className="max-w-2xl">
-              <p className="eyebrow mb-4 text-[#91713d]">Clinical Portfolio</p>
-              <h2 className="font-display text-4xl leading-tight md:text-5xl text-foreground">
-                Before & After Patient Gallery
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div className="max-w-3xl">
+              <h2 className="font-display text-4xl leading-tight md:text-5xl text-foreground mb-4">
+                Before & After
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground font-light">
-                Explore real, unretouched case studies representing actual clinical outcomes from Al Nemah Clinic. Click the navigation arrows to browse cases, and use the slider or split view to compare before and after.
+              <p className="text-base leading-relaxed text-muted-foreground font-light max-w-2xl">
+                Capture the beauty of artistry in transformation here at our clinic, where every result is encompassed by precision, care and confidence!
               </p>
             </div>
             
             {/* Carousel Navigation Buttons */}
-            <div className="flex items-center gap-4">
-              <span className="text-sm font-sans tracking-widest text-[#91713d] uppercase font-semibold">
-                Case {activeCase + 1} of 6
-              </span>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => setActiveCase((prev) => (prev === 0 ? 5 : prev - 1))}
-                  className="flex h-12 w-12 items-center justify-center rounded-full border border-border/80 hover:border-[#91713d] hover:text-[#91713d] bg-background text-foreground transition-all cursor-pointer shadow-sm"
-                  aria-label="Previous Case"
-                >
-                  ←
-                </button>
-                <button
-                  onClick={() => setActiveCase((prev) => (prev === 5 ? 0 : prev + 1))}
-                  className="flex h-12 w-12 items-center justify-center rounded-full border border-border/80 hover:border-[#91713d] hover:text-[#91713d] bg-background text-foreground transition-all cursor-pointer shadow-sm"
-                  aria-label="Next Case"
-                >
-                  →
-                </button>
-              </div>
+            <div className="flex gap-3">
+              <button
+                onClick={() => scrollCarousel("left")}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-border/80 hover:border-[#91713d] hover:text-[#91713d] bg-background text-foreground transition-all cursor-pointer shadow-sm hover:scale-105"
+                aria-label="Scroll Left"
+              >
+                ←
+              </button>
+              <button
+                onClick={() => scrollCarousel("right")}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-border/80 hover:border-[#91713d] hover:text-[#91713d] bg-background text-foreground transition-all cursor-pointer shadow-sm hover:scale-105"
+                aria-label="Scroll Right"
+              >
+                →
+              </button>
             </div>
           </div>
 
-          <div className="grid gap-16 lg:grid-cols-12 lg:items-center">
-            
-            {/* Left Column: Active Case Navigation & Info Cards */}
-            <div className="lg:col-span-5 space-y-6">
-              {/* Vertical list of cases for desktop, highlighting the active one */}
-              <div className="hidden md:flex flex-col gap-3">
-                {[
-                  { title: "Specialist Acne Therapy", badge: "Skin / Dermatology" },
-                  { title: "Teeth Gap Closure & Alignment", badge: "Cosmetic Dental" },
-                  { title: "Crown & Smile Restoration", badge: "Restorative Dental" },
-                  { title: "Single Tooth Dental Implant", badge: "Implants & Surgery" },
-                  { title: "In-Clinic Laser Teeth Whitening", badge: "Teeth Whitening" },
-                  { title: "Bite Realignment & Veneers", badge: "Cosmetic Dental" }
-                ].map((item, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setActiveCase(idx)}
-                    className={`w-full text-left p-3.5 rounded-xl border transition-all duration-300 flex items-center justify-between cursor-pointer ${
-                      activeCase === idx
-                        ? "bg-[#91713d]/10 border-[#91713d] text-foreground shadow-sm"
-                        : "bg-background border-border/60 text-muted-foreground hover:border-[#91713d]/40 hover:text-foreground"
-                    }`}
-                  >
-                    <div>
-                      <span className="text-[8px] uppercase tracking-wider text-[#91713d] font-semibold">
-                        {item.badge}
-                      </span>
-                      <h4 className="font-display text-base mt-1 text-foreground">{item.title}</h4>
-                    </div>
-                    <span className="text-[10px] font-sans font-semibold text-[#91713d]">
-                      {activeCase === idx ? "Active" : "View"}
-                    </span>
-                  </button>
-                ))}
+          {/* Horizontal scroll container */}
+          <div
+            ref={carouselRef}
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border/60"
+            style={{ scrollbarWidth: "thin" }}
+          >
+            {[
+              {
+                title: "Teeth Gap Closure",
+                doctor: "AL NEMAH DENTAL CLINIC",
+                tagline: "COSMETIC DENTISTRY | ORTHODONTICS",
+                image: baDental5
+              },
+              {
+                title: "Smile Restoration",
+                doctor: "AL NEMAH DENTAL CLINIC",
+                tagline: "DENTISTRY | CROWNS | AESTHETICS",
+                image: baDental6
+              },
+              {
+                title: "Dental Implant",
+                doctor: "AL NEMAH DENTAL CLINIC",
+                tagline: "DENTISTRY | IMPLANTS | SURGERY",
+                image: baDental7
+              },
+              {
+                title: "Bite Realignment",
+                doctor: "AL NEMAH DENTAL CLINIC",
+                tagline: "COSMETIC DENTISTRY | VENEERS",
+                image: baDental8
+              },
+              {
+                title: "Laser Whitening",
+                doctor: "AL NEMAH DENTAL CLINIC",
+                tagline: "DENTISTRY | WHITENING | HYGIENE",
+                image: baDental1
+              }
+            ].map((card, idx) => (
+              <div
+                key={idx}
+                className="w-[290px] sm:w-[340px] flex-shrink-0 snap-start relative aspect-[3/4] rounded-lg overflow-hidden shadow-md group"
+              >
+                {/* Image */}
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                />
+                
+                {/* Dark Burgundy/Maroon Overlay Gradient at Bottom */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#200405] via-black/30 to-transparent pointer-events-none" />
+                
+                {/* Text content inside card overlay */}
+                <div className="absolute bottom-6 left-6 right-6 text-white z-10 flex flex-col pointer-events-none">
+                  <h3 className="font-display text-xl md:text-2xl font-semibold leading-tight tracking-wide text-white">
+                    {card.title}
+                  </h3>
+                  <span className="text-[10px] font-sans font-medium tracking-[0.2em] text-[#d2a960] mt-2 uppercase">
+                    {card.doctor}
+                  </span>
+                  <span className="text-[9px] font-sans tracking-[0.1em] text-white/70 mt-1 uppercase font-light">
+                    {card.tagline}
+                  </span>
+                </div>
               </div>
-
-              {/* Case Details for Mobile */}
-              <div className="md:hidden bg-background border border-border/60 rounded-xl p-5 shadow-sm">
-                <span className="text-[10px] uppercase tracking-widest text-[#91713d] font-semibold bg-[#91713d]/10 px-2 py-0.5 rounded">
-                  {[
-                    "Skin / Dermatology",
-                    "Cosmetic Dental",
-                    "Restorative Dental",
-                    "Implants & Surgery",
-                    "Teeth Whitening",
-                    "Cosmetic Dental"
-                  ][activeCase]}
-                </span>
-                <h4 className="font-display text-xl text-foreground mt-3">
-                  {[
-                    "Specialist Acne Therapy",
-                    "Teeth Gap Closure & Alignment",
-                    "Crown & Smile Restoration",
-                    "Single Tooth Dental Implant",
-                    "In-Clinic Laser Teeth Whitening",
-                    "Bite Realignment & Veneers"
-                  ][activeCase]}
-                </h4>
-                <p className="text-xs text-muted-foreground mt-2 font-light leading-relaxed">
-                  {[
-                    "Personalized skin program targeting active acne, redness, and texture, performed by specialist dermatologist Dr. Sidra Ejaz.",
-                    "Non-surgical gap realignment and cosmetic bonding restoring front bite symmetry and structural harmony.",
-                    "Full smile restoration program rebuilding damaged crown structures, restoring bite function and aesthetics.",
-                    "Premium single-tooth implant replacement integrating seamlessly with surrounding natural teeth for perfect function.",
-                    "Medical-grade teeth whitening system removing deep-seated stains and discoloration in a single comfortable session.",
-                    "Corrected front bite gaps, tooth surfaces, and cosmetic proportions using custom porcelain veneers."
-                  ][activeCase]}
-                </p>
-              </div>
-            </div>
-
-            {/* Right Column: Interactive Gallery Viewport */}
-            <div className="lg:col-span-7 flex flex-col items-center justify-center">
-              <div className="w-full aspect-square relative max-w-md mx-auto">
-                {activeCase === 0 && (
-                  <div className="w-full h-full animate-fadeIn">
-                    <BeforeAfterSlider before={beforeImg} after={afterImg} />
-                    <div className="mt-4 text-center">
-                      <p className="text-sm font-semibold text-foreground">Acne Therapy & Skin Texture</p>
-                      <p className="text-[11px] text-muted-foreground mt-1">4 Weeks Program · Specialist: Dr. Sidra Ejaz</p>
-                    </div>
-                  </div>
-                )}
-                {activeCase === 1 && (
-                  <div className="w-full h-full animate-fadeIn">
-                    <div className="relative aspect-square rounded-2xl overflow-hidden border border-border/80 shadow-lg bg-black">
-                      <img
-                        src={baDental5}
-                        alt="Teeth Gap Closure Before and After"
-                        className="w-full h-full object-cover"
-                      />
-                      <span className="absolute top-4 left-4 z-10 rounded bg-black/60 px-3 py-1 text-xs uppercase tracking-wider text-white">
-                        Before (Top)
-                      </span>
-                      <span className="absolute bottom-4 right-4 z-10 rounded bg-[#d2a960] px-3 py-1 text-xs uppercase tracking-wider text-black font-semibold">
-                        After (Bottom)
-                      </span>
-                    </div>
-                    <div className="mt-4 text-center">
-                      <p className="text-sm font-semibold text-foreground">Teeth Gap Closure & Alignment</p>
-                      <p className="text-[11px] text-muted-foreground mt-1">Composite Bonding · Al Nemah Dental Specialists</p>
-                    </div>
-                  </div>
-                )}
-                {activeCase === 2 && (
-                  <div className="w-full h-full animate-fadeIn">
-                    <div className="relative aspect-square rounded-2xl overflow-hidden border border-border/80 shadow-lg bg-black">
-                      <img
-                        src={baDental6}
-                        alt="Smile Crown Restoration Before and After"
-                        className="w-full h-full object-cover"
-                      />
-                      <span className="absolute top-4 left-4 z-10 rounded bg-black/60 px-3 py-1 text-xs uppercase tracking-wider text-white">
-                        Before (Top)
-                      </span>
-                      <span className="absolute bottom-4 right-4 z-10 rounded bg-[#d2a960] px-3 py-1 text-xs uppercase tracking-wider text-black font-semibold">
-                        After (Bottom)
-                      </span>
-                    </div>
-                    <div className="mt-4 text-center">
-                      <p className="text-sm font-semibold text-foreground">Crown & Smile Restoration</p>
-                      <p className="text-[11px] text-muted-foreground mt-1">Full Aesthetic Veneers makeover</p>
-                    </div>
-                  </div>
-                )}
-                {activeCase === 3 && (
-                  <div className="w-full h-full animate-fadeIn">
-                    <div className="relative aspect-square rounded-2xl overflow-hidden border border-border/80 shadow-lg bg-black">
-                      <img
-                        src={baDental7}
-                        alt="Dental Implant Before and After"
-                        className="w-full h-full object-cover"
-                      />
-                      <span className="absolute top-4 left-4 z-10 rounded bg-black/60 px-3 py-1 text-xs uppercase tracking-wider text-white">
-                        Before (Top)
-                      </span>
-                      <span className="absolute bottom-4 right-4 z-10 rounded bg-[#d2a960] px-3 py-1 text-xs uppercase tracking-wider text-black font-semibold">
-                        After (Bottom)
-                      </span>
-                    </div>
-                    <div className="mt-4 text-center">
-                      <p className="text-sm font-semibold text-foreground">Single Tooth Dental Implant</p>
-                      <p className="text-[11px] text-muted-foreground mt-1">Surgical Implant restoration</p>
-                    </div>
-                  </div>
-                )}
-                {activeCase === 4 && (
-                  <div className="w-full h-full animate-fadeIn">
-                    <div className="relative aspect-square rounded-2xl overflow-hidden border border-border/80 shadow-lg bg-black">
-                      <img
-                        src={baDental1}
-                        alt="Teeth Whitening Before and After"
-                        className="w-full h-full object-cover"
-                      />
-                      <span className="absolute top-4 left-4 z-10 rounded bg-black/60 px-3 py-1 text-xs uppercase tracking-wider text-white">
-                        Before (Top)
-                      </span>
-                      <span className="absolute bottom-4 right-4 z-10 rounded bg-[#d2a960] px-3 py-1 text-xs uppercase tracking-wider text-black font-semibold">
-                        After (Bottom)
-                      </span>
-                    </div>
-                    <div className="mt-4 text-center">
-                      <p className="text-sm font-semibold text-foreground">In-Clinic Laser Teeth Whitening</p>
-                      <p className="text-[11px] text-muted-foreground mt-1">1 Session (60 mins) · Teeth Cleaning & Polishing</p>
-                    </div>
-                  </div>
-                )}
-                {activeCase === 5 && (
-                  <div className="w-full h-full animate-fadeIn">
-                    <div className="relative aspect-square rounded-2xl overflow-hidden border border-border/80 shadow-lg bg-black">
-                      <img
-                        src={baDental8}
-                        alt="Porcelain Veneers Before and After"
-                        className="w-full h-full object-cover"
-                      />
-                      <span className="absolute top-4 left-4 z-10 rounded bg-black/60 px-3 py-1 text-xs uppercase tracking-wider text-white">
-                        Before (Top)
-                      </span>
-                      <span className="absolute bottom-4 right-4 z-10 rounded bg-[#d2a960] px-3 py-1 text-xs uppercase tracking-wider text-black font-semibold">
-                        After (Bottom)
-                      </span>
-                    </div>
-                    <div className="mt-4 text-center">
-                      <p className="text-sm font-semibold text-foreground">Bite Realignment & Veneers</p>
-                      <p className="text-[11px] text-muted-foreground mt-1">Cosmetic Porcelain Veneers</p>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-
+            ))}
           </div>
         </div>
       </section>
