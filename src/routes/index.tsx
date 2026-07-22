@@ -22,6 +22,11 @@ import baDental5 from "@/assets/ba-dental-5.jpg";
 import baDental6 from "@/assets/ba-dental-6.jpg";
 import baDental7 from "@/assets/ba-dental-7.jpg";
 import baDental8 from "@/assets/ba-dental-8.jpg";
+import newDental1 from "@/assets/new-dental-1.jpg";
+import newDental2 from "@/assets/new-dental-2.jpg";
+import newDental3 from "@/assets/new-dental-3.jpg";
+import newLaser1 from "@/assets/new-laser-1.jpg";
+import newLaser2 from "@/assets/new-laser-2.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -562,6 +567,36 @@ function Home() {
                 doctor: "AL NEMAH DENTAL CLINIC",
                 tagline: "DENTISTRY | WHITENING | HYGIENE",
                 image: baDental1
+              },
+              {
+                title: "Shade Analysis",
+                doctor: "AL NEMAH DENTAL CLINIC",
+                tagline: "TEETH WHITENING ASSESSMENT",
+                image: newDental1
+              },
+              {
+                title: "Teeth Realignment",
+                doctor: "AL NEMAH DENTAL CLINIC",
+                tagline: "COSMETIC DENTISTRY | ORTHODONTICS",
+                image: newDental3
+              },
+              {
+                title: "Laser Hair Removal",
+                doctor: "AL NEMAH AESTHETIC CLINIC",
+                tagline: "AESTHETICS | NAPE AREA HAIR REMOVAL",
+                image: newLaser1
+              },
+              {
+                title: "Skin Rejuvenation",
+                doctor: "AL NEMAH AESTHETIC CLINIC",
+                tagline: "AESTHETICS | SKIN TIGHTENING & LIFTING",
+                image: newLaser2
+              },
+              {
+                title: "Aesthetic Restoration",
+                doctor: "AL NEMAH DENTAL CLINIC",
+                tagline: "COSMETIC DENTISTRY | PROFILE VIEW",
+                image: newDental2
               }
             ].map((card, idx) => (
               <div
