@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import heroImg from "@/assets/hero.jpg";
 import interiorImg from "@/assets/interior.jpg";
 import aboutImg from "@/assets/about.jpg";
@@ -205,6 +205,23 @@ function Home() {
       carouselRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
+
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      if (carouselRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+        if (scrollLeft + clientWidth >= scrollWidth - 25) {
+          carouselRef.current.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          carouselRef.current.scrollBy({ left: 340, behavior: "smooth" });
+        }
+      }
+    }, 3500); // Scroll every 3.5 seconds
+    return () => clearInterval(interval);
+  }, [isPaused]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -510,6 +527,8 @@ function Home() {
           {/* Horizontal scroll container */}
           <div
             ref={carouselRef}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
             className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border/60"
             style={{ scrollbarWidth: "thin" }}
           >
