@@ -23,7 +23,8 @@ const aestheticLinks = [
 ] as const;
 
 const dentalLinks = [
-  { to: "/services/dental/whitening", label: "Teeth Whitening" },
+  { to: "/services/dental/aesthetic-dentistry", label: "Aesthetic Dentistry" },
+  { to: "/services/dental/clinical-dentistry", label: "Clinical Dentistry" },
 ] as const;
 
 const longevityLinks = [
@@ -64,7 +65,7 @@ function FooterColumn({
 
 export function Footer() {
   return (
-    <footer className="mt-0 bg-[#3a3a36] text-ivory">
+    <footer className="mt-0 bg-[#5b5e52] text-ivory">
       <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-12">
           {/* Logo */}
@@ -128,11 +129,16 @@ export function Footer() {
               <a href="tel:+971500999324" className="block text-ivory underline-offset-4 hover:underline">
                 +971 50 099 9324
               </a>
-              <a href="mailto:hello@alnemah.ae" className="block text-ivory underline-offset-4 hover:underline">
-                hello@alnemah.ae
-              </a>
+              <div className="space-y-1">
+                <a href="mailto:contact@alnemahmc.com" className="block text-ivory underline-offset-4 hover:underline">
+                  contact@alnemahmc.com
+                </a>
+                <a href="mailto:md@alnemahmc.com" className="block text-ivory underline-offset-4 hover:underline">
+                  md@alnemahmc.com
+                </a>
+              </div>
               <p className="pt-2 text-ivory/70">
-                Behind Zahia City Center, Al Kawthar Building, Sharjah, UAE
+                Al Kawthar Building, Behind Zahia City Center, New Muweilah, Sharjah, UAE
               </p>
             </div>
           </div>
@@ -146,7 +152,7 @@ export function Footer() {
               Request a Call
             </Link>
             <a
-              href="https://maps.google.com/?q=Al+Kawthar+Building+Sharjah"
+              href="https://www.google.com/maps/place/Al+Nemah+Medical+Center/@25.3084187,55.4554462,17z/data=!3m1!4b1!4m6!3m5!1s0x3ef5f55f108d6609:0x7c63cba5d1ec1b67!8m2!3d25.3084187!4d55.4554462!16s%2Fg%2F11z4f4shbh!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-ivory px-7 py-4 text-sm font-medium text-foreground transition-opacity hover:opacity-90"

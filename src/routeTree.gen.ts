@@ -26,6 +26,8 @@ import { Route as ServicesDentalOrthodonticsRouteImport } from './routes/service
 import { Route as ServicesDentalImplantsRouteImport } from './routes/services.dental.implants'
 import { Route as ServicesDentalGeneralRouteImport } from './routes/services.dental.general'
 import { Route as ServicesDentalCosmeticDentistryRouteImport } from './routes/services.dental.cosmetic-dentistry'
+import { Route as ServicesDentalClinicalDentistryRouteImport } from './routes/services.dental.clinical-dentistry'
+import { Route as ServicesDentalAestheticDentistryRouteImport } from './routes/services.dental.aesthetic-dentistry'
 
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
@@ -114,6 +116,18 @@ const ServicesDentalCosmeticDentistryRoute =
     path: '/dental/cosmetic-dentistry',
     getParentRoute: () => ServicesRoute,
   } as any)
+const ServicesDentalClinicalDentistryRoute =
+  ServicesDentalClinicalDentistryRouteImport.update({
+    id: '/dental/clinical-dentistry',
+    path: '/dental/clinical-dentistry',
+    getParentRoute: () => ServicesRoute,
+  } as any)
+const ServicesDentalAestheticDentistryRoute =
+  ServicesDentalAestheticDentistryRouteImport.update({
+    id: '/dental/aesthetic-dentistry',
+    path: '/dental/aesthetic-dentistry',
+    getParentRoute: () => ServicesRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -128,6 +142,8 @@ export interface FileRoutesByFullPath {
   '/services/surgery': typeof ServicesSurgeryRoute
   '/services/wellness': typeof ServicesWellnessRoute
   '/services/': typeof ServicesIndexRoute
+  '/services/dental/aesthetic-dentistry': typeof ServicesDentalAestheticDentistryRoute
+  '/services/dental/clinical-dentistry': typeof ServicesDentalClinicalDentistryRoute
   '/services/dental/cosmetic-dentistry': typeof ServicesDentalCosmeticDentistryRoute
   '/services/dental/general': typeof ServicesDentalGeneralRoute
   '/services/dental/implants': typeof ServicesDentalImplantsRoute
@@ -146,6 +162,8 @@ export interface FileRoutesByTo {
   '/services/surgery': typeof ServicesSurgeryRoute
   '/services/wellness': typeof ServicesWellnessRoute
   '/services': typeof ServicesIndexRoute
+  '/services/dental/aesthetic-dentistry': typeof ServicesDentalAestheticDentistryRoute
+  '/services/dental/clinical-dentistry': typeof ServicesDentalClinicalDentistryRoute
   '/services/dental/cosmetic-dentistry': typeof ServicesDentalCosmeticDentistryRoute
   '/services/dental/general': typeof ServicesDentalGeneralRoute
   '/services/dental/implants': typeof ServicesDentalImplantsRoute
@@ -166,6 +184,8 @@ export interface FileRoutesById {
   '/services/surgery': typeof ServicesSurgeryRoute
   '/services/wellness': typeof ServicesWellnessRoute
   '/services/': typeof ServicesIndexRoute
+  '/services/dental/aesthetic-dentistry': typeof ServicesDentalAestheticDentistryRoute
+  '/services/dental/clinical-dentistry': typeof ServicesDentalClinicalDentistryRoute
   '/services/dental/cosmetic-dentistry': typeof ServicesDentalCosmeticDentistryRoute
   '/services/dental/general': typeof ServicesDentalGeneralRoute
   '/services/dental/implants': typeof ServicesDentalImplantsRoute
@@ -187,6 +207,8 @@ export interface FileRouteTypes {
     | '/services/surgery'
     | '/services/wellness'
     | '/services/'
+    | '/services/dental/aesthetic-dentistry'
+    | '/services/dental/clinical-dentistry'
     | '/services/dental/cosmetic-dentistry'
     | '/services/dental/general'
     | '/services/dental/implants'
@@ -205,6 +227,8 @@ export interface FileRouteTypes {
     | '/services/surgery'
     | '/services/wellness'
     | '/services'
+    | '/services/dental/aesthetic-dentistry'
+    | '/services/dental/clinical-dentistry'
     | '/services/dental/cosmetic-dentistry'
     | '/services/dental/general'
     | '/services/dental/implants'
@@ -224,6 +248,8 @@ export interface FileRouteTypes {
     | '/services/surgery'
     | '/services/wellness'
     | '/services/'
+    | '/services/dental/aesthetic-dentistry'
+    | '/services/dental/clinical-dentistry'
     | '/services/dental/cosmetic-dentistry'
     | '/services/dental/general'
     | '/services/dental/implants'
@@ -359,6 +385,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesDentalCosmeticDentistryRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/services/dental/clinical-dentistry': {
+      id: '/services/dental/clinical-dentistry'
+      path: '/dental/clinical-dentistry'
+      fullPath: '/services/dental/clinical-dentistry'
+      preLoaderRoute: typeof ServicesDentalClinicalDentistryRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/dental/aesthetic-dentistry': {
+      id: '/services/dental/aesthetic-dentistry'
+      path: '/dental/aesthetic-dentistry'
+      fullPath: '/services/dental/aesthetic-dentistry'
+      preLoaderRoute: typeof ServicesDentalAestheticDentistryRouteImport
+      parentRoute: typeof ServicesRoute
+    }
   }
 }
 
@@ -371,6 +411,8 @@ interface ServicesRouteChildren {
   ServicesSurgeryRoute: typeof ServicesSurgeryRoute
   ServicesWellnessRoute: typeof ServicesWellnessRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
+  ServicesDentalAestheticDentistryRoute: typeof ServicesDentalAestheticDentistryRoute
+  ServicesDentalClinicalDentistryRoute: typeof ServicesDentalClinicalDentistryRoute
   ServicesDentalCosmeticDentistryRoute: typeof ServicesDentalCosmeticDentistryRoute
   ServicesDentalGeneralRoute: typeof ServicesDentalGeneralRoute
   ServicesDentalImplantsRoute: typeof ServicesDentalImplantsRoute
@@ -387,6 +429,8 @@ const ServicesRouteChildren: ServicesRouteChildren = {
   ServicesSurgeryRoute: ServicesSurgeryRoute,
   ServicesWellnessRoute: ServicesWellnessRoute,
   ServicesIndexRoute: ServicesIndexRoute,
+  ServicesDentalAestheticDentistryRoute: ServicesDentalAestheticDentistryRoute,
+  ServicesDentalClinicalDentistryRoute: ServicesDentalClinicalDentistryRoute,
   ServicesDentalCosmeticDentistryRoute: ServicesDentalCosmeticDentistryRoute,
   ServicesDentalGeneralRoute: ServicesDentalGeneralRoute,
   ServicesDentalImplantsRoute: ServicesDentalImplantsRoute,

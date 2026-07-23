@@ -4,10 +4,10 @@ import { useState } from "react";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Al Nemah Clinic Dubai" },
-      { name: "description", content: "Book a consultation or visit Al Nemah Clinic in Sharjah. Get in touch by WhatsApp, phone or our private inquiry form." },
-      { property: "og:title", content: "Contact Al Nemah Clinic" },
-      { property: "og:description", content: "Book a consultation or visit our Sharjah clinic." },
+      { title: "Contact — Al Nemah Medical Center Sharjah" },
+      { name: "description", content: "Book a consultation or visit Al Nemah Medical Center in Sharjah. Get in touch by WhatsApp, phone or our private inquiry form." },
+      { property: "og:title", content: "Contact Al Nemah Medical Center" },
+      { property: "og:description", content: "Book a consultation or visit our Sharjah medical center." },
     ],
   }),
   component: Contact,
@@ -34,22 +34,23 @@ function Contact() {
           <div>
             <p className="eyebrow mb-3">Visit</p>
             <p className="font-display text-2xl leading-relaxed">
+              Al Kawthar Building<br />
               Behind Zahia City Center<br />
-              Al Kawthar Building, Sharjah
+              New Muweilah, Sharjah
             </p>
           </div>
           <div>
             <p className="eyebrow mb-3">Hours</p>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              Monday — Saturday · 10:00 – 22:00<br />
-              Sunday · by appointment
+              Open daily · 9:00 AM – 10:00 PM
             </p>
           </div>
           <div>
             <p className="eyebrow mb-3">Direct</p>
             <ul className="space-y-2 text-sm">
               <li><a href="tel:+971500999324" className="hover:text-foreground text-muted-foreground">+971 50 099 9324</a></li>
-              <li><a href="mailto:hello@alnemah.ae" className="hover:text-foreground text-muted-foreground">hello@alnemah.ae</a></li>
+              <li><a href="mailto:contact@alnemahmc.com" className="hover:text-foreground text-muted-foreground">contact@alnemahmc.com</a></li>
+              <li><a href="mailto:md@alnemahmc.com" className="hover:text-foreground text-muted-foreground">md@alnemahmc.com</a></li>
               <li><a href="https://wa.me/971500999324" target="_blank" rel="noreferrer" className="hover:text-foreground text-muted-foreground">WhatsApp →</a></li>
             </ul>
           </div>

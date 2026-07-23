@@ -29,7 +29,8 @@ const dermaLinks = [
 ] as const;
 
 const dentalLinks = [
-  { to: "/services/dental/whitening", title: "Teeth Whitening", desc: "In-clinic & take-home whitening", image: interiorImg },
+  { to: "/services/dental/aesthetic-dentistry", title: "Aesthetic Dentistry", desc: "Veneers, Whitening, Hollywood Smile", image: interiorImg },
+  { to: "/services/dental/clinical-dentistry", title: "Clinical Dentistry", desc: "Implants, Orthodontics, General Care", image: interiorImg },
 ] as const;
 
 export function Header() {
@@ -65,9 +66,9 @@ export function Header() {
       {/* Top Bar */}
       <div className="bg-primary text-ivory text-[11px] py-1.5 px-6 lg:px-10 flex flex-col sm:flex-row justify-between items-center gap-1.5 transition-all duration-300">
         <div className="flex items-center gap-1.5 opacity-90 tracking-wide font-light">
-          <span>Behind Zahia City Center, Sharjah</span>
+          <span>Behind Zahia City Center, New Muweilah, Sharjah</span>
           <span className="opacity-45">•</span>
-          <span>Open daily 10am–10pm</span>
+          <span>Open daily 9:00 AM – 10:00 PM</span>
         </div>
         <div className="flex items-center gap-4 opacity-90 font-light">
           <a href="tel:+971500999324" className="hover:underline tracking-wide">+971 50 099 9324</a>
@@ -167,9 +168,9 @@ export function Header() {
 
                   {/* Feature Panel */}
                   <div className="bg-forest p-8 flex flex-col justify-between text-ivory relative overflow-hidden">
-                    <div className="absolute inset-4 border border-[#d2a960]/30 pointer-events-none rounded-lg" />
+                    <div className="absolute inset-4 border border-[#b8957e]/30 pointer-events-none rounded-lg" />
                     <div className="relative z-10">
-                      <p className="eyebrow text-[#d2a960] mb-2">Not sure where to start?</p>
+                      <p className="eyebrow text-[#b8957e] mb-2">Not sure where to start?</p>
                       <h4 className="font-display text-xl text-white mb-3">Book a consultation</h4>
                       <p className="text-xs text-ivory/70 leading-relaxed">
                         Tell us your goal — our doctors recommend the right pathway across skin and dental.
@@ -180,7 +181,7 @@ export function Header() {
                       target="_blank"
                       rel="noreferrer"
                       onClick={() => setServicesOpen(false)}
-                      className="relative z-10 w-full text-center rounded-lg bg-[#1f6b53] hover:opacity-95 py-3 text-xs font-semibold text-white transition-all flex items-center justify-center gap-1.5 shadow-sm mt-8"
+                      className="relative z-10 w-full text-center rounded-lg bg-[#5b5e52] hover:opacity-95 py-3 text-xs font-semibold text-white transition-all flex items-center justify-center gap-1.5 shadow-sm mt-8"
                     >
                       WhatsApp us
                     </a>

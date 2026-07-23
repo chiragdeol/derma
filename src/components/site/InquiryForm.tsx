@@ -34,9 +34,12 @@ export function InquiryForm() {
             business day to arrange your private consultation.
           </p>
           <div className="mt-10 space-y-3 text-sm">
-            <p className="text-foreground">📍 Sharjah, UAE</p>
+            <p className="text-foreground">📍 New Muweilah, Sharjah, UAE</p>
             <p className="text-foreground">📞 +971 50 099 9324</p>
-            <p className="text-foreground">✉ hello@alnemah.ae</p>
+            <p className="text-foreground flex flex-col gap-1 mt-1">
+              <span>✉ contact@alnemahmc.com</span>
+              <span>✉ md@alnemahmc.com</span>
+            </p>
           </div>
         </div>
 

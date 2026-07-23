@@ -66,18 +66,86 @@ const services = [
   { num: "02", title: "Skin & HydraFacial", image: skinImg, tags: ["HydraFacial", "Chemical peels", "Mesotherapy", "Microneedling"], body: "Medical-grade facials and resurfacing for clear, luminous skin.", to: "/services/skin", cta: "Explore skin" },
   { num: "03", title: "Laser & Hair Removal", image: laserImg, tags: ["Laser hair", "Pigmentation", "Vascular", "Tattoo removal"], body: "Advanced laser platforms, safe across all Fitzpatrick skin types.", to: "/services/laser", cta: "Explore laser" },
   { num: "04", title: "Anti-Aging & Lifting", image: liftingImg, tags: ["Morpheus8", "Ultherapy", "Threads", "Fotona 4D"], body: "Non-surgical tightening and collagen renewal with real downtime answers.", to: "/services/lifting", cta: "Explore lifting" },
-  { num: "05", title: "Dental Services", image: dentalImg, tags: ["Smile design", "Veneers", "Teeth whitening", "Implants"], body: "Comprehensive dental care, cosmetic smile design and whitening for your ultimate confidence.", to: "/services/dental/cosmetic-dentistry", cta: "Explore dental" },
+  { num: "05", title: "Dental Services", image: dentalImg, tags: ["Aesthetic dentistry", "Porcelain veneers", "Teeth whitening", "Clinical dentistry"], body: "Comprehensive clinical care and bespoke aesthetic smile design for your ultimate confidence.", to: "/services/dental/aesthetic-dentistry", cta: "Explore dental" },
   { num: "06", title: "Wellness & Longevity", image: wellnessImg, tags: ["IV drips", "Hormone health", "Hair restoration", "Skin boosters"], body: "Feel as good as you look — inside-out care for energy and vitality.", to: "/services/wellness", cta: "Explore wellness" },
 ] as const;
 
 const doctors = [
-  { name: "Dr. Sidra Ejaz", role: "Aesthetic Physician", image: doctorSidra },
-  { name: "Dr. Nisha Sasidharan", role: "General Dentist", image: doctorNisha },
-  { name: "Dr. Menna", role: "General Dentist", image: doctorHijab },
-  { name: "Dr. Sheeraz", role: "Specialist Dermatologist", image: doctorMale },
+  {
+    name: "Dr. Sidra Ejaz",
+    role: "Aesthetic Physician",
+    image: doctorSidra,
+    education: [
+      "Bachelor of Medicine, Bachelor of Surgery (MBBS)",
+      "Board Certified in Aesthetic Medicine",
+      "Advanced Fellowship in Facial Aesthetics"
+    ],
+    specialties: [
+      "Non-surgical facial rejuvenation",
+      "Botox & Dermal Filler injections",
+      "Profhilo & Skin Booster treatments",
+      "Lip enhancement and contouring"
+    ],
+    languages: ["English", "Urdu", "Hindi"],
+    bio: "Dr. Sidra Ejaz is a highly skilled Aesthetic Physician specializing in advanced non-surgical facial rejuvenation. With over 8 years of clinical experience, she blends clinical precision with an artist's eye to deliver natural-looking, balanced results that enhance each patient's unique features."
+  },
+  {
+    name: "Dr. Nisha Sasidharan",
+    role: "General Dentist",
+    image: doctorNisha,
+    education: [
+      "Bachelor of Dental Surgery (BDS)",
+      "Specialized Certification in Cosmetic Dentistry",
+      "Digital Smile Design (DSD) Accredited Specialist"
+    ],
+    specialties: [
+      "Porcelain Veneers & Hollywood Smile",
+      "Teeth Whitening & Shade Analysis",
+      "Composite Tooth Bonding",
+      "Full Smile Restorations"
+    ],
+    languages: ["English", "Hindi", "Malayalam"],
+    bio: "Dr. Nisha Sasidharan has over 10 years of clinical experience in cosmetic dentistry. She is dedicated to creating healthy, beautiful smiles utilizing state-of-the-art digital smile mapping, helping patients achieve natural results with maximum comfort."
+  },
+  {
+    name: "Dr. Menna",
+    role: "General Dentist",
+    image: doctorHijab,
+    education: [
+      "Bachelor of Dental Surgery (BDS)",
+      "Accredited Residency in Restorative Dentistry",
+      "Advanced Pediatric Dentistry Specialist"
+    ],
+    specialties: [
+      "Restorative and Preventive Dentistry",
+      "Root Canal Therapy & Extractions",
+      "Pediatric and Child-friendly Dental Care",
+      "Dental Crowns, Bridges & Inlays"
+    ],
+    languages: ["English", "Arabic"],
+    bio: "Dr. Menna brings extensive expertise in general, restorative, and pediatric dentistry. Known for her warm, gentle, and anxiety-free approach, she makes patients of all ages, especially children, feel completely at ease during complex dental procedures."
+  },
+  {
+    name: "Dr. Sheeraz",
+    role: "Specialist Dermatologist",
+    image: doctorMale,
+    education: [
+      "Doctor of Medicine (MD) in Dermatology",
+      "MOH Licensed Specialist Dermatologist",
+      "Advanced Laser & Laser-Skin Surgery Certification"
+    ],
+    specialties: [
+      "Clinical Dermatology & Acne Treatment",
+      "Acne Scar Revision & TCA Cross",
+      "Advanced Laser Resurfacing & Hair Removal",
+      "Medical-grade Chemical Peels & Mesotherapy"
+    ],
+    languages: ["English", "Arabic", "Urdu"],
+    bio: "Dr. Sheeraz is a highly respected Specialist Dermatologist with over 12 years of clinical experience. He provides expert medical guidance for skin disorders, lasers, and anti-aging therapies, maintaining the highest standards of safety and clinical excellence."
+  }
 ];
 
-const googleMapsUrl = "https://www.google.com/maps/place/Al+Nemah+Medical+Center/@25.3084187,55.4554462,17z/data=!3m1!4b1!4m6!3m5!1s0x3ef5f55f108d6609:0x7c63cba5d1ec1b67!8m2!3d25.3084187!4d55.4554462!16s%2Fg%2F11z4f4shbh!18m1!1e1?entry=ttu";
+const googleMapsUrl = "https://www.google.com/maps/place/Al+Nemah+Medical+Center/@25.3084187,55.4554462,17z/data=!3m1!4b1!4m6!3m5!1s0x3ef5f55f108d6609:0x7c63cba5d1ec1b67!8m2!3d25.3084187!4d55.4554462!16s%2Fg%2F11z4f4shbh!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D";
 
 const testimonials = [
   {
@@ -175,7 +243,7 @@ const BeforeAfterSlider = ({ before = beforeImg, after = afterImg }: { before?: 
         style={{ clipPath: `inset(0 0 0 ${position}%)` }}
         draggable={false}
       />
-      <span className="absolute bottom-4 right-4 z-10 rounded bg-[#d2a960] px-3 py-1 text-xs uppercase tracking-wider text-black font-semibold">
+      <span className="absolute bottom-4 right-4 z-10 rounded bg-[#b8957e] px-3 py-1 text-xs uppercase tracking-wider text-black font-semibold">
         After
       </span>
 
@@ -212,6 +280,7 @@ function Home() {
   };
 
   const [isPaused, setIsPaused] = useState(false);
+  const [selectedDoctor, setSelectedDoctor] = useState<typeof doctors[number] | null>(null);
 
   useEffect(() => {
     if (isPaused) return;
@@ -353,7 +422,7 @@ function Home() {
                     href="https://wa.me/971500999324"
                     target="_blank"
                     rel="noreferrer"
-                    className="w-full rounded-lg bg-[#125e46] py-3 text-sm font-medium text-white hover:opacity-95 transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full rounded-lg bg-[#3e4138] py-3 text-sm font-medium text-white hover:opacity-95 transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
                       <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.333 4.982L2 22l5.202-1.364a9.994 9.994 0 0 0 4.81 1.233c5.505 0 9.99-4.477 9.99-9.985C22.002 6.478 17.518 2 12.012 2zm0 18.29a8.27 8.27 0 0 1-4.222-1.155l-.304-.18-3.136.82.834-3.056-.198-.314A8.273 8.273 0 0 1 3.72 11.98c0-4.57 3.719-8.285 8.297-8.285 4.574 0 8.29 3.717 8.29 8.288 0 4.57-3.714 8.29-8.29 8.29-.003 0-.003 0 0 0z"/>
@@ -397,10 +466,10 @@ function Home() {
             <div className="lg:col-span-6 lg:py-4">
               <p className="eyebrow mb-4 tracking-[0.25em] text-[11px] uppercase text-muted-foreground font-medium">ABOUT AL NEMAH</p>
               <h2 className="font-display text-4xl leading-[1.15] text-foreground md:text-5xl lg:text-6xl">
-                Where dentistry and dermatology meet <em className="italic font-serif">modern artistry</em>.
+                Where Dermatology and Dental meet <em className="italic font-serif">modern artistry</em>.
               </h2>
               <p className="mt-6 text-sm md:text-base leading-relaxed text-foreground/90 font-medium">
-                <strong className="font-semibold text-foreground">AL Nemah</strong> is a modern aesthetic clinic in the UAE, bringing together dental excellence and dermatological expertise under one roof. From precision smile design to advanced skin treatments, our specialists blend clinical science with an artist's eye to deliver results that look effortless and feel transformative.
+                <strong className="font-semibold text-foreground">AL Nemah</strong> is a modern aesthetic clinic in the UAE, bringing together Dermatology expertise and Dental excellence under one roof. From precision smile design to advanced skin treatments, our specialists blend clinical science with an artist's eye to deliver results that look effortless and feel transformative.
               </p>
               <Link
                 to="/about"
@@ -420,11 +489,11 @@ function Home() {
             <div>
               <p className="eyebrow mb-4">What we do</p>
               <h2 className="font-display text-4xl md:text-5xl">
-                Dentistry and dermatology, refined into <em className="italic">an experience</em>.
+                Dermatology and Dental, refined into <em className="italic">an experience</em>.
               </h2>
             </div>
             <p className="max-w-sm text-sm text-black font-semibold">
-              Six disciplines under one roof — smile design, medical-grade skin, injectables, laser, lifting and dental care.
+              Six disciplines under one roof — Cosmetic Injectables, Skin & HydraFacial, Laser & Hair Removal, Anti-Aging & Lifting, Dental, and Wellness.
             </p>
           </div>
 
@@ -514,14 +583,14 @@ function Home() {
             <div className="flex gap-3">
               <button
                 onClick={() => scrollCarousel("left")}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-border/80 hover:border-[#91713d] hover:text-[#91713d] bg-background text-foreground transition-all cursor-pointer shadow-sm hover:scale-105"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-border/80 hover:border-[#7a5a48] hover:text-[#7a5a48] bg-background text-foreground transition-all cursor-pointer shadow-sm hover:scale-105"
                 aria-label="Scroll Left"
               >
                 ←
               </button>
               <button
                 onClick={() => scrollCarousel("right")}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-border/80 hover:border-[#91713d] hover:text-[#91713d] bg-background text-foreground transition-all cursor-pointer shadow-sm hover:scale-105"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-border/80 hover:border-[#7a5a48] hover:text-[#7a5a48] bg-background text-foreground transition-all cursor-pointer shadow-sm hover:scale-105"
                 aria-label="Scroll Right"
               >
                 →
@@ -618,7 +687,7 @@ function Home() {
                   <h3 className="font-display text-xl md:text-2xl font-semibold leading-tight tracking-wide text-white">
                     {card.title}
                   </h3>
-                  <span className="text-[10px] font-sans font-medium tracking-[0.2em] text-[#d2a960] mt-2 uppercase">
+                  <span className="text-[10px] font-sans font-medium tracking-[0.2em] text-[#b8957e] mt-2 uppercase">
                     {card.doctor}
                   </span>
                   <span className="text-[9px] font-sans tracking-[0.1em] text-white/70 mt-1 uppercase font-light">
@@ -646,12 +715,12 @@ function Home() {
           
           <div className="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
             {/* Package 1: Advance Hair Regeneration */}
-            <div className="bg-background rounded-2xl border border-[#d2a960]/40 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md hover:border-[#d2a960] transition-all">
-              <span className="absolute top-4 right-4 bg-[#c2a476]/15 text-[#91713d] text-[10px] font-sans font-semibold tracking-wider px-3 py-1 rounded-full uppercase">
+            <div className="bg-background rounded-2xl border border-[#b8957e]/40 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md hover:border-[#b8957e] transition-all">
+              <span className="absolute top-4 right-4 bg-[#b8957e]/15 text-[#7a5a48] text-[10px] font-sans font-semibold tracking-wider px-3 py-1 rounded-full uppercase">
                 Special Offer
               </span>
               <div>
-                <p className="text-xs uppercase tracking-widest text-[#d2a960] font-semibold mb-2">Advance Hair Regeneration</p>
+                <p className="text-xs uppercase tracking-widest text-[#b8957e] font-semibold mb-2">Advance Hair Regeneration</p>
                 <h3 className="font-display text-2xl md:text-3xl text-foreground mb-3 font-semibold">PRP + Biotin + GFC + Exosome</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed mb-6 font-medium">
                   Four Powerful Solutions. One Transformative Result.
@@ -663,7 +732,7 @@ function Home() {
                       <span className="text-[10px] uppercase tracking-wider text-muted-foreground block font-medium">Package Price</span>
                       <span className="text-3xl font-display font-semibold text-foreground">AED 999 <small className="text-sm font-normal text-muted-foreground">Only</small></span>
                     </div>
-                    <span className="text-[10px] bg-white border border-border px-2.5 py-1 rounded text-muted-foreground font-medium">Tabby / Tamara available</span>
+                    <span className="text-[10px] bg-white border border-border px-2.5 py-1 rounded text-muted-foreground font-medium">Tabby / Tamara / Fazaa available</span>
                   </div>
                 </div>
               </div>
@@ -678,14 +747,14 @@ function Home() {
             </div>
 
             {/* Package 2: Teeth Whitening + Cleaning + Polishing + Free HydraFacial */}
-            <div className="bg-background rounded-2xl border border-[#d2a960]/40 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md hover:border-[#d2a960] transition-all">
+            <div className="bg-background rounded-2xl border border-[#b8957e]/40 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md hover:border-[#b8957e] transition-all">
               <div className="flex items-center gap-2 absolute top-4 right-4">
                 <span className="bg-red-500/10 text-red-600 text-[10px] font-sans font-semibold tracking-wider px-3 py-1 rounded-full uppercase">
                   + Free HydraFacial
                 </span>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest text-[#d2a960] font-semibold mb-2">Teeth & Skin Combo</p>
+                <p className="text-xs uppercase tracking-widest text-[#b8957e] font-semibold mb-2">Teeth & Skin Combo</p>
                 <h3 className="font-display text-2xl md:text-3xl text-foreground mb-3 font-semibold leading-snug">Teeth Whitening + Cleaning + Polishing</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed mb-4 font-medium">
                   A Brighter Smile & Radiant Skin in One Visit!
@@ -700,7 +769,7 @@ function Home() {
                       <span className="text-[10px] uppercase tracking-wider text-muted-foreground block font-medium">Package Price</span>
                       <span className="text-3xl font-display font-semibold text-foreground">AED 799 <small className="text-sm font-normal text-muted-foreground">Only</small></span>
                     </div>
-                    <span className="text-[10px] bg-white border border-border px-2.5 py-1 rounded text-muted-foreground font-medium">Tabby / Tamara available</span>
+                    <span className="text-[10px] bg-white border border-border px-2.5 py-1 rounded text-muted-foreground font-medium">Tabby / Tamara / Fazaa available</span>
                   </div>
                 </div>
               </div>
@@ -733,8 +802,12 @@ function Home() {
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {doctors.map((d) => (
-            <article key={d.name} className="group">
-              <div className="overflow-hidden rounded-2xl bg-card">
+            <article 
+              key={d.name} 
+              onClick={() => setSelectedDoctor(d)}
+              className="group cursor-pointer"
+            >
+              <div className="overflow-hidden rounded-2xl bg-card relative">
                 <img
                   src={d.image}
                   alt={d.name}
@@ -743,9 +816,15 @@ function Home() {
                   height={1024}
                   className="aspect-[4/5] w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                 />
+                {/* Visual hover cue */}
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span className="bg-white/95 text-foreground text-xs font-semibold px-4 py-2 rounded-full shadow-md transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                    View Profile
+                  </span>
+                </div>
               </div>
               <div className="mt-6">
-                <h3 className="font-display text-2xl text-foreground">{d.name}</h3>
+                <h3 className="font-display text-2xl text-foreground group-hover:text-primary transition-colors">{d.name}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{d.role}</p>
               </div>
             </article>
@@ -905,7 +984,7 @@ function Home() {
 
                 {/* Mute Indicator / Play Icon Overlay */}
                 <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md transition-all group-hover:bg-[#d2a960] group-hover:text-black group-hover:scale-110 shadow-lg">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md transition-all group-hover:bg-[#b8957e] group-hover:text-black group-hover:scale-110 shadow-lg">
                     <svg
                       viewBox="0 0 24 24"
                       width="24"
@@ -992,7 +1071,7 @@ function Home() {
               href="https://wa.me/971500999324"
               target="_blank"
               rel="noreferrer"
-              className="rounded-lg bg-[#184d3e] px-6 py-3 text-sm font-medium text-white hover:opacity-95 transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
+              className="rounded-lg bg-[#5b5e52] px-6 py-3 text-sm font-medium text-white hover:opacity-95 transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
             >
               <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
                 <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.333 4.982L2 22l5.202-1.364a9.994 9.994 0 0 0 4.81 1.233c5.505 0 9.99-4.477 9.99-9.985C22.002 6.478 17.518 2 12.012 2zm0 18.29a8.27 8.27 0 0 1-4.222-1.155l-.304-.18-3.136.82.834-3.056-.198-.314A8.273 8.273 0 0 1 3.72 11.98c0-4.57 3.719-8.285 8.297-8.285 4.574 0 8.29 3.717 8.29 8.288 0 4.57-3.714 8.29-8.29 8.29-.003 0-.003 0 0 0z"/>
@@ -1008,6 +1087,101 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* DOCTOR DETAIL MODAL */}
+      {selectedDoctor && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-all animate-in fade-in duration-300">
+          <div className="relative w-full max-w-3xl bg-background rounded-3xl overflow-hidden shadow-2xl border border-border/80 flex flex-col md:flex-row max-h-[90vh] md:max-h-[80vh]">
+            {/* Close button */}
+            <button
+              onClick={() => setSelectedDoctor(null)}
+              className="absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-black/40 hover:bg-black/60 text-white font-bold text-sm cursor-pointer transition-all"
+              aria-label="Close modal"
+            >
+              ✕
+            </button>
+
+            {/* Left Column: Doctor Photo */}
+            <div className="w-full md:w-2/5 relative h-64 md:h-auto bg-muted">
+              <img
+                src={selectedDoctor.image}
+                alt={selectedDoctor.name}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent md:hidden" />
+              <div className="absolute bottom-6 left-6 right-6 text-white md:hidden">
+                <h3 className="font-display text-2xl">{selectedDoctor.name}</h3>
+                <p className="text-xs uppercase tracking-wider text-[#b8957e] mt-1">{selectedDoctor.role}</p>
+              </div>
+            </div>
+
+            {/* Right Column: Details */}
+            <div className="w-full md:w-3/5 p-8 md:p-10 overflow-y-auto flex flex-col justify-between">
+              <div>
+                {/* Header (desktop only) */}
+                <div className="hidden md:block border-b border-border/50 pb-5 mb-6">
+                  <h3 className="font-display text-3xl text-foreground font-semibold">{selectedDoctor.name}</h3>
+                  <p className="text-sm font-semibold tracking-wider text-[#b8957e] uppercase mt-1">{selectedDoctor.role}</p>
+                </div>
+
+                {/* Bio */}
+                <p className="text-sm leading-relaxed text-muted-foreground/95 mb-6">
+                  {selectedDoctor.bio}
+                </p>
+
+                {/* Qualifications */}
+                <div className="mb-6">
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-foreground mb-3">Education & Credentials</h4>
+                  <ul className="space-y-1.5 text-xs text-muted-foreground">
+                    {selectedDoctor.education.map((edu, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <span className="text-[#b8957e]">▪</span>
+                        <span>{edu}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Specialties */}
+                <div className="mb-6">
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-foreground mb-3">Clinical Specialties</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedDoctor.specialties.map((spec, idx) => (
+                      <span key={idx} className="text-[11px] bg-secondary/50 border border-border/60 text-foreground px-2.5 py-1 rounded-full font-medium">
+                        {spec}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Languages */}
+                <div>
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-foreground mb-2">Languages Spoken</h4>
+                  <p className="text-xs text-muted-foreground font-medium">{selectedDoctor.languages.join(", ")}</p>
+                </div>
+              </div>
+
+              {/* Action Button */}
+              <div className="mt-8 pt-6 border-t border-border/50 flex gap-4">
+                <a
+                  href="https://wa.me/971500999324"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex-1 text-center rounded-xl bg-[#5b5e52] hover:opacity-95 py-3.5 text-xs font-semibold text-white transition-all shadow-sm"
+                >
+                  Book Consultation
+                </a>
+                <button
+                  onClick={() => setSelectedDoctor(null)}
+                  className="px-6 py-3.5 rounded-xl border border-border hover:bg-muted/50 text-xs font-semibold text-foreground transition-all cursor-pointer"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

@@ -105,10 +105,10 @@ function About() {
           <div>
             <p className="eyebrow mb-5">The team</p>
             <h2 className="font-display text-4xl leading-tight md:text-5xl">
-              Doctors, dentists and artisans of detail.
+              Dermatologists, Dentists and artisans of detail.
             </h2>
             <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-              Our practitioners are selected for both technical mastery and their bedside presence. Each brings deep specialization — in dentistry or dermatology — and all share the same standard: do less, do it beautifully, never compromise on safety.
+              Our practitioners are selected for both technical mastery and their bedside presence. Each brings deep specialization — in Dermatology or Dental — and all share the same standard: do less, do it beautifully, never compromise on safety.
             </p>
             <Link to="/contact" className="mt-10 inline-flex rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground hover:opacity-90">
               Meet the team
