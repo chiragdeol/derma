@@ -9,9 +9,9 @@ import wellness from "@/assets/wellness.jpg";
 export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
-      { title: "Services — Al Nemah Clinic Sharjah" },
+      { title: "Services — Al Nemah Medical Center Sharjah" },
       { name: "description", content: "Dermatology, injectables, laser, lifting, dental services and wellness — six disciplines under one Sharjah roof." },
-      { property: "og:title", content: "Services at Al Nemah Clinic" },
+      { property: "og:title", content: "Services at Al Nemah Medical Center" },
       { property: "og:description", content: "Six disciplines under one roof, led by board-certified doctors." },
     ],
   }),
@@ -23,7 +23,7 @@ const services = [
   { num: "02", to: "/services/skin", title: "Skin & HydraFacial", body: "Medical-grade facials, peels and resurfacing for luminous skin.", image: skin },
   { num: "03", to: "/services/laser", title: "Laser & Hair Removal", body: "Multi-wavelength laser platforms safe across all skin types.", image: laser },
   { num: "04", to: "/services/lifting", title: "Anti-Aging & Lifting", body: "Morpheus8, Ultherapy, threads and Fotona 4D for non-surgical lift.", image: lifting },
-  { num: "05", to: "/services/dental/cosmetic-dentistry", title: "Dental Services", body: "Comprehensive dental care, cosmetic smile design and whitening for your ultimate confidence.", image: dental },
+  { num: "05", to: "/services/dental/aesthetic-dentistry", title: "Dental Services", body: "Comprehensive clinical care and bespoke aesthetic smile design for your ultimate confidence.", image: dental },
   { num: "06", to: "/services/wellness", title: "Wellness & Longevity", body: "IV drips, hormone health, hair restoration and skin boosters.", image: wellness },
 ] as const;
 

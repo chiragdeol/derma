@@ -120,7 +120,6 @@ export function Header() {
                 <div className="grid grid-cols-[1.1fr_1.1fr_0.9fr]">
                   {/* Division 01 */}
                   <div className="p-8 border-r border-border/40">
-                    <p className="eyebrow mb-2">Division 01</p>
                     <h3 className="font-display text-xl text-foreground font-semibold mb-6">Dermatology & Aesthetics</h3>
                     <ul className="space-y-4">
                       {dermaLinks.map((s) => (
@@ -144,7 +143,6 @@ export function Header() {
 
                   {/* Division 02 */}
                   <div className="p-8 border-r border-border/40">
-                    <p className="eyebrow mb-2">Division 02</p>
                     <h3 className="font-display text-xl text-foreground font-semibold mb-6">Dental Services</h3>
                     <ul className="space-y-4">
                       {dentalLinks.map((s) => (
@@ -181,7 +179,7 @@ export function Header() {
                       target="_blank"
                       rel="noreferrer"
                       onClick={() => setServicesOpen(false)}
-                      className="relative z-10 w-full text-center rounded-lg bg-[#5b5e52] hover:opacity-95 py-3 text-xs font-semibold text-white transition-all flex items-center justify-center gap-1.5 shadow-sm mt-8"
+                      className="relative z-10 w-full text-center rounded-lg bg-[#b8957e] border border-[#b8957e] hover:bg-transparent hover:text-[#b8957e] py-3 text-xs font-semibold text-white transition-all flex items-center justify-center gap-1.5 shadow-sm mt-8"
                     >
                       WhatsApp us
                     </a>

@@ -348,7 +348,7 @@ function Home() {
                 </div>
                 <div className="w-[1px] h-10 bg-border/60 hidden sm:block"></div>
                 <div>
-                  <p className="font-display text-3xl font-normal text-foreground">SOH</p>
+                  <p className="font-display text-3xl font-normal text-foreground">SHA</p>
                   <p className="text-[10px] font-sans font-semibold tracking-wider text-muted-foreground uppercase mt-1">licensed doctors</p>
                 </div>
               </div>
