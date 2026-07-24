@@ -220,6 +220,8 @@ export function ServiceTemplate({
   related,
   heroImage,
   dental = false,
+  beforeImage,
+  afterImage,
 }: ServiceTemplateProps) {
   return (
     <>
