@@ -1,4 +1,3 @@
-import { Route as parentRoute } from "./../services";
 import { createFileRoute } from "@tanstack/react-router";
 import { ServiceTemplate } from "@/components/site/ServiceTemplate";
 import heroImg from "@/assets/service-dental.jpg";
