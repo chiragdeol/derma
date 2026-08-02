@@ -76,8 +76,8 @@
   --gold: #b8957e;                              /* Map gold to Peach Terracotta */
   --sand: #ab9b83;                              /* Map sand to Khaki Sand */
   --ivory: #faf8f5;                             /* Map ivory to Swatch base light */
-  --forest: #5b5e52;                            /* Swatch 1: Olive Green (#5b5e52) */
-  --teal-dark: #3e4138;                         /* Deeper Olive green for contrast */
+  --forest: #7B8D6A;                            /* Swatch 1: Olive Green (#5b5e52) */
+  --teal-dark: #4d5940;                         /* Deeper Olive green for contrast */
 }
 
 @layer base {
@@ -116,4 +116,43 @@
     text-transform: uppercase;
     color: var(--muted-foreground);
   }
+}
+
+/* Sienna brown overrides for buttons and button-like CTAs only */
+button.bg-primary,
+button[class*="bg-primary"],
+a.bg-primary,
+a[class*="bg-primary"],
+a[href*="wa.me"][class*="bg-"],
+div[class*="bg-primary"][class*="cursor-pointer"],
+button[class*="bg-[#7B8D6A]"],
+a[class*="bg-[#7B8D6A]"],
+button[class*="bg-[#974d08]"],
+a[class*="bg-[#974d08]"],
+button[class*="bg-[#5b5e52]"],
+a[class*="bg-[#5b5e52]"],
+button[class*="bg-forest"],
+a[class*="bg-forest"] {
+  background-color: #974d08 !important;
+  color: #ffffff !important;
+  border-color: #974d08 !important;
+}
+
+button.bg-primary:hover,
+button[class*="bg-primary"]:hover,
+a.bg-primary:hover,
+a[class*="bg-primary"]:hover,
+a[href*="wa.me"][class*="bg-"]:hover,
+div[class*="bg-primary"][class*="cursor-pointer"]:hover,
+button[class*="bg-[#7B8D6A]"]:hover,
+a[class*="bg-[#7B8D6A]"]:hover,
+button[class*="bg-[#974d08]"]:hover,
+a[class*="bg-[#974d08]"]:hover,
+button[class*="bg-[#5b5e52]"]:hover,
+a[class*="bg-[#5b5e52]"]:hover,
+button[class*="bg-forest"]:hover,
+a[class*="bg-forest"]:hover {
+  background-color: transparent !important;
+  color: #974d08 !important;
+  border: 1px solid #974d08 !important;
 }
