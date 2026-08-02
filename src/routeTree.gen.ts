@@ -21,6 +21,7 @@ import { Route as ServicesLiftingRouteImport } from './routes/services.lifting'
 import { Route as ServicesLaserRouteImport } from './routes/services.laser'
 import { Route as ServicesInjectablesRouteImport } from './routes/services.injectables'
 import { Route as ServicesAestheticRouteImport } from './routes/services.aesthetic'
+import { Route as ServicesLaserHairRemovalRouteImport } from './routes/services.laser.hair-removal'
 import { Route as ServicesDentalClinicalDentistryRouteImport } from './routes/services.dental.clinical-dentistry'
 import { Route as ServicesDentalAestheticDentistryRouteImport } from './routes/services.dental.aesthetic-dentistry'
 
@@ -84,6 +85,12 @@ const ServicesAestheticRoute = ServicesAestheticRouteImport.update({
   path: '/aesthetic',
   getParentRoute: () => ServicesRoute,
 } as any)
+const ServicesLaserHairRemovalRoute =
+  ServicesLaserHairRemovalRouteImport.update({
+    id: '/hair-removal',
+    path: '/hair-removal',
+    getParentRoute: () => ServicesLaserRoute,
+  } as any)
 const ServicesDentalClinicalDentistryRoute =
   ServicesDentalClinicalDentistryRouteImport.update({
     id: '/dental/clinical-dentistry',
@@ -104,7 +111,7 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRouteWithChildren
   '/services/aesthetic': typeof ServicesAestheticRoute
   '/services/injectables': typeof ServicesInjectablesRoute
-  '/services/laser': typeof ServicesLaserRoute
+  '/services/laser': typeof ServicesLaserRouteWithChildren
   '/services/lifting': typeof ServicesLiftingRoute
   '/services/skin': typeof ServicesSkinRoute
   '/services/surgery': typeof ServicesSurgeryRoute
@@ -112,6 +119,7 @@ export interface FileRoutesByFullPath {
   '/services/': typeof ServicesIndexRoute
   '/services/dental/aesthetic-dentistry': typeof ServicesDentalAestheticDentistryRoute
   '/services/dental/clinical-dentistry': typeof ServicesDentalClinicalDentistryRoute
+  '/services/laser/hair-removal': typeof ServicesLaserHairRemovalRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -119,7 +127,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/services/aesthetic': typeof ServicesAestheticRoute
   '/services/injectables': typeof ServicesInjectablesRoute
-  '/services/laser': typeof ServicesLaserRoute
+  '/services/laser': typeof ServicesLaserRouteWithChildren
   '/services/lifting': typeof ServicesLiftingRoute
   '/services/skin': typeof ServicesSkinRoute
   '/services/surgery': typeof ServicesSurgeryRoute
@@ -127,6 +135,7 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesIndexRoute
   '/services/dental/aesthetic-dentistry': typeof ServicesDentalAestheticDentistryRoute
   '/services/dental/clinical-dentistry': typeof ServicesDentalClinicalDentistryRoute
+  '/services/laser/hair-removal': typeof ServicesLaserHairRemovalRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -136,7 +145,7 @@ export interface FileRoutesById {
   '/services': typeof ServicesRouteWithChildren
   '/services/aesthetic': typeof ServicesAestheticRoute
   '/services/injectables': typeof ServicesInjectablesRoute
-  '/services/laser': typeof ServicesLaserRoute
+  '/services/laser': typeof ServicesLaserRouteWithChildren
   '/services/lifting': typeof ServicesLiftingRoute
   '/services/skin': typeof ServicesSkinRoute
   '/services/surgery': typeof ServicesSurgeryRoute
@@ -144,6 +153,7 @@ export interface FileRoutesById {
   '/services/': typeof ServicesIndexRoute
   '/services/dental/aesthetic-dentistry': typeof ServicesDentalAestheticDentistryRoute
   '/services/dental/clinical-dentistry': typeof ServicesDentalClinicalDentistryRoute
+  '/services/laser/hair-removal': typeof ServicesLaserHairRemovalRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -162,6 +172,7 @@ export interface FileRouteTypes {
     | '/services/'
     | '/services/dental/aesthetic-dentistry'
     | '/services/dental/clinical-dentistry'
+    | '/services/laser/hair-removal'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -177,6 +188,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/services/dental/aesthetic-dentistry'
     | '/services/dental/clinical-dentistry'
+    | '/services/laser/hair-removal'
   id:
     | '__root__'
     | '/'
@@ -193,6 +205,7 @@ export interface FileRouteTypes {
     | '/services/'
     | '/services/dental/aesthetic-dentistry'
     | '/services/dental/clinical-dentistry'
+    | '/services/laser/hair-removal'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -288,6 +301,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesAestheticRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/services/laser/hair-removal': {
+      id: '/services/laser/hair-removal'
+      path: '/hair-removal'
+      fullPath: '/services/laser/hair-removal'
+      preLoaderRoute: typeof ServicesLaserHairRemovalRouteImport
+      parentRoute: typeof ServicesLaserRoute
+    }
     '/services/dental/clinical-dentistry': {
       id: '/services/dental/clinical-dentistry'
       path: '/dental/clinical-dentistry'
@@ -305,10 +325,22 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface ServicesLaserRouteChildren {
+  ServicesLaserHairRemovalRoute: typeof ServicesLaserHairRemovalRoute
+}
+
+const ServicesLaserRouteChildren: ServicesLaserRouteChildren = {
+  ServicesLaserHairRemovalRoute: ServicesLaserHairRemovalRoute,
+}
+
+const ServicesLaserRouteWithChildren = ServicesLaserRoute._addFileChildren(
+  ServicesLaserRouteChildren,
+)
+
 interface ServicesRouteChildren {
   ServicesAestheticRoute: typeof ServicesAestheticRoute
   ServicesInjectablesRoute: typeof ServicesInjectablesRoute
-  ServicesLaserRoute: typeof ServicesLaserRoute
+  ServicesLaserRoute: typeof ServicesLaserRouteWithChildren
   ServicesLiftingRoute: typeof ServicesLiftingRoute
   ServicesSkinRoute: typeof ServicesSkinRoute
   ServicesSurgeryRoute: typeof ServicesSurgeryRoute
@@ -321,7 +353,7 @@ interface ServicesRouteChildren {
 const ServicesRouteChildren: ServicesRouteChildren = {
   ServicesAestheticRoute: ServicesAestheticRoute,
   ServicesInjectablesRoute: ServicesInjectablesRoute,
-  ServicesLaserRoute: ServicesLaserRoute,
+  ServicesLaserRoute: ServicesLaserRouteWithChildren,
   ServicesLiftingRoute: ServicesLiftingRoute,
   ServicesSkinRoute: ServicesSkinRoute,
   ServicesSurgeryRoute: ServicesSurgeryRoute,

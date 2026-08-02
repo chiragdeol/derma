@@ -23,7 +23,8 @@ const simpleNav = [
 const dermaLinks = [
   { to: "/services/skin", title: "Skin & HydraFacial", desc: "Facials, peels, microneedling", image: skinImg },
   { to: "/services/injectables", title: "Cosmetic Injectables", desc: "Botox, fillers, Profhilo", image: injectablesImg },
-  { to: "/services/laser", title: "Laser & Hair Removal", desc: "Hair, pigmentation, vascular", image: laserImg },
+  { to: "/services/laser/hair-removal", title: "Laser Hair Removal", desc: "Virtually painless, all skin types", image: laserImg },
+  { to: "/services/laser", title: "Skin Lasers & Tattoo", desc: "Pigmentation, vascular, tattoo", image: laserImg },
   { to: "/services/lifting", title: "Anti-Aging & Lifting", desc: "Morpheus8, Ultherapy, threads", image: liftingImg },
   { to: "/services/wellness", title: "Wellness & Longevity", desc: "IV drips, skin boosters", image: wellnessImg },
 ] as const;

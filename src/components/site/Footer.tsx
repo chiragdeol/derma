@@ -18,7 +18,8 @@ const exploreLinks = [
 const aestheticLinks = [
   { to: "/services/injectables", label: "Cosmetic Injectables" },
   { to: "/services/skin", label: "Skin & HydraFacial" },
-  { to: "/services/laser", label: "Laser & Hair Removal" },
+  { to: "/services/laser/hair-removal", label: "Laser Hair Removal" },
+  { to: "/services/laser", label: "Skin Lasers & Tattoo" },
   { to: "/services/lifting", label: "Anti-Aging & Lifting" },
 ] as const;
 
