@@ -1048,14 +1048,14 @@ function Home() {
       )}
 
       {/* SECOND OPINION CTA */}
-      <section className="bg-primary text-ivory">
+      <section className="bg-[#e3dec9]">
         <div className="mx-auto max-w-4xl px-6 py-16 text-center lg:px-10">
-          <p className="eyebrow text-accent mb-6">Begin your consultation</p>
-          <h2 className="font-display text-4xl leading-tight text-white md:text-5xl text-balance max-w-3xl mx-auto">
+          <p className="eyebrow text-[#974d08] mb-6 font-semibold">Begin your consultation</p>
+          <h2 className="font-display text-4xl leading-tight text-foreground md:text-5xl text-balance max-w-3xl mx-auto font-semibold">
             Your face and smile deserve <br className="hidden sm:inline" />
             a second opinion <em className="italic font-light">worth trusting.</em>
           </h2>
-          <p className="mt-6 max-w-2xl mx-auto text-sm md:text-base leading-relaxed text-white font-semibold">
+          <p className="mt-6 max-w-2xl mx-auto text-sm md:text-base leading-relaxed text-foreground/80 font-medium">
             Book a Free consultation with one of our doctors. No pressure, no obligation — just honest, expert guidance.
           </p>
           <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
@@ -1063,7 +1063,7 @@ function Home() {
               href="https://wa.me/971500999324"
               target="_blank"
               rel="noreferrer"
-              className="rounded-lg bg-[#526452] px-6 py-3 text-sm font-medium text-white hover:bg-[#5d705d] transition-all shadow-sm cursor-pointer"
+              className="rounded-lg bg-[#974d08] px-6 py-3 text-sm font-medium text-white hover:opacity-95 transition-all shadow-sm cursor-pointer"
             >
               Book consultation
             </a>
@@ -1071,7 +1071,7 @@ function Home() {
               href="https://wa.me/971500999324"
               target="_blank"
               rel="noreferrer"
-              className="rounded-lg bg-[#5b5e52] px-6 py-3 text-sm font-medium text-white hover:opacity-95 transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
+              className="rounded-lg bg-[#974d08] px-6 py-3 text-sm font-medium text-white hover:opacity-95 transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
             >
               <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
                 <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.333 4.982L2 22l5.202-1.364a9.994 9.994 0 0 0 4.81 1.233c5.505 0 9.99-4.477 9.99-9.985C22.002 6.478 17.518 2 12.012 2zm0 18.29a8.27 8.27 0 0 1-4.222-1.155l-.304-.18-3.136.82.834-3.056-.198-.314A8.273 8.273 0 0 1 3.72 11.98c0-4.57 3.719-8.285 8.297-8.285 4.574 0 8.29 3.717 8.29 8.288 0 4.57-3.714 8.29-8.29 8.29-.003 0-.003 0 0 0z"/>
@@ -1080,7 +1080,7 @@ function Home() {
             </a>
             <a
               href="tel:+971500999324"
-              className="rounded-lg border border-white/30 px-6 py-3 text-sm font-medium text-white hover:bg-white/10 transition-all cursor-pointer"
+              className="rounded-lg border border-foreground/30 px-6 py-3 text-sm font-medium text-foreground hover:bg-foreground/5 transition-all cursor-pointer"
             >
               Call the clinic
             </a>

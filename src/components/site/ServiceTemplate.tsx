@@ -494,18 +494,18 @@ export function ServiceTemplate({
       </section>
 
       {/* BOOK CTA BAR */}
-      <section className="bg-forest text-ivory py-16 text-center border-t border-ivory/15">
+      <section className="bg-[#e3dec9] py-16 text-center border-t border-border/40">
         <div className="mx-auto max-w-4xl px-6">
-          <p className="eyebrow text-[#b8957e] mb-4">Ready when you are</p>
-          <h2 className="font-display text-3xl md:text-4xl text-white mb-4">Book your consultation.</h2>
-          <p className="text-sm text-ivory/70 max-w-md mx-auto mb-8">
+          <p className="eyebrow text-[#974d08] mb-4 font-semibold">Ready when you are</p>
+          <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4 font-semibold">Book your consultation.</h2>
+          <p className="text-sm text-foreground/80 max-w-md mx-auto mb-8 font-medium">
             A specialist replies within 15 minutes during clinic hours — no pressure, just honest advice.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <a href="https://wa.me/971500999324" className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-black hover:opacity-90 transition-all">
+            <a href="https://wa.me/971500999324" className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white hover:opacity-90 transition-all">
               Book consultation
             </a>
-            <a href="tel:+971500999324" className="rounded-lg border border-ivory/30 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-all">
+            <a href="tel:+971500999324" className="rounded-lg border border-foreground/30 px-6 py-3 text-sm font-semibold text-foreground hover:bg-foreground/5 transition-all">
               Call the clinic
             </a>
           </div>
