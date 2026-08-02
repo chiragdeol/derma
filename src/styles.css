@@ -54,7 +54,7 @@
   --popover: #fbfaf8;
   --popover-foreground: #22221f;
 
-  --primary: #7B8D6A;                           /* Swatch 2: Peach Terracotta (#974d08) */
+  --primary: #974d08;                           /* Swatch 2: Peach Terracotta (#974d08) */
   --primary-foreground: #ffffff;
 
   --secondary: #93A87E;                         /* Swatch 3: Khaki Sand (#93A87E) */
@@ -63,7 +63,7 @@
   --muted: #f2efe9;
   --muted-foreground: #696962;
 
-  --accent: #7B8D6A;                            /* Peach Terracotta accent */
+  --accent: #974d08;                            /* Peach Terracotta accent */
   --accent-foreground: #ffffff;
 
   --destructive: oklch(0.55 0.18 28);
@@ -73,7 +73,7 @@
   --input: #e3dec9;
   --ring: #93A87E;
 
-  --gold: #7B8D6A;                              /* Map gold to Peach Terracotta */
+  --gold: #974d08;                              /* Map gold to Peach Terracotta */
   --sand: #93A87E;                              /* Map sand to Khaki Sand */
   --ivory: #faf8f5;                             /* Map ivory to Swatch base light */
   --forest: #7B8D6A;                            /* Swatch 1: Olive Green (#7B8D6A) */
@@ -116,39 +116,4 @@
     text-transform: uppercase;
     color: var(--muted-foreground);
   }
-}
-
-/* Sienna brown overrides for buttons and button-like CTAs only */
-button.bg-primary,
-button[class*="bg-primary"],
-a.bg-primary,
-a[class*="bg-primary"],
-a[href*="wa.me"][class*="bg-"],
-div[class*="bg-primary"][class*="cursor-pointer"],
-button[class*="bg-[#7B8D6A]"],
-a[class*="bg-[#7B8D6A]"],
-button[class*="bg-[#974d08]"],
-a[class*="bg-[#974d08]"],
-button[class*="bg-forest"],
-a[class*="bg-forest"] {
-  background-color: #974d08 !important;
-  color: #ffffff !important;
-  border-color: #974d08 !important;
-}
-
-button.bg-primary:hover,
-button[class*="bg-primary"]:hover,
-a.bg-primary:hover,
-a[class*="bg-primary"]:hover,
-a[href*="wa.me"][class*="bg-"]:hover,
-div[class*="bg-primary"][class*="cursor-pointer"]:hover,
-button[class*="bg-[#7B8D6A]"]:hover,
-a[class*="bg-[#7B8D6A]"]:hover,
-button[class*="bg-[#974d08]"]:hover,
-a[class*="bg-[#974d08]"]:hover,
-button[class*="bg-forest"]:hover,
-a[class*="bg-forest"]:hover {
-  background-color: transparent !important;
-  color: #974d08 !important;
-  border: 1px solid #974d08 !important;
 }

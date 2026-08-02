@@ -243,7 +243,7 @@ const BeforeAfterSlider = ({ before = beforeImg, after = afterImg }: { before?: 
         style={{ clipPath: `inset(0 0 0 ${position}%)` }}
         draggable={false}
       />
-      <span className="absolute bottom-4 right-4 z-10 rounded bg-[#7B8D6A] px-3 py-1 text-xs uppercase tracking-wider text-black font-semibold">
+      <span className="absolute bottom-4 right-4 z-10 rounded bg-[#974d08] px-3 py-1 text-xs uppercase tracking-wider text-black font-semibold">
         After
       </span>
 
@@ -583,14 +583,14 @@ function Home() {
             <div className="flex gap-3">
               <button
                 onClick={() => scrollCarousel("left")}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-border/80 hover:border-[#7B8D6A] hover:text-[#7B8D6A] bg-background text-foreground transition-all cursor-pointer shadow-sm hover:scale-105"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-border/80 hover:border-[#974d08] hover:text-[#974d08] bg-background text-foreground transition-all cursor-pointer shadow-sm hover:scale-105"
                 aria-label="Scroll Left"
               >
                 ←
               </button>
               <button
                 onClick={() => scrollCarousel("right")}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-border/80 hover:border-[#7B8D6A] hover:text-[#7B8D6A] bg-background text-foreground transition-all cursor-pointer shadow-sm hover:scale-105"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-border/80 hover:border-[#974d08] hover:text-[#974d08] bg-background text-foreground transition-all cursor-pointer shadow-sm hover:scale-105"
                 aria-label="Scroll Right"
               >
                 →
@@ -687,7 +687,7 @@ function Home() {
                   <h3 className="font-display text-xl md:text-2xl font-semibold leading-tight tracking-wide text-white">
                     {card.title}
                   </h3>
-                  <span className="text-[10px] font-sans font-medium tracking-[0.2em] text-[#7B8D6A] mt-2 uppercase">
+                  <span className="text-[10px] font-sans font-medium tracking-[0.2em] text-[#974d08] mt-2 uppercase">
                     {card.doctor}
                   </span>
                   <span className="text-[9px] font-sans tracking-[0.1em] text-white/70 mt-1 uppercase font-light">
@@ -715,12 +715,12 @@ function Home() {
           
           <div className="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
             {/* Package 1: Advance Hair Regeneration */}
-            <div className="bg-background rounded-2xl border border-[#7B8D6A]/40 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md hover:border-[#7B8D6A] transition-all">
-              <span className="absolute top-4 right-4 bg-[#7B8D6A]/15 text-[#7B8D6A] text-[10px] font-sans font-semibold tracking-wider px-3 py-1 rounded-full uppercase">
+            <div className="bg-background rounded-2xl border border-[#974d08]/40 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md hover:border-[#974d08] transition-all">
+              <span className="absolute top-4 right-4 bg-[#974d08]/15 text-[#974d08] text-[10px] font-sans font-semibold tracking-wider px-3 py-1 rounded-full uppercase">
                 Special Offer
               </span>
               <div>
-                <p className="text-xs uppercase tracking-widest text-[#7B8D6A] font-semibold mb-2">Advance Hair Regeneration</p>
+                <p className="text-xs uppercase tracking-widest text-[#974d08] font-semibold mb-2">Advance Hair Regeneration</p>
                 <h3 className="font-display text-2xl md:text-3xl text-foreground mb-3 font-semibold">PRP + Biotin + GFC + Exosome</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed mb-6 font-medium">
                   Four Powerful Solutions. One Transformative Result.
@@ -747,14 +747,14 @@ function Home() {
             </div>
 
             {/* Package 2: Teeth Whitening + Cleaning + Polishing + Free HydraFacial */}
-            <div className="bg-background rounded-2xl border border-[#7B8D6A]/40 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md hover:border-[#7B8D6A] transition-all">
+            <div className="bg-background rounded-2xl border border-[#974d08]/40 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md hover:border-[#974d08] transition-all">
               <div className="flex items-center gap-2 absolute top-4 right-4">
                 <span className="bg-red-500/10 text-red-600 text-[10px] font-sans font-semibold tracking-wider px-3 py-1 rounded-full uppercase">
                   + Free HydraFacial
                 </span>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest text-[#7B8D6A] font-semibold mb-2">Teeth & Skin Combo</p>
+                <p className="text-xs uppercase tracking-widest text-[#974d08] font-semibold mb-2">Teeth & Skin Combo</p>
                 <h3 className="font-display text-2xl md:text-3xl text-foreground mb-3 font-semibold leading-snug">Teeth Whitening + Cleaning + Polishing</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed mb-4 font-medium">
                   A Brighter Smile & Radiant Skin in One Visit!
@@ -984,7 +984,7 @@ function Home() {
 
                 {/* Mute Indicator / Play Icon Overlay */}
                 <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md transition-all group-hover:bg-[#7B8D6A] group-hover:text-black group-hover:scale-110 shadow-lg">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md transition-all group-hover:bg-[#974d08] group-hover:text-black group-hover:scale-110 shadow-lg">
                     <svg
                       viewBox="0 0 24 24"
                       width="24"
@@ -1111,7 +1111,7 @@ function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent md:hidden" />
               <div className="absolute bottom-6 left-6 right-6 text-white md:hidden">
                 <h3 className="font-display text-2xl">{selectedDoctor.name}</h3>
-                <p className="text-xs uppercase tracking-wider text-[#7B8D6A] mt-1">{selectedDoctor.role}</p>
+                <p className="text-xs uppercase tracking-wider text-[#974d08] mt-1">{selectedDoctor.role}</p>
               </div>
             </div>
 
@@ -1121,7 +1121,7 @@ function Home() {
                 {/* Header (desktop only) */}
                 <div className="hidden md:block border-b border-border/50 pb-5 mb-6">
                   <h3 className="font-display text-3xl text-foreground font-semibold">{selectedDoctor.name}</h3>
-                  <p className="text-sm font-semibold tracking-wider text-[#7B8D6A] uppercase mt-1">{selectedDoctor.role}</p>
+                  <p className="text-sm font-semibold tracking-wider text-[#974d08] uppercase mt-1">{selectedDoctor.role}</p>
                 </div>
 
                 {/* Bio */}
@@ -1135,7 +1135,7 @@ function Home() {
                   <ul className="space-y-1.5 text-xs text-muted-foreground">
                     {selectedDoctor.education.map((edu, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <span className="text-[#7B8D6A]">▪</span>
+                        <span className="text-[#974d08]">▪</span>
                         <span>{edu}</span>
                       </li>
                     ))}
