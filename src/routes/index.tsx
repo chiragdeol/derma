@@ -567,7 +567,7 @@ function Home() {
       </section>
 
       {/* NEW CLINICAL RESULTS GALLERY SECTION */}
-      <section id="results" className="bg-[#FAF7F2] border-y border-border/40 text-foreground overflow-hidden">
+      <section id="results" className="hidden bg-[#FAF7F2] border-y border-border/40 text-foreground overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div className="max-w-3xl">

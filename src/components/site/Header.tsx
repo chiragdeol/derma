@@ -16,7 +16,6 @@ import aboutImg from "@/assets/about.jpg";
 const simpleNav = [
   { to: "/about", label: "The Clinic" },
   { to: "/#doctors", label: "Doctors" },
-  { to: "/#results", label: "Results" },
   { to: "/#offers", label: "Offers" },
 ] as const;
 
