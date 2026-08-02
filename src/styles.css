@@ -54,16 +54,16 @@
   --popover: #fbfaf8;
   --popover-foreground: #22221f;
 
-  --primary: #b8957e;                           /* Swatch 2: Peach Terracotta (#b8957e) */
+  --primary: #974d08;                           /* Swatch 2: Peach Terracotta (#974d08) */
   --primary-foreground: #ffffff;
 
-  --secondary: #ab9b83;                         /* Swatch 3: Khaki Sand (#ab9b83) */
+  --secondary: #93A87E;                         /* Swatch 3: Khaki Sand (#93A87E) */
   --secondary-foreground: #22221f;
 
   --muted: #f2efe9;
   --muted-foreground: #696962;
 
-  --accent: #b8957e;                            /* Peach Terracotta accent */
+  --accent: #974d08;                            /* Peach Terracotta accent */
   --accent-foreground: #ffffff;
 
   --destructive: oklch(0.55 0.18 28);
@@ -71,13 +71,13 @@
 
   --border: #e3dec9;                            /* Soft warm border */
   --input: #e3dec9;
-  --ring: #ab9b83;
+  --ring: #93A87E;
 
-  --gold: #b8957e;                              /* Map gold to Peach Terracotta */
-  --sand: #ab9b83;                              /* Map sand to Khaki Sand */
+  --gold: #974d08;                              /* Map gold to Peach Terracotta */
+  --sand: #93A87E;                              /* Map sand to Khaki Sand */
   --ivory: #faf8f5;                             /* Map ivory to Swatch base light */
-  --forest: #5b5e52;                            /* Swatch 1: Olive Green (#5b5e52) */
-  --teal-dark: #3e4138;                         /* Deeper Olive green for contrast */
+  --forest: #7B8D6A;                            /* Swatch 1: Olive Green (#7B8D6A) */
+  --teal-dark: #4d5940;                         /* Deeper Olive green for contrast */
 }
 
 @layer base {

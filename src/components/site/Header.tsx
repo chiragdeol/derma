@@ -166,9 +166,9 @@ export function Header() {
 
                   {/* Feature Panel */}
                   <div className="bg-forest p-8 flex flex-col justify-between text-ivory relative overflow-hidden">
-                    <div className="absolute inset-4 border border-[#b8957e]/30 pointer-events-none rounded-lg" />
+                    <div className="absolute inset-4 border border-[#974d08]/30 pointer-events-none rounded-lg" />
                     <div className="relative z-10">
-                      <p className="eyebrow text-[#b8957e] mb-2">Not sure where to start?</p>
+                      <p className="eyebrow text-[#974d08] mb-2">Not sure where to start?</p>
                       <h4 className="font-display text-xl text-white mb-3">Book a consultation</h4>
                       <p className="text-xs text-ivory/70 leading-relaxed">
                         Tell us your goal — our doctors recommend the right pathway across skin and dental.
@@ -179,7 +179,7 @@ export function Header() {
                       target="_blank"
                       rel="noreferrer"
                       onClick={() => setServicesOpen(false)}
-                      className="relative z-10 w-full text-center rounded-lg bg-[#b8957e] border border-[#b8957e] hover:bg-transparent hover:text-[#b8957e] py-3 text-xs font-semibold text-white transition-all flex items-center justify-center gap-1.5 shadow-sm mt-8"
+                      className="relative z-10 w-full text-center rounded-lg bg-[#974d08] border border-[#974d08] hover:bg-transparent hover:text-[#974d08] py-3 text-xs font-semibold text-white transition-all flex items-center justify-center gap-1.5 shadow-sm mt-8"
                     >
                       WhatsApp us
                     </a>

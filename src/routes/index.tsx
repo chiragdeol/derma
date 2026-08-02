@@ -243,7 +243,7 @@ const BeforeAfterSlider = ({ before = beforeImg, after = afterImg }: { before?: 
         style={{ clipPath: `inset(0 0 0 ${position}%)` }}
         draggable={false}
       />
-      <span className="absolute bottom-4 right-4 z-10 rounded bg-[#b8957e] px-3 py-1 text-xs uppercase tracking-wider text-black font-semibold">
+      <span className="absolute bottom-4 right-4 z-10 rounded bg-[#974d08] px-3 py-1 text-xs uppercase tracking-wider text-black font-semibold">
         After
       </span>
 
@@ -422,7 +422,7 @@ function Home() {
                     href="https://wa.me/971500999324"
                     target="_blank"
                     rel="noreferrer"
-                    className="w-full rounded-lg bg-[#3e4138] py-3 text-sm font-medium text-white hover:opacity-95 transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full rounded-lg bg-[#4d5940] py-3 text-sm font-medium text-white hover:opacity-95 transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
                       <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.333 4.982L2 22l5.202-1.364a9.994 9.994 0 0 0 4.81 1.233c5.505 0 9.99-4.477 9.99-9.985C22.002 6.478 17.518 2 12.012 2zm0 18.29a8.27 8.27 0 0 1-4.222-1.155l-.304-.18-3.136.82.834-3.056-.198-.314A8.273 8.273 0 0 1 3.72 11.98c0-4.57 3.719-8.285 8.297-8.285 4.574 0 8.29 3.717 8.29 8.288 0 4.57-3.714 8.29-8.29 8.29-.003 0-.003 0 0 0z"/>
@@ -583,14 +583,14 @@ function Home() {
             <div className="flex gap-3">
               <button
                 onClick={() => scrollCarousel("left")}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-border/80 hover:border-[#7a5a48] hover:text-[#7a5a48] bg-background text-foreground transition-all cursor-pointer shadow-sm hover:scale-105"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-border/80 hover:border-[#974d08] hover:text-[#974d08] bg-background text-foreground transition-all cursor-pointer shadow-sm hover:scale-105"
                 aria-label="Scroll Left"
               >
                 ←
               </button>
               <button
                 onClick={() => scrollCarousel("right")}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-border/80 hover:border-[#7a5a48] hover:text-[#7a5a48] bg-background text-foreground transition-all cursor-pointer shadow-sm hover:scale-105"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-border/80 hover:border-[#974d08] hover:text-[#974d08] bg-background text-foreground transition-all cursor-pointer shadow-sm hover:scale-105"
                 aria-label="Scroll Right"
               >
                 →
@@ -687,7 +687,7 @@ function Home() {
                   <h3 className="font-display text-xl md:text-2xl font-semibold leading-tight tracking-wide text-white">
                     {card.title}
                   </h3>
-                  <span className="text-[10px] font-sans font-medium tracking-[0.2em] text-[#b8957e] mt-2 uppercase">
+                  <span className="text-[10px] font-sans font-medium tracking-[0.2em] text-[#974d08] mt-2 uppercase">
                     {card.doctor}
                   </span>
                   <span className="text-[9px] font-sans tracking-[0.1em] text-white/70 mt-1 uppercase font-light">
@@ -715,12 +715,12 @@ function Home() {
           
           <div className="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
             {/* Package 1: Advance Hair Regeneration */}
-            <div className="bg-background rounded-2xl border border-[#b8957e]/40 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md hover:border-[#b8957e] transition-all">
-              <span className="absolute top-4 right-4 bg-[#b8957e]/15 text-[#7a5a48] text-[10px] font-sans font-semibold tracking-wider px-3 py-1 rounded-full uppercase">
+            <div className="bg-background rounded-2xl border border-[#974d08]/40 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md hover:border-[#974d08] transition-all">
+              <span className="absolute top-4 right-4 bg-[#974d08]/15 text-[#974d08] text-[10px] font-sans font-semibold tracking-wider px-3 py-1 rounded-full uppercase">
                 Special Offer
               </span>
               <div>
-                <p className="text-xs uppercase tracking-widest text-[#b8957e] font-semibold mb-2">Advance Hair Regeneration</p>
+                <p className="text-xs uppercase tracking-widest text-[#974d08] font-semibold mb-2">Advance Hair Regeneration</p>
                 <h3 className="font-display text-2xl md:text-3xl text-foreground mb-3 font-semibold">PRP + Biotin + GFC + Exosome</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed mb-6 font-medium">
                   Four Powerful Solutions. One Transformative Result.
@@ -747,14 +747,14 @@ function Home() {
             </div>
 
             {/* Package 2: Teeth Whitening + Cleaning + Polishing + Free HydraFacial */}
-            <div className="bg-background rounded-2xl border border-[#b8957e]/40 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md hover:border-[#b8957e] transition-all">
+            <div className="bg-background rounded-2xl border border-[#974d08]/40 p-8 shadow-sm flex flex-col justify-between relative group hover:shadow-md hover:border-[#974d08] transition-all">
               <div className="flex items-center gap-2 absolute top-4 right-4">
                 <span className="bg-red-500/10 text-red-600 text-[10px] font-sans font-semibold tracking-wider px-3 py-1 rounded-full uppercase">
                   + Free HydraFacial
                 </span>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest text-[#b8957e] font-semibold mb-2">Teeth & Skin Combo</p>
+                <p className="text-xs uppercase tracking-widest text-[#974d08] font-semibold mb-2">Teeth & Skin Combo</p>
                 <h3 className="font-display text-2xl md:text-3xl text-foreground mb-3 font-semibold leading-snug">Teeth Whitening + Cleaning + Polishing</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed mb-4 font-medium">
                   A Brighter Smile & Radiant Skin in One Visit!
@@ -984,7 +984,7 @@ function Home() {
 
                 {/* Mute Indicator / Play Icon Overlay */}
                 <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md transition-all group-hover:bg-[#b8957e] group-hover:text-black group-hover:scale-110 shadow-lg">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md transition-all group-hover:bg-[#974d08] group-hover:text-black group-hover:scale-110 shadow-lg">
                     <svg
                       viewBox="0 0 24 24"
                       width="24"
@@ -1071,7 +1071,7 @@ function Home() {
               href="https://wa.me/971500999324"
               target="_blank"
               rel="noreferrer"
-              className="rounded-lg bg-[#5b5e52] px-6 py-3 text-sm font-medium text-white hover:opacity-95 transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
+              className="rounded-lg bg-[#7B8D6A] px-6 py-3 text-sm font-medium text-white hover:opacity-95 transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
             >
               <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
                 <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.333 4.982L2 22l5.202-1.364a9.994 9.994 0 0 0 4.81 1.233c5.505 0 9.99-4.477 9.99-9.985C22.002 6.478 17.518 2 12.012 2zm0 18.29a8.27 8.27 0 0 1-4.222-1.155l-.304-.18-3.136.82.834-3.056-.198-.314A8.273 8.273 0 0 1 3.72 11.98c0-4.57 3.719-8.285 8.297-8.285 4.574 0 8.29 3.717 8.29 8.288 0 4.57-3.714 8.29-8.29 8.29-.003 0-.003 0 0 0z"/>
@@ -1111,7 +1111,7 @@ function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent md:hidden" />
               <div className="absolute bottom-6 left-6 right-6 text-white md:hidden">
                 <h3 className="font-display text-2xl">{selectedDoctor.name}</h3>
-                <p className="text-xs uppercase tracking-wider text-[#b8957e] mt-1">{selectedDoctor.role}</p>
+                <p className="text-xs uppercase tracking-wider text-[#974d08] mt-1">{selectedDoctor.role}</p>
               </div>
             </div>
 
@@ -1121,7 +1121,7 @@ function Home() {
                 {/* Header (desktop only) */}
                 <div className="hidden md:block border-b border-border/50 pb-5 mb-6">
                   <h3 className="font-display text-3xl text-foreground font-semibold">{selectedDoctor.name}</h3>
-                  <p className="text-sm font-semibold tracking-wider text-[#b8957e] uppercase mt-1">{selectedDoctor.role}</p>
+                  <p className="text-sm font-semibold tracking-wider text-[#974d08] uppercase mt-1">{selectedDoctor.role}</p>
                 </div>
 
                 {/* Bio */}
@@ -1135,7 +1135,7 @@ function Home() {
                   <ul className="space-y-1.5 text-xs text-muted-foreground">
                     {selectedDoctor.education.map((edu, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <span className="text-[#b8957e]">▪</span>
+                        <span className="text-[#974d08]">▪</span>
                         <span>{edu}</span>
                       </li>
                     ))}
@@ -1167,7 +1167,7 @@ function Home() {
                   href="https://wa.me/971500999324"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex-1 text-center rounded-xl bg-[#5b5e52] hover:opacity-95 py-3.5 text-xs font-semibold text-white transition-all shadow-sm"
+                  className="flex-1 text-center rounded-xl bg-[#7B8D6A] hover:opacity-95 py-3.5 text-xs font-semibold text-white transition-all shadow-sm"
                 >
                   Book Consultation
                 </a>
