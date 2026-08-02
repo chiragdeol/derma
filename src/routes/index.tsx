@@ -219,7 +219,7 @@ const BeforeAfterSlider = ({ before = beforeImg, after = afterImg }: { before?: 
   return (
     <div 
       ref={containerRef}
-      className="relative aspect-square w-full select-none overflow-hidden rounded-2xl border border-border/50 shadow-lg cursor-ew-resize"
+      className="relative aspect-[4/3] w-full max-w-lg mx-auto select-none overflow-hidden rounded-2xl border border-border/50 shadow-lg cursor-ew-resize"
       onMouseMove={onMouseMove}
       onTouchMove={onTouchMove}
       onClick={(e) => handleMove(e.clientX)}
@@ -311,7 +311,7 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative bg-background overflow-hidden pt-28 pb-16 lg:pt-36 lg:pb-20">
+      <section className="relative bg-background overflow-hidden pt-24 pb-12 lg:pt-32 lg:pb-16">
         {/* Soft watermark background image */}
         <div className="absolute inset-0 z-0 opacity-[0.08] mix-blend-multiply pointer-events-none">
           <img
@@ -446,7 +446,7 @@ function Home() {
       </section>
 
       {/* ABOUT US (RECEPTION SHOWCASE) */}
-      <section className="bg-[#FAF7F2] py-16 lg:py-24">
+      <section className="bg-[#FAF7F2] py-12 lg:py-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
             {/* Image Column */}
@@ -484,7 +484,7 @@ function Home() {
 
       {/* SERVICES */}
       <section id="services" className="bg-secondary/30">
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+        <div className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-16">
           <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
               <p className="eyebrow mb-4">What we do</p>
@@ -544,8 +544,8 @@ function Home() {
 
       {/* BEFORE / AFTER COMPARISON */}
       <section className="bg-forest text-ivory">
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
-          <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+        <div className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-16">
+          <div className="grid gap-8 lg:gap-12 lg:grid-cols-2 lg:items-center">
             <div>
               <p className="eyebrow mb-6 text-primary">Real Results</p>
               <h2 className="font-display text-4xl leading-tight md:text-5xl">
@@ -568,7 +568,7 @@ function Home() {
 
       {/* NEW CLINICAL RESULTS GALLERY SECTION */}
       <section id="results" className="hidden bg-[#FAF7F2] border-y border-border/40 text-foreground overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+        <div className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-16">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div className="max-w-3xl">
               <h2 className="font-display text-4xl leading-tight md:text-5xl text-foreground mb-4">
@@ -702,7 +702,7 @@ function Home() {
 
       {/* SEASONAL OFFERS */}
       <section id="offers" className="bg-background">
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+        <div className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-16">
           <div className="mb-14 max-w-2xl">
             <p className="eyebrow mb-4 text-primary font-semibold">Special Packages</p>
             <h2 className="font-display text-4xl md:text-5xl mb-4">
@@ -787,7 +787,7 @@ function Home() {
       </section>
 
       {/* DOCTORS */}
-      <section id="doctors" className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+      <section id="doctors" className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-16">
         <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>
             <p className="eyebrow mb-4">Meet the team</p>
@@ -834,7 +834,7 @@ function Home() {
 
       {/* TESTIMONIALS & GOOGLE REVIEWS */}
       <section id="results" className="bg-secondary/40">
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+        <div className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-16">
           <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
               <p className="eyebrow mb-4 text-primary font-semibold">Real Google Reviews · Sharjah</p>
