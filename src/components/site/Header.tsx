@@ -64,7 +64,7 @@ export function Header() {
       }`}
     >
       {/* Top Bar */}
-      <div className="bg-primary text-ivory text-[11px] py-1.5 px-6 lg:px-10 flex flex-col sm:flex-row justify-between items-center gap-1.5 transition-all duration-300">
+      <div className="bg-[#974d08] text-ivory text-[11px] py-1.5 px-6 lg:px-10 flex flex-col sm:flex-row justify-between items-center gap-1.5 transition-all duration-300">
         <div className="flex items-center gap-1.5 opacity-90 tracking-wide font-light">
           <span>Behind Zahia City Center, New Muweilah, Sharjah</span>
           <span className="opacity-45">•</span>
