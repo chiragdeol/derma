@@ -1,8 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useRef } from "react";
-import { Check, Play, Phone, HelpCircle } from "lucide-react";
+import { Check, Play, Phone, HelpCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import heroImg from "@/assets/service-laser.jpg";
 import suitabilityImg from "@/assets/new-laser-1.jpg";
+import ba1Before from "@/assets/ba-laser-1-before.jpg";
+import ba1After from "@/assets/ba-laser-1-after.jpg";
+import ba2Before from "@/assets/ba-laser-2-before.jpg";
+import ba2After from "@/assets/ba-laser-2-after.jpg";
+import baGenBefore from "@/assets/before.jpg";
+import baGenAfter from "@/assets/after.jpg";
 
 export const Route = createFileRoute("/services/laser/hair-removal")({
   head: () => ({
@@ -28,6 +34,26 @@ function LaserHairRemovalLanding() {
   const [submitted, setSubmitted] = useState(false);
   const [videoPlaying, setVideoPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = scrollRef.current.clientWidth * 0.85;
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  const galleryItems = [
+    { area: "Underarms", sessions: "6 sessions", before: ba1Before, after: ba1After },
+    { area: "Face & Lip", sessions: "5 sessions", before: ba2Before, after: ba2After },
+    { area: "Bikini Line", sessions: "6 sessions", before: baGenBefore, after: baGenAfter },
+    { area: "Full Legs", sessions: "7 sessions", before: ba1Before, after: ba1After },
+    { area: "Men's Back", sessions: "7 sessions", before: baGenBefore, after: baGenAfter },
+    { area: "Full Arms", sessions: "6 sessions", before: ba2Before, after: ba2After },
+  ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { id, value, type } = e.target;
@@ -246,8 +272,8 @@ function LaserHairRemovalLanding() {
         </div>
       </section>
 
-      {/* WHY AL NEMAH (DARK MOSS GREEN) */}
-      <section className="bg-[#7B8D6A] text-white py-16 lg:py-20">
+      {/* WHY AL NEMAH (DARK FOREST GREEN) */}
+      <section className="bg-[#5b5e52] text-[#E9E6DC] py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="max-w-2xl mb-12">
             <span className="eyebrow text-[#e3dec9] mb-3 font-semibold">Why Al Nemah</span>
@@ -367,6 +393,93 @@ function LaserHairRemovalLanding() {
               </li>
             </ul>
           </div>
+        </div>
+      </section>
+
+      {/* BEFORE / AFTER CAROUSEL */}
+      <section className="bg-[#FAF7F2] border-y border-border/40 py-16 lg:py-20">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <div className="flex justify-between items-end mb-12">
+            <div>
+              <span className="eyebrow text-[#974d08] mb-3 font-semibold">Real results</span>
+              <h2 className="font-display text-3xl md:text-4xl text-foreground">Before & after.</h2>
+              <p className="text-sm text-muted-foreground leading-relaxed mt-2 max-w-2xl font-light">
+                Real Al Nemah patients, shared with written consent. Slide through to see more.
+              </p>
+            </div>
+            {/* Arrows */}
+            <div className="flex gap-3">
+              <button
+                onClick={() => scroll('left')}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground hover:border-[#ab9b83] transition-all cursor-pointer shadow-sm"
+                aria-label="Previous results"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                onClick={() => scroll('right')}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground hover:border-[#ab9b83] transition-all cursor-pointer shadow-sm"
+                aria-label="Next results"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Carousel Track */}
+          <div 
+            ref={scrollRef}
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-none"
+            style={{ scrollbarWidth: 'none' }}
+          >
+            {galleryItems.map((item, idx) => (
+              <div 
+                key={idx} 
+                className="min-w-[85%] sm:min-w-[45%] lg:min-w-[31.5%] snap-start shrink-0"
+              >
+                <article className="bg-card border border-border/60 rounded-xl overflow-hidden shadow-sm flex flex-col">
+                  {/* Side by side before/after */}
+                  <div className="grid grid-cols-2 relative aspect-[4/3] w-full border-b border-border/50">
+                    {/* Before half */}
+                    <div className="relative h-full w-full overflow-hidden border-r border-border/50">
+                      <img 
+                        src={item.before} 
+                        alt={`${item.area} before laser`} 
+                        className="h-full w-full object-cover"
+                        loading="lazy"
+                      />
+                      <span className="absolute left-3 bottom-3 text-[9px] uppercase tracking-wider font-semibold text-white bg-black/45 px-2.5 py-1 rounded select-none">
+                        Before
+                      </span>
+                    </div>
+
+                    {/* After half */}
+                    <div className="relative h-full w-full overflow-hidden">
+                      <img 
+                        src={item.after} 
+                        alt={`${item.area} after laser`} 
+                        className="h-full w-full object-cover"
+                        loading="lazy"
+                      />
+                      <span className="absolute right-3 bottom-3 text-[9px] uppercase tracking-wider font-semibold text-white bg-black/45 px-2.5 py-1 rounded select-none">
+                        After
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Meta */}
+                  <div className="p-5 flex justify-between items-center bg-card">
+                    <span className="font-display text-sm font-semibold text-foreground">{item.area}</span>
+                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">{item.sessions}</span>
+                  </div>
+                </article>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-[10px] text-muted-foreground text-center mt-10">
+            All images are of real patients, published with written consent. Individual results vary — laser provides long-lasting hair reduction, not permanent removal.
+          </p>
         </div>
       </section>
 
