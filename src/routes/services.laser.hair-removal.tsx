@@ -1,14 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Check, Play, Phone, HelpCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import heroImg from "@/assets/service-laser.jpg";
 import suitabilityImg from "@/assets/new-laser-1.jpg";
-import ba1Before from "@/assets/ba-laser-1-before.jpg";
-import ba1After from "@/assets/ba-laser-1-after.jpg";
-import ba2Before from "@/assets/ba-laser-2-before.jpg";
-import ba2After from "@/assets/ba-laser-2-after.jpg";
-import baGenBefore from "@/assets/before.jpg";
-import baGenAfter from "@/assets/after.jpg";
 
 export const Route = createFileRoute("/services/laser/hair-removal")({
   head: () => ({
@@ -35,10 +29,11 @@ function LaserHairRemovalLanding() {
   const [videoPlaying, setVideoPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeDot, setActiveDot] = useState(0);
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
-      const scrollAmount = scrollRef.current.clientWidth * 0.85;
+      const scrollAmount = scrollRef.current.clientWidth * 0.9;
       scrollRef.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth',
@@ -46,13 +41,38 @@ function LaserHairRemovalLanding() {
     }
   };
 
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      const maxScroll = scrollWidth - clientWidth;
+      if (maxScroll <= 0) return;
+      const percentage = scrollLeft / maxScroll;
+      setActiveDot(Math.round(percentage));
+    }
+  };
+
+  const scrollToPage = (pageIndex: number) => {
+    if (scrollRef.current) {
+      const { scrollWidth, clientWidth } = scrollRef.current;
+      const maxScroll = scrollWidth - clientWidth;
+      scrollRef.current.scrollTo({
+        left: pageIndex * maxScroll,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   const galleryItems = [
-    { area: "Underarms", sessions: "6 sessions", before: ba1Before, after: ba1After },
-    { area: "Face & Lip", sessions: "5 sessions", before: ba2Before, after: ba2After },
-    { area: "Bikini Line", sessions: "6 sessions", before: baGenBefore, after: baGenAfter },
-    { area: "Full Legs", sessions: "7 sessions", before: ba1Before, after: ba1After },
-    { area: "Men's Back", sessions: "7 sessions", before: baGenBefore, after: baGenAfter },
-    { area: "Full Arms", sessions: "6 sessions", before: ba2Before, after: ba2After },
+    { area: "Underarms", sessions: "6 sessions", before: "linear-gradient(160deg,#B2A995,#7A7260 80%,#544F40)", after: "linear-gradient(160deg,#F2E9D9,#D0BEA1 70%,#B6A284)" },
+    { area: "Legs", sessions: "7 sessions", before: "linear-gradient(160deg,#AFA894,#77705E 80%,#524D3F)", after: "linear-gradient(160deg,#EFE5D3,#CBB99C 70%,#B29E80)" },
+    { area: "Bikini", sessions: "6 sessions", before: "linear-gradient(160deg,#B3AA96,#7B7361 80%,#555041)", after: "linear-gradient(160deg,#F1E8D7,#CFBDA1 70%,#B6A283)" },
+    { area: "Upper lip", sessions: "5 sessions", before: "linear-gradient(160deg,#B5AC97,#7E7461 80%,#575142)", after: "linear-gradient(160deg,#F3EADA,#D2C0A3 70%,#B7A385)" },
+    { area: "Full arms", sessions: "6 sessions", before: "linear-gradient(160deg,#ADA491,#756E5C 80%,#4F4A3D)", after: "linear-gradient(160deg,#EFE6D5,#CDBB9E 70%,#B4A082)" },
+    { area: "Men — back", sessions: "7 sessions", before: "linear-gradient(160deg,#B0A794,#78715F 80%,#534E3F)", after: "linear-gradient(160deg,#F0E7D7,#CEBCA0 70%,#B5A183)" },
+    { area: "Men — chest", sessions: "7 sessions", before: "linear-gradient(160deg,#AEA693,#776F5D 80%,#524D3E)", after: "linear-gradient(160deg,#EEE5D4,#CCBA9E 70%,#B3A081)" },
+    { area: "Men — beard line", sessions: "6 sessions", before: "linear-gradient(160deg,#B1A895,#79715F 80%,#534E40)", after: "linear-gradient(160deg,#F0E6D6,#CCBA9D 70%,#B39F82)" },
+    { area: "Full face", sessions: "6 sessions", before: "linear-gradient(160deg,#B4AB98,#7C7360 80%,#565040)", after: "linear-gradient(160deg,#F1E8D8,#CFBDA0 70%,#B5A082)" },
+    { area: "Full body", sessions: "8 sessions", before: "linear-gradient(160deg,#B6B3A6,#7E7A6C 80%,#555247)", after: "linear-gradient(160deg,#F3EFE5,#D4CFC0 70%,#BBB6A6)" },
   ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -411,14 +431,14 @@ function LaserHairRemovalLanding() {
             <div className="flex gap-3">
               <button
                 onClick={() => scroll('left')}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground hover:border-[#ab9b83] transition-all cursor-pointer shadow-sm"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground hover:border-[#ab9b83] transition-all cursor-pointer shadow-sm animate-none"
                 aria-label="Previous results"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
               <button
                 onClick={() => scroll('right')}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground hover:border-[#ab9b83] transition-all cursor-pointer shadow-sm"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground hover:border-[#ab9b83] transition-all cursor-pointer shadow-sm animate-none"
                 aria-label="Next results"
               >
                 <ChevronRight className="h-5 w-5" />
@@ -429,52 +449,61 @@ function LaserHairRemovalLanding() {
           {/* Carousel Track */}
           <div 
             ref={scrollRef}
-            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-none"
+            onScroll={handleScroll}
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-none pb-4"
             style={{ scrollbarWidth: 'none' }}
           >
             {galleryItems.map((item, idx) => (
               <div 
                 key={idx} 
-                className="min-w-[85%] sm:min-w-[45%] lg:min-w-[31.5%] snap-start shrink-0"
+                className="min-w-[85%] sm:min-w-[48%] lg:min-w-[18.8%] snap-start shrink-0"
               >
                 <article className="bg-card border border-border/60 rounded-xl overflow-hidden shadow-sm flex flex-col">
-                  {/* Side by side before/after */}
+                  {/* Side by side before/after using gradient blocks */}
                   <div className="grid grid-cols-2 relative aspect-[4/3] w-full border-b border-border/50">
                     {/* Before half */}
-                    <div className="relative h-full w-full overflow-hidden border-r border-border/50">
-                      <img 
-                        src={item.before} 
-                        alt={`${item.area} before laser`} 
-                        className="h-full w-full object-cover"
-                        loading="lazy"
-                      />
+                    <div 
+                      style={{ background: item.before }}
+                      className="relative h-full w-full overflow-hidden border-r border-border/50"
+                    >
                       <span className="absolute left-3 bottom-3 text-[9px] uppercase tracking-wider font-semibold text-white bg-black/45 px-2.5 py-1 rounded select-none">
                         Before
                       </span>
                     </div>
 
                     {/* After half */}
-                    <div className="relative h-full w-full overflow-hidden">
-                      <img 
-                        src={item.after} 
-                        alt={`${item.area} after laser`} 
-                        className="h-full w-full object-cover"
-                        loading="lazy"
-                      />
-                      <span className="absolute right-3 bottom-3 text-[9px] uppercase tracking-wider font-semibold text-white bg-black/45 px-2.5 py-1 rounded select-none">
+                    <div 
+                      style={{ background: item.after }}
+                      className="relative h-full w-full overflow-hidden"
+                    >
+                      <span className="absolute left-3 bottom-3 text-[9px] uppercase tracking-wider font-semibold text-white bg-black/45 px-2.5 py-1 rounded select-none">
                         After
                       </span>
                     </div>
                   </div>
 
                   {/* Meta */}
-                  <div className="p-5 flex justify-between items-center bg-card">
-                    <span className="font-display text-sm font-semibold text-foreground">{item.area}</span>
-                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">{item.sessions}</span>
+                  <div className="p-5 flex flex-col items-start bg-card min-h-[92px] justify-between">
+                    <span className="font-display text-sm font-semibold text-foreground leading-tight">{item.area}</span>
+                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold mt-1">{item.sessions}</span>
                   </div>
                 </article>
               </div>
             ))}
+          </div>
+
+          {/* Dots Pagination */}
+          <div className="flex justify-center gap-2 mt-8">
+            <button 
+              onClick={() => scrollToPage(0)} 
+              className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${activeDot === 0 ? 'w-6 bg-[#974d08]' : 'w-2 bg-border'}`}
+              aria-label="First page"
+            />
+            <button 
+              onClick={() => scrollToPage(1)} 
+              className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${activeDot === 1 ? 'w-6 bg-[#974d08]' : 'w-2 bg-border'}`}
+              aria-label="Second page"
+            />
           </div>
 
           <p className="text-[10px] text-muted-foreground text-center mt-10">
