@@ -47,7 +47,7 @@ function LaserHairRemovalLanding() {
       const maxScroll = scrollWidth - clientWidth;
       if (maxScroll <= 0) return;
       const percentage = scrollLeft / maxScroll;
-      setActiveDot(Math.round(percentage));
+      setActiveDot(Math.round(percentage * 2));
     }
   };
 
@@ -56,7 +56,7 @@ function LaserHairRemovalLanding() {
       const { scrollWidth, clientWidth } = scrollRef.current;
       const maxScroll = scrollWidth - clientWidth;
       scrollRef.current.scrollTo({
-        left: pageIndex * maxScroll,
+        left: (pageIndex / 2) * maxScroll,
         behavior: 'smooth',
       });
     }
@@ -456,7 +456,7 @@ function LaserHairRemovalLanding() {
             {galleryItems.map((item, idx) => (
               <div 
                 key={idx} 
-                className="min-w-[85%] sm:min-w-[48%] lg:min-w-[18.8%] snap-start shrink-0"
+                className="min-w-[85%] sm:min-w-[48%] lg:min-w-[31.3%] snap-start shrink-0"
               >
                 <article className="bg-card border border-border/60 rounded-xl overflow-hidden shadow-sm flex flex-col">
                   {/* Side by side before/after using gradient blocks */}
@@ -494,16 +494,14 @@ function LaserHairRemovalLanding() {
 
           {/* Dots Pagination */}
           <div className="flex justify-center gap-2 mt-8">
-            <button 
-              onClick={() => scrollToPage(0)} 
-              className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${activeDot === 0 ? 'w-6 bg-[#974d08]' : 'w-2 bg-border'}`}
-              aria-label="First page"
-            />
-            <button 
-              onClick={() => scrollToPage(1)} 
-              className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${activeDot === 1 ? 'w-6 bg-[#974d08]' : 'w-2 bg-border'}`}
-              aria-label="Second page"
-            />
+            {[0, 1, 2].map((dotIdx) => (
+              <button 
+                key={dotIdx}
+                onClick={() => scrollToPage(dotIdx)} 
+                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${activeDot === dotIdx ? 'w-6 bg-[#974d08]' : 'w-2 bg-border'}`}
+                aria-label={`Page ${dotIdx + 1}`}
+              />
+            ))}
           </div>
 
           <p className="text-[10px] text-muted-foreground text-center mt-10">
