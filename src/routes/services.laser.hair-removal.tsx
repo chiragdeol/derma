@@ -275,7 +275,13 @@ function LaserHairRemovalLanding() {
 
       {/* VIDEO SECTION */}
       <section className="bg-[#5b5e52] text-[#E9E6DC] py-16 lg:py-20">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        <div className="mx-auto max-w-4xl px-6 lg:px-10 flex flex-col items-center text-center">
+          <span className="eyebrow text-[#EBD9C9] mb-3 font-semibold">See it for yourself</span>
+          <h2 className="font-display text-3xl md:text-4xl text-[#F4F1E8] mb-4">Watch a laser session at Al Nemah.</h2>
+          <p className="text-sm text-[#CBC7BA] leading-relaxed mb-10 max-w-2xl font-light">
+            A quick look at how comfortable, clean and fast the treatment really is — from consultation to the laser itself.
+          </p>
+          
           {/* Video Player */}
           <div className="relative aspect-video w-full rounded-2xl overflow-hidden shadow-lg border border-white/20 bg-black group">
             {!videoPlaying ? (
@@ -296,46 +302,6 @@ function LaserHairRemovalLanding() {
               className="w-full h-full object-cover"
               src="/laser-session.mp4"
             />
-          </div>
-
-          {/* Copy */}
-          <div className="flex flex-col">
-            <span className="eyebrow text-[#EBD9C9] mb-3 font-semibold">See it for yourself</span>
-            <h2 className="font-display text-3xl md:text-4xl text-[#F4F1E8] mb-4">Watch a laser session at Al Nemah.</h2>
-            <p className="text-sm text-[#CBC7BA] leading-relaxed mb-8 font-light">
-              A quick look at how comfortable, clean and fast the treatment really is — from consultation to the laser itself.
-            </p>
-
-            <div className="space-y-5">
-              <div className="flex gap-4">
-                <span className="font-display text-base font-semibold text-[#EBD9C9]">01</span>
-                <div>
-                  <b className="text-sm font-semibold text-[#F4F1E8] block mb-0.5">Consultation & patch test</b>
-                  <p className="text-xs text-[#CBC7BA] leading-relaxed">We confirm the safest settings for your skin.</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <span className="font-display text-base font-semibold text-[#EBD9C9]">02</span>
-                <div>
-                  <b className="text-sm font-semibold text-[#F4F1E8] block mb-0.5">Comfortable, cooled treatment</b>
-                  <p className="text-xs text-[#CBC7BA] leading-relaxed">Built-in cooling keeps every pass tolerable.</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <span className="font-display text-base font-semibold text-[#EBD9C9]">03</span>
-                <div>
-                  <b className="text-sm font-semibold text-[#F4F1E8] block mb-0.5">In and out quickly</b>
-                  <p className="text-xs text-[#CBC7BA] leading-relaxed">Small areas take minutes — easy to fit into your day.</p>
-                </div>
-              </div>
-            </div>
-
-            <a
-              href="#book"
-              className="mt-8 self-start rounded-lg bg-[#ab9b83] text-white px-6 py-3.5 text-sm font-semibold hover:opacity-95 transition-all shadow-md"
-            >
-              Book your session
-            </a>
           </div>
         </div>
       </section>

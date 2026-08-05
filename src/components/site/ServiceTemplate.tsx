@@ -424,7 +424,13 @@ export function ServiceTemplate({
       {/* VIDEO SECTION */}
       {videoSection && (
         <section className="bg-[#5b5e52] text-[#E9E6DC] py-16 lg:py-20 border-b border-border/20">
-          <div className="mx-auto max-w-6xl px-6 lg:px-10 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div className="mx-auto max-w-4xl px-6 lg:px-10 flex flex-col items-center text-center">
+            <span className="eyebrow text-[#EBD9C9] mb-3 font-semibold">{videoSection.eyebrow}</span>
+            <h2 className="font-display text-3xl md:text-4xl text-[#F4F1E8] mb-4">{videoSection.title}</h2>
+            <p className="text-sm text-[#CBC7BA] leading-relaxed mb-10 max-w-2xl font-light">
+              {videoSection.desc}
+            </p>
+            
             {/* Video Player */}
             <div className="relative aspect-video w-full rounded-2xl overflow-hidden shadow-lg border border-white/20 bg-black group">
               {!videoPlaying ? (
@@ -445,43 +451,6 @@ export function ServiceTemplate({
                 className="w-full h-full object-cover"
                 src={videoSection.videoUrl}
               />
-            </div>
-
-            {/* Copy */}
-            <div className="flex flex-col">
-              <span className="eyebrow text-[#EBD9C9] mb-3 font-semibold">{videoSection.eyebrow}</span>
-              <h2 className="font-display text-3xl md:text-4xl text-[#F4F1E8] mb-4">{videoSection.title}</h2>
-              <p className="text-sm text-[#CBC7BA] leading-relaxed mb-8 font-light">
-                {videoSection.desc}
-              </p>
-
-              <div className="space-y-5">
-                {videoSection.steps.map((step) => (
-                  <div key={step.num} className="flex gap-4">
-                    <span className="font-display text-base font-semibold text-[#EBD9C9]">{step.num}</span>
-                    <div>
-                      <b className="text-sm font-semibold text-[#F4F1E8] block mb-0.5">{step.title}</b>
-                      <p className="text-xs text-[#CBC7BA] leading-relaxed">{step.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <a
-                href="#book-consultation"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const ctaSection = document.getElementById("book-consultation");
-                  if (ctaSection) {
-                    ctaSection.scrollIntoView({ behavior: "smooth" });
-                  } else {
-                    window.location.href = "https://wa.me/971500999324";
-                  }
-                }}
-                className="mt-8 self-start rounded-lg bg-[#ab9b83] text-white px-6 py-3.5 text-sm font-semibold hover:opacity-95 transition-all shadow-md"
-              >
-                Book your session
-              </a>
             </div>
           </div>
         </section>
