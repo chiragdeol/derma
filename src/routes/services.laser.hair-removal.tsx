@@ -292,8 +292,8 @@ function LaserHairRemovalLanding() {
         </div>
       </section>
 
-      {/* WHY AL NEMAH (DARK FOREST GREEN) */}
-      <section className="bg-[#5b5e52] text-[#E9E6DC] py-16 lg:py-20">
+      {/* WHY AL NEMAH (FOREST GREEN) */}
+      <section className="bg-[#7B8D6A] text-[#FAF7F2] py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="max-w-2xl mb-12">
             <span className="eyebrow text-[#e3dec9] mb-3 font-semibold">Why Al Nemah</span>
@@ -320,7 +320,7 @@ function LaserHairRemovalLanding() {
       </section>
 
       {/* VIDEO SECTION */}
-      <section className="bg-[#5b5e52] text-[#E9E6DC] py-16 lg:py-20">
+      <section className="bg-[#7B8D6A] text-[#FAF7F2] py-16 lg:py-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-10 flex flex-col items-center text-center">
           <span className="eyebrow text-[#EBD9C9] mb-3 font-semibold">See it for yourself</span>
           <h2 className="font-display text-3xl md:text-4xl text-[#F4F1E8] mb-4">Watch a laser session at Al Nemah.</h2>
