@@ -292,48 +292,48 @@ function LaserHairRemovalLanding() {
         </div>
       </section>
 
-      {/* IS IT RIGHT FOR YOU? / SUITABILITY (DEEP OLIVE GREEN) */}
-      <section className="bg-[#373D2C] text-[#FAF7F2] py-16 lg:py-20">
+      {/* IS IT RIGHT FOR YOU? / SUITABILITY (WHITE BACKGROUND) */}
+      <section className="bg-white text-foreground py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             {/* Left: Suitability Text Content */}
             <div>
-              <span className="eyebrow text-[#C9B188] mb-3 font-semibold block font-sans">Is it right for you?</span>
-              <h2 className="font-display text-3xl md:text-4xl text-[#FAF7F2] font-semibold mb-6">Suitable for most skin & hair types.</h2>
-              <p className="text-sm text-[#FAF7F2]/80 leading-relaxed mb-6 font-light">
+              <span className="eyebrow text-[#974d08] mb-3 font-semibold block font-sans">Is it right for you?</span>
+              <h2 className="font-display text-3xl md:text-4xl text-foreground font-semibold mb-6">Suitable for most skin & hair types.</h2>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-6 font-light">
                 Laser is most effective on dark hair, and thanks to modern technology it's now safe and effective across a wide range of skin tones — including brown and dark skin common in the region.
               </p>
               
               <ul className="space-y-4">
                 <li className="flex items-start gap-2.5">
-                  <span className="text-[#C9B188] font-bold">✓</span>
-                  <span className="text-xs text-[#FAF7F2]/85 leading-normal">Works best on dark hair (results vary on very light, grey or red hair)</span>
+                  <span className="text-[#974d08] font-bold">✓</span>
+                  <span className="text-xs text-foreground/85 leading-normal">Works best on dark hair (results vary on very light, grey or red hair)</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="text-[#C9B188] font-bold">✓</span>
-                  <span className="text-xs text-[#FAF7F2]/85 leading-normal">Safe for lighter and darker skin with the right device settings</span>
+                  <span className="text-[#974d08] font-bold">✓</span>
+                  <span className="text-xs text-foreground/85 leading-normal">Safe for lighter and darker skin with the right device settings</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="text-[#C9B188] font-bold">✓</span>
-                  <span className="text-xs text-[#FAF7F2]/85 leading-normal">Suitable for both women and men across the face and body</span>
+                  <span className="text-[#974d08] font-bold">✓</span>
+                  <span className="text-xs text-foreground/85 leading-normal">Suitable for both women and men across the face and body</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="text-[#C9B188] font-bold">✓</span>
-                  <span className="text-xs text-[#FAF7F2]/85 leading-normal">A consultation confirms your suitability and expected results</span>
+                  <span className="text-[#974d08] font-bold">✓</span>
+                  <span className="text-xs text-foreground/85 leading-normal">A consultation confirms your suitability and expected results</span>
                 </li>
               </ul>
             </div>
 
             {/* Right: Framed clinic photography */}
             <div className="relative max-w-md mx-auto w-full lg:mr-0">
-              <div className="p-3 border border-[#C9B188]/30 rounded-2xl">
+              <div className="p-3 border border-[#974d08]/20 rounded-2xl">
                 <div className="overflow-hidden rounded-xl aspect-[4/3] bg-gradient-to-tr from-[#E7DECB] via-[#B9AE93] to-[#6F7259] relative shadow-md">
                   <img
                     src={suitabilityImg}
                     alt="Laser skin calibration"
-                    className="w-full h-full object-cover opacity-85 mix-blend-multiply"
+                    className="w-full h-full object-cover"
                   />
-                  <span className="absolute bottom-3 left-3 text-[9px] uppercase tracking-wider text-[#FAF7F2]/70 font-semibold font-sans select-none">
+                  <span className="absolute bottom-3 left-3 text-[9px] uppercase tracking-wider text-white/95 font-semibold font-sans select-none drop-shadow-sm">
                     Clinic photography
                   </span>
                 </div>
