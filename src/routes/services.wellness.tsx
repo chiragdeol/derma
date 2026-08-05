@@ -1,116 +1,142 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { ServiceTemplate } from "@/components/site/ServiceTemplate";
 import wellnessImg from "@/assets/wellness.jpg";
 
 export const Route = createFileRoute("/services/wellness")({
   head: () => ({
     meta: [
-      { title: "Wellness & Recovery — Lumière Clinic" },
-      { name: "description", content: "IV therapy, lymphatic drainage, longevity and body sculpting programs at Lumière Clinic — restore balance from within." },
-      { property: "og:title", content: "Wellness at Lumière" },
-      { property: "og:description", content: "Holistic wellness, recovery and longevity programs." },
+      { title: "Wellness & IV Drips in Sharjah | Restore Balance — Al Nemah" },
+      { name: "description", content: "Advanced wellness and longevity therapies in Sharjah (New Muweilah). IV nutrient therapy, lymphatic drainage, body sculpting, and longevity assessments." },
+      { property: "og:title", content: "Wellness & IV Drips at Al Nemah" },
+      { property: "og:description", content: "Intravenous nutrients, postpartum recovery, sleep reset, and body sculpting in Sharjah." },
       { property: "og:image", content: wellnessImg },
     ],
   }),
-  component: Wellness,
+  component: () => (
+    <ServiceTemplate
+      division="Dermatology & Aesthetics"
+      divisionUrl="/services"
+      categoryName="Wellness & IV Drips"
+      eyebrow="Wellness · Longevity"
+      metaTitle="Wellness & IV Drips in Sharjah | Restore Balance — Al Nemah"
+      metaDesc="Advanced wellness and longevity therapies in Sharjah (New Muweilah). IV nutrient therapy, lymphatic drainage, body sculpting, and longevity assessments."
+      h1="Wellness & IV Drips"
+      intro="Therapies and programs that restore balance from within — for energy, immunity, recovery, and a body that feels like home."
+      highlights={[
+        ["Diagnostics", "Personalised biomarkers"],
+        ["Immunity & Energy", "Targeted IV formulas"],
+        ["SHA Licensed", "Medical clinic safety"],
+      ]}
+      concerns={["Chronic fatigue", "Weakened immunity", "Hormonal imbalances", "Fluid retention", "Postpartum recovery", "Sleep issues & stress"]}
+      txIntro="Our wellness programs are built on diagnostics — sleep, stress, hormones, and micronutrients — so every treatment serves a longer arc of vitality."
+      treatments={[
+        {
+          name: "IV Nutrient Therapy",
+          body: "Tailored intravenous blends of vitamins, minerals, and antioxidants for instant hydration, energy, immunity, recovery, or radiance.",
+          tags: ["Energy", "Immunity", "Radiance"],
+          duration: "45 min · Direct absorption",
+          price: "From AED 450",
+          points: [
+            "100% absorption compared to oral supplements",
+            "Customized formulas (Myers' Cocktail, Glow/Detox, Immunity)",
+            "Administered under strict medical supervision",
+            "Instant rehydration and fatigue relief",
+          ],
+        },
+        {
+          name: "Lymphatic Drainage",
+          body: "A specialised manual drainage technique to reduce inflammation, remove toxins, relieve fluid retention, and sculpt body contours.",
+          tags: ["Detoxification", "Fluid Retention"],
+          duration: "60 min",
+          price: "From AED 400",
+          points: [
+            "Stimulates natural lymphatic circulation",
+            "Reduces swelling and puffiness after travel or surgery",
+            "Promotes deep relaxation and stress relief",
+            "Supports immune system function",
+          ],
+        },
+        {
+          name: "Longevity & Biomarker Assessment",
+          body: "Comprehensive diagnostic profiling, body composition analysis, and a personalized longevity program designed to optimize your biological age.",
+          tags: ["Diagnostics", "Longevity"],
+          duration: "120 min",
+          price: "From AED 1200",
+          points: [
+            "Advanced hormone and nutrient blood panels",
+            "InBody composition and metabolic rate analysis",
+            "Specialist consultation and lifestyle coaching",
+            "Personalized supplementation and therapy plan",
+          ],
+        },
+        {
+          name: "Non-Invasive Body Sculpting",
+          body: "Advanced non-surgical technologies combining radiofrequency, cryolipolysis, and EMS to target stubborn fat and tone muscle.",
+          tags: ["EMS", "Fat Reduction", "Muscle Toning"],
+          duration: "45–60 min",
+          price: "From AED 500",
+          points: [
+            "Targeted muscle stimulation and toning",
+            "Safe, FDA-approved non-invasive platforms",
+            "No downtime — return to activity immediately",
+            "Best results in course programs",
+          ],
+        },
+        {
+          name: "Sleep & Stress Reset",
+          body: "Multi-modal therapeutic sessions combining breathwork, red light therapy, and targeted relaxation protocols to reset your nervous system.",
+          tags: ["Nervous System", "Sleep Quality"],
+          duration: "75 min",
+          price: "From AED 400",
+          points: [
+            "Reduces cellular stress and inflammation",
+            "Optimizes circadian rhythms and sleep cycles",
+            "Helps clear brain fog and mental fatigue",
+            "Deeply calming for high-stress lifestyles",
+          ],
+        },
+        {
+          name: "Postpartum Recovery Protocol",
+          body: "A gentle, doctor-led rehabilitation protocol designed to support tissue healing, balance hormones, and restore energy levels after childbirth.",
+          tags: ["Postpartum", "Hormone Health"],
+          duration: "Course program",
+          price: "From AED 800",
+          points: [
+            "Pelvic floor and core tissue support",
+            "Hormone balancing and nutrient replenishment",
+            "Safe, gentle therapies customized to your recovery timeline",
+            "Guided by certified specialists",
+          ],
+        },
+      ]}
+      faqs={[
+        {
+          question: "What is inside your IV drips?",
+          answer: "Our drips are high-quality, clinical-grade mixtures of essential vitamins (like Vitamin C, B-complex), minerals (such as magnesium, zinc), amino acids, and powerful antioxidants like glutathione, dissolved in sterile saline for complete absorption.",
+        },
+        {
+          question: "How do I know which IV drip is right for me?",
+          answer: "Before your first drip, a medical specialist reviews your health history, symptoms, and wellness goals. We then recommend or customize a blend suited for you.",
+        },
+        {
+          question: "What is the benefit of a longevity assessment?",
+          answer: "Rather than waiting for symptoms, our biomarker assessments identify underlying imbalances in thyroid, adrenal health, vitamin levels, and inflammation, helping us build a preventative roadmap for your health.",
+        },
+        {
+          question: "How often should I get lymphatic drainage?",
+          answer: "For general wellness and detox, once or twice a month is ideal. For targeted goals like post-travel recovery or fluid reduction, a concentrated course of 3 to 5 weekly sessions is recommended.",
+        },
+        {
+          question: "Are your wellness therapies safe?",
+          answer: "Yes. All therapies at Al Nemah are conducted by licensed clinical nurses under the direct guidance of physicians, using approved materials in a fully sterile clinical environment.",
+        },
+      ]}
+      related={[
+        { slug: "/services/skin", label: "Skin & HydraFacial" },
+        { slug: "/services/lifting", label: "Anti-Aging & Lifting" },
+        { slug: "/services/injectables", label: "Cosmetic Injectables" },
+      ]}
+      heroImage={wellnessImg}
+    />
+  ),
 });
-
-const programs = [
-  { name: "IV nutrient therapy", body: "Tailored intravenous blends for energy, immunity, recovery or radiance.", time: "45 min" },
-  { name: "Lymphatic drainage", body: "A specialised manual technique to reduce inflammation and sculpt contours.", time: "60 min" },
-  { name: "Longevity assessment", body: "Comprehensive biomarker panel, body composition and a personalised plan.", time: "120 min" },
-  { name: "Body sculpting", body: "Non-invasive radiofrequency, cryolipolysis and EMS technologies.", time: "45 – 60 min" },
-  { name: "Sleep & stress reset", body: "Multi-modal sessions combining breathwork, red light and craniosacral therapy.", time: "75 min" },
-  { name: "Postpartum recovery", body: "A gentle protocol for tissue, hormones and energy after childbirth.", time: "package" },
-];
-
-function Wellness() {
-  return (
-    <>
-      <section className="relative h-[80svh] min-h-[560px] overflow-hidden">
-        <img
-          src={wellnessImg}
-          alt="Wellness treatment room"
-          width={1600}
-          height={1200}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-foreground/20 via-foreground/10 to-foreground/70" />
-        <div className="relative z-10 mx-auto flex h-full max-w-6xl flex-col items-start justify-end px-6 pb-20 lg:px-10">
-          <p className="eyebrow text-ivory/80 mb-5">Service · 02</p>
-          <h1 className="font-display text-5xl leading-[1.05] text-ivory md:text-7xl lg:text-[5.5rem]">
-            Wellness & <em className="italic">Recovery.</em>
-          </h1>
-          <p className="mt-6 max-w-xl text-base text-ivory/85">
-            Programs that restore balance from within — for energy, longevity
-            and a body that feels like home.
-          </p>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
-        <div className="grid gap-14 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <p className="eyebrow mb-6">The approach</p>
-            <h2 className="font-display text-4xl leading-tight md:text-5xl">
-              Outside reflects <em className="italic">inside.</em>
-            </h2>
-          </div>
-          <div className="lg:col-span-7">
-            <p className="text-base leading-relaxed text-muted-foreground">
-              Lasting beauty depends on what is happening beneath the skin.
-              Our wellness programs are built on diagnostics — sleep, stress,
-              hormones, micronutrients — so every treatment serves a longer
-              arc of vitality, not just a single appointment.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-secondary/50">
-        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10">
-          <p className="eyebrow mb-6">Programs</p>
-          <h2 className="font-display text-4xl md:text-5xl">For energy, calm and longevity</h2>
-
-          <div className="mt-12 grid gap-px overflow-hidden rounded-2xl bg-border/70 md:grid-cols-2 lg:grid-cols-3">
-            {programs.map((p) => (
-              <article key={p.name} className="bg-background p-8">
-                <h3 className="font-display text-2xl">{p.name}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
-                <p className="mt-6 text-xs uppercase tracking-[0.28em] text-accent">{p.time}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
-        <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
-          <div>
-            <p className="eyebrow mb-5">Membership</p>
-            <h2 className="font-display text-4xl leading-tight md:text-5xl">
-              The Lumière <em className="italic">circle.</em>
-            </h2>
-            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-              A year-long program of seasonal assessments, monthly therapies
-              and direct access to our medical team — designed for clients
-              who treat wellbeing as a long practice.
-            </p>
-            <Link to="/contact" className="mt-10 inline-flex rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground hover:opacity-90">
-              Request information
-            </Link>
-          </div>
-          <div className="rounded-2xl border border-border bg-card p-10">
-            <ul className="space-y-5 text-sm">
-              {["Quarterly biomarker panel", "Monthly signature therapy", "Priority booking", "Personal wellness advisor", "Seasonal home protocols"].map((b) => (
-                <li key={b} className="flex items-start gap-3">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                  <span className="text-foreground/85">{b}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}
