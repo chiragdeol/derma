@@ -292,29 +292,48 @@ function LaserHairRemovalLanding() {
         </div>
       </section>
 
-      {/* WHY AL NEMAH (FOREST GREEN) */}
-      <section className="bg-[#7B8D6A] text-[#FAF7F2] py-16 lg:py-20">
+      {/* WHY AL NEMAH (DEEP OLIVE GREEN) */}
+      <section className="bg-[#373D2C] text-[#FAF7F2] py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="max-w-2xl mb-12">
-            <span className="eyebrow text-[#e3dec9] mb-3 font-semibold">Why Al Nemah</span>
-            <h2 className="font-display text-3xl md:text-4xl text-white">Advanced lasers, expert hands.</h2>
-          </div>
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            {/* Left: Text & Pillars */}
+            <div>
+              <span className="eyebrow text-[#C9B188] mb-3 font-semibold block font-sans">Why Al Nemah</span>
+              <h2 className="font-display text-3xl md:text-4xl text-[#FAF7F2] font-semibold mb-10">Advanced lasers, expert hands.</h2>
+              
+              <div className="space-y-8">
+                {[
+                  { num: "01", title: "Safe for every skin tone", desc: "Devices calibrated for brown and dark skin, with a patch test before each course." },
+                  { num: "02", title: "Comfortable, fast sessions", desc: "Built-in cooling and efficient technology keep treatments quick and tolerable." },
+                  { num: "03", title: "Trained specialists", desc: "Certified technicians tailor every setting to your hair and skin type." },
+                  { num: "04", title: "SHA-licensed clinic", desc: "A fully accredited, hygienic, safety-first clinic in Sharjah." },
+                ].map((item) => (
+                  <div key={item.num} className="flex gap-4 items-start">
+                    <span className="font-display text-sm text-[#C9B188] font-semibold tracking-wider mt-0.5">{item.num}</span>
+                    <div>
+                      <h3 className="font-display text-base text-[#FAF7F2] font-semibold mb-1.5">{item.title}</h3>
+                      <p className="text-xs text-[#FAF7F2]/80 leading-relaxed font-light">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-          <div className="grid gap-8 md:grid-cols-2">
-            {[
-              { num: "01", title: "Safe for every skin tone", desc: "Devices calibrated for brown and dark skin, with a patch test before each course." },
-              { num: "02", title: "Comfortable, fast sessions", desc: "Built-in cooling and efficient technology keep treatments quick and tolerable." },
-              { num: "03", title: "Trained specialists", desc: "Certified technicians tailor every setting to your hair and skin type." },
-              { num: "04", title: "SHA-licensed clinic", desc: "A fully accredited, hygienic, safety-first clinic in Sharjah." },
-            ].map((item) => (
-              <div key={item.num} className="border-t border-white/20 pt-6 flex gap-4">
-                <span className="font-display text-xl text-[#e3dec9] font-medium">{item.num}</span>
-                <div>
-                  <h3 className="font-display text-lg text-white font-semibold mb-2">{item.title}</h3>
-                  <p className="text-xs text-white/80 leading-relaxed font-light">{item.desc}</p>
+            {/* Right: Framed clinic photography */}
+            <div className="relative max-w-md mx-auto w-full lg:mr-0">
+              <div className="p-3 border border-[#C9B188]/30 rounded-2xl">
+                <div className="overflow-hidden rounded-xl aspect-[4/3] bg-gradient-to-tr from-[#E7DECB] via-[#B9AE93] to-[#6F7259] relative shadow-md">
+                  <img
+                    src={suitabilityImg}
+                    alt="Clinic photography"
+                    className="w-full h-full object-cover opacity-85 mix-blend-multiply"
+                  />
+                  <span className="absolute bottom-3 left-3 text-[9px] uppercase tracking-wider text-[#FAF7F2]/70 font-semibold font-sans select-none">
+                    Clinic photography
+                  </span>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
