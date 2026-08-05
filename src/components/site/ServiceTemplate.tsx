@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState, useRef, useEffect } from "react";
+import { Play } from "lucide-react";
 import interiorImg from "@/assets/interior.jpg";
 import beforeImg from "@/assets/before.jpg";
 import afterImg from "@/assets/after.jpg";
@@ -43,6 +44,13 @@ export type ServiceTemplateProps = {
   dental?: boolean;
   beforeImage?: string;
   afterImage?: string;
+  videoSection?: {
+    videoUrl: string;
+    eyebrow: string;
+    title: string;
+    desc: string;
+    steps: { num: string; title: string; desc: string }[];
+  };
 };
 
 const FAQItemComponent = ({ question, answer }: FAQItem) => {
@@ -222,7 +230,18 @@ export function ServiceTemplate({
   dental = false,
   beforeImage,
   afterImage,
+  videoSection,
 }: ServiceTemplateProps) {
+  const [videoPlaying, setVideoPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handlePlayVideo = () => {
+    setVideoPlaying(true);
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
+  };
+
   return (
     <>
       {/* BREADCRUMB */}
@@ -402,6 +421,72 @@ export function ServiceTemplate({
         </div>
       </section>
 
+      {/* VIDEO SECTION */}
+      {videoSection && (
+        <section className="bg-[#5b5e52] text-[#E9E6DC] py-16 lg:py-20 border-b border-border/20">
+          <div className="mx-auto max-w-6xl px-6 lg:px-10 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            {/* Video Player */}
+            <div className="relative aspect-video w-full rounded-2xl overflow-hidden shadow-lg border border-white/20 bg-black group">
+              {!videoPlaying ? (
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 z-10">
+                  <button
+                    onClick={handlePlayVideo}
+                    className="flex h-16 w-16 items-center justify-center rounded-full bg-[#fbfaf8] text-[#3e4138] shadow-lg hover:scale-108 transition-all duration-300 cursor-pointer"
+                    aria-label="Play video"
+                  >
+                    <Play className="h-6 w-6 fill-[#3e4138] ml-1" />
+                  </button>
+                  <span className="mt-4 text-[10px] tracking-widest uppercase font-semibold text-[#f1eee4] select-none">Play Video</span>
+                </div>
+              ) : null}
+              <video
+                ref={videoRef}
+                controls
+                className="w-full h-full object-cover"
+                src={videoSection.videoUrl}
+              />
+            </div>
+
+            {/* Copy */}
+            <div className="flex flex-col">
+              <span className="eyebrow text-[#EBD9C9] mb-3 font-semibold">{videoSection.eyebrow}</span>
+              <h2 className="font-display text-3xl md:text-4xl text-[#F4F1E8] mb-4">{videoSection.title}</h2>
+              <p className="text-sm text-[#CBC7BA] leading-relaxed mb-8 font-light">
+                {videoSection.desc}
+              </p>
+
+              <div className="space-y-5">
+                {videoSection.steps.map((step) => (
+                  <div key={step.num} className="flex gap-4">
+                    <span className="font-display text-base font-semibold text-[#EBD9C9]">{step.num}</span>
+                    <div>
+                      <b className="text-sm font-semibold text-[#F4F1E8] block mb-0.5">{step.title}</b>
+                      <p className="text-xs text-[#CBC7BA] leading-relaxed">{step.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <a
+                href="#book-consultation"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const ctaSection = document.getElementById("book-consultation");
+                  if (ctaSection) {
+                    ctaSection.scrollIntoView({ behavior: "smooth" });
+                  } else {
+                    window.location.href = "https://wa.me/971500999324";
+                  }
+                }}
+                className="mt-8 self-start rounded-lg bg-[#ab9b83] text-white px-6 py-3.5 text-sm font-semibold hover:opacity-95 transition-all shadow-md"
+              >
+                Book your session
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* BEFORE / AFTER COMPARISON SECTION */}
       <BeforeAfterSection 
         treatments={treatments} 
@@ -494,7 +579,7 @@ export function ServiceTemplate({
       </section>
 
       {/* BOOK CTA BAR */}
-      <section className="bg-[#e3dec9] py-16 text-center border-t border-border/40">
+      <section id="book-consultation" className="bg-[#e3dec9] py-16 text-center border-t border-border/40">
         <div className="mx-auto max-w-4xl px-6">
           <p className="eyebrow text-[#974d08] mb-4 font-semibold">Ready when you are</p>
           <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4 font-semibold">Book your consultation.</h2>

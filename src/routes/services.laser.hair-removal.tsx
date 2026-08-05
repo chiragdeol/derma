@@ -274,20 +274,20 @@ function LaserHairRemovalLanding() {
       </section>
 
       {/* VIDEO SECTION */}
-      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <section className="bg-[#5b5e52] text-[#E9E6DC] py-16 lg:py-20">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           {/* Video Player */}
-          <div className="relative aspect-video w-full rounded-2xl overflow-hidden shadow-lg border border-border bg-black group">
+          <div className="relative aspect-video w-full rounded-2xl overflow-hidden shadow-lg border border-white/20 bg-black group">
             {!videoPlaying ? (
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/45 z-10">
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 z-10">
                 <button
                   onClick={handlePlayVideo}
-                  className="flex h-16 w-16 items-center justify-center rounded-full bg-white text-black shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
+                  className="flex h-16 w-16 items-center justify-center rounded-full bg-[#fbfaf8] text-[#3e4138] shadow-lg hover:scale-108 transition-all duration-300 cursor-pointer"
                   aria-label="Play video"
                 >
-                  <Play className="h-6 w-6 fill-black ml-1" />
+                  <Play className="h-6 w-6 fill-[#3e4138] ml-1" />
                 </button>
-                <span className="mt-4 text-xs font-semibold uppercase tracking-wider text-white">Watch Session Video</span>
+                <span className="mt-4 text-[10px] tracking-widest uppercase font-semibold text-[#f1eee4] select-none">Play Video</span>
               </div>
             ) : null}
             <video
@@ -300,39 +300,39 @@ function LaserHairRemovalLanding() {
 
           {/* Copy */}
           <div className="flex flex-col">
-            <span className="eyebrow text-[#974d08] mb-3 font-semibold">See it for yourself</span>
-            <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">Watch a laser session at Al Nemah.</h2>
-            <p className="text-sm text-muted-foreground leading-relaxed mb-8 font-light">
+            <span className="eyebrow text-[#EBD9C9] mb-3 font-semibold">See it for yourself</span>
+            <h2 className="font-display text-3xl md:text-4xl text-[#F4F1E8] mb-4">Watch a laser session at Al Nemah.</h2>
+            <p className="text-sm text-[#CBC7BA] leading-relaxed mb-8 font-light">
               A quick look at how comfortable, clean and fast the treatment really is — from consultation to the laser itself.
             </p>
 
             <div className="space-y-5">
               <div className="flex gap-4">
-                <span className="font-display text-base font-semibold text-[#974d08]">01</span>
+                <span className="font-display text-base font-semibold text-[#EBD9C9]">01</span>
                 <div>
-                  <b className="text-sm font-semibold text-foreground block mb-0.5">Consultation & patch test</b>
-                  <p className="text-xs text-muted-foreground leading-relaxed">We confirm the safest settings for your skin.</p>
+                  <b className="text-sm font-semibold text-[#F4F1E8] block mb-0.5">Consultation & patch test</b>
+                  <p className="text-xs text-[#CBC7BA] leading-relaxed">We confirm the safest settings for your skin.</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <span className="font-display text-base font-semibold text-[#974d08]">02</span>
+                <span className="font-display text-base font-semibold text-[#EBD9C9]">02</span>
                 <div>
-                  <b className="text-sm font-semibold text-foreground block mb-0.5">Comfortable, cooled treatment</b>
-                  <p className="text-xs text-muted-foreground leading-relaxed">Built-in cooling keeps every pass tolerable.</p>
+                  <b className="text-sm font-semibold text-[#F4F1E8] block mb-0.5">Comfortable, cooled treatment</b>
+                  <p className="text-xs text-[#CBC7BA] leading-relaxed">Built-in cooling keeps every pass tolerable.</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <span className="font-display text-base font-semibold text-[#974d08]">03</span>
+                <span className="font-display text-base font-semibold text-[#EBD9C9]">03</span>
                 <div>
-                  <b className="text-sm font-semibold text-foreground block mb-0.5">In and out quickly</b>
-                  <p className="text-xs text-muted-foreground leading-relaxed">Small areas take minutes — easy to fit into your day.</p>
+                  <b className="text-sm font-semibold text-[#F4F1E8] block mb-0.5">In and out quickly</b>
+                  <p className="text-xs text-[#CBC7BA] leading-relaxed">Small areas take minutes — easy to fit into your day.</p>
                 </div>
               </div>
             </div>
 
             <a
               href="#book"
-              className="mt-8 self-start rounded-lg bg-[#974d08] text-white px-6 py-3.5 text-sm font-semibold hover:opacity-95 transition-all shadow-md"
+              className="mt-8 self-start rounded-lg bg-[#ab9b83] text-white px-6 py-3.5 text-sm font-semibold hover:opacity-95 transition-all shadow-md"
             >
               Book your session
             </a>

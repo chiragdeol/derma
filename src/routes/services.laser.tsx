@@ -87,6 +87,17 @@ export const Route = createFileRoute("/services/laser")({
       ]}
       heroImage={heroImg}
       dental={false}
+      videoSection={{
+        videoUrl: "/laser-session.mp4",
+        eyebrow: "See it for yourself",
+        title: "Watch a laser session at Al Nemah.",
+        desc: "A quick look at how comfortable, clean and fast the treatment really is — from consultation to the laser itself.",
+        steps: [
+          { num: "01", title: "Consultation & patch test", desc: "We confirm the safest settings for your skin." },
+          { num: "02", title: "Comfortable, cooled treatment", desc: "Built-in cooling keeps every pass tolerable." },
+          { num: "03", title: "In and out quickly", desc: "Small areas take minutes — easy to fit into your day." }
+        ]
+      }}
     />
   ),
 });
