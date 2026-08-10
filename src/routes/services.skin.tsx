@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServiceTemplate } from "@/components/site/ServiceTemplate";
-import heroImg from "@/assets/service-skin.jpg";
-import hydrafacialLogo from "@/assets/skin-hydrafacial-logo.png";
+import heroImg from "@/assets/skin-hydrafacial-treatment.jpg";
+import skinHydrafacialImg from "@/assets/skin-hydrafacial-treatment.jpg";
+import skinRoller1 from "@/assets/skin-rf-roller-1.jpg";
+import skinRoller2 from "@/assets/skin-rf-roller-2.jpg";
 
 export const Route = createFileRoute("/services/skin")({
   head: () => ({
@@ -25,7 +27,7 @@ export const Route = createFileRoute("/services/skin")({
       intro="Medical-grade facials and skin resurfacing that clear, hydrate and renew — every protocol customised by a dermatologist to your skin."
       highlights={[
         ["No downtime", "Most treatments"],
-        ["From AED 400", "Starting price"],
+        ["From AED 299", "Starting price"],
         ["All skin types", "Safe for"],
       ]}
       concerns={["Dullness", "Congestion & acne", "Pigmentation", "Fine lines", "Dehydration", "Enlarged pores", "Acne scars"]}
@@ -37,7 +39,7 @@ export const Route = createFileRoute("/services/skin")({
           tags: ["Cleanse", "Hydrate", "Glow"],
           duration: "30-45 min · No downtime",
           price: "AED 299",
-          image: hydrafacialLogo,
+          image: skinHydrafacialImg,
           points: [
             "Painless vortex extraction — no manual squeezing",
             "Customised serums for your skin concern",
@@ -75,6 +77,7 @@ export const Route = createFileRoute("/services/skin")({
           tags: ["Collagen Induction", "Acne Scars"],
           duration: "45 min · 24-48 hrs mild pinkness",
           price: "AED 499",
+          image: skinRoller1,
           points: [
             "Triggers natural collagen and elastin remodeling",
             "Smooths acne scars, fine lines, and enlarged pores",
@@ -87,6 +90,7 @@ export const Route = createFileRoute("/services/skin")({
           tags: ["Luminous Glow", "Deep Plumping"],
           duration: "30 min · Minimal downtime",
           price: "AED 699",
+          image: skinRoller2,
           points: [
             "Restores long-lasting skin moisture and elasticity",
             "Smooths fine crepy lines and texture",

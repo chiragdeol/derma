@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServiceTemplate } from "@/components/site/ServiceTemplate";
-import heroImg from "@/assets/service-lifting.jpg";
+import heroImg from "@/assets/lifting-hifu-treatment.jpg";
+import liftingHifuImg from "@/assets/lifting-hifu-treatment.jpg";
+import liftingRollerImg from "@/assets/lifting-rf-roller.jpg";
 
 export const Route = createFileRoute("/services/lifting")({
   head: () => ({
@@ -23,8 +25,8 @@ export const Route = createFileRoute("/services/lifting")({
       h1="Anti-Aging & Lifting in Sharjah"
       intro="Tighten, lift and rebuild collagen without surgery — with honest advice on what each technology can achieve for you."
       highlights={[
-        ["No surgery", "Non-invasive"],
-        ["1–3 days", "Downtime"],
+        ["Non-surgical", "No scalpel, minimal downtime"],
+        ["FDA-cleared", "Medical platforms"],
         ["12+ months", "Results last"],
       ]}
       concerns={["Jawline laxity", "Sagging cheeks", "Neck laxity", "Loss of firmness", "Fine lines"]}
@@ -36,6 +38,7 @@ export const Route = createFileRoute("/services/lifting")({
           tags: ["RF Microneedling", "Jawline"],
           duration: "60 min · 1–2 days pinkness",
           price: "AED 999",
+          image: liftingRollerImg,
         },
         {
           name: "Ultherapy",
@@ -43,6 +46,7 @@ export const Route = createFileRoute("/services/lifting")({
           tags: ["Ultrasound Lift", "Non-Surgical Facelift"],
           duration: "60–90 min · No downtime",
           price: "AED 2,999",
+          image: liftingHifuImg,
         },
         {
           name: "PDO Threads",
@@ -64,6 +68,7 @@ export const Route = createFileRoute("/services/lifting")({
           tags: ["SMAS Lifting", "Double Chin"],
           duration: "45 min · No downtime",
           price: "AED 999",
+          image: liftingHifuImg,
         },
         {
           name: "Endolift",

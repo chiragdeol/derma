@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import injectables from "@/assets/service-injectables.jpg";
-import skin from "@/assets/service-skin.jpg";
+import skin from "@/assets/skin-hydrafacial-treatment.jpg";
 import laser from "@/assets/service-laser.jpg";
-import lifting from "@/assets/service-lifting.jpg";
+import lifting from "@/assets/lifting-hifu-treatment.jpg";
 import dental from "@/assets/service-dental.jpg";
 import wellness from "@/assets/wellness.jpg";
 
