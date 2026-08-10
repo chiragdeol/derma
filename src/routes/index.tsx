@@ -828,12 +828,12 @@ function Home() {
               onClick={() => setSelectedDoctor(d)}
               className="group cursor-pointer"
             >
-              <div className="overflow-hidden rounded-2xl bg-[#F5F2EB] relative flex items-center justify-center p-3 h-80 w-full border border-border/40">
+              <div className="overflow-hidden rounded-2xl bg-[#F5F2EB] relative h-80 w-full border border-border/40">
                 <img
                   src={d.image}
                   alt={d.name}
                   loading="lazy"
-                  className="h-full w-full object-contain transition-transform duration-[1200ms] group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                 />
                 {/* Visual hover cue */}
                 <div className="absolute inset-0 bg-black/15 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -1121,11 +1121,11 @@ function Home() {
             </button>
 
             {/* Left Column: Doctor Photo */}
-            <div className="w-full md:w-2/5 relative min-h-[280px] md:h-auto bg-[#F5F2EB] flex items-center justify-center p-4">
+            <div className="w-full md:w-2/5 relative min-h-[300px] md:min-h-[420px] bg-[#F5F2EB]">
               <img
                 src={selectedDoctor.image}
                 alt={selectedDoctor.name}
-                className="max-h-[60vh] w-full object-contain"
+                className="h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent md:hidden" />
               <div className="absolute bottom-6 left-6 right-6 text-white md:hidden">
