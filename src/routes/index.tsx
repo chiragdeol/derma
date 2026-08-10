@@ -73,7 +73,7 @@ const services = [
 
 const doctors = [
   {
-    name: "Dr. Mennatallah Abdulrehman",
+    name: "Dr. Menna",
     role: "General Dentist",
     image: doctorMenna,
     education: [
@@ -88,7 +88,7 @@ const doctors = [
       "Smile Enhancement & Preventive Care"
     ],
     languages: ["Arabic", "English"],
-    bio: "Dr. Mennatallah Abdulrehman is a General Dentist who speaks Arabic, dedicated to providing high-quality dental care in a comfortable and patient-friendly environment. She offers a wide range of services including dental examinations, teeth cleaning, fillings, root canal treatment, extractions, crowns, bridges, and smile enhancement treatments. She also focuses on preventive dental care to maintain long-term oral health. Dr. Mennatallah Abdulrehman is known for her gentle approach and clear communication, ensuring patients feel comfortable, informed, and well cared for throughout their treatment."
+    bio: "Dr. Menna is a General Dentist who speaks Arabic, dedicated to providing high-quality dental care in a comfortable and patient-friendly environment. She offers a wide range of services including dental examinations, teeth cleaning, fillings, root canal treatment, extractions, crowns, bridges, and smile enhancement treatments. She also focuses on preventive dental care to maintain long-term oral health. Dr. Menna is known for her gentle approach and clear communication, ensuring patients feel comfortable, informed, and well cared for throughout their treatment."
   },
   {
     name: "Dr. Fatma Metwally",
