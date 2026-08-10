@@ -344,7 +344,7 @@ function LaserHairRemovalLanding() {
       </section>
 
       {/* VIDEO SECTION */}
-      <section className="bg-[#7B8D6A] text-[#FAF7F2] py-16 lg:py-20">
+      <section className="bg-[#8F9073] text-[#FAF7F2] py-16 lg:py-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-10 flex flex-col items-center text-center">
           <span className="eyebrow text-[#EBD9C9] mb-3 font-semibold">See it for yourself</span>
           <h2 className="font-display text-3xl md:text-4xl text-[#F4F1E8] mb-4">Watch a laser session at Al Nemah.</h2>

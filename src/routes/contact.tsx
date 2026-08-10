@@ -49,6 +49,7 @@ function Contact() {
             <p className="eyebrow mb-3">Direct</p>
             <ul className="space-y-2 text-sm">
               <li><a href="tel:+971500999324" className="hover:text-foreground text-muted-foreground">+971 50 099 9324</a></li>
+              <li><a href="tel:+971566814451" className="hover:text-foreground text-muted-foreground">+971 56 681 4451</a></li>
               <li><a href="mailto:contact@alnemahmc.com" className="hover:text-foreground text-muted-foreground">contact@alnemahmc.com</a></li>
               <li><a href="mailto:md@alnemahmc.com" className="hover:text-foreground text-muted-foreground">md@alnemahmc.com</a></li>
               <li><a href="https://wa.me/971500999324" target="_blank" rel="noreferrer" className="hover:text-foreground text-muted-foreground">WhatsApp →</a></li>

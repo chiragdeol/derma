@@ -76,8 +76,8 @@
   --gold: #b8957e;                              /* Map gold to Peach Terracotta */
   --sand: #ab9b83;                              /* Map sand to Khaki Sand */
   --ivory: #faf8f5;                             /* Map ivory to Swatch base light */
-  --forest: #7B8D6A;                            /* Swatch 1: Olive Green (#5b5e52) */
-  --teal-dark: #4d5940;                         /* Deeper Olive green for contrast */
+  --forest: #8F9073;                            /* Custom Green (#8F9073) */
+  --teal-dark: #8F9073;                         /* Custom Green (#8F9073) */
 }
 
 @layer base {
@@ -118,6 +118,25 @@
   }
 }
 
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--color-foreground) 15%, transparent);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklab, var(--color-foreground) 30%, transparent);
+}
+
 /* Sienna brown overrides for buttons and button-like CTAs only */
 button.bg-primary,
 button[class*="bg-primary"],
@@ -125,6 +144,8 @@ a.bg-primary,
 a[class*="bg-primary"],
 a[href*="wa.me"][class*="bg-"],
 div[class*="bg-primary"][class*="cursor-pointer"],
+button[class*="bg-[#8F9073]"],
+a[class*="bg-[#8F9073]"],
 button[class*="bg-[#7B8D6A]"],
 a[class*="bg-[#7B8D6A]"],
 button[class*="bg-[#974d08]"],
@@ -144,6 +165,8 @@ a.bg-primary:hover,
 a[class*="bg-primary"]:hover,
 a[href*="wa.me"][class*="bg-"]:hover,
 div[class*="bg-primary"][class*="cursor-pointer"]:hover,
+button[class*="bg-[#8F9073]"]:hover,
+a[class*="bg-[#8F9073]"]:hover,
 button[class*="bg-[#7B8D6A]"]:hover,
 a[class*="bg-[#7B8D6A]"]:hover,
 button[class*="bg-[#974d08]"]:hover,

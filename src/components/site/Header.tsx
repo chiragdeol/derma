@@ -69,8 +69,10 @@ export function Header() {
           <span className="opacity-45">•</span>
           <span>Open daily 9:00 AM – 10:00 PM</span>
         </div>
-        <div className="flex items-center gap-4 opacity-90 font-light">
+        <div className="flex items-center gap-3 opacity-90 font-light flex-wrap justify-center">
           <a href="tel:+971500999324" className="hover:underline tracking-wide">+971 50 099 9324</a>
+          <span className="opacity-30">•</span>
+          <a href="tel:+971566814451" className="hover:underline tracking-wide">+971 56 681 4451</a>
           <span className="opacity-30">/</span>
           <div className="flex gap-2">
             <span className="font-semibold text-accent">EN</span>

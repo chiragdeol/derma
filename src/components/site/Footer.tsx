@@ -129,6 +129,9 @@ export function Footer() {
               <a href="tel:+971500999324" className="block text-ivory underline-offset-4 hover:underline">
                 +971 50 099 9324
               </a>
+              <a href="tel:+971566814451" className="block text-ivory underline-offset-4 hover:underline">
+                +971 56 681 4451
+              </a>
               <div className="space-y-1">
                 <a href="mailto:contact@alnemahmc.com" className="block text-ivory underline-offset-4 hover:underline">
                   contact@alnemahmc.com

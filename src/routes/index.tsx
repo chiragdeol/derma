@@ -62,15 +62,53 @@ const pillars = [
 ];
 
 const services = [
-  { num: "01", title: "Cosmetic Injectables", image: injectablesImg, tags: ["Botox", "Fillers", "Profhilo", "Lip enhancement"], body: "Subtle, natural movement — softening lines and restoring balance.", to: "/services/injectables", cta: "Explore injectables" },
-  { num: "02", title: "Skin & HydraFacial", image: skinImg, tags: ["HydraFacial", "Chemical peels", "Mesotherapy", "Microneedling"], body: "Medical-grade facials and resurfacing for clear, luminous skin.", to: "/services/skin", cta: "Explore skin" },
-  { num: "03", title: "Laser & Hair Removal", image: laserImg, tags: ["Laser hair", "Pigmentation", "Vascular", "Tattoo removal"], body: "Advanced laser platforms, safe across all Fitzpatrick skin types.", to: "/services/laser", cta: "Explore laser" },
-  { num: "04", title: "Anti-Aging & Lifting", image: liftingImg, tags: ["Morpheus8", "Ultherapy", "Threads", "Fotona 4D"], body: "Non-surgical tightening and collagen renewal with real downtime answers.", to: "/services/lifting", cta: "Explore lifting" },
-  { num: "05", title: "Dental Services", image: dentalImg, tags: ["Aesthetic dentistry", "Porcelain veneers", "Teeth whitening", "Clinical dentistry"], body: "Comprehensive clinical care and bespoke aesthetic smile design for your ultimate confidence.", to: "/services/dental/aesthetic-dentistry", cta: "Explore dental" },
+  { num: "01", title: "Aesthetic Medicine", image: injectablesImg, tags: ["Fillers", "Botox", "Skin Boosters", "Biostimulators"], body: "Refined, natural enhancements delivered with medical precision and subtle restraint.", to: "/services/aesthetic", cta: "Explore aesthetics" },
+  { num: "02", title: "Laser & Skin", image: skinImg, tags: ["Skin Resurfacing", "Pigmentation", "Vascular", "Acne Scars"], body: "Evidence-based protocols to restore clarity, texture and fundamental skin health.", to: "/services/skin", cta: "Explore skin care" },
+  { num: "03", title: "Laser Hair Removal", image: laserImg, tags: ["Candela GentleMax Pro", "Full Body", "Facial Laser", "Cooling Tech"], body: "Painless, precise laser technology tailored for all skin tones and sensitive areas.", to: "/services/laser", cta: "Explore laser removal" },
+  { num: "04", title: "Lifting & Tightening", image: liftingImg, tags: ["HIFU", "RF Microneedling", "Thread Lift", "Collagen Induction"], body: "Non-surgical lifting solutions designed to restore structural contour and firmness.", to: "/services/lifting", cta: "Explore lifting" },
+  { num: "05", title: "Dental Center", image: dentalImg, tags: ["Veneers", "Digital Smile Design", "Implants", "Whitening"], body: "Comprehensive cosmetic and restorative dentistry crafted for health and harmony.", to: "/services/dental", cta: "Explore dental" },
   { num: "06", title: "Wellness & Longevity", image: wellnessImg, tags: ["IV drips", "Hormone health", "Hair restoration", "Skin boosters"], body: "Feel as good as you look — inside-out care for energy and vitality.", to: "/services/wellness", cta: "Explore wellness" },
 ] as const;
 
 const doctors = [
+  {
+    name: "Dr. Menna",
+    role: "General Dentist",
+    image: doctorMenna,
+    education: [
+      "Bachelor of Dental Surgery (BDS)",
+      "General & Preventive Dental Care",
+      "Cosmetic & Smile Enhancement Specialist"
+    ],
+    specialties: [
+      "Dental Examinations & Teeth Cleaning",
+      "Fillings & Root Canal Treatment",
+      "Extractions, Crowns & Bridges",
+      "Smile Enhancement & Preventive Care"
+    ],
+    languages: ["Arabic", "English"],
+    bio: "Dr. Menna is a General Dentist who speaks Arabic, dedicated to providing high-quality dental care in a comfortable and patient-friendly environment. She offers a wide range of services including dental examinations, teeth cleaning, fillings, root canal treatment, extractions, crowns, bridges, and smile enhancement treatments. She also focuses on preventive dental care to maintain long-term oral health. Dr. Menna is known for her gentle approach and clear communication, ensuring patients feel comfortable, informed, and well cared for throughout their treatment."
+  },
+  {
+    name: "Dr. Fatma Metwally",
+    role: "GP Aesthetic Doctor",
+    image: doctorFatma,
+    education: [
+      "Ain Shams University, Egypt",
+      "GP Aesthetic Doctor (UAE Licensed)",
+      "Advanced Aesthetic Medicine & Facial Rejuvenation"
+    ],
+    specialties: [
+      "Acne Scar & Hyperpigmentation Treatment",
+      "Double Chin & Weight Loss Treatment",
+      "Fillers (Face & Body) & Russian Lip Fillers",
+      "Botox, HIFU, RF Microneedling & Exosome Therapy",
+      "Hair Fall Therapy & Hair Regenera Treatment",
+      "PRP Therapy, Mesotherapy & Profhilo"
+    ],
+    languages: ["English", "Arabic"],
+    bio: "Dr. Fatma Metwally graduated from Ain Shams University, Egypt, and initiated her career in aesthetics in Egypt in 2024. She later continued her professional journey as a GP Aesthetic Doctor in the UAE in 2025, providing a wide range of advanced aesthetic treatments to her patients. Dr. Fatma Metwally is dedicated to delivering comprehensive, personalized, and advanced aesthetic care, consistently updating her skills and techniques to remain at the forefront of aesthetic medicine and meet the diverse needs of her patients."
+  },
   {
     name: "Dr. Sidra Ejaz",
     role: "Aesthetic Physician",
@@ -106,24 +144,6 @@ const doctors = [
     ],
     languages: ["English", "Hindi", "Malayalam"],
     bio: "Dr. Nisha Sasidharan has over 10 years of clinical experience in cosmetic dentistry. She is dedicated to creating healthy, beautiful smiles utilizing state-of-the-art digital smile mapping, helping patients achieve natural results with maximum comfort."
-  },
-  {
-    name: "Dr. Menna",
-    role: "General Dentist",
-    image: doctorHijab,
-    education: [
-      "Bachelor of Dental Surgery (BDS)",
-      "Accredited Residency in Restorative Dentistry",
-      "Advanced Pediatric Dentistry Specialist"
-    ],
-    specialties: [
-      "Restorative and Preventive Dentistry",
-      "Root Canal Therapy & Extractions",
-      "Pediatric and Child-friendly Dental Care",
-      "Dental Crowns, Bridges & Inlays"
-    ],
-    languages: ["English", "Arabic"],
-    bio: "Dr. Menna brings extensive expertise in general, restorative, and pediatric dentistry. Known for her warm, gentle, and anxiety-free approach, she makes patients of all ages, especially children, feel completely at ease during complex dental procedures."
   },
   {
     name: "Dr. Sheeraz",
