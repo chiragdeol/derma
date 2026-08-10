@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import aboutImg from "@/assets/about.jpg";
 import interiorImg from "@/assets/interior.jpg";
+import teamImg from "@/assets/team.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -82,7 +83,7 @@ function About() {
         <div className="grid gap-px overflow-hidden rounded-2xl bg-border/70 md:grid-cols-2 lg:grid-cols-4">
           {values.map((v) => (
             <div key={v.num} className="bg-background p-10">
-              <p className="font-display text-2xl text-accent">{v.num}</p>
+              <p className="font-display text-2xl text-[#b8957e]">{v.num}</p>
               <h3 className="mt-6 font-display text-2xl">{v.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{v.body}</p>
             </div>
@@ -90,29 +91,32 @@ function About() {
         </div>
       </section>
 
-      <section className="bg-secondary/50">
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 py-24 lg:grid-cols-2 lg:items-center lg:px-10">
-          <div className="overflow-hidden rounded-2xl">
-            <img
-              src={interiorImg}
-              alt="Treatment room at Al Nemah Clinic"
-              loading="lazy"
-              width={1600}
-              height={1200}
-              className="aspect-[5/4] w-full object-cover"
-            />
-          </div>
-          <div>
-            <p className="eyebrow mb-5">The team</p>
-            <h2 className="font-display text-4xl leading-tight md:text-5xl">
-              Dermatologists, Dentists and artisans of detail.
+      <section className="bg-secondary/40 border-t border-border/40 py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <div className="mx-auto max-w-3xl text-center mb-12 lg:mb-16">
+            <p className="eyebrow mb-4">Our Team</p>
+            <h2 className="font-display text-4xl leading-tight md:text-5xl lg:text-6xl">
+              Dermatologists, Dentists & Specialists
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+            <p className="mt-6 text-base md:text-lg leading-relaxed text-muted-foreground">
               Our practitioners are selected for both technical mastery and their bedside presence. Each brings deep specialization — in Dermatology or Dental — and all share the same standard: do less, do it beautifully, never compromise on safety.
             </p>
-            <Link to="/contact" className="mt-10 inline-flex rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground hover:opacity-90">
-              Meet the team
-            </Link>
+            <div className="mt-8">
+              <Link to="/contact" className="inline-flex rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground hover:opacity-90 shadow-sm transition-all">
+                Meet the team
+              </Link>
+            </div>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl md:rounded-3xl border border-border/60 shadow-xl bg-card">
+            <img
+              src={teamImg}
+              alt="Al Nemah Clinic Team"
+              loading="lazy"
+              width={1024}
+              height={683}
+              className="w-full h-auto object-cover max-h-[600px]"
+            />
           </div>
         </div>
       </section>
