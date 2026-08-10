@@ -350,7 +350,7 @@ function Home() {
               <p className="eyebrow text-primary font-semibold mb-4 tracking-[0.25em]">SKIN · LASER · DENTAL - SHARJAH</p>
               <h1 className="font-display text-4xl font-bold leading-[1.1] text-foreground sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.5rem]">
                 Skin, laser and dental care in Sharjah,<br />
-                refined by <span className="italic font-bold text-primary">precision.</span>
+                refined by <span className="italic font-bold text-[#974d08]">precision.</span>
               </h1>
               <p className="mt-6 max-w-xl text-base md:text-lg leading-relaxed text-black font-semibold">
                 Doctor-led skin, laser and dental treatments — designed around natural, comfortable results and a calm, considered experience.
