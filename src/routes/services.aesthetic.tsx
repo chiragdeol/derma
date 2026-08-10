@@ -15,12 +15,13 @@ export const Route = createFileRoute("/services/aesthetic")({
 });
 
 const treatments = [
-  { name: "Bespoke injectables", body: "Conservative, anatomically-driven enhancement using premium hyaluronic acids and neuromodulators.", time: "30 – 60 min" },
-  { name: "Signature Lumière facial", body: "A multi-layer protocol combining cleansing, exfoliation, peptides and LED therapy.", time: "75 min" },
-  { name: "Laser & light", body: "Fractional and pigment-specific lasers for tone, texture and clarity.", time: "45 – 90 min" },
-  { name: "Skin boosters & polynucleotides", body: "Micro-injected hydration and regeneration for visible glow within days.", time: "30 min" },
-  { name: "Chemical peels", body: "Customised acid blends to refine, brighten and even the complexion.", time: "45 min" },
-  { name: "Mesotherapy", body: "Vitamin and amino-acid cocktails delivered directly into the dermis.", time: "30 min" },
+  { name: "Botox", body: "Relaxes targeted facial muscles to soften forehead lines, frown lines, and crow's feet while maintaining natural expression.", time: "AED 750" },
+  { name: "Dermal Fillers", body: "Restores youthfulness, structural contour, and balanced volume in cheeks, chin, jawline, and tear troughs.", time: "AED 499 / ml" },
+  { name: "Profhilo", body: "Bio-remodeling treatment using ultra-pure hyaluronic acid to stimulate collagen, deep hydration, and firm skin laxity.", time: "AED 1,250" },
+  { name: "Lip Enhancement", body: "Bespoke lip shaping, volume restoration, and border definition tailored for subtle natural symmetry.", time: "AED 999" },
+  { name: "Sculptra", body: "Poly-L-lactic acid biostimulator that stimulates your body's own collagen production for long-lasting facial volumization.", time: "AED 1,999" },
+  { name: "Rejuran / PN Therapy", body: "Salmon DNA Polynucleotide cellular therapy to repair skin barrier, heal damaged tissue, and restore skin elasticity.", time: "AED 1,999" },
+  { name: "Peptide Pens", body: "Advanced therapeutic peptide delivery to enhance skin cellular energy, fat metabolism, and skin regeneration.", time: "AED 1,200" },
 ];
 
 const journey = [

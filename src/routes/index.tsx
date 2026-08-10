@@ -73,7 +73,7 @@ const services = [
 
 const doctors = [
   {
-    name: "Dr. Menna",
+    name: "Dr. Mennatallah Abdulrehman",
     role: "General Dentist",
     image: doctorMenna,
     education: [
@@ -88,15 +88,15 @@ const doctors = [
       "Smile Enhancement & Preventive Care"
     ],
     languages: ["Arabic", "English"],
-    bio: "Dr. Menna is a General Dentist who speaks Arabic, dedicated to providing high-quality dental care in a comfortable and patient-friendly environment. She offers a wide range of services including dental examinations, teeth cleaning, fillings, root canal treatment, extractions, crowns, bridges, and smile enhancement treatments. She also focuses on preventive dental care to maintain long-term oral health. Dr. Menna is known for her gentle approach and clear communication, ensuring patients feel comfortable, informed, and well cared for throughout their treatment."
+    bio: "Dr. Mennatallah Abdulrehman is a General Dentist who speaks Arabic, dedicated to providing high-quality dental care in a comfortable and patient-friendly environment. She offers a wide range of services including dental examinations, teeth cleaning, fillings, root canal treatment, extractions, crowns, bridges, and smile enhancement treatments. She also focuses on preventive dental care to maintain long-term oral health. Dr. Mennatallah Abdulrehman is known for her gentle approach and clear communication, ensuring patients feel comfortable, informed, and well cared for throughout their treatment."
   },
   {
     name: "Dr. Fatma Metwally",
-    role: "GP Aesthetic Doctor",
+    role: "General Practitioner",
     image: doctorFatma,
     education: [
       "Ain Shams University, Egypt",
-      "GP Aesthetic Doctor (UAE Licensed)",
+      "General Practitioner (UAE Licensed)",
       "Advanced Aesthetic Medicine & Facial Rejuvenation"
     ],
     specialties: [
@@ -108,7 +108,7 @@ const doctors = [
       "PRP Therapy, Mesotherapy & Profhilo"
     ],
     languages: ["English", "Arabic"],
-    bio: "Dr. Fatma Metwally graduated from Ain Shams University, Egypt, and initiated her career in aesthetics in Egypt in 2024. She later continued her professional journey as a GP Aesthetic Doctor in the UAE in 2025, providing a wide range of advanced aesthetic treatments to her patients. Dr. Fatma Metwally is dedicated to delivering comprehensive, personalized, and advanced aesthetic care, consistently updating her skills and techniques to remain at the forefront of aesthetic medicine and meet the diverse needs of her patients."
+    bio: "Dr. Fatma Metwally graduated from Ain Shams University, Egypt, and initiated her career in aesthetics in Egypt in 2024. She later continued her professional journey as a General Practitioner in the UAE in 2025, providing a wide range of advanced aesthetic treatments to her patients. Dr. Fatma Metwally is dedicated to delivering comprehensive, personalized, and advanced aesthetic care, consistently updating her skills and techniques to remain at the forefront of aesthetic medicine and meet the diverse needs of her patients."
   },
   {
     name: "Dr. Sidra Ejaz",
@@ -828,17 +828,15 @@ function Home() {
               onClick={() => setSelectedDoctor(d)}
               className="group cursor-pointer"
             >
-              <div className="overflow-hidden rounded-2xl bg-card relative">
+              <div className="overflow-hidden rounded-2xl bg-[#F5F2EB] relative flex items-center justify-center p-3 h-80 w-full border border-border/40">
                 <img
                   src={d.image}
                   alt={d.name}
                   loading="lazy"
-                  width={800}
-                  height={1024}
-                  className="aspect-[4/5] w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                  className="h-full w-full object-contain transition-transform duration-[1200ms] group-hover:scale-105"
                 />
                 {/* Visual hover cue */}
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="absolute inset-0 bg-black/15 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <span className="bg-white/95 text-foreground text-xs font-semibold px-4 py-2 rounded-full shadow-md transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                     View Profile
                   </span>
@@ -1123,13 +1121,13 @@ function Home() {
             </button>
 
             {/* Left Column: Doctor Photo */}
-            <div className="w-full md:w-2/5 relative h-64 md:h-auto bg-muted">
+            <div className="w-full md:w-2/5 relative min-h-[280px] md:h-auto bg-[#F5F2EB] flex items-center justify-center p-4">
               <img
                 src={selectedDoctor.image}
                 alt={selectedDoctor.name}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="max-h-[60vh] w-full object-contain"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent md:hidden" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent md:hidden" />
               <div className="absolute bottom-6 left-6 right-6 text-white md:hidden">
                 <h3 className="font-display text-2xl">{selectedDoctor.name}</h3>
                 <p className="text-xs uppercase tracking-wider text-[#b8957e] mt-1">{selectedDoctor.role}</p>

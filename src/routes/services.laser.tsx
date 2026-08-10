@@ -496,6 +496,39 @@ function LaserHairRemovalLanding() {
         </div>
       </section>
 
+      {/* ALL LASER & BODY TREATMENTS MENU */}
+      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="eyebrow text-[#974d08] mb-3 font-semibold">Laser & Body Menu</span>
+          <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">Advanced Laser & Body Treatments</h2>
+          <p className="text-sm text-muted-foreground">All final laser treatments and transparent pricing from our official menu.</p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {[
+            { name: "Pigmentation Laser", price: "AED 799", body: "Targeted laser energy to break down dark spots, sun damage, and hyperpigmentation." },
+            { name: "Vascular Laser", price: "AED 3,500", body: "Advanced laser precision for facial redness, broken capillaries, and spider veins." },
+            { name: "Tattoo Removal", price: "AED 299", body: "Q-switched laser technology to safely break down unwanted tattoo pigments." },
+            { name: "Carbon Laser Facial", price: "AED 399", body: "Deep pore cleansing and exfoliation for immediate luminous radiance." },
+            { name: "IPL Photofacial", price: "AED 799", body: "Intense Pulsed Light therapy for even skin tone, sun spots, and rosacea." },
+            { name: "Laser Skin Resurfacing", price: "AED 750", body: "Fractional laser resurfacing to smooth fine lines, acne scars, and skin texture." },
+            { name: "Vaginal Tightening", price: "AED 999 / session", body: "Non-surgical laser thermal therapy for tissue tightening and intimate wellness." },
+            { name: "Electrolysis White Hair Removal", price: "AED 300 / hr", body: "Permanent hair removal specially designed for white, gray, and blonde hairs." },
+          ].map((t) => (
+            <div key={t.name} className="bg-card border border-border/60 rounded-xl p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <h3 className="font-display text-xl text-foreground font-semibold mb-2">{t.name}</h3>
+                <p className="text-xs leading-relaxed text-muted-foreground mb-4">{t.body}</p>
+              </div>
+              <div className="pt-4 border-t border-border/40 flex items-center justify-between">
+                <span className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Price</span>
+                <span className="text-base font-display font-semibold text-[#974d08]">{t.price}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* PRICING */}
       <section className="bg-[#FAF7F2] border-y border-border/40 py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">

@@ -28,35 +28,56 @@ export const Route = createFileRoute("/services/injectables")({
         ["Doctor-led", "Every case"],
       ]}
       concerns={["Forehead lines", "Crow's feet", "Frown lines", "Volume loss", "Thin lips", "Skin laxity"]}
-      txIntro="Our full injectables menu — all mapped and performed by a doctor."
+      txIntro="Our full cosmetic injectables menu — all final treatments and transparent pricing from our menu."
       treatments={[
         {
-          name: "Anti-Wrinkle (Botox)",
-          body: "Relaxes targeted muscles to soften forehead, frown and eye lines.",
-          tags: ["Fine lines", "Prevention"],
+          name: "Botox",
+          body: "Relaxes targeted facial muscles to soften forehead lines, frown lines, and crow's feet while maintaining natural expression.",
+          tags: ["Wrinkles", "Prevention"],
           duration: "20 min · No downtime",
-          price: "From AED 900",
+          price: "AED 750",
         },
         {
           name: "Dermal Fillers",
-          body: "Restores volume and contour in cheeks, chin, jaw and under-eyes.",
+          body: "Restores youthfulness, structural contour, and balanced volume in cheeks, chin, jawline, and tear troughs.",
           tags: ["Volume", "Contour"],
-          duration: "30–40 min · Minimal",
-          price: "From AED 1,500",
+          duration: "30–40 min · Minimal downtime",
+          price: "AED 499 / ml",
         },
         {
           name: "Profhilo",
-          body: "Bio-remodelling that hydrates and firms skin across the face.",
-          tags: ["Laxity", "Glow"],
+          body: "Bio-remodeling treatment using ultra-pure hyaluronic acid to stimulate collagen, deep hydration, and firm skin laxity.",
+          tags: ["Bio-Remodeling", "Deep Hydration"],
           duration: "20 min · No downtime",
-          price: "From AED 1,800",
+          price: "AED 1,250",
         },
         {
           name: "Lip Enhancement",
-          body: "Subtle, balanced lip shaping and hydration.",
-          tags: ["Shape", "Hydration"],
-          duration: "30 min · Minimal",
-          price: "From AED 1,500",
+          body: "Bespoke lip shaping, volume restoration, and border definition tailored for subtle natural symmetry.",
+          tags: ["Lip Volume", "Symmetry"],
+          duration: "30 min · Minimal downtime",
+          price: "AED 999",
+        },
+        {
+          name: "Sculptra",
+          body: "Poly-L-lactic acid biostimulator that stimulates your body's own collagen production for long-lasting facial volumization.",
+          tags: ["Collagen Biostimulator", "Long-Lasting"],
+          duration: "40 min · Minimal downtime",
+          price: "AED 1,999",
+        },
+        {
+          name: "Rejuran / PN Therapy",
+          body: "Salmon DNA Polynucleotide cellular therapy to repair skin barrier, heal damaged tissue, and restore skin elasticity.",
+          tags: ["Cellular Repair", "Salmon DNA"],
+          duration: "30 min · Minimal downtime",
+          price: "AED 1,999",
+        },
+        {
+          name: "Peptide Pens",
+          body: "Advanced therapeutic peptide delivery to enhance skin cellular energy, fat metabolism, and skin regeneration.",
+          tags: ["Peptides", "Regeneration"],
+          duration: "20 min · No downtime",
+          price: "AED 1,200",
         },
       ]}
       faqs={[

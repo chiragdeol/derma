@@ -28,35 +28,49 @@ export const Route = createFileRoute("/services/lifting")({
         ["12+ months", "Results last"],
       ]}
       concerns={["Jawline laxity", "Sagging cheeks", "Neck laxity", "Loss of firmness", "Fine lines"]}
-      txIntro="Our lifting technologies — chosen to match your skin and goals."
+      txIntro="Our anti-aging & lifting menu — all final treatments and transparent pricing from our menu."
       treatments={[
         {
           name: "Morpheus8",
-          body: "RF microneedling that tightens and remodels from within.",
-          tags: ["Jawline", "Texture"],
-          duration: "60 min · 1–2 days",
-          price: "From AED 1,800",
+          body: "Radiofrequency microneedling that remodels sub-dermal adipose tissue and stimulates deep collagen renewal.",
+          tags: ["RF Microneedling", "Jawline"],
+          duration: "60 min · 1–2 days pinkness",
+          price: "AED 999",
         },
         {
           name: "Ultherapy",
-          body: "Focused ultrasound that lifts brow, chin and neck.",
-          tags: ["Lifting", "Neck"],
-          duration: "60–90 min · None",
-          price: "From AED 3,500",
+          body: "Micro-focused ultrasound energy to lift and tighten sagging skin on the brow, chin, jawline, and neck non-invasively.",
+          tags: ["Ultrasound Lift", "Non-Surgical Facelift"],
+          duration: "60–90 min · No downtime",
+          price: "AED 2,999",
         },
         {
           name: "PDO Threads",
-          body: "Dissolvable threads for an instant subtle lift.",
-          tags: ["Instant lift", "Contour"],
-          duration: "45 min · 2–3 days",
-          price: "From AED 3,000",
+          body: "Bio-absorbable polydioxanone threads placed underneath the skin to provide instant mechanical lifting and collagen synthesis.",
+          tags: ["Instant Lift", "Thread Contour"],
+          duration: "45 min · 2–3 days mild swelling",
+          price: "AED 500 / thread",
         },
         {
           name: "Fotona 4D",
-          body: "Laser facelift that firms inside and out.",
-          tags: ["Firmness", "Glow"],
-          duration: "60 min · Minimal",
-          price: "From AED 2,000",
+          body: "Non-invasive 4-step laser facelift treating exterior facial structures and interior oral cavity for comprehensive tightening.",
+          tags: ["Laser Facelift", "Collagen Renewal"],
+          duration: "60 min · Minimal downtime",
+          price: "AED 2,999",
+        },
+        {
+          name: "HIFU",
+          body: "High-Intensity Focused Ultrasound targeting deep SMAS layer to sculpt double chin, jawline, and cheeks.",
+          tags: ["SMAS Lifting", "Double Chin"],
+          duration: "45 min · No downtime",
+          price: "AED 999",
+        },
+        {
+          name: "Endolift",
+          body: "Advanced internal micro-optical fiber laser procedure that tightens lax skin and melts localized fat deposits.",
+          tags: ["Internal Laser", "Subdermal Tightening"],
+          duration: "60 min · 2–3 days mild swelling",
+          price: "AED 2,499",
         },
       ]}
       faqs={[
