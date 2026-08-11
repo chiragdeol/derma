@@ -19,12 +19,54 @@ export const Route = createFileRoute("/services/")({
 });
 
 const services = [
-  { num: "01", to: "/services/injectables", title: "Cosmetic Injectables", body: "Botox, fillers, Profhilo and lip enhancement — subtle, anatomical results.", image: injectables },
-  { num: "02", to: "/services/skin", title: "Skin & HydraFacial", body: "Medical-grade facials, peels and resurfacing for luminous skin.", image: skin },
-  { num: "03", to: "/services/laser", title: "Laser & Hair Removal", body: "Multi-wavelength laser platforms safe across all skin types.", image: laser },
-  { num: "04", to: "/services/lifting", title: "Anti-Aging & Lifting", body: "Morpheus8, Ultherapy, threads and Fotona 4D for non-surgical lift.", image: lifting },
-  { num: "05", to: "/services/dental/aesthetic-dentistry", title: "Dental Services", body: "Comprehensive clinical care and bespoke aesthetic smile design for your ultimate confidence.", image: dental },
-  { num: "06", to: "/services/wellness", title: "Wellness & Longevity", body: "IV drips, hormone health, hair restoration and skin boosters.", image: wellness },
+  { 
+    num: "01", 
+    to: "/services/injectables", 
+    title: "Cosmetic Injectables", 
+    tags: ["Botox", "Dermal Fillers", "Profhilo", "Lip Enhancement", "Sculptra", "Rejuran", "Peptide Pens"],
+    body: "Botox, fillers, Profhilo, Sculptra, Rejuran and lip enhancement — subtle, anatomical results.", 
+    image: injectables 
+  },
+  { 
+    num: "02", 
+    to: "/services/skin", 
+    title: "Skin & HydraFacial", 
+    tags: ["HydraFacial", "Chemical Peels", "Mesotherapy", "Microneedling", "Skin Boosters", "Carbon Laser", "PRP Facial"],
+    body: "Medical-grade facials, HydraFacial, peels, mesotherapy and resurfacing for luminous skin.", 
+    image: skin 
+  },
+  { 
+    num: "03", 
+    to: "/services/laser", 
+    title: "Laser & Hair Removal", 
+    tags: ["Laser Hair Removal", "Pigmentation Laser", "Vascular Laser", "Tattoo Removal", "IPL Photofacial", "Laser Resurfacing", "Vaginal Tightening"],
+    body: "Multi-wavelength laser platforms for hair removal, pigmentation, and specialized body lasers.", 
+    image: laser 
+  },
+  { 
+    num: "04", 
+    to: "/services/lifting", 
+    title: "Anti-Aging & Lifting", 
+    tags: ["Morpheus8", "Ultherapy", "PDO Threads", "Fotona 4D", "HIFU", "Endolift"],
+    body: "Morpheus8, Ultherapy, PDO threads, Fotona 4D and HIFU for non-surgical lift.", 
+    image: lifting 
+  },
+  { 
+    num: "05", 
+    to: "/services/dental/aesthetic-dentistry", 
+    title: "Dental Services", 
+    tags: ["Porcelain Veneers", "Teeth Whitening", "Invisalign", "Dental Implants", "Crowns & Bridges", "Root Canal", "Snap On Smile"],
+    body: "Comprehensive clinical care and bespoke aesthetic Hollywood smile design for ultimate confidence.", 
+    image: dental 
+  },
+  { 
+    num: "06", 
+    to: "/services/wellness", 
+    title: "Wellness & Longevity", 
+    tags: ["Glow IV Drip", "Vitamin C IV", "NAD+ Therapy", "Immune Boost IV", "Hydration IV", "Beauty Drip", "Anti-Aging IV"],
+    body: "Clinical IV drips, NAD+ therapy, immunity boosters, and cellular anti-aging protocols.", 
+    image: wellness 
+  },
 ] as const;
 
 function ServicesIndex() {
@@ -60,6 +102,16 @@ function ServicesIndex() {
               <div className="mt-6">
                 <p className="eyebrow text-muted-foreground">{s.num}</p>
                 <h2 className="mt-3 font-display text-3xl text-foreground">{s.title}</h2>
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {s.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full bg-secondary/50 border border-border/60 px-2.5 py-0.5 text-[11px] font-medium text-foreground/80 group-hover:border-[#974d08]/40 transition-colors"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
                 <span className="mt-5 inline-flex items-center text-sm text-foreground underline-offset-8 group-hover:underline">
                   Explore →

@@ -63,12 +63,60 @@ const pillars = [
 ];
 
 const services = [
-  { num: "01", title: "Aesthetic Medicine", image: injectablesImg, tags: ["Fillers", "Botox", "Skin Boosters", "Biostimulators"], body: "Refined, natural enhancements delivered with medical precision and subtle restraint.", to: "/services/aesthetic", cta: "Explore aesthetics" },
-  { num: "02", title: "Laser & Skin", image: skinImg, tags: ["Skin Resurfacing", "Pigmentation", "Vascular", "Acne Scars"], body: "Evidence-based protocols to restore clarity, texture and fundamental skin health.", to: "/services/skin", cta: "Explore skin care" },
-  { num: "03", title: "Laser Hair Removal", image: laserImg, tags: ["Candela GentleMax Pro", "Full Body", "Facial Laser", "Cooling Tech"], body: "Painless, precise laser technology tailored for all skin tones and sensitive areas.", to: "/services/laser", cta: "Explore laser removal" },
-  { num: "04", title: "Lifting & Tightening", image: liftingImg, tags: ["HIFU", "RF Microneedling", "Thread Lift", "Collagen Induction"], body: "Non-surgical lifting solutions designed to restore structural contour and firmness.", to: "/services/lifting", cta: "Explore lifting" },
-  { num: "05", title: "Dental Center", image: dentalImg, tags: ["Veneers", "Digital Smile Design", "Implants", "Whitening"], body: "Comprehensive cosmetic and restorative dentistry crafted for health and harmony.", to: "/services/dental", cta: "Explore dental" },
-  { num: "06", title: "Wellness & Longevity", image: wellnessImg, tags: ["IV drips", "Hormone health", "Hair restoration", "Skin boosters"], body: "Feel as good as you look — inside-out care for energy and vitality.", to: "/services/wellness", cta: "Explore wellness" },
+  { 
+    num: "01", 
+    title: "Cosmetic Injectables", 
+    image: injectablesImg, 
+    tags: ["Botox", "Dermal Fillers", "Profhilo", "Lip Enhancement", "Sculptra", "Rejuran / PN", "Peptide Pens"], 
+    body: "Botox, dermal fillers, Profhilo, Sculptra, Rejuran, and lip enhancement — subtle, anatomical facial results.", 
+    to: "/services/injectables", 
+    cta: "Explore injectables" 
+  },
+  { 
+    num: "02", 
+    title: "Skin & HydraFacial", 
+    image: skinImg, 
+    tags: ["HydraFacial", "Chemical Peels", "Mesotherapy", "Microneedling", "Skin Boosters", "Carbon Laser", "PRP Facial"], 
+    body: "Medical-grade HydraFacial, peels, mesotherapy, skin boosters, and resurfacing for luminous skin.", 
+    to: "/services/skin", 
+    cta: "Explore skin care" 
+  },
+  { 
+    num: "03", 
+    title: "Laser & Hair Removal", 
+    image: laserImg, 
+    tags: ["Laser Hair Removal", "Pigmentation Laser", "Vascular Laser", "Tattoo Removal", "IPL Photofacial", "Laser Resurfacing", "Vaginal Tightening"], 
+    body: "Advanced laser hair removal, pigmentation, vascular laser, and body resurfacing platforms.", 
+    to: "/services/laser", 
+    cta: "Explore laser treatments" 
+  },
+  { 
+    num: "04", 
+    title: "Anti-Aging & Lifting", 
+    image: liftingImg, 
+    tags: ["Morpheus8", "Ultherapy", "PDO Threads", "Fotona 4D", "HIFU", "Endolift"], 
+    body: "Morpheus8, Ultherapy, PDO threads, Fotona 4D, and HIFU for non-surgical face lifting.", 
+    to: "/services/lifting", 
+    cta: "Explore lifting" 
+  },
+  { 
+    num: "05", 
+    title: "Dental Services", 
+    image: dentalImg, 
+    tags: ["Porcelain Veneers", "Teeth Whitening", "Invisalign", "Dental Implants", "Crowns & Bridges", "Root Canal", "Snap On Smile"], 
+    body: "Comprehensive clinical dentistry and bespoke aesthetic Hollywood smile design.", 
+    to: "/services/dental/aesthetic-dentistry", 
+    cta: "Explore dental" 
+  },
+  { 
+    num: "06", 
+    title: "Wellness & Longevity", 
+    image: wellnessImg, 
+    tags: ["Glow IV Drip", "Vitamin C IV", "NAD+ Therapy", "Immune Boost IV", "Hydration IV", "Beauty Drip", "Anti-Aging IV"], 
+    body: "Clinical IV drips, NAD+ therapy, immunity boosters, and cellular anti-aging protocols.", 
+    to: "/services/wellness", 
+    cta: "Explore wellness" 
+  },
 ] as const;
 
 const doctors = [
