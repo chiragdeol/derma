@@ -300,6 +300,14 @@ function Home() {
     }
   };
 
+  const doctorCarouselRef = useRef<HTMLDivElement>(null);
+  const scrollDoctorCarousel = (direction: "left" | "right") => {
+    if (doctorCarouselRef.current) {
+      const scrollAmount = direction === "left" ? -340 : 340;
+      doctorCarouselRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
+
   const [isPaused, setIsPaused] = useState(false);
   const [selectedDoctor, setSelectedDoctor] = useState<typeof doctors[number] | null>(null);
 
@@ -807,28 +815,54 @@ function Home() {
         </div>
       </section>
 
-      {/* DOCTORS */}
+      {/* DOCTORS CAROUSEL */}
       <section id="doctors" className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-16">
-        <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+        <div className="mb-10 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>
             <p className="eyebrow mb-4">Meet the team</p>
             <h2 className="font-display text-4xl md:text-5xl">
               Board-certified <em className="italic">specialists</em>.
             </h2>
           </div>
-          <p className="max-w-md text-sm text-black font-semibold">
-            A multidisciplinary team of dentists and dermatologists — collaborating so your smile and skin plans work in harmony.
-          </p>
+
+          <div className="flex items-center gap-6">
+            <p className="hidden md:block max-w-xs text-xs text-black font-semibold leading-relaxed">
+              A multidisciplinary team of dentists and dermatologists — collaborating so your smile and skin plans work in harmony.
+            </p>
+
+            {/* Carousel Navigation Controls */}
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => scrollDoctorCarousel("left")}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-border/80 hover:border-[#974d08] hover:text-[#974d08] bg-background text-foreground transition-all cursor-pointer shadow-sm hover:scale-105 font-bold text-lg"
+                aria-label="Previous Doctor"
+              >
+                ←
+              </button>
+              <button
+                onClick={() => scrollDoctorCarousel("right")}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-border/80 hover:border-[#974d08] hover:text-[#974d08] bg-background text-foreground transition-all cursor-pointer shadow-sm hover:scale-105 font-bold text-lg"
+                aria-label="Next Doctor"
+              >
+                →
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Doctor Cards Carousel Slider */}
+        <div
+          ref={doctorCarouselRef}
+          className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 scrollbar-none"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
           {doctors.map((d) => (
             <article 
               key={d.name} 
               onClick={() => setSelectedDoctor(d)}
-              className="group cursor-pointer"
+              className="group cursor-pointer min-w-[280px] sm:min-w-[310px] md:min-w-[330px] flex-shrink-0 snap-start"
             >
-              <div className="overflow-hidden rounded-2xl bg-[#F5F2EB] relative h-80 w-full border border-border/40">
+              <div className="overflow-hidden rounded-2xl bg-[#F5F2EB] relative h-80 sm:h-96 w-full border border-border/40 shadow-sm group-hover:shadow-md transition-shadow">
                 <img
                   src={d.image}
                   alt={d.name}
@@ -836,15 +870,22 @@ function Home() {
                   className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                 />
                 {/* Visual hover cue */}
-                <div className="absolute inset-0 bg-black/15 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <span className="bg-white/95 text-foreground text-xs font-semibold px-4 py-2 rounded-full shadow-md transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                    View Profile
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span className="bg-white/95 text-foreground text-xs font-semibold px-5 py-2.5 rounded-full shadow-md transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                    View Full Profile
                   </span>
                 </div>
               </div>
-              <div className="mt-6">
-                <h3 className="font-display text-2xl text-foreground group-hover:text-primary transition-colors">{d.name}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{d.role}</p>
+              <div className="mt-5">
+                <h3 className="font-display text-2xl text-foreground group-hover:text-[#974d08] transition-colors">{d.name}</h3>
+                <p className="mt-1 text-sm font-medium text-muted-foreground">{d.role}</p>
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {d.languages.map((lang) => (
+                    <span key={lang} className="inline-block rounded-md bg-secondary/40 px-2.5 py-1 text-[11px] text-muted-foreground font-medium">
+                      {lang}
+                    </span>
+                  ))}
+                </div>
               </div>
             </article>
           ))}
