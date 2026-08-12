@@ -82,12 +82,12 @@ export function Header() {
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-2 sm:py-4 lg:px-10">
         <Link to="/" className="group flex items-center gap-3">
           <img
             src="/logo-al-nemah.png"
             alt="Al Nemah Logo"
-            className="h-16 w-auto object-contain"
+            className="h-11 sm:h-16 w-auto object-contain"
           />
         </Link>
 

@@ -388,7 +388,7 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative bg-background overflow-hidden pt-36 sm:pt-40 lg:pt-44 pb-16 lg:pb-20">
+      <section className="relative bg-background overflow-hidden pt-44 sm:pt-40 lg:pt-48 pb-16 lg:pb-20">
         {/* Soft watermark background image */}
         <div className="absolute inset-0 z-0 opacity-[0.08] mix-blend-multiply pointer-events-none">
           <img
