@@ -354,9 +354,9 @@ export function ServiceTemplate({
                       )}
                     </div>
                     {/* Price badge */}
-                    <div className="absolute -right-3 top-8 bg-card border border-border/60 px-4 py-2.5 rounded-lg shadow-md z-10 flex flex-col items-start min-w-[100px]">
-                      <small className="text-[9px] uppercase tracking-wider text-muted-foreground">From</small>
-                      <b className="font-display text-base text-[#974d08] mt-0.5">{t.price.replace('From ', '')}</b>
+                    <div className="absolute -right-3 top-8 bg-[#974d08] border border-[#974d08] px-4 py-2.5 rounded-xl shadow-lg z-10 flex flex-col items-start min-w-[105px]">
+                      <small className="text-[9px] uppercase tracking-wider text-white/90 font-medium">From</small>
+                      <b className="font-display text-base text-white font-bold mt-0.5">{t.price.replace('From ', '')}</b>
                     </div>
                   </div>
                 </div>
