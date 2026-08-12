@@ -211,22 +211,18 @@ export function BeforeAfterSection({
   );
 }
 
+import { getAllTreatmentImageOverrides } from "@/lib/treatment-image-manager";
+
 export function ServiceTemplate({
-  division,
-  divisionUrl,
   categoryName,
   eyebrow,
-  metaTitle,
-  metaDesc,
   h1,
   intro,
-  highlights,
-  concerns,
   txIntro,
   treatments,
   faqs,
-  related,
-  heroImage,
+  division,
+  divisionUrl,
   dental = false,
   beforeImage,
   afterImage,
@@ -234,6 +230,15 @@ export function ServiceTemplate({
 }: ServiceTemplateProps) {
   const [videoPlaying, setVideoPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  const [overrides, setOverrides] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    const syncOverrides = () => setOverrides(getAllTreatmentImageOverrides());
+    syncOverrides();
+    window.addEventListener("treatment_images_updated", syncOverrides);
+    return () => window.removeEventListener("treatment_images_updated", syncOverrides);
+  }, []);
 
   const handlePlayVideo = () => {
     setVideoPlaying(true);
@@ -341,11 +346,11 @@ export function ServiceTemplate({
                 <div className={`relative ${idx % 2 === 1 ? 'lg:order-2' : ''}`}>
                   <div className="p-3.5 border border-[#974d08]/40 rounded-2xl relative">
                     <div className="overflow-hidden rounded-xl aspect-[4/3] bg-gradient-to-br from-[#ECE0CF] to-[#B49E7E] flex items-end relative">
-                      {t.image ? (
+                      {overrides[t.name] || t.image ? (
                         <img 
-                          src={t.image} 
+                          src={overrides[t.name] || t.image} 
                           alt={t.name} 
-                          className="absolute inset-0 w-full h-full object-cover"
+                          className="absolute inset-0 w-full h-full object-cover transition-all duration-300"
                         />
                       ) : (
                         <span className="m-4 text-[10px] italic font-display text-white bg-black/40 px-3 py-1.5 rounded z-10">
