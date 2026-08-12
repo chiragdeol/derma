@@ -87,7 +87,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" },
+      { name: "theme-color", content: "#974d08" },
+      { name: "mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
+      { name: "apple-mobile-web-app-title", content: "Al Nemah" },
       { title: "Al Nemah Clinic — Advanced Medicine meets Aesthetic Artistry" },
       { name: "description", content: "Al Nemah Clinic, Sharjah: multidisciplinary aesthetic, laser and dental center delivering natural, refined results." },
       { property: "og:title", content: "Al Nemah Medical Center Sharjah" },
@@ -106,6 +111,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "https://alnemahmc.com/og-cover.png" },
     ],
     links: [
+      { rel: "manifest", href: "/manifest.json" },
       { rel: "icon", type: "image/png", href: "/logo-al-nemah.png" },
       { rel: "apple-touch-icon", href: "/logo-al-nemah.png" },
       { rel: "stylesheet", href: appCss },

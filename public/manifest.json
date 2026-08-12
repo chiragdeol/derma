@@ -1,0 +1,23 @@
+{
+  "short_name": "Al Nemah",
+  "name": "Al Nemah Medical Center Sharjah",
+  "icons": [
+    {
+      "src": "/logo-al-nemah.png",
+      "type": "image/png",
+      "sizes": "192x192 512x512"
+    },
+    {
+      "src": "/favicon.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0B0B0B",
+  "theme_color": "#974d08",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "description": "Multidisciplinary aesthetic, laser, and dental medical center in Sharjah."
+}
