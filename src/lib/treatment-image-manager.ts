@@ -15,7 +15,6 @@ export function getAllTreatmentImageOverrides(): Record<string, string> {
 
 export function getTreatmentImageOverride(treatmentName: string): string | null {
   const overrides = getAllTreatmentImageOverrides();
-  // Normalize treatment name for matching
   const normalizedKey = treatmentName.trim().toLowerCase();
   for (const [key, value] of Object.entries(overrides)) {
     if (key.trim().toLowerCase() === normalizedKey) {
@@ -29,8 +28,16 @@ export function saveTreatmentImageOverride(treatmentName: string, base64DataUrl:
   if (typeof window === "undefined") return;
   const overrides = getAllTreatmentImageOverrides();
   overrides[treatmentName.trim()] = base64DataUrl;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(overrides));
-  // Dispatch custom event to update components in real-time
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(overrides));
+  } catch (e) {
+    console.error("localStorage quota exceeded, attempting to save override safely", e);
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(overrides));
+    } catch (err) {
+      alert("Browser storage is full! Please reset or remove some custom photos from the admin panel.");
+    }
+  }
   window.dispatchEvent(new Event("treatment_images_updated"));
 }
 
@@ -43,12 +50,18 @@ export function removeTreatmentImageOverride(treatmentName: string) {
       delete overrides[key];
     }
   }
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(overrides));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(overrides));
+  } catch (e) {
+    console.error(e);
+  }
   window.dispatchEvent(new Event("treatment_images_updated"));
 }
 
 export function resetTreatmentImageOverrides() {
   if (typeof window === "undefined") return;
-  localStorage.removeItem(STORAGE_KEY);
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (e) {}
   window.dispatchEvent(new Event("treatment_images_updated"));
 }

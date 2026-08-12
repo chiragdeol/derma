@@ -55,6 +55,46 @@ const TREATMENT_CATEGORIES = [
   }
 ];
 
+function compressImage(file: File, maxWidth = 800, maxHeight = 600, quality = 0.75): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        let width = img.width;
+        let height = img.height;
+
+        if (width > maxWidth) {
+          height = Math.round((height * maxWidth) / width);
+          width = maxWidth;
+        }
+        if (height > maxHeight) {
+          width = Math.round((width * maxHeight) / height);
+          height = maxHeight;
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        const ctx = canvas.getContext("2d");
+        if (!ctx) {
+          resolve(e.target?.result as string);
+          return;
+        }
+
+        ctx.drawImage(img, 0, 0, width, height);
+        const compressedDataUrl = canvas.toDataURL("image/jpeg", quality);
+        resolve(compressedDataUrl);
+      };
+      img.onerror = () => reject(new Error("Failed to load image"));
+      img.src = e.target?.result as string;
+    };
+    reader.onerror = (err) => reject(err);
+    reader.readAsDataURL(file);
+  });
+}
+
 export function AdminSEOManager() {
   const [mounted, setMounted] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -64,11 +104,11 @@ export function AdminSEOManager() {
   const [selectedPath, setSelectedPath] = useState("/");
   const [seoForm, setSeoForm] = useState<PageSEO>(DEFAULT_SEO_CONFIG["/"]);
   const [savedSuccess, setSavedSuccess] = useState(false);
-  const [previewDevice, setPreviewDevice] = useState<"desktop" | "mobile">("desktop");
 
   const [activeTab, setActiveTab] = useState<"seo" | "photos" | "scripts">("seo");
   const [treatmentOverrides, setTreatmentOverrides] = useState<Record<string, string>>({});
   const [selectedCategory, setSelectedCategory] = useState("Skin & HydraFacial");
+  const [uploadingTreatment, setUploadingTreatment] = useState<string | null>(null);
 
   const [customScripts, setCustomScripts] = useState("");
   const [scriptsSavedSuccess, setScriptsSavedSuccess] = useState(false);
@@ -96,14 +136,18 @@ export function AdminSEOManager() {
     }
   }, [selectedPath, isAuthenticated]);
 
-  const handleUploadPhoto = (treatmentName: string, file: File) => {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const dataUrl = e.target?.result as string;
-      saveTreatmentImageOverride(treatmentName, dataUrl);
+  const handleUploadPhoto = async (treatmentName: string, file: File) => {
+    setUploadingTreatment(treatmentName);
+    try {
+      const compressedDataUrl = await compressImage(file);
+      saveTreatmentImageOverride(treatmentName, compressedDataUrl);
       setTreatmentOverrides(getAllTreatmentImageOverrides());
-    };
-    reader.readAsDataURL(file);
+    } catch (e) {
+      console.error("Failed to compress and save photo", e);
+      alert("Could not process photo. Please try a different image file.");
+    } finally {
+      setUploadingTreatment(null);
+    }
   };
 
   const handleRemovePhoto = (treatmentName: string) => {
@@ -517,11 +561,20 @@ export function AdminSEOManager() {
                       </div>
 
                       <div className="flex gap-2 pt-2">
-                        <label className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-[#974d08] text-white hover:opacity-90 cursor-pointer transition-all">
-                          <UploadCloud className="w-3.5 h-3.5" /> Upload Photo
+                        <label className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-[#974d08] text-white hover:opacity-90 transition-all ${uploadingTreatment === tName ? "opacity-60 cursor-wait" : "cursor-pointer"}`}>
+                          {uploadingTreatment === tName ? (
+                            <>
+                              <RefreshCw className="w-3.5 h-3.5 animate-spin" /> Saving...
+                            </>
+                          ) : (
+                            <>
+                              <UploadCloud className="w-3.5 h-3.5" /> {hasCustom ? "Change Photo" : "Upload Photo"}
+                            </>
+                          )}
                           <input
                             type="file"
                             accept="image/*"
+                            disabled={uploadingTreatment === tName}
                             onChange={(e) => {
                               const file = e.target.files?.[0];
                               if (file) handleUploadPhoto(tName, file);
