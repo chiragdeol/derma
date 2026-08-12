@@ -56,41 +56,52 @@ const TREATMENT_CATEGORIES = [
 ];
 
 function compressImage(file: File, maxWidth = 800, maxHeight = 600, quality = 0.75): Promise<string> {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const reader = new FileReader();
     reader.onload = (e) => {
-      const img = new Image();
+      const dataUrl = e.target?.result as string;
+      if (!dataUrl) {
+        resolve("");
+        return;
+      }
+      const img = new window.Image();
+      img.crossOrigin = "anonymous";
       img.onload = () => {
-        const canvas = document.createElement("canvas");
-        let width = img.width;
-        let height = img.height;
+        try {
+          const canvas = document.createElement("canvas");
+          let width = img.width;
+          let height = img.height;
 
-        if (width > maxWidth) {
-          height = Math.round((height * maxWidth) / width);
-          width = maxWidth;
+          if (width > maxWidth) {
+            height = Math.round((height * maxWidth) / width);
+            width = maxWidth;
+          }
+          if (height > maxHeight) {
+            width = Math.round((width * maxHeight) / height);
+            height = maxHeight;
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+
+          const ctx = canvas.getContext("2d");
+          if (!ctx) {
+            resolve(dataUrl);
+            return;
+          }
+
+          ctx.drawImage(img, 0, 0, width, height);
+          const compressed = canvas.toDataURL("image/jpeg", quality);
+          resolve(compressed || dataUrl);
+        } catch (err) {
+          console.warn("Canvas compression fallback to raw dataUrl", err);
+          resolve(dataUrl);
         }
-        if (height > maxHeight) {
-          width = Math.round((width * maxHeight) / height);
-          height = maxHeight;
-        }
-
-        canvas.width = width;
-        canvas.height = height;
-
-        const ctx = canvas.getContext("2d");
-        if (!ctx) {
-          resolve(e.target?.result as string);
-          return;
-        }
-
-        ctx.drawImage(img, 0, 0, width, height);
-        const compressedDataUrl = canvas.toDataURL("image/jpeg", quality);
-        resolve(compressedDataUrl);
       };
-      img.onerror = () => reject(new Error("Failed to load image"));
-      img.src = e.target?.result as string;
+      img.onerror = () => resolve(dataUrl);
+      img.src = dataUrl;
     };
-    reader.onerror = (err) => reject(err);
+    reader.onerror = () => resolve("");
     reader.readAsDataURL(file);
   });
 }
@@ -109,6 +120,7 @@ export function AdminSEOManager() {
   const [treatmentOverrides, setTreatmentOverrides] = useState<Record<string, string>>({});
   const [selectedCategory, setSelectedCategory] = useState("Skin & HydraFacial");
   const [uploadingTreatment, setUploadingTreatment] = useState<string | null>(null);
+  const [photoSavedMessage, setPhotoSavedMessage] = useState<string | null>(null);
 
   const [customScripts, setCustomScripts] = useState("");
   const [scriptsSavedSuccess, setScriptsSavedSuccess] = useState(false);
@@ -139,9 +151,15 @@ export function AdminSEOManager() {
   const handleUploadPhoto = async (treatmentName: string, file: File) => {
     setUploadingTreatment(treatmentName);
     try {
-      const compressedDataUrl = await compressImage(file);
-      saveTreatmentImageOverride(treatmentName, compressedDataUrl);
-      setTreatmentOverrides(getAllTreatmentImageOverrides());
+      const dataUrl = await compressImage(file);
+      if (dataUrl) {
+        saveTreatmentImageOverride(treatmentName, dataUrl);
+        setTreatmentOverrides(getAllTreatmentImageOverrides());
+        setPhotoSavedMessage(`Custom photo updated for "${treatmentName}"!`);
+        setTimeout(() => setPhotoSavedMessage(null), 4000);
+      } else {
+        alert("Failed to read photo file.");
+      }
     } catch (e) {
       console.error("Failed to compress and save photo", e);
       alert("Could not process photo. Please try a different image file.");
@@ -505,6 +523,12 @@ export function AdminSEOManager() {
               )}
             </div>
 
+            {photoSavedMessage && (
+              <div className="rounded-xl bg-green-50 border border-green-200 p-4 text-xs font-semibold text-green-700 flex items-center gap-2">
+                <CheckCircle className="w-4 h-4" /> {photoSavedMessage}
+              </div>
+            )}
+
             {/* Category Pills */}
             <div className="flex gap-2 flex-wrap pt-4">
               {TREATMENT_CATEGORIES.map((cat) => (
@@ -534,6 +558,7 @@ export function AdminSEOManager() {
                 {currentCategoryObj.treatments.map((tName) => {
                   const hasCustom = !!(treatmentOverrides && treatmentOverrides[tName]);
                   const currentImg = treatmentOverrides ? treatmentOverrides[tName] : null;
+                  const inputId = `file-input-${tName.replace(/[^a-zA-Z0-9]/g, '-')}`;
 
                   return (
                     <div key={tName} className="rounded-2xl border border-border bg-card p-5 space-y-4 shadow-sm flex flex-col justify-between">
@@ -561,7 +586,17 @@ export function AdminSEOManager() {
                       </div>
 
                       <div className="flex gap-2 pt-2">
-                        <label className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-[#974d08] text-white hover:opacity-90 transition-all ${uploadingTreatment === tName ? "opacity-60 cursor-wait" : "cursor-pointer"}`}>
+                        <button
+                          type="button"
+                          disabled={uploadingTreatment === tName}
+                          onClick={() => {
+                            const inputEl = document.getElementById(inputId);
+                            if (inputEl) inputEl.click();
+                          }}
+                          className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-[#974d08] text-white hover:opacity-90 transition-all ${
+                            uploadingTreatment === tName ? "opacity-60 cursor-wait" : "cursor-pointer"
+                          }`}
+                        >
                           {uploadingTreatment === tName ? (
                             <>
                               <RefreshCw className="w-3.5 h-3.5 animate-spin" /> Saving...
@@ -571,20 +606,23 @@ export function AdminSEOManager() {
                               <UploadCloud className="w-3.5 h-3.5" /> {hasCustom ? "Change Photo" : "Upload Photo"}
                             </>
                           )}
-                          <input
-                            type="file"
-                            accept="image/*"
-                            disabled={uploadingTreatment === tName}
-                            onChange={(e) => {
-                              const file = e.target.files?.[0];
-                              if (file) handleUploadPhoto(tName, file);
-                            }}
-                            className="hidden"
-                          />
-                        </label>
+                        </button>
+
+                        <input
+                          id={inputId}
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) handleUploadPhoto(tName, file);
+                            e.target.value = "";
+                          }}
+                          className="hidden"
+                        />
 
                         {hasCustom && (
                           <button
+                            type="button"
                             onClick={() => handleRemovePhoto(tName)}
                             className="p-2 text-red-600 bg-red-50 border border-red-200 rounded-xl hover:bg-red-100 transition-colors cursor-pointer"
                             title="Remove custom photo"
