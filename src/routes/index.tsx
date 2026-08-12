@@ -388,7 +388,7 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative bg-background overflow-hidden pt-24 pb-12 lg:pt-32 lg:pb-16">
+      <section className="relative bg-background overflow-hidden pt-36 sm:pt-40 lg:pt-44 pb-16 lg:pb-20">
         {/* Soft watermark background image */}
         <div className="absolute inset-0 z-0 opacity-[0.08] mix-blend-multiply pointer-events-none">
           <img
@@ -398,17 +398,17 @@ function Home() {
           />
         </div>
         
-        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+        <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             
             {/* Left Column: Heading and Stats */}
             <div className="lg:col-span-7 flex flex-col justify-center">
-              <p className="eyebrow text-primary font-semibold mb-4 tracking-[0.25em]">SKIN · LASER · DENTAL - SHARJAH</p>
-              <h1 className="font-display text-4xl font-bold leading-[1.1] text-foreground sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.5rem]">
-                Skin, laser and dental care in Sharjah,<br />
+              <p className="eyebrow text-primary font-semibold mb-3 sm:mb-4 tracking-[0.22em] text-[11px] sm:text-xs">SKIN · LASER · DENTAL - SHARJAH</p>
+              <h1 className="font-display text-3xl font-bold leading-[1.18] text-foreground sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.5rem]">
+                Skin, laser and dental care in Sharjah,<br className="hidden sm:inline" />{" "}
                 refined by <span className="italic font-bold text-[#974d08]">precision.</span>
               </h1>
-              <p className="mt-6 max-w-xl text-base md:text-lg leading-relaxed text-black font-semibold">
+              <p className="mt-5 sm:mt-6 max-w-xl text-sm sm:text-base md:text-lg leading-relaxed text-black font-semibold">
                 Doctor-led skin, laser and dental treatments — designed around natural, comfortable results and a calm, considered experience.
               </p>
               

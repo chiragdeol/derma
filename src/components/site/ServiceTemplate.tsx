@@ -245,7 +245,7 @@ export function ServiceTemplate({
   return (
     <>
       {/* BREADCRUMB */}
-      <nav className="border-b border-border/60 bg-card py-4 text-xs text-muted-foreground mt-20">
+      <nav className="border-b border-border/60 bg-card pt-36 sm:pt-32 pb-4 text-xs text-muted-foreground">
         <div className="mx-auto max-w-6xl px-6 lg:px-10 flex gap-2 items-center flex-wrap">
           <Link to="/" className="hover:text-primary">Home</Link>
           <span className="text-primary/70">›</span>

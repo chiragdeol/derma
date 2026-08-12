@@ -63,21 +63,21 @@ export function Header() {
       }`}
     >
       {/* Top Bar */}
-      <div className="bg-[#974d08] text-ivory text-[11px] py-1.5 px-6 lg:px-10 flex flex-col sm:flex-row justify-between items-center gap-1.5 transition-all duration-300">
-        <div className="flex items-center gap-1.5 opacity-90 tracking-wide font-light">
+      <div className="bg-[#974d08] text-ivory text-[10px] sm:text-[11px] py-2 sm:py-1.5 px-4 sm:px-6 lg:px-10 flex flex-col sm:flex-row justify-between items-center gap-1 sm:gap-1.5 transition-all duration-300">
+        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-2 gap-y-0.5 opacity-95 tracking-wide font-light text-center sm:text-left">
           <span>Behind Zahia City Center, New Muweilah, Sharjah</span>
-          <span className="opacity-45">•</span>
-          <span>Open daily 9:00 AM – 10:00 PM</span>
+          <span className="opacity-45 hidden sm:inline">•</span>
+          <span className="hidden sm:inline">Open daily 9:00 AM – 10:00 PM</span>
         </div>
-        <div className="flex items-center gap-3 opacity-90 font-light flex-wrap justify-center">
-          <a href="tel:+971500999324" className="hover:underline tracking-wide">+971 50 099 9324</a>
-          <span className="opacity-30">•</span>
-          <a href="tel:+971566814451" className="hover:underline tracking-wide">+971 56 681 4451</a>
-          <span className="opacity-30">/</span>
-          <div className="flex gap-2">
-            <span className="font-semibold text-accent">EN</span>
+        <div className="flex items-center gap-2 sm:gap-3 opacity-95 font-light flex-wrap justify-center text-[10px] sm:text-[11px]">
+          <a href="tel:+971500999324" className="hover:underline tracking-wide whitespace-nowrap">+971 50 099 9324</a>
+          <span className="opacity-45">•</span>
+          <a href="tel:+971566814451" className="hover:underline tracking-wide whitespace-nowrap">+971 56 681 4451</a>
+          <span className="opacity-45 hidden sm:inline">/</span>
+          <div className="flex items-center gap-1.5 ml-1">
+            <span className="font-semibold text-white">EN</span>
             <span className="opacity-30">/</span>
-            <span className="hover:underline cursor-pointer opacity-70">العربية</span>
+            <span className="hover:underline cursor-pointer opacity-80">العربية</span>
           </div>
         </div>
       </div>
