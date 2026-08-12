@@ -152,8 +152,6 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
-        <link rel="icon" type="image/png" href="/logo-al-nemah.png" />
-        <link rel="apple-touch-icon" href="/logo-al-nemah.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrgJSON) }}
@@ -172,8 +170,12 @@ function RootComponent() {
   const location = useLocation();
 
   useEffect(() => {
-    applySEOToDocument(location.pathname);
-    applyCustomHeaderScripts();
+    try {
+      applySEOToDocument(location.pathname);
+      applyCustomHeaderScripts();
+    } catch (e) {
+      console.error("SEO effect error", e);
+    }
   }, [location.pathname]);
 
   return (
