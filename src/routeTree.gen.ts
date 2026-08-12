@@ -11,9 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as ServicesWellnessRouteImport } from './routes/services.wellness'
 import { Route as ServicesSurgeryRouteImport } from './routes/services.surgery'
 import { Route as ServicesSkinRouteImport } from './routes/services.skin'
@@ -36,6 +38,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -50,6 +57,11 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => ServicesRoute,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
 } as any)
 const ServicesWellnessRoute = ServicesWellnessRouteImport.update({
   id: '/wellness',
@@ -87,9 +99,9 @@ const ServicesAestheticRoute = ServicesAestheticRouteImport.update({
   getParentRoute: () => ServicesRoute,
 } as any)
 const AdminSeoRoute = AdminSeoRouteImport.update({
-  id: '/admin/seo',
-  path: '/admin/seo',
-  getParentRoute: () => rootRouteImport,
+  id: '/seo',
+  path: '/seo',
+  getParentRoute: () => AdminRoute,
 } as any)
 const ServicesLaserHairRemovalRoute =
   ServicesLaserHairRemovalRouteImport.update({
@@ -113,6 +125,7 @@ const ServicesDentalAestheticDentistryRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRouteWithChildren
   '/admin/seo': typeof AdminSeoRoute
@@ -123,6 +136,7 @@ export interface FileRoutesByFullPath {
   '/services/skin': typeof ServicesSkinRoute
   '/services/surgery': typeof ServicesSurgeryRoute
   '/services/wellness': typeof ServicesWellnessRoute
+  '/admin/': typeof AdminIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/services/dental/aesthetic-dentistry': typeof ServicesDentalAestheticDentistryRoute
   '/services/dental/clinical-dentistry': typeof ServicesDentalClinicalDentistryRoute
@@ -140,6 +154,7 @@ export interface FileRoutesByTo {
   '/services/skin': typeof ServicesSkinRoute
   '/services/surgery': typeof ServicesSurgeryRoute
   '/services/wellness': typeof ServicesWellnessRoute
+  '/admin': typeof AdminIndexRoute
   '/services': typeof ServicesIndexRoute
   '/services/dental/aesthetic-dentistry': typeof ServicesDentalAestheticDentistryRoute
   '/services/dental/clinical-dentistry': typeof ServicesDentalClinicalDentistryRoute
@@ -149,6 +164,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRouteWithChildren
   '/admin/seo': typeof AdminSeoRoute
@@ -159,6 +175,7 @@ export interface FileRoutesById {
   '/services/skin': typeof ServicesSkinRoute
   '/services/surgery': typeof ServicesSurgeryRoute
   '/services/wellness': typeof ServicesWellnessRoute
+  '/admin/': typeof AdminIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/services/dental/aesthetic-dentistry': typeof ServicesDentalAestheticDentistryRoute
   '/services/dental/clinical-dentistry': typeof ServicesDentalClinicalDentistryRoute
@@ -169,6 +186,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/admin'
     | '/contact'
     | '/services'
     | '/admin/seo'
@@ -179,6 +197,7 @@ export interface FileRouteTypes {
     | '/services/skin'
     | '/services/surgery'
     | '/services/wellness'
+    | '/admin/'
     | '/services/'
     | '/services/dental/aesthetic-dentistry'
     | '/services/dental/clinical-dentistry'
@@ -196,6 +215,7 @@ export interface FileRouteTypes {
     | '/services/skin'
     | '/services/surgery'
     | '/services/wellness'
+    | '/admin'
     | '/services'
     | '/services/dental/aesthetic-dentistry'
     | '/services/dental/clinical-dentistry'
@@ -204,6 +224,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/admin'
     | '/contact'
     | '/services'
     | '/admin/seo'
@@ -214,6 +235,7 @@ export interface FileRouteTypes {
     | '/services/skin'
     | '/services/surgery'
     | '/services/wellness'
+    | '/admin/'
     | '/services/'
     | '/services/dental/aesthetic-dentistry'
     | '/services/dental/clinical-dentistry'
@@ -223,9 +245,9 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRouteWithChildren
   ContactRoute: typeof ContactRoute
   ServicesRoute: typeof ServicesRouteWithChildren
-  AdminSeoRoute: typeof AdminSeoRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -242,6 +264,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -264,6 +293,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/services/'
       preLoaderRoute: typeof ServicesIndexRouteImport
       parentRoute: typeof ServicesRoute
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
     }
     '/services/wellness': {
       id: '/services/wellness'
@@ -316,10 +352,10 @@ declare module '@tanstack/react-router' {
     }
     '/admin/seo': {
       id: '/admin/seo'
-      path: '/admin/seo'
+      path: '/seo'
       fullPath: '/admin/seo'
       preLoaderRoute: typeof AdminSeoRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AdminRoute
     }
     '/services/laser/hair-removal': {
       id: '/services/laser/hair-removal'
@@ -344,6 +380,18 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface AdminRouteChildren {
+  AdminSeoRoute: typeof AdminSeoRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminSeoRoute: AdminSeoRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
 interface ServicesLaserRouteChildren {
   ServicesLaserHairRemovalRoute: typeof ServicesLaserHairRemovalRoute
@@ -390,9 +438,9 @@ const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdminRoute: AdminRouteWithChildren,
   ContactRoute: ContactRoute,
   ServicesRoute: ServicesRouteWithChildren,
-  AdminSeoRoute: AdminSeoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

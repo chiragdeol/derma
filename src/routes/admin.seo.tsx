@@ -95,9 +95,15 @@ function AdminSEOManager() {
 
   useEffect(() => {
     // Check if passcode previously entered
-    const storedAuth = sessionStorage.getItem("alnemah_admin_authed");
-    if (storedAuth === "true") {
-      setIsAuthenticated(true);
+    if (typeof window !== "undefined") {
+      try {
+        const storedAuth = sessionStorage.getItem("alnemah_admin_authed");
+        if (storedAuth === "true") {
+          setIsAuthenticated(true);
+        }
+      } catch (e) {
+        console.error(e);
+      }
     }
   }, []);
 
@@ -138,7 +144,11 @@ function AdminSEOManager() {
     e.preventDefault();
     if (passcode === "alnemah2026" || passcode === "admin123") {
       setIsAuthenticated(true);
-      sessionStorage.setItem("alnemah_admin_authed", "true");
+      if (typeof window !== "undefined") {
+        try {
+          sessionStorage.setItem("alnemah_admin_authed", "true");
+        } catch (e) {}
+      }
       setAuthError(false);
     } else {
       setAuthError(true);
