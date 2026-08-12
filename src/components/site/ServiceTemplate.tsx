@@ -386,28 +386,32 @@ export function ServiceTemplate({
                   )}
                   
                   {/* Tags */}
-                  <ul className="flex gap-2 flex-wrap mb-6">
-                    {t.tags.map((tag) => (
-                      <li key={tag} className="text-xs text-muted-foreground border border-border/85 px-2.5 py-1 rounded-full">
-                        {tag}
-                      </li>
-                    ))}
-                  </ul>
+                  {t.tags && t.tags.length > 0 && (
+                    <ul className="flex gap-2 flex-wrap mb-6">
+                      {t.tags.map((tag) => (
+                        <li key={tag} className="text-xs text-muted-foreground border border-border/85 px-2.5 py-1 rounded-full">
+                          {tag}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                   
                   {/* Meta / Duration info split by dot */}
-                  <div className="flex gap-6 flex-wrap py-4 border-y border-border/60 mb-6">
-                    {t.duration.split('·').map((m) => {
-                      const parts = m.trim().split(' ');
-                      const val = parts[0] || '';
-                      const label = parts.slice(1).join(' ') || 'Info';
-                      return (
-                        <div key={m} className="flex flex-col">
-                          <b className="font-display text-base text-foreground font-semibold">{val}</b>
-                          <small className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</small>
-                        </div>
-                      );
-                    })}
-                  </div>
+                  {t.duration && (
+                    <div className="flex gap-6 flex-wrap py-4 border-y border-border/60 mb-6">
+                      {t.duration.split('·').map((m) => {
+                        const parts = m.trim().split(' ');
+                        const val = parts[0] || '';
+                        const label = parts.slice(1).join(' ') || 'Info';
+                        return (
+                          <div key={m} className="flex flex-col">
+                            <b className="font-display text-base text-foreground font-semibold">{val}</b>
+                            <small className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</small>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
                   
                   {/* Buttons */}
                   <div className="flex gap-3 flex-wrap">
