@@ -1,2 +1,10 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin/*
+
+# High Priority Keywords & Meta Target Locations:
+# Sharjah, New Muweilah, Zahia City Center, UAE
+# Aesthetic Clinic, Dental Clinic, Laser Hair Removal, Botox, Fillers, HydraFacial, Hollywood Smile
+
+Sitemap: https://alnemahmc.com/sitemap.xml

@@ -15,6 +15,9 @@ import { Header } from "../components/site/Header";
 import { Footer } from "../components/site/Footer";
 import { WhatsAppFab } from "../components/site/WhatsAppFab";
 
+import { useLocation } from "@tanstack/react-router";
+import { applySEOToDocument } from "../lib/seo-manager";
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -88,6 +91,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "icon", type: "image/png", href: "/logo-al-nemah.png" },
+      { rel: "apple-touch-icon", href: "/logo-al-nemah.png" },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
@@ -104,10 +109,45 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const schemaOrgJSON = {
+    "@context": "https://schema.org",
+    "@type": ["MedicalClinic", "Dentist", "DermatologyClinic"],
+    "name": "Al Nemah Medical Center Sharjah",
+    "image": "https://alnemahmc.com/logo-al-nemah.png",
+    "logo": "https://alnemahmc.com/logo-al-nemah.png",
+    "url": "https://alnemahmc.com",
+    "telephone": ["+971500999324", "+971566814451"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Behind Zahia City Center, New Muweilah",
+      "addressLocality": "Sharjah",
+      "addressCountry": "AE"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 25.3134,
+      "longitude": 55.4382
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "09:00",
+      "closes": "22:00"
+    },
+    "medicalSpecialty": ["Dermatology", "CosmeticDentistry", "LaserSurgery"],
+    "priceRange": "$$"
+  };
+
   return (
     <html lang="en">
       <head>
         <HeadContent />
+        <link rel="icon" type="image/png" href="/logo-al-nemah.png" />
+        <link rel="apple-touch-icon" href="/logo-al-nemah.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrgJSON) }}
+        />
       </head>
       <body>
         {children}
@@ -119,6 +159,11 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const location = useLocation();
+
+  useEffect(() => {
+    applySEOToDocument(location.pathname);
+  }, [location.pathname]);
 
   return (
     <QueryClientProvider client={queryClient}>
