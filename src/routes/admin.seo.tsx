@@ -5,10 +5,12 @@ import {
   getSEOForPage, 
   saveSEOForPage, 
   resetSEOToDefaults,
+  getCustomHeaderScripts,
+  saveCustomHeaderScripts,
   DEFAULT_SEO_CONFIG,
   type PageSEO 
 } from "@/lib/seo-manager";
-import { Globe, Lock, Save, RefreshCw, Download, Upload, CheckCircle, Search, Eye, AlertCircle } from "lucide-react";
+import { Globe, Lock, Save, RefreshCw, Download, Upload, CheckCircle, Search, Eye, AlertCircle, Code, FileCode } from "lucide-react";
 
 export const Route = createFileRoute("/admin/seo")({
   head: () => ({
@@ -44,6 +46,9 @@ function AdminSEOManager() {
   const [savedSuccess, setSavedSuccess] = useState(false);
   const [previewDevice, setPreviewDevice] = useState<"desktop" | "mobile">("desktop");
 
+  const [customScripts, setCustomScripts] = useState("");
+  const [scriptsSavedSuccess, setScriptsSavedSuccess] = useState(false);
+
   useEffect(() => {
     // Check if passcode previously entered
     const storedAuth = sessionStorage.getItem("alnemah_admin_authed");
@@ -56,8 +61,16 @@ function AdminSEOManager() {
     if (isAuthenticated) {
       setSeoForm(getSEOForPage(selectedPath));
       setSavedSuccess(false);
+      setCustomScripts(getCustomHeaderScripts());
     }
   }, [selectedPath, isAuthenticated]);
+
+  const handleSaveScripts = (e: React.FormEvent) => {
+    e.preventDefault();
+    saveCustomHeaderScripts(customScripts);
+    setScriptsSavedSuccess(true);
+    setTimeout(() => setScriptsSavedSuccess(false), 3000);
+  };
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -356,6 +369,71 @@ function AdminSEOManager() {
                 className="flex items-center gap-2 bg-[#974d08] text-white px-8 py-3.5 rounded-xl font-semibold text-sm hover:opacity-90 shadow-md transition-opacity"
               >
                 <Save className="w-4 h-4" /> Save & Update Live Meta Tags
+              </button>
+            </div>
+          </form>
+
+          {/* Header & Custom Scripts Injector (GA4 / GTM / FB Pixel / Custom JS & CSS) */}
+          <form onSubmit={handleSaveScripts} className="bg-card border border-border rounded-2xl p-6 shadow-sm space-y-5">
+            <div className="flex justify-between items-center pb-3 border-b border-border">
+              <div>
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#974d08] mb-1">
+                  <Code className="w-4 h-4" /> Header & Custom Scripts Injector
+                </div>
+                <h3 className="font-display text-xl font-semibold text-foreground">Global Head Code & Analytics (GA4, GTM, Meta Pixel)</h3>
+              </div>
+              {scriptsSavedSuccess && (
+                <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full flex items-center gap-1.5">
+                  <CheckCircle className="w-3.5 h-3.5" /> Scripts Active Live in Head!
+                </span>
+              )}
+            </div>
+
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              Paste custom JavaScript tags (<code className="bg-muted px-1.5 py-0.5 rounded">&lt;script&gt;</code>), Google Analytics (GA4), Google Tag Manager (GTM), Facebook/Meta Pixel, or custom CSS styling (<code className="bg-muted px-1.5 py-0.5 rounded">&lt;style&gt;</code>). These scripts will automatically inject into the site's <code className="bg-muted px-1.5 py-0.5 rounded">&lt;head&gt;</code> across all pages.
+            </p>
+
+            <div>
+              <div className="flex justify-between items-center mb-1.5">
+                <label className="text-xs font-bold uppercase tracking-wider text-foreground">Custom Header Code / Scripts</label>
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const snippet = `<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n  gtag('config', 'G-XXXXXXXXXX');\n</script>`;
+                      setCustomScripts((prev) => prev ? `${prev}\n\n${snippet}` : snippet);
+                    }}
+                    className="text-[10px] font-semibold text-[#974d08] bg-[#974d08]/10 px-2.5 py-1 rounded hover:bg-[#974d08]/20 transition-colors"
+                  >
+                    + Insert GA4 Template
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const snippet = `<!-- Meta Pixel Code -->\n<script>\n!function(f,b,e,v,n,t,s)\n{if(f.fbq)return;n=f.fbq=function(){n.callMethod?\nn.callMethod.apply(n,arguments):n.queue.push(arguments)};\nif(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';\nn.queue=[];t=b.createElement(e);t.async=!0;\nt.src=v;s=b.getElementsByTagName(e)[0];\ns.parentNode.insertBefore(t,s)}(window, document,'script',\n'https://connect.facebook.net/en_US/fbevents.js');\nfbq('init', 'YOUR_PIXEL_ID');\nfbq('track', 'PageView');\n</script>`;
+                      setCustomScripts((prev) => prev ? `${prev}\n\n${snippet}` : snippet);
+                    }}
+                    className="text-[10px] font-semibold text-[#974d08] bg-[#974d08]/10 px-2.5 py-1 rounded hover:bg-[#974d08]/20 transition-colors"
+                  >
+                    + Insert Meta Pixel
+                  </button>
+                </div>
+              </div>
+              <textarea
+                rows={8}
+                value={customScripts}
+                onChange={(e) => setCustomScripts(e.target.value)}
+                placeholder="<!-- Paste your Google Analytics GA4 script, GTM code or custom <script> tags here -->"
+                className="w-full px-4 py-3 border border-border rounded-xl bg-background text-xs font-mono outline-none focus:border-[#974d08] leading-relaxed"
+              />
+            </div>
+
+            <div className="pt-4 border-t border-border flex justify-end">
+              <button
+                type="submit"
+                className="flex items-center gap-2 bg-[#974d08] text-white px-8 py-3.5 rounded-xl font-semibold text-sm hover:opacity-90 shadow-md transition-opacity"
+              >
+                <Save className="w-4 h-4" /> Save & Inject Custom Scripts to Head
               </button>
             </div>
           </form>

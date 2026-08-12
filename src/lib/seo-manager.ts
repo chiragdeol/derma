@@ -226,3 +226,48 @@ export function applySEOToDocument(path: string) {
   }
   canonicalEl.setAttribute("href", seo.canonicalUrl);
 }
+
+const SCRIPTS_STORAGE_KEY = "alnemah_custom_header_scripts_v1";
+
+export function getCustomHeaderScripts(): string {
+  if (typeof window === "undefined") return "";
+  try {
+    return localStorage.getItem(SCRIPTS_STORAGE_KEY) || "";
+  } catch (e) {
+    return "";
+  }
+}
+
+export function saveCustomHeaderScripts(scripts: string) {
+  if (typeof window === "undefined") return;
+  localStorage.setItem(SCRIPTS_STORAGE_KEY, scripts);
+  applyCustomHeaderScripts();
+}
+
+export function applyCustomHeaderScripts() {
+  if (typeof window === "undefined") return;
+  const scripts = getCustomHeaderScripts();
+  
+  // Remove existing injected container if any
+  let container = document.getElementById("alnemah-injected-header-scripts");
+  if (container) {
+    container.remove();
+  }
+
+  if (!scripts.trim()) return;
+
+  container = document.createElement("div");
+  container.id = "alnemah-injected-header-scripts";
+  container.style.display = "none";
+  
+  try {
+    const range = document.createRange();
+    range.selectNode(document.head);
+    const fragment = range.createContextualFragment(scripts);
+    container.appendChild(fragment);
+    document.head.appendChild(container);
+  } catch (e) {
+    console.error("Error executing custom header scripts", e);
+  }
+}
+

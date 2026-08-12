@@ -16,7 +16,7 @@ import { Footer } from "../components/site/Footer";
 import { WhatsAppFab } from "../components/site/WhatsAppFab";
 
 import { useLocation } from "@tanstack/react-router";
-import { applySEOToDocument } from "../lib/seo-manager";
+import { applySEOToDocument, applyCustomHeaderScripts } from "../lib/seo-manager";
 
 function NotFoundComponent() {
   return (
@@ -163,6 +163,7 @@ function RootComponent() {
 
   useEffect(() => {
     applySEOToDocument(location.pathname);
+    applyCustomHeaderScripts();
   }, [location.pathname]);
 
   return (
