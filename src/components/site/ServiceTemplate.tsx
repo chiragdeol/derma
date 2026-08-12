@@ -213,15 +213,21 @@ export function BeforeAfterSection({
 }
 
 export function ServiceTemplate({
-  categoryName,
-  eyebrow,
-  h1,
-  intro,
-  txIntro,
-  treatments,
-  faqs,
   division,
   divisionUrl,
+  categoryName,
+  eyebrow,
+  metaTitle,
+  metaDesc,
+  h1,
+  intro,
+  highlights = [],
+  concerns = [],
+  txIntro,
+  treatments = [],
+  faqs = [],
+  related = [],
+  heroImage,
   dental = false,
   beforeImage,
   afterImage,
@@ -289,14 +295,16 @@ export function ServiceTemplate({
             </div>
             
             {/* Highlights block */}
-            <div className="grid grid-cols-3 gap-6 pt-6 border-t border-border/70">
-              {highlights.map(([val, label]) => (
-                <div key={label} className="flex flex-col">
-                  <span className="font-display text-xl md:text-2xl text-foreground font-semibold">{val}</span>
-                  <span className="text-[10px] uppercase tracking-wider text-muted-foreground/80 mt-1">{label}</span>
-                </div>
-              ))}
-            </div>
+            {highlights && highlights.length > 0 && (
+              <div className="grid grid-cols-3 gap-6 pt-6 border-t border-border/70">
+                {highlights.map(([val, label]) => (
+                  <div key={label} className="flex flex-col">
+                    <span className="font-display text-xl md:text-2xl text-foreground font-semibold">{val}</span>
+                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground/80 mt-1">{label}</span>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
           
           {/* Right Column: Hero photo */}
@@ -317,18 +325,20 @@ export function ServiceTemplate({
       </section>
 
       {/* CONCERNS STRIP */}
-      <div className="bg-card border-y border-border/50 py-6">
-        <div className="mx-auto max-w-6xl px-6 lg:px-10 flex items-center gap-4 flex-wrap">
-          <span className="text-xs font-semibold tracking-wider uppercase text-muted-foreground/90">Concerns we treat</span>
-          <div className="flex gap-2 flex-wrap">
-            {concerns.map((c) => (
-              <span key={c} className="text-xs bg-background border border-border/80 px-3 py-1.5 rounded-full text-foreground/95">
-                {c}
-              </span>
-            ))}
+      {concerns && concerns.length > 0 && (
+        <div className="bg-card border-y border-border/50 py-6">
+          <div className="mx-auto max-w-6xl px-6 lg:px-10 flex items-center gap-4 flex-wrap">
+            <span className="text-xs font-semibold tracking-wider uppercase text-muted-foreground/90">Concerns we treat</span>
+            <div className="flex gap-2 flex-wrap">
+              {concerns.map((c) => (
+                <span key={c} className="text-xs font-medium px-3 py-1 rounded-full bg-secondary/80 text-foreground border border-border/60">
+                  {c}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* TREATMENTS ROWS */}
       <section className="py-20 lg:py-28">
