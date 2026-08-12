@@ -1,5 +1,12 @@
-import { createFileRoute, Navigate } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { AdminSEOManager } from "./admin.seo";
 
 export const Route = createFileRoute("/admin/")({
-  component: () => <Navigate to="/admin/seo" replace />,
+  head: () => ({
+    meta: [
+      { title: "Admin Portal — Al Nemah Medical Center" },
+      { name: "robots", content: "noindex, nofollow" },
+    ],
+  }),
+  component: AdminSEOManager,
 });

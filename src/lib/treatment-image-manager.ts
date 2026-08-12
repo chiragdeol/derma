@@ -4,7 +4,9 @@ export function getAllTreatmentImageOverrides(): Record<string, string> {
   if (typeof window === "undefined") return {};
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
-    return saved ? JSON.parse(saved) : {};
+    if (!saved) return {};
+    const parsed = JSON.parse(saved);
+    return parsed && typeof parsed === "object" ? parsed : {};
   } catch (e) {
     console.error("Failed to load treatment image overrides", e);
     return {};

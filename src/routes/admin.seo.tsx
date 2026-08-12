@@ -79,7 +79,8 @@ const TREATMENT_CATEGORIES = [
   }
 ];
 
-function AdminSEOManager() {
+export function AdminSEOManager() {
+  const [mounted, setMounted] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [passcode, setPasscode] = useState("");
   const [authError, setAuthError] = useState(false);
@@ -94,6 +95,7 @@ function AdminSEOManager() {
   const [selectedCategory, setSelectedCategory] = useState("Skin & HydraFacial");
 
   useEffect(() => {
+    setMounted(true);
     // Check if passcode previously entered
     if (typeof window !== "undefined") {
       try {
@@ -283,7 +285,7 @@ function AdminSEOManager() {
               : "border-transparent text-muted-foreground hover:text-foreground"
           }`}
         >
-          <Image className="w-4 h-4" /> Treatment Card Photos ({Object.keys(treatmentOverrides).length} Custom)
+          <Image className="w-4 h-4" /> Treatment Card Photos ({treatmentOverrides && typeof treatmentOverrides === "object" ? Object.keys(treatmentOverrides).length : 0} Custom)
         </button>
 
         <button
@@ -499,7 +501,7 @@ function AdminSEOManager() {
                 <p className="text-xs text-muted-foreground mt-1">Select a category and upload custom photos for individual treatment cards across all service pages.</p>
               </div>
               
-              {Object.keys(treatmentOverrides).length > 0 && (
+              {treatmentOverrides && typeof treatmentOverrides === "object" && Object.keys(treatmentOverrides).length > 0 && (
                 <button
                   onClick={() => {
                     if (confirm("Reset ALL custom uploaded treatment photos back to default?")) {

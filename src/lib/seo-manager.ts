@@ -154,7 +154,7 @@ export function getAllPageSEO(): Record<string, PageSEO> {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (!saved) return DEFAULT_SEO_CONFIG;
     const parsed = JSON.parse(saved);
-    return { ...DEFAULT_SEO_CONFIG, ...parsed };
+    return parsed && typeof parsed === "object" ? { ...DEFAULT_SEO_CONFIG, ...parsed } : DEFAULT_SEO_CONFIG;
   } catch (e) {
     console.error("Failed to load SEO config", e);
     return DEFAULT_SEO_CONFIG;
