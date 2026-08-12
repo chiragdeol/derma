@@ -4,6 +4,7 @@ import { Play } from "lucide-react";
 import interiorImg from "@/assets/interior.jpg";
 import beforeImg from "@/assets/before.jpg";
 import afterImg from "@/assets/after.jpg";
+import { getAllTreatmentImageOverrides } from "@/lib/treatment-image-manager";
 
 export type ServiceTreatment = {
   name: string;
@@ -210,8 +211,6 @@ export function BeforeAfterSection({
     </section>
   );
 }
-
-import { getAllTreatmentImageOverrides } from "@/lib/treatment-image-manager";
 
 export function ServiceTemplate({
   categoryName,
