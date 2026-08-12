@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "../components/site/Header";
 import { Footer } from "../components/site/Footer";
 import { WhatsAppFab } from "../components/site/WhatsAppFab";
+import { MobileAppBottomNav } from "../components/site/MobileAppBottomNav";
 
 import { useLocation } from "@tanstack/react-router";
 import { applySEOToDocument, applyCustomHeaderScripts } from "../lib/seo-manager";
@@ -192,11 +193,12 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <Header />
-      <main className="pt-0">
+      <main className="pt-0 pb-16 md:pb-0">
         <Outlet />
       </main>
       <Footer />
       <WhatsAppFab />
+      <MobileAppBottomNav />
     </QueryClientProvider>
   );
 }
