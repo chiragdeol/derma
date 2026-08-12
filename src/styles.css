@@ -54,7 +54,7 @@
   --popover: #fbfaf8;
   --popover-foreground: #22221f;
 
-  --primary: #b8957e;                           /* Swatch 2: Peach Terracotta (#b8957e) */
+  --primary: #974d08;                           /* Button background color (#974d08) */
   --primary-foreground: #ffffff;
 
   --secondary: #ab9b83;                         /* Swatch 3: Khaki Sand (#ab9b83) */
@@ -63,7 +63,7 @@
   --muted: #f2efe9;
   --muted-foreground: #696962;
 
-  --accent: #b8957e;                            /* Peach Terracotta accent */
+  --accent: #974d08;                            /* Button background accent */
   --accent-foreground: #ffffff;
 
   --destructive: oklch(0.55 0.18 28);
@@ -73,11 +73,18 @@
   --input: #e3dec9;
   --ring: #ab9b83;
 
-  --gold: #b8957e;                              /* Map gold to Peach Terracotta */
+  --gold: #974d08;                              /* Map gold to button color */
   --sand: #ab9b83;                              /* Map sand to Khaki Sand */
   --ivory: #faf8f5;                             /* Map ivory to Swatch base light */
   --forest: #8F9073;                            /* Custom Green (#8F9073) */
   --teal-dark: #8F9073;                         /* Custom Green (#8F9073) */
+}
+
+/* Global highlight styling for all italicized emphasis words across the website */
+em,
+.italic,
+em.italic {
+  color: #974d08 !important;
 }
 
 @layer base {

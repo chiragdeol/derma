@@ -82,7 +82,7 @@ function About() {
         <div className="grid gap-px overflow-hidden rounded-2xl bg-border/70 md:grid-cols-2 lg:grid-cols-4">
           {values.map((v) => (
             <div key={v.num} className="bg-background p-10">
-              <p className="font-display text-2xl text-[#b8957e]">{v.num}</p>
+              <p className="font-display text-2xl text-[#974d08]">{v.num}</p>
               <h3 className="mt-6 font-display text-2xl">{v.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{v.body}</p>
             </div>

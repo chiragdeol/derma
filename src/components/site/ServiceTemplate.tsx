@@ -62,7 +62,7 @@ const FAQItemComponent = ({ question, answer }: FAQItem) => {
         className="w-full flex justify-between items-center text-left py-5 font-display text-lg text-foreground cursor-pointer group"
       >
         <span>{question}</span>
-        <span className={`text-[#b8957e] text-xl transition-transform duration-300 ${open ? 'rotate-45' : ''}`}>
+        <span className={`text-[#974d08] text-xl transition-transform duration-300 ${open ? 'rotate-45' : ''}`}>
           +
         </span>
       </button>
@@ -168,9 +168,9 @@ export function BeforeAfterSection({
           {/* Slider Line & Knob */}
           <div 
             style={{ left: `${position}%` }}
-            className="absolute top-0 bottom-0 w-0.5 bg-[#b8957e] -translate-x-1/2 pointer-events-none"
+            className="absolute top-0 bottom-0 w-0.5 bg-[#974d08] -translate-x-1/2 pointer-events-none"
           >
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card border border-[#b8957e] shadow-md flex items-center justify-center text-[#b8957e] font-bold text-xs select-none">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card border border-[#974d08] shadow-md flex items-center justify-center text-[#974d08] font-bold text-xs select-none">
               ⇆
             </div>
           </div>
@@ -197,8 +197,8 @@ export function BeforeAfterSection({
                 onClick={() => setActiveTreatment(t.name)}
                 className={`text-xs px-4 py-2 rounded-full border transition-all duration-300 font-sans cursor-pointer ${
                   activeTreatment === t.name
-                    ? 'border-[#b8957e] text-primary bg-background font-medium'
-                    : 'border-border/80 text-muted-foreground hover:border-[#b8957e]/60'
+                    ? 'border-[#974d08] text-primary bg-background font-medium'
+                    : 'border-border/80 text-muted-foreground hover:border-[#974d08]/60'
                 }`}
               >
                 {t.name}
@@ -266,7 +266,7 @@ export function ServiceTemplate({
               {h1.includes("Sharjah") ? (
                 <>
                   {h1.replace("Sharjah", "")}
-                  <em className="italic text-[#b8957e] font-light">Sharjah</em>
+                  <em className="italic text-[#974d08] font-light">Sharjah</em>
                 </>
               ) : (
                 h1
@@ -276,7 +276,7 @@ export function ServiceTemplate({
               {intro}
             </p>
             <div className="flex gap-4 flex-wrap mb-8">
-              <a href="https://wa.me/971500999324" className="rounded-lg bg-[#b8957e] text-black px-6 py-3.5 text-sm font-semibold hover:opacity-95 transition-all shadow-sm">
+              <a href="https://wa.me/971500999324" className="rounded-lg bg-[#974d08] text-black px-6 py-3.5 text-sm font-semibold hover:opacity-95 transition-all shadow-sm">
                 Book a consultation
               </a>
               <a href="https://wa.me/971500999324" className="rounded-lg bg-[#5b5e52] px-6 py-3.5 text-sm font-semibold text-white hover:opacity-95 transition-all shadow-sm flex items-center gap-1.5">
@@ -297,7 +297,7 @@ export function ServiceTemplate({
           
           {/* Right Column: Hero photo */}
           <div className="relative">
-            <div className="p-3 border border-[#b8957e]/30 rounded-2xl">
+            <div className="p-3 border border-[#974d08]/30 rounded-2xl">
               <div className="overflow-hidden rounded-xl">
                 <img
                   src={heroImage}
@@ -339,7 +339,7 @@ export function ServiceTemplate({
               <div key={t.name} className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-14 items-center py-16 border-t border-border/60 first:border-0 first:pt-2">
                 {/* Left Column: Media */}
                 <div className={`relative ${idx % 2 === 1 ? 'lg:order-2' : ''}`}>
-                  <div className="p-3.5 border border-[#b8957e]/40 rounded-2xl relative">
+                  <div className="p-3.5 border border-[#974d08]/40 rounded-2xl relative">
                     <div className="overflow-hidden rounded-xl aspect-[4/3] bg-gradient-to-br from-[#ECE0CF] to-[#B49E7E] flex items-end relative">
                       {t.image ? (
                         <img 
@@ -356,14 +356,14 @@ export function ServiceTemplate({
                     {/* Price badge */}
                     <div className="absolute -right-3 top-8 bg-card border border-border/60 px-4 py-2.5 rounded-lg shadow-md z-10 flex flex-col items-start min-w-[100px]">
                       <small className="text-[9px] uppercase tracking-wider text-muted-foreground">From</small>
-                      <b className="font-display text-base text-[#b8957e] mt-0.5">{t.price.replace('From ', '')}</b>
+                      <b className="font-display text-base text-[#974d08] mt-0.5">{t.price.replace('From ', '')}</b>
                     </div>
                   </div>
                 </div>
                 
                 {/* Right Column: Content */}
                 <div className="flex flex-col">
-                  <span className="text-xs font-semibold tracking-widest text-[#b8957e] uppercase mb-3">
+                  <span className="text-xs font-semibold tracking-widest text-[#974d08] uppercase mb-3">
                     Treatment 0{idx + 1}
                   </span>
                   <h3 className="font-display text-2xl md:text-3xl text-foreground mb-3">{t.name}</h3>
@@ -374,7 +374,7 @@ export function ServiceTemplate({
                     <ul className="space-y-2 mb-6">
                       {t.points.map((p) => (
                         <li key={p} className="relative pl-6 text-sm text-foreground/90">
-                          <span className="absolute left-0 text-[#b8957e] font-bold">✓</span>
+                          <span className="absolute left-0 text-[#974d08] font-bold">✓</span>
                           {p}
                         </li>
                       ))}
@@ -407,7 +407,7 @@ export function ServiceTemplate({
                   
                   {/* Buttons */}
                   <div className="flex gap-3 flex-wrap">
-                    <a href="https://wa.me/971500999324" className="rounded-lg bg-[#b8957e] text-black px-5 py-2.5 text-xs font-semibold hover:opacity-95 transition-all shadow-sm">
+                    <a href="https://wa.me/971500999324" className="rounded-lg bg-[#974d08] text-black px-5 py-2.5 text-xs font-semibold hover:opacity-95 transition-all shadow-sm">
                       Book {t.name}
                     </a>
                     <a href="https://wa.me/971500999324" className="rounded-lg bg-[#5b5e52] px-5 py-2.5 text-xs font-semibold text-white hover:opacity-95 transition-all shadow-sm">
@@ -467,27 +467,27 @@ export function ServiceTemplate({
       <section className="py-20 bg-forest text-ivory">
         <div className="mx-auto max-w-6xl px-6 lg:px-10 grid gap-12 lg:grid-cols-2 items-center">
           <div>
-            <p className="eyebrow mb-4 text-[#b8957e]">Why Al Nemah</p>
+            <p className="eyebrow mb-4 text-[#974d08]">Why Al Nemah</p>
             <h2 className="font-display text-3xl md:text-4xl text-white mb-8">
               Care you can trust, results that look natural.
             </h2>
             <div className="flex flex-col gap-6">
               <div className="border-t border-ivory/20 pt-5 flex gap-4">
-                <span className="font-display text-xl text-[#b8957e]">01</span>
+                <span className="font-display text-xl text-[#974d08]">01</span>
                 <div>
                   <h3 className="font-display text-lg text-white mb-1">Doctor-led, always</h3>
                   <p className="text-sm text-ivory/70 leading-relaxed">Every treatment is planned and performed by licensed specialists — never delegated.</p>
                 </div>
               </div>
               <div className="border-t border-ivory/20 pt-5 flex gap-4">
-                <span className="font-display text-xl text-[#b8957e]">02</span>
+                <span className="font-display text-xl text-[#974d08]">02</span>
                 <div>
                   <h3 className="font-display text-lg text-white mb-1">Honest recommendations</h3>
                   <p className="text-sm text-ivory/70 leading-relaxed">We advise what you actually need, and talk you out of what you don't.</p>
                 </div>
               </div>
               <div className="border-t border-ivory/20 pt-5 border-b border-ivory/20 pb-5 flex gap-4">
-                <span className="font-display text-xl text-[#b8957e]">03</span>
+                <span className="font-display text-xl text-[#974d08]">03</span>
                 <div>
                   <h3 className="font-display text-lg text-white mb-1">SHA licensed</h3>
                   <p className="text-sm text-ivory/70 leading-relaxed">A fully accredited, safety-first clinic in Sharjah.</p>
@@ -535,8 +535,8 @@ export function ServiceTemplate({
           </div>
           <div className="grid gap-6 sm:grid-cols-3">
             {related.map((r) => (
-              <Link key={r.slug} to={r.slug} className="block bg-background border border-border/60 hover:border-[#b8957e]/60 p-6 rounded-xl transition-all duration-300 hover:-translate-y-0.5">
-                <span className="text-[10px] uppercase tracking-wider text-[#b8957e] font-semibold mb-2 block">
+              <Link key={r.slug} to={r.slug} className="block bg-background border border-border/60 hover:border-[#974d08]/60 p-6 rounded-xl transition-all duration-300 hover:-translate-y-0.5">
+                <span className="text-[10px] uppercase tracking-wider text-[#974d08] font-semibold mb-2 block">
                   Explore Related
                 </span>
                 <h3 className="font-display text-base text-foreground font-semibold mb-2">{r.label}</h3>
