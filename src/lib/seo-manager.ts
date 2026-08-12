@@ -212,10 +212,16 @@ export function applySEOToDocument(path: string) {
   setMeta("name", "robots", seo.robots);
   setMeta("property", "og:title", seo.ogTitle || seo.title);
   setMeta("property", "og:description", seo.ogDescription || seo.description);
-  setMeta("property", "og:image", seo.ogImage);
+  setMeta("property", "og:image", seo.ogImage || "https://alnemahmc.com/og-cover.png");
+  setMeta("property", "og:image:secure_url", seo.ogImage || "https://alnemahmc.com/og-cover.png");
+  setMeta("property", "og:image:type", "image/png");
+  setMeta("property", "og:image:width", "1200");
+  setMeta("property", "og:image:height", "630");
   setMeta("property", "og:url", seo.canonicalUrl);
+  setMeta("name", "twitter:card", "summary_large_image");
   setMeta("name", "twitter:title", seo.ogTitle || seo.title);
   setMeta("name", "twitter:description", seo.ogDescription || seo.description);
+  setMeta("name", "twitter:image", seo.ogImage || "https://alnemahmc.com/og-cover.png");
 
   // Canonical
   let canonicalEl = document.querySelector(`link[rel="canonical"]`);
