@@ -49,26 +49,31 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
+      <div className="max-w-xl text-center">
         <h1 className="font-display text-3xl text-foreground">
           This page didn't load
         </h1>
-        <p className="mt-3 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+        <p className="mt-3 text-sm font-semibold text-red-600">
+          {error?.message || "Something went wrong on our end. You can try refreshing or head back home."}
         </p>
+        {error?.stack && (
+          <pre className="mt-4 p-4 bg-muted text-red-700 text-[11px] text-left overflow-auto max-h-60 rounded-xl border border-red-200 font-mono">
+            {error.stack}
+          </pre>
+        )}
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => {
               router.invalidate();
               reset();
             }}
-            className="rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90"
+            className="rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 cursor-pointer"
           >
             Try again
           </button>
           <a
             href="/"
-            className="rounded-full border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground hover:bg-accent/20"
+            className="rounded-full border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground hover:bg-accent/20 cursor-pointer"
           >
             Go home
           </a>
