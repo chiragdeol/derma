@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { AdminSEOManager } from "./admin.seo";
+import { AdminSEOManager } from "@/components/admin/AdminSEOManager";
 
 export const Route = createFileRoute("/admin/")({
   head: () => ({
