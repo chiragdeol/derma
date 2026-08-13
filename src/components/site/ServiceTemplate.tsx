@@ -4,7 +4,7 @@ import { Play } from "lucide-react";
 import interiorImg from "@/assets/interior.jpg";
 import beforeImg from "@/assets/before.jpg";
 import afterImg from "@/assets/after.jpg";
-import { getAllTreatmentImageOverrides } from "@/lib/treatment-image-manager";
+import { getAllTreatmentImageOverrides, getTreatmentImageOverride } from "@/lib/treatment-image-manager";
 
 export type ServiceTreatment = {
   name: string;
@@ -355,9 +355,9 @@ export function ServiceTemplate({
                 <div className={`relative ${idx % 2 === 1 ? 'lg:order-2' : ''}`}>
                   <div className="p-3.5 border border-[#974d08]/40 rounded-2xl relative">
                     <div className="overflow-hidden rounded-xl aspect-[4/3] bg-gradient-to-br from-[#ECE0CF] to-[#B49E7E] flex items-end relative">
-                      {overrides[t.name] || t.image ? (
+                      {getTreatmentImageOverride(t.name) || overrides[t.name] || t.image ? (
                         <img 
-                          src={overrides[t.name] || t.image} 
+                          src={getTreatmentImageOverride(t.name) || overrides[t.name] || t.image} 
                           alt={t.name} 
                           className="absolute inset-0 w-full h-full object-cover transition-all duration-300"
                         />

@@ -14,42 +14,66 @@ export function getAllTreatmentImageOverrides(): Record<string, string> {
 }
 
 export function getTreatmentImageOverride(treatmentName: string): string | null {
+  if (typeof window === "undefined" || !treatmentName) return null;
   const overrides = getAllTreatmentImageOverrides();
-  const normalizedKey = treatmentName.trim().toLowerCase();
+  const normalizedTarget = treatmentName.trim().toLowerCase();
+  
+  // 1. Exact case-insensitive match
   for (const [key, value] of Object.entries(overrides)) {
-    if (key.trim().toLowerCase() === normalizedKey) {
+    if (key.trim().toLowerCase() === normalizedTarget) {
       return value;
     }
   }
+
+  // 2. Partial / Prefix match (e.g. "HIFU" matching "HIFU Tightening" or vice versa)
+  for (const [key, value] of Object.entries(overrides)) {
+    const k = key.trim().toLowerCase();
+    if (k.length > 2 && (k.includes(normalizedTarget) || normalizedTarget.includes(k))) {
+      return value;
+    }
+  }
+
   return null;
 }
 
 export function saveTreatmentImageOverride(treatmentName: string, base64DataUrl: string) {
-  if (typeof window === "undefined") return;
+  if (typeof window === "undefined" || !treatmentName) return;
   const overrides = getAllTreatmentImageOverrides();
+  const normalizedTarget = treatmentName.trim().toLowerCase();
+  
+  // Clear any existing matching key variant first
+  for (const key of Object.keys(overrides)) {
+    if (key.trim().toLowerCase() === normalizedTarget) {
+      delete overrides[key];
+    }
+  }
+
   overrides[treatmentName.trim()] = base64DataUrl;
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(overrides));
   } catch (e) {
-    console.error("localStorage quota exceeded, attempting to save override safely", e);
+    console.error("localStorage quota exceeded, attempting safe save", e);
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(overrides));
     } catch (err) {
-      alert("Browser storage is full! Please reset or remove some custom photos from the admin panel.");
+      alert("Browser storage is full! Please remove some custom photos from admin.");
     }
   }
   window.dispatchEvent(new Event("treatment_images_updated"));
 }
 
 export function removeTreatmentImageOverride(treatmentName: string) {
-  if (typeof window === "undefined") return;
+  if (typeof window === "undefined" || !treatmentName) return;
   const overrides = getAllTreatmentImageOverrides();
-  const normalizedKey = treatmentName.trim().toLowerCase();
+  const normalizedTarget = treatmentName.trim().toLowerCase();
+
   for (const key of Object.keys(overrides)) {
-    if (key.trim().toLowerCase() === normalizedKey) {
+    const k = key.trim().toLowerCase();
+    if (k === normalizedTarget || (k.length > 2 && (k.includes(normalizedTarget) || normalizedTarget.includes(k)))) {
       delete overrides[key];
     }
   }
+
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(overrides));
   } catch (e) {

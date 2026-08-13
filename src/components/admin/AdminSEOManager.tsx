@@ -11,6 +11,7 @@ import {
 } from "@/lib/seo-manager";
 import { 
   getAllTreatmentImageOverrides, 
+  getTreatmentImageOverride,
   saveTreatmentImageOverride, 
   removeTreatmentImageOverride, 
   resetTreatmentImageOverrides 
@@ -556,8 +557,8 @@ export function AdminSEOManager() {
 
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {currentCategoryObj.treatments.map((tName) => {
-                  const hasCustom = !!(treatmentOverrides && treatmentOverrides[tName]);
-                  const currentImg = treatmentOverrides ? treatmentOverrides[tName] : null;
+                  const currentImg = getTreatmentImageOverride(tName) || (treatmentOverrides ? treatmentOverrides[tName] : null);
+                  const hasCustom = !!currentImg;
                   const inputId = `file-input-${tName.replace(/[^a-zA-Z0-9]/g, '-')}`;
 
                   return (
