@@ -108,12 +108,22 @@ const TREATMENT_CATEGORIES = [
     route: "/services/wellness",
     treatments: [
       "Glow IV Drip", 
-      "Vitamin C IV Drip", 
+      "Vitamin C IV Therapy", 
       "NAD+ Therapy", 
       "Immune Boost IV", 
-      "Hydration IV Drip", 
+      "Hydration IV Therapy", 
       "Beauty Drip", 
-      "Anti-Aging IV Drip"
+      "Anti-Aging IV Therapy"
+    ]
+  },
+  {
+    category: "Plastic Surgery",
+    route: "/services/surgery",
+    treatments: [
+      "Rhinoplasty",
+      "Liposuction",
+      "Blepharoplasty",
+      "Breast Surgery"
     ]
   }
 ];
