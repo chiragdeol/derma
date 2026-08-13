@@ -1,14 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServiceTemplate } from "@/components/site/ServiceTemplate";
-import heroImg from "@/assets/lifting-hifu-treatment.jpg";
-import liftingHifuImg from "@/assets/lifting-hifu-treatment.jpg";
-import liftingRollerImg from "@/assets/lifting-rf-roller.jpg";
+import heroImg from "@/assets/lifting-hifu.jpg";
+import endoliftImg from "@/assets/lifting-endolift.jpg";
+import hifuImg from "@/assets/lifting-hifu.jpg";
+import morpheusImg from "@/assets/lifting-morpheus8.jpg";
+import pdoThreadsImg from "@/assets/lifting-pdo-threads.jpg";
+import fotona4dImg from "@/assets/lifting-fotona4d.jpg";
 
 export const Route = createFileRoute("/services/lifting")({
   head: () => ({
     meta: [
-      { title: "Non-Surgical Lifting in Sharjah | Morpheus8, Ultherapy — Al Nemah" },
-      { name: "description", content: "Non-surgical face lifting and skin tightening in Sharjah — Morpheus8, Ultherapy, PDO threads and Fotona 4D. Lift and boost collagen without surgery." },
+      { title: "Non-Surgical Lifting in Sharjah | Morpheus8, Ultherapy, Endolift — Al Nemah" },
+      { name: "description", content: "Non-surgical face lifting and skin tightening in Sharjah — Morpheus8, Ultherapy, Endolift, PDO threads and Fotona 4D. Lift and boost collagen without surgery." },
       { property: "og:title", content: "Anti-Aging & Lifting at Al Nemah" },
       { property: "og:description", content: "Tighten, lift and rebuild collagen without surgery." },
       { property: "og:image", content: heroImg },
@@ -20,8 +23,8 @@ export const Route = createFileRoute("/services/lifting")({
       divisionUrl="/services"
       categoryName="Anti-Aging & Lifting"
       eyebrow="Dermatology · Anti-Aging"
-      metaTitle="Non-Surgical Lifting in Sharjah | Morpheus8, Ultherapy — Al Nemah"
-      metaDesc="Non-surgical face lifting and skin tightening in Sharjah — Morpheus8, Ultherapy, PDO threads and Fotona 4D. Lift and boost collagen without surgery."
+      metaTitle="Non-Surgical Lifting in Sharjah | Morpheus8, Ultherapy, Endolift — Al Nemah"
+      metaDesc="Non-surgical face lifting and skin tightening in Sharjah — Morpheus8, Ultherapy, Endolift, PDO threads and Fotona 4D. Lift and boost collagen without surgery."
       h1="Anti-Aging & Lifting in Sharjah"
       intro="Tighten, lift and rebuild collagen without surgery — with honest advice on what each technology can achieve for you."
       highlights={[
@@ -38,37 +41,7 @@ export const Route = createFileRoute("/services/lifting")({
           tags: ["RF Microneedling", "Jawline"],
           duration: "60 min · 1–2 days pinkness",
           price: "AED 999",
-          image: liftingRollerImg,
-        },
-        {
-          name: "Ultherapy",
-          body: "Micro-focused ultrasound energy to lift and tighten sagging skin on the brow, chin, jawline, and neck non-invasively.",
-          tags: ["Ultrasound Lift", "Non-Surgical Facelift"],
-          duration: "60–90 min · No downtime",
-          price: "AED 2,999",
-          image: liftingHifuImg,
-        },
-        {
-          name: "PDO Threads",
-          body: "Bio-absorbable polydioxanone threads placed underneath the skin to provide instant mechanical lifting and collagen synthesis.",
-          tags: ["Instant Lift", "Thread Contour"],
-          duration: "45 min · 2–3 days mild swelling",
-          price: "AED 500 / thread",
-        },
-        {
-          name: "Fotona 4D",
-          body: "Non-invasive 4-step laser facelift treating exterior facial structures and interior oral cavity for comprehensive tightening.",
-          tags: ["Laser Facelift", "Collagen Renewal"],
-          duration: "60 min · Minimal downtime",
-          price: "AED 2,999",
-        },
-        {
-          name: "HIFU",
-          body: "High-Intensity Focused Ultrasound targeting deep SMAS layer to sculpt double chin, jawline, and cheeks.",
-          tags: ["SMAS Lifting", "Double Chin"],
-          duration: "45 min · No downtime",
-          price: "AED 999",
-          image: liftingHifuImg,
+          image: morpheusImg,
         },
         {
           name: "Endolift",
@@ -76,6 +49,39 @@ export const Route = createFileRoute("/services/lifting")({
           tags: ["Internal Laser", "Subdermal Tightening"],
           duration: "60 min · 2–3 days mild swelling",
           price: "AED 2,499",
+          image: endoliftImg,
+        },
+        {
+          name: "HIFU",
+          body: "High-Intensity Focused Ultrasound targeting deep SMAS layer to sculpt double chin, jawline, and cheeks.",
+          tags: ["SMAS Lifting", "Double Chin"],
+          duration: "45 min · No downtime",
+          price: "AED 999",
+          image: hifuImg,
+        },
+        {
+          name: "PDO Threads",
+          body: "Bio-absorbable polydioxanone threads placed underneath the skin to provide instant mechanical lifting and collagen synthesis.",
+          tags: ["Instant Lift", "Thread Contour"],
+          duration: "45 min · 2–3 days mild swelling",
+          price: "AED 500 / thread",
+          image: pdoThreadsImg,
+        },
+        {
+          name: "Fotona 4D",
+          body: "Non-invasive 4-step laser facelift treating exterior facial structures and interior oral cavity for comprehensive tightening.",
+          tags: ["Laser Facelift", "Collagen Renewal"],
+          duration: "60 min · Minimal downtime",
+          price: "AED 2,999",
+          image: fotona4dImg,
+        },
+        {
+          name: "Ultherapy",
+          body: "Micro-focused ultrasound energy to lift and tighten sagging skin on the brow, chin, jawline, and neck non-invasively.",
+          tags: ["Ultrasound Lift", "Non-Surgical Facelift"],
+          duration: "60–90 min · No downtime",
+          price: "AED 2,999",
+          image: hifuImg,
         },
       ]}
       faqs={[
@@ -97,7 +103,7 @@ export const Route = createFileRoute("/services/lifting")({
         { slug: "/services/skin", label: "Skin & HydraFacial" },
         { slug: "/services/surgery", label: "Plastic Surgery" },
       ]}
-      heroImage={heroImg}
+      heroImage={endoliftImg}
       dental={false}
     />
   ),
