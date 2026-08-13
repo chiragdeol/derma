@@ -22,37 +22,99 @@ const TREATMENT_CATEGORIES = [
   {
     category: "Skin & HydraFacial",
     route: "/services/skin",
-    treatments: ["HydraFacial", "Chemical Peels", "Mesotherapy", "Microneedling", "Skin Boosters", "Carbon Laser Facial", "PRP Facial Rejuvenation"]
+    treatments: [
+      "HydraFacial", 
+      "Chemical Peels", 
+      "Mesotherapy", 
+      "Microneedling", 
+      "Skin Boosters", 
+      "Carbon Laser Peel (Hollywood Peel)", 
+      "PRP Facial (Vampire Facial)"
+    ]
   },
   {
     category: "Cosmetic Injectables",
     route: "/services/injectables",
-    treatments: ["Botox", "Dermal Fillers", "Profhilo", "Lip Enhancement", "Sculptra", "Rejuran / PN Therapy", "Peptide Pens"]
+    treatments: [
+      "Botox", 
+      "Dermal Fillers", 
+      "Profhilo", 
+      "Lip Enhancement", 
+      "Sculptra", 
+      "Rejuran / PN Therapy", 
+      "Peptide Pens"
+    ]
   },
   {
     category: "Laser & Hair Removal",
     route: "/services/laser",
-    treatments: ["Laser Hair Removal (Full Body)", "Pigmentation Laser", "Vascular Laser", "Laser Tattoo Removal", "IPL Photofacial", "Laser Skin Resurfacing", "Vaginal Tightening Laser"]
+    treatments: [
+      "Laser Hair Removal (Full Body)", 
+      "Pigmentation Laser", 
+      "Vascular Laser", 
+      "Tattoo Removal", 
+      "Carbon Laser Facial", 
+      "IPL Photofacial", 
+      "Laser Skin Resurfacing", 
+      "Vaginal Tightening", 
+      "Electrolysis White Hair Removal"
+    ]
   },
   {
     category: "Anti-Aging & Lifting",
     route: "/services/lifting",
-    treatments: ["Morpheus8", "Ultherapy", "PDO Threads", "Fotona 4D", "HIFU Tightening", "Endolift"]
+    treatments: [
+      "Morpheus8", 
+      "Endolift", 
+      "HIFU", 
+      "PDO Threads", 
+      "Fotona 4D", 
+      "Ultherapy"
+    ]
   },
   {
     category: "Aesthetic Dentistry",
     route: "/services/dental/aesthetic-dentistry",
-    treatments: ["Porcelain Veneers", "Teeth Whitening", "Hollywood Smile", "Snap-On Smile"]
+    treatments: [
+      "Porcelain Veneers", 
+      "Teeth Whitening", 
+      "Anterior Composite Restoration", 
+      "Anterior Zirconia Crowns", 
+      "Invisalign", 
+      "Snap On Smile"
+    ]
   },
   {
     category: "Clinical Dentistry",
     route: "/services/dental/clinical-dentistry",
-    treatments: ["Clinical Examination & X-Rays", "Scaling & Polishing", "Dental Implants", "Orthodontic Braces / Invisalign", "Crowns & Bridges", "Root Canal Therapy", "Pediatric Dentistry"]
+    treatments: [
+      "Clinical Examination & X-Rays", 
+      "Scaling & Polishing", 
+      "Fluoride & Sealants", 
+      "Restorative Fillings (GIC / Composite)", 
+      "Root Canal Treatment", 
+      "Crowns & Bridges", 
+      "Tooth Extractions (Simple / Surgical)", 
+      "Wisdom Tooth Extraction", 
+      "Dental Implants", 
+      "Orthodontic Braces & Retainers", 
+      "Complete Dentures & RPD", 
+      "Pediatric Dentistry (Pedodontics)", 
+      "Night Guard & Bruxism Care"
+    ]
   },
   {
     category: "Wellness & Longevity",
     route: "/services/wellness",
-    treatments: ["Glow IV Drip", "Vitamin C IV Drip", "NAD+ Therapy", "Immune Boost IV", "Hydration IV Drip", "Beauty Drip", "Anti-Aging IV Drip"]
+    treatments: [
+      "Glow IV Drip", 
+      "Vitamin C IV Drip", 
+      "NAD+ Therapy", 
+      "Immune Boost IV", 
+      "Hydration IV Drip", 
+      "Beauty Drip", 
+      "Anti-Aging IV Drip"
+    ]
   }
 ];
 

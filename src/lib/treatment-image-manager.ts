@@ -1,5 +1,14 @@
 const STORAGE_KEY = "alnemah_treatment_image_overrides_v1";
 
+const ALIAS_MAP: Record<string, string[]> = {
+  "carbon laser peel (hollywood peel)": ["carbon laser facial", "carbon laser peel", "hollywood peel"],
+  "prp facial (vampire facial)": ["prp facial rejuvenation", "prp facial", "vampire facial"],
+  "hifu": ["hifu tightening", "hifu lift"],
+  "vaginal tightening": ["vaginal tightening laser"],
+  "tattoo removal": ["laser tattoo removal"],
+  "orthodontic braces & retainers": ["orthodontic braces / invisalign"],
+};
+
 export function getAllTreatmentImageOverrides(): Record<string, string> {
   if (typeof window === "undefined") return {};
   try {
@@ -18,14 +27,24 @@ export function getTreatmentImageOverride(treatmentName: string): string | null 
   const overrides = getAllTreatmentImageOverrides();
   const normalizedTarget = treatmentName.trim().toLowerCase();
   
-  // 1. Exact case-insensitive match
+  // 1. Direct exact case-insensitive match
   for (const [key, value] of Object.entries(overrides)) {
     if (key.trim().toLowerCase() === normalizedTarget) {
       return value;
     }
   }
 
-  // 2. Partial / Prefix match (e.g. "HIFU" matching "HIFU Tightening" or vice versa)
+  // 2. Alias match (e.g. "PRP Facial (Vampire Facial)" matches "PRP Facial Rejuvenation")
+  const aliases = ALIAS_MAP[normalizedTarget] || [];
+  for (const alias of aliases) {
+    for (const [key, value] of Object.entries(overrides)) {
+      if (key.trim().toLowerCase() === alias) {
+        return value;
+      }
+    }
+  }
+
+  // 3. Partial / Prefix match
   for (const [key, value] of Object.entries(overrides)) {
     const k = key.trim().toLowerCase();
     if (k.length > 2 && (k.includes(normalizedTarget) || normalizedTarget.includes(k))) {
