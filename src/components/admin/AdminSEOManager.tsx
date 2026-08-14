@@ -128,7 +128,7 @@ const TREATMENT_CATEGORIES = [
   }
 ];
 
-function compressImage(file: File, maxWidth = 800, maxHeight = 600, quality = 0.75): Promise<string> {
+function compressImage(file: File, maxWidth = 600, maxHeight = 450, quality = 0.65): Promise<string> {
   return new Promise((resolve) => {
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -246,6 +246,41 @@ export function AdminSEOManager() {
       removeTreatmentImageOverride(treatmentName);
       setTreatmentOverrides(getAllTreatmentImageOverrides());
     }
+  };
+
+  const handleExportPhotosJSON = () => {
+    const overrides = getAllTreatmentImageOverrides();
+    const data = JSON.stringify(overrides, null, 2);
+    const blob = new Blob([data], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `alnemah-treatment-photos-backup-${new Date().toISOString().split("T")[0]}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleImportPhotosJSON = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const importedPhotos = JSON.parse(event.target?.result as string);
+        if (importedPhotos && typeof importedPhotos === "object") {
+          for (const [name, dataUrl] of Object.entries(importedPhotos)) {
+            if (typeof dataUrl === "string") {
+              saveTreatmentImageOverride(name, dataUrl);
+            }
+          }
+          setTreatmentOverrides(getAllTreatmentImageOverrides());
+          alert("Treatment Photos Backup JSON imported and restored successfully!");
+        }
+      } catch (err) {
+        alert("Failed to parse JSON backup file.");
+      }
+    };
+    reader.readAsText(file);
   };
 
   const handleLogin = (e: React.FormEvent) => {
@@ -581,19 +616,46 @@ export function AdminSEOManager() {
                 <p className="text-xs text-muted-foreground mt-1">Select a category and upload custom photos for individual treatment cards across all service pages.</p>
               </div>
               
-              {treatmentOverrides && typeof treatmentOverrides === "object" && Object.keys(treatmentOverrides).length > 0 && (
+              <div className="flex flex-wrap items-center gap-2">
                 <button
-                  onClick={() => {
-                    if (confirm("Reset ALL custom uploaded treatment photos back to default?")) {
-                      resetTreatmentImageOverrides();
-                      setTreatmentOverrides({});
-                    }
-                  }}
-                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-red-600 bg-red-50 border border-red-200 rounded-lg hover:bg-red-100 transition-colors cursor-pointer"
+                  type="button"
+                  onClick={handleExportPhotosJSON}
+                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-foreground bg-muted border border-border rounded-lg hover:bg-muted/80 transition-colors cursor-pointer"
+                  title="Export backup of all custom treatment photos as JSON"
                 >
-                  <Trash2 className="w-3.5 h-3.5" /> Reset All Custom Photos ({Object.keys(treatmentOverrides).length})
+                  <Download className="w-3.5 h-3.5" /> Backup Photos JSON
                 </button>
-              )}
+
+                <button
+                  type="button"
+                  onClick={() => document.getElementById("import-photos-json-input")?.click()}
+                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-foreground bg-muted border border-border rounded-lg hover:bg-muted/80 transition-colors cursor-pointer"
+                  title="Restore custom treatment photos from a JSON backup file"
+                >
+                  <Upload className="w-3.5 h-3.5" /> Restore Photos JSON
+                </button>
+                <input
+                  id="import-photos-json-input"
+                  type="file"
+                  accept="application/json"
+                  onChange={handleImportPhotosJSON}
+                  className="hidden"
+                />
+
+                {treatmentOverrides && typeof treatmentOverrides === "object" && Object.keys(treatmentOverrides).length > 0 && (
+                  <button
+                    onClick={() => {
+                      if (confirm("Reset ALL custom uploaded treatment photos back to default?")) {
+                        resetTreatmentImageOverrides();
+                        setTreatmentOverrides({});
+                      }
+                    }}
+                    className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-red-600 bg-red-50 border border-red-200 rounded-lg hover:bg-red-100 transition-colors cursor-pointer"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" /> Reset All ({Object.keys(treatmentOverrides).length})
+                  </button>
+                )}
+              </div>
             </div>
 
             {photoSavedMessage && (
