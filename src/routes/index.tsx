@@ -28,6 +28,12 @@ import newDental2 from "@/assets/new-dental-2.jpg";
 import newDental3 from "@/assets/new-dental-3.jpg";
 import newLaser1 from "@/assets/new-laser-1.jpg";
 import newLaser2 from "@/assets/new-laser-2.jpg";
+import botoxImg from "@/assets/treatments/botox.png";
+import hydraFacialImg from "@/assets/treatments/hydra-facial.png";
+import lipEnhancementImg from "@/assets/treatments/lip-enhancement.png";
+import endoliftImg from "@/assets/treatments/endolift.png";
+import morpheus8Img from "@/assets/treatments/morpheus8.png";
+import glowIvImg from "@/assets/treatments/glow-iv-drip.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -685,65 +691,53 @@ function Home() {
           >
             {[
               {
-                title: "Teeth Gap Closure",
-                doctor: "AL NEMAH DENTAL CLINIC",
-                tagline: "COSMETIC DENTISTRY | ORTHODONTICS",
-                image: baDental5
+                title: "HydraFacial Glow & Rejuvenation",
+                doctor: "AL NEMAH DERMATOLOGY",
+                tagline: "SKIN | HYDRAFACIAL | GLOW PROTOCOL",
+                image: hydraFacialImg
               },
               {
-                title: "Smile Restoration",
-                doctor: "AL NEMAH DENTAL CLINIC",
-                tagline: "DENTISTRY | CROWNS | AESTHETICS",
-                image: baDental6
+                title: "Lip Enhancement & Contour",
+                doctor: "AL NEMAH DERMATOLOGY",
+                tagline: "INJECTABLES | LIP FILLERS | SYMMETRY",
+                image: lipEnhancementImg
               },
               {
-                title: "Dental Implant",
-                doctor: "AL NEMAH DENTAL CLINIC",
-                tagline: "DENTISTRY | IMPLANTS | SURGERY",
-                image: baDental7
+                title: "Endolift Non-Surgical Facelift",
+                doctor: "AL NEMAH DERMATOLOGY",
+                tagline: "ANTI-AGING | ENDOLIFT | SUBDERMAL LIFT",
+                image: endoliftImg
               },
               {
-                title: "Bite Realignment",
-                doctor: "AL NEMAH DENTAL CLINIC",
-                tagline: "COSMETIC DENTISTRY | VENEERS",
-                image: baDental8
+                title: "Botox Wrinkle Softening",
+                doctor: "AL NEMAH DERMATOLOGY",
+                tagline: "INJECTABLES | BOTOX | NATURAL EXPRESSION",
+                image: botoxImg
               },
               {
-                title: "Laser Whitening",
-                doctor: "AL NEMAH DENTAL CLINIC",
-                tagline: "DENTISTRY | WHITENING | HYGIENE",
-                image: baDental1
+                title: "Morpheus8 Collagen Renewal",
+                doctor: "AL NEMAH DERMATOLOGY",
+                tagline: "ANTI-AGING | RF MICRONEEDLING",
+                image: morpheus8Img
               },
               {
-                title: "Shade Analysis",
-                doctor: "AL NEMAH DENTAL CLINIC",
-                tagline: "TEETH WHITENING ASSESSMENT",
-                image: newDental1
-              },
-              {
-                title: "Teeth Realignment",
-                doctor: "AL NEMAH DENTAL CLINIC",
-                tagline: "COSMETIC DENTISTRY | ORTHODONTICS",
-                image: newDental3
-              },
-              {
-                title: "Laser Hair Removal",
-                doctor: "AL NEMAH AESTHETIC CLINIC",
-                tagline: "AESTHETICS | NAPE AREA HAIR REMOVAL",
-                image: newLaser1
-              },
-              {
-                title: "Skin Rejuvenation",
+                title: "Laser Skin Resurfacing",
                 doctor: "AL NEMAH AESTHETIC CLINIC",
                 tagline: "AESTHETICS | SKIN TIGHTENING & LIFTING",
                 image: newLaser2
               },
               {
-                title: "Aesthetic Restoration",
+                title: "Hollywood Smile Makeover",
                 doctor: "AL NEMAH DENTAL CLINIC",
-                tagline: "COSMETIC DENTISTRY | PROFILE VIEW",
-                image: newDental2
-              }
+                tagline: "COSMETIC DENTISTRY | VENEERS",
+                image: baDental5
+              },
+              {
+                title: "Cellular IV Glow Protocol",
+                doctor: "AL NEMAH WELLNESS CLINIC",
+                tagline: "WELLNESS | GLUTATHIONE & VITAMIN C",
+                image: glowIvImg
+              },
             ].map((card, idx) => (
               <div
                 key={idx}
