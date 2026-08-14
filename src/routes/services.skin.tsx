@@ -1,9 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServiceTemplate } from "@/components/site/ServiceTemplate";
 import heroImg from "@/assets/skin-hydrafacial-treatment.jpg";
-import skinHydrafacialImg from "@/assets/skin-hydrafacial-treatment.jpg";
-import skinRoller1 from "@/assets/skin-rf-roller-1.jpg";
-import skinRoller2 from "@/assets/skin-rf-roller-2.jpg";
+import hydraFacialImg from "@/assets/treatments/hydra-facial.png";
+import chemicalPeelImg from "@/assets/treatments/chemical-peel.png";
+import mesotherapyImg from "@/assets/treatments/mesotherapy.png";
+import microneedlingImg from "@/assets/treatments/microneedling.png";
+import skinBoostersImg from "@/assets/treatments/skin-boosters.png";
+import carbonLaserPeelImg from "@/assets/treatments/carbon-laser-peel.png";
+import prpFacialImg from "@/assets/treatments/prp-facial-vampire-facial.png";
 
 export const Route = createFileRoute("/services/skin")({
   head: () => ({
@@ -39,7 +43,7 @@ export const Route = createFileRoute("/services/skin")({
           tags: ["Cleanse", "Hydrate", "Glow"],
           duration: "30-45 min · No downtime",
           price: "AED 299",
-          image: skinHydrafacialImg,
+          image: hydraFacialImg,
           points: [
             "Painless vortex extraction — no manual squeezing",
             "Customised serums for your skin concern",
@@ -53,6 +57,7 @@ export const Route = createFileRoute("/services/skin")({
           tags: ["Acne", "Pigmentation", "Exfoliation"],
           duration: "30 min · Minimal flaking",
           price: "AED 399",
+          image: chemicalPeelImg,
           points: [
             "Customized strength for your specific skin type",
             "Targets stubborn blemishes and dark spots",
@@ -65,6 +70,7 @@ export const Route = createFileRoute("/services/skin")({
           tags: ["Vitamin Boost", "Hydration"],
           duration: "30 min · Minimal downtime",
           price: "AED 499",
+          image: mesotherapyImg,
           points: [
             "Delivers essential nutrients directly to dermis layer",
             "Restores skin radiance and elasticity",
@@ -77,7 +83,7 @@ export const Route = createFileRoute("/services/skin")({
           tags: ["Collagen Induction", "Acne Scars"],
           duration: "45 min · 24-48 hrs mild pinkness",
           price: "AED 499",
-          image: skinRoller1,
+          image: microneedlingImg,
           points: [
             "Triggers natural collagen and elastin remodeling",
             "Smooths acne scars, fine lines, and enlarged pores",
@@ -90,7 +96,7 @@ export const Route = createFileRoute("/services/skin")({
           tags: ["Luminous Glow", "Deep Plumping"],
           duration: "30 min · Minimal downtime",
           price: "AED 699",
-          image: skinRoller2,
+          image: skinBoostersImg,
           points: [
             "Restores long-lasting skin moisture and elasticity",
             "Smooths fine crepy lines and texture",
@@ -103,6 +109,7 @@ export const Route = createFileRoute("/services/skin")({
           tags: ["Hollywood Peel", "Deep Cleanse"],
           duration: "30 min · No downtime",
           price: "AED 399",
+          image: carbonLaserPeelImg,
           points: [
             "Instant red-carpet ready skin glow",
             "Minimizes enlarged pores and controls excess oil",
@@ -115,6 +122,7 @@ export const Route = createFileRoute("/services/skin")({
           tags: ["Platelet Rich Plasma", "Autologous Renewal"],
           duration: "45 min · Mild redness",
           price: "AED 399",
+          image: prpFacialImg,
           points: [
             "100% natural healing using your body's growth factors",
             "Restores firmness, elasticity, and skin texture",

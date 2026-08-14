@@ -1,11 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServiceTemplate } from "@/components/site/ServiceTemplate";
-import heroImg from "@/assets/lifting-hifu.jpg";
-import endoliftImg from "@/assets/lifting-endolift.jpg";
-import hifuImg from "@/assets/lifting-hifu.jpg";
-import morpheusImg from "@/assets/lifting-morpheus8.jpg";
-import pdoThreadsImg from "@/assets/lifting-pdo-threads.jpg";
-import fotona4dImg from "@/assets/lifting-fotona4d.jpg";
+import heroImg from "@/assets/treatments/hifu.png";
+import endoliftImg from "@/assets/treatments/endolift.png";
+import hifuImg from "@/assets/treatments/hifu.png";
+import morpheusImg from "@/assets/treatments/morpheus8.png";
+import pdoThreadsImg from "@/assets/treatments/pdo-threads.png";
+import fotona4dImg from "@/assets/treatments/fotona-4d.png";
+import ultherapyImg from "@/assets/treatments/ultherapy.png";
 
 export const Route = createFileRoute("/services/lifting")({
   head: () => ({
@@ -81,7 +82,7 @@ export const Route = createFileRoute("/services/lifting")({
           tags: ["Ultrasound Lift", "Non-Surgical Facelift"],
           duration: "60–90 min · No downtime",
           price: "AED 2,999",
-          image: hifuImg,
+          image: ultherapyImg,
         },
       ]}
       faqs={[

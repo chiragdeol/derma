@@ -1,6 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServiceTemplate } from "@/components/site/ServiceTemplate";
 import wellnessImg from "@/assets/wellness.jpg";
+import glowIvImg from "@/assets/treatments/glow-iv-drip.png";
+import vitaminCImg from "@/assets/treatments/vitamin-c-iv-therapy.png";
+import nadImg from "@/assets/treatments/nad-therapy.png";
+import immuneBoostImg from "@/assets/treatments/immune-boost-iv.png";
+import hydrationIvImg from "@/assets/treatments/hydration-iv-therapy.png";
+import beautyDripImg from "@/assets/treatments/beauty-drip.png";
+import antiAgingIvImg from "@/assets/treatments/anti-aging-iv-therapy.png";
 
 export const Route = createFileRoute("/services/wellness")({
   head: () => ({
@@ -36,6 +43,7 @@ export const Route = createFileRoute("/services/wellness")({
           tags: ["Skin Glow", "Glutathione"],
           duration: "45 min · Direct absorption",
           price: "AED 299 / session",
+          image: glowIvImg,
           points: [
             "100% bioavailability for rapid cell absorption",
             "Fights free radicals and reduces oxidative stress",
@@ -48,6 +56,7 @@ export const Route = createFileRoute("/services/wellness")({
           tags: ["Vitamin C", "Immunity"],
           duration: "45 min · Direct absorption",
           price: "AED 249 / session",
+          image: vitaminCImg,
           points: [
             "Potent antioxidant immune system shield",
             "Encourages natural collagen tissue repair",
@@ -60,6 +69,7 @@ export const Route = createFileRoute("/services/wellness")({
           tags: ["Cellular Energy", "Brain Clarity"],
           duration: "60 min · Direct absorption",
           price: "AED 799 / session",
+          image: nadImg,
           points: [
             "Recharges cellular energy and repair enzymes",
             "Enhances mental focus, memory, and stamina",
@@ -72,6 +82,7 @@ export const Route = createFileRoute("/services/wellness")({
           tags: ["Immune Fortification", "Zinc & B-Complex"],
           duration: "45 min · Direct absorption",
           price: "AED 799 / session",
+          image: immuneBoostImg,
           points: [
             "Protects against seasonal viruses and infections",
             "Restores vital minerals lost during travel or stress",
@@ -84,6 +95,7 @@ export const Route = createFileRoute("/services/wellness")({
           tags: ["Rapid Hydration", "Electrolytes"],
           duration: "30 min · Direct absorption",
           price: "AED 299 / session",
+          image: hydrationIvImg,
           points: [
             "Instantly rehydrates at a cellular level",
             "Relieves dehydration, headaches, and jet lag",
@@ -96,6 +108,7 @@ export const Route = createFileRoute("/services/wellness")({
           tags: ["Biotin", "Hair & Nails"],
           duration: "45 min · Direct absorption",
           price: "AED 299 / session",
+          image: beautyDripImg,
           points: [
             "Strengthens hair roots and prevents brittleness",
             "Promotes healthy nail growth and skin elasticity",
@@ -108,6 +121,7 @@ export const Route = createFileRoute("/services/wellness")({
           tags: ["Longevity Blend", "Cell Renewal"],
           duration: "60 min · Direct absorption",
           price: "AED 799 / session",
+          image: antiAgingIvImg,
           points: [
             "Combats cellular aging and inflammation",
             "Supports liver detoxification and arterial health",

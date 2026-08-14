@@ -1,6 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServiceTemplate } from "@/components/site/ServiceTemplate";
 import heroImg from "@/assets/service-injectables.jpg";
+import botoxImg from "@/assets/treatments/botox.png";
+import dermalFillersImg from "@/assets/treatments/dermal-fillers.png";
+import lipEnhancementImg from "@/assets/treatments/lip-enhancement.png";
+import rejuranImg from "@/assets/treatments/rejuran-pn-therapy.png";
+import sculptraImg from "@/assets/treatments/sculptra.png";
 
 export const Route = createFileRoute("/services/injectables")({
   head: () => ({
@@ -36,6 +41,7 @@ export const Route = createFileRoute("/services/injectables")({
           tags: ["Wrinkles", "Prevention"],
           duration: "20 min · No downtime",
           price: "AED 750",
+          image: botoxImg,
         },
         {
           name: "Dermal Fillers",
@@ -43,6 +49,7 @@ export const Route = createFileRoute("/services/injectables")({
           tags: ["Volume", "Contour"],
           duration: "30–40 min · Minimal downtime",
           price: "AED 499 / ml",
+          image: dermalFillersImg,
         },
         {
           name: "Profhilo",
@@ -50,6 +57,7 @@ export const Route = createFileRoute("/services/injectables")({
           tags: ["Bio-Remodeling", "Deep Hydration"],
           duration: "20 min · No downtime",
           price: "AED 1,250",
+          image: botoxImg,
         },
         {
           name: "Lip Enhancement",
@@ -57,6 +65,7 @@ export const Route = createFileRoute("/services/injectables")({
           tags: ["Lip Volume", "Symmetry"],
           duration: "30 min · Minimal downtime",
           price: "AED 999",
+          image: lipEnhancementImg,
         },
         {
           name: "Sculptra",
@@ -64,6 +73,7 @@ export const Route = createFileRoute("/services/injectables")({
           tags: ["Collagen Biostimulator", "Long-Lasting"],
           duration: "40 min · Minimal downtime",
           price: "AED 1,999",
+          image: sculptraImg,
         },
         {
           name: "Rejuran / PN Therapy",
@@ -71,6 +81,7 @@ export const Route = createFileRoute("/services/injectables")({
           tags: ["Cellular Repair", "Salmon DNA"],
           duration: "30 min · Minimal downtime",
           price: "AED 1,999",
+          image: rejuranImg,
         },
         {
           name: "Peptide Pens",
@@ -78,6 +89,7 @@ export const Route = createFileRoute("/services/injectables")({
           tags: ["Peptides", "Regeneration"],
           duration: "20 min · No downtime",
           price: "AED 1,200",
+          image: botoxImg,
         },
       ]}
       faqs={[
