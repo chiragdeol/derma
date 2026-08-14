@@ -158,6 +158,8 @@ export const Route = createFileRoute("/services/skin")({
         { slug: "/services/lifting", label: "Anti-Aging & Lifting" },
       ]}
       heroImage={heroImg}
+      beforeImage={microneedlingImg}
+      afterImage={hydraFacialImg}
       dental={false}
     />
   ),

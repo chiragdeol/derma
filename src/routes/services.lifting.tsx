@@ -105,6 +105,8 @@ export const Route = createFileRoute("/services/lifting")({
         { slug: "/services/surgery", label: "Plastic Surgery" },
       ]}
       heroImage={endoliftImg}
+      beforeImage={hifuImg}
+      afterImage={morpheusImg}
       dental={false}
     />
   ),

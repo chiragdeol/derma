@@ -2,8 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { useState, useRef, useEffect } from "react";
 import { Play } from "lucide-react";
 import interiorImg from "@/assets/interior.jpg";
-import beforeImg from "@/assets/before.jpg";
-import afterImg from "@/assets/after.jpg";
+import beforeImg from "@/assets/ba-laser-1-before.jpg";
+import afterImg from "@/assets/ba-laser-1-after.jpg";
 import { getAllTreatmentImageOverrides, getTreatmentImageOverride } from "@/lib/treatment-image-manager";
 
 export type ServiceTreatment = {

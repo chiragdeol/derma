@@ -112,6 +112,8 @@ export const Route = createFileRoute("/services/injectables")({
         { slug: "/services/laser", label: "Laser & Hair Removal" },
       ]}
       heroImage={heroImg}
+      beforeImage={botoxImg}
+      afterImage={lipEnhancementImg}
       dental={false}
     />
   ),
