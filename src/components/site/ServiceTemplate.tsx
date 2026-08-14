@@ -230,6 +230,7 @@ export function ServiceTemplate({
   faqs = [],
   related = [],
   heroImage,
+  whyImage,
   dental = false,
   beforeImage,
   afterImage,
