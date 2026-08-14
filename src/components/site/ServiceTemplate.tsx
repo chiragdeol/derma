@@ -1,9 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { useState, useRef, useEffect } from "react";
 import { Play } from "lucide-react";
-import interiorImg from "@/assets/interior.jpg";
-import beforeImg from "@/assets/ba-laser-1-before.jpg";
-import afterImg from "@/assets/ba-laser-1-after.jpg";
+import interiorImg from "@/assets/about-reception.jpg";
+import aboutReceptionImg from "@/assets/about-reception.jpg";
+import beforeImg from "@/assets/before.jpg";
+import afterImg from "@/assets/after.jpg";
 import { getAllTreatmentImageOverrides, getTreatmentImageOverride } from "@/lib/treatment-image-manager";
 
 export type ServiceTreatment = {
@@ -42,6 +43,7 @@ export type ServiceTemplateProps = {
   faqs: FAQItem[];
   related: RelatedItem[];
   heroImage: string;
+  whyImage?: string;
   dental?: boolean;
   beforeImage?: string;
   afterImage?: string;
@@ -528,8 +530,8 @@ export function ServiceTemplate({
             <div className="p-3 border border-ivory/30 rounded-2xl">
               <div className="overflow-hidden rounded-xl">
                 <img
-                  src={interiorImg}
-                  alt="Al Nemah Clinic"
+                  src={whyImage || aboutReceptionImg}
+                  alt="Al Nemah Clinic Reception"
                   className="aspect-[4/3] w-full object-cover"
                 />
               </div>
