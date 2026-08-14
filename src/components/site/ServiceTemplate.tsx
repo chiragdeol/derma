@@ -239,10 +239,19 @@ export function ServiceTemplate({
   const [overrides, setOverrides] = useState<Record<string, string>>({});
 
   useEffect(() => {
-    const syncOverrides = () => setOverrides(getAllTreatmentImageOverrides());
+    const syncOverrides = () => {
+      const all = getAllTreatmentImageOverrides();
+      setOverrides({ ...all });
+    };
     syncOverrides();
+    const timer1 = setTimeout(syncOverrides, 100);
+    const timer2 = setTimeout(syncOverrides, 500);
     window.addEventListener("treatment_images_updated", syncOverrides);
-    return () => window.removeEventListener("treatment_images_updated", syncOverrides);
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      window.removeEventListener("treatment_images_updated", syncOverrides);
+    };
   }, []);
 
   const handlePlayVideo = () => {

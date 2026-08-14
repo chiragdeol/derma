@@ -39,9 +39,9 @@ function openDB(): Promise<IDBDatabase | null> {
   });
 }
 
-// Synchronously load from localStorage & initialize IndexedDB sync
+// Synchronously load from localStorage & trigger IndexedDB sync
 export function getAllTreatmentImageOverrides(): Record<string, string> {
-  if (typeof window === "undefined") return inMemoryOverrides;
+  if (typeof window === "undefined") return { ...inMemoryOverrides };
   
   // 1. Read from localStorage if in-memory is empty
   if (Object.keys(inMemoryOverrides).length === 0) {
@@ -58,16 +58,16 @@ export function getAllTreatmentImageOverrides(): Record<string, string> {
     }
   }
 
-  // 2. Trigger background IndexedDB sync once on mount
+  // 2. Trigger background IndexedDB sync
   if (!dbInitialized) {
     dbInitialized = true;
     syncFromIndexedDB();
   }
 
-  return inMemoryOverrides;
+  return { ...inMemoryOverrides };
 }
 
-async function syncFromIndexedDB() {
+export async function syncFromIndexedDB() {
   const db = await openDB();
   if (!db) return;
   try {
@@ -78,13 +78,15 @@ async function syncFromIndexedDB() {
       const idbData = e.target.result;
       if (idbData && typeof idbData === "object") {
         let changed = false;
+        const newMap = { ...inMemoryOverrides };
         for (const [key, val] of Object.entries(idbData)) {
-          if (!inMemoryOverrides[key] && typeof val === "string") {
-            inMemoryOverrides[key] = val;
+          if (typeof val === "string" && (!newMap[key] || newMap[key] !== val)) {
+            newMap[key] = val;
             changed = true;
           }
         }
         if (changed) {
+          inMemoryOverrides = newMap;
           saveToLocalStorage(inMemoryOverrides);
           window.dispatchEvent(new Event("treatment_images_updated"));
         }
@@ -100,7 +102,7 @@ function saveToLocalStorage(data: Record<string, string>) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch (e) {
-    console.warn("localStorage save quota exceeded, attempting to save light copy", e);
+    console.warn("localStorage save quota exceeded", e);
   }
 }
 
