@@ -4,6 +4,12 @@ import heroImg from "@/assets/service-dental.jpg";
 import beforeImg from "@/assets/dental-before.png";
 import afterImg from "@/assets/dental-after.png";
 
+import porcelainVeneersImg from "@/assets/treatments/porcelain-veneers.png";
+import teethWhiteningImg from "@/assets/treatments/teeth-whitening.png";
+import anteriorCompositeImg from "@/assets/treatments/anterior-composite-restoration.png";
+import invisalignImg from "@/assets/treatments/invisalign.png";
+import snapOnSmileImg from "@/assets/treatments/snap-on-smile.png";
+
 export const Route = createFileRoute("/services/dental/aesthetic-dentistry")({
   head: () => ({
     meta: [
@@ -38,6 +44,7 @@ export const Route = createFileRoute("/services/dental/aesthetic-dentistry")({
           tags: ["Porcelain", "Hollywood Smile"],
           duration: "45 mins · Custom prep",
           price: "AED 1,499",
+          image: porcelainVeneersImg,
           points: [
             "Premium Ivoclar / German EMAX porcelain",
             "High stain resistance and natural translucency",
@@ -50,6 +57,7 @@ export const Route = createFileRoute("/services/dental/aesthetic-dentistry")({
           tags: ["Instant Whitening", "Enamel Safe"],
           duration: "45 mins · No downtime",
           price: "AED 999",
+          image: teethWhiteningImg,
           points: [
             "Enamel-safe, medically supervised formula",
             "Lifts coffee, tea, and tobacco discoloration",
@@ -62,6 +70,7 @@ export const Route = createFileRoute("/services/dental/aesthetic-dentistry")({
           tags: ["Front Teeth", "Composite Bonding"],
           duration: "20 mins · 1-Visit",
           price: "AED 799",
+          image: anteriorCompositeImg,
           points: [
             "Seamless color-matched resin bonding",
             "Preserves natural tooth structure",
@@ -74,6 +83,7 @@ export const Route = createFileRoute("/services/dental/aesthetic-dentistry")({
           tags: ["Zirconia", "Anterior Crown"],
           duration: "30 mins · Restoration",
           price: "AED 1,200",
+          image: porcelainVeneersImg,
           points: [
             "Biocompatible, metal-free translucent ceramic",
             "High fracture resistance",
@@ -86,6 +96,7 @@ export const Route = createFileRoute("/services/dental/aesthetic-dentistry")({
           tags: ["Clear Aligners", "Orthodontics"],
           duration: "10 mins · Scan & Consult",
           price: "AED 4,999",
+          image: invisalignImg,
           points: [
             "Nearly invisible transparent aligners",
             "Removable for easy eating and brushing",
@@ -98,6 +109,7 @@ export const Route = createFileRoute("/services/dental/aesthetic-dentistry")({
           tags: ["Removable Smile", "Non-Invasive"],
           duration: "30 mins · Impression",
           price: "AED 1,000",
+          image: snapOnSmileImg,
           points: [
             "No drilling, no needles, no pain",
             "Removable custom dental appliance",
