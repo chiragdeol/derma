@@ -132,55 +132,77 @@ const doctors = [
     image: doctorMenna,
     education: [
       "Bachelor of Dental Surgery (BDS)",
-      "General & Preventive Dental Care",
-      "Cosmetic & Smile Enhancement Specialist"
+      "General & Preventive Dental Care Specialist",
+      "Arabic-Speaking Restorative & Smile Dentist"
     ],
     specialties: [
-      "Dental Examinations & Teeth Cleaning",
-      "Fillings & Root Canal Treatment",
-      "Extractions, Crowns & Bridges",
-      "Smile Enhancement & Preventive Care"
+      "Comprehensive dental examinations",
+      "Professional teeth cleaning",
+      "Preventive dental care",
+      "Dental fillings & cavity treatment",
+      "Root canal treatment",
+      "Tooth extractions",
+      "Dental crowns & bridges",
+      "Restorative dental treatments",
+      "Smile enhancement procedures",
+      "Personalized oral-health consultations"
     ],
     languages: ["Arabic", "English"],
-    bio: "Dr. Menna is a General Dentist who speaks Arabic, dedicated to providing high-quality dental care in a comfortable and patient-friendly environment. She offers a wide range of services including dental examinations, teeth cleaning, fillings, root canal treatment, extractions, crowns, bridges, and smile enhancement treatments. She also focuses on preventive dental care to maintain long-term oral health. Dr. Menna is known for her gentle approach and clear communication, ensuring patients feel comfortable, informed, and well cared for throughout their treatment."
+    bio: "Dr. Menna is an Arabic-speaking General Dentist committed to providing comprehensive dental care in a welcoming, comfortable, and patient-friendly environment. She focuses on understanding each patient’s concerns and delivering personalized treatments that support both oral health and the appearance of the smile. Known for her gentle approach and attention to detail, Dr. Menna takes the time to explain each patient’s condition and available treatment options clearly. She aims to make every visit as comfortable and reassuring as possible, particularly for patients who may feel anxious about dental treatment. Dr. Menna believes that maintaining a healthy smile begins with prevention, early diagnosis, and consistent care. She is dedicated to creating individualized treatment plans that address each patient’s needs, restore dental function, and support long-term oral health while achieving natural-looking results."
   },
   {
     name: "Dr. Fatma Metwally",
-    role: "General Practitioner",
+    role: "Aesthetic Doctor",
     image: doctorFatma,
     education: [
       "Ain Shams University, Egypt",
-      "General Practitioner (UAE Licensed)",
-      "Advanced Aesthetic Medicine & Facial Rejuvenation"
+      "Aesthetic Doctor (UAE Licensed since 2023)",
+      "Advanced Aesthetic Medicine & Non-Surgical Rejuvenation"
     ],
     specialties: [
-      "Acne Scar & Hyperpigmentation Treatment",
-      "Double Chin & Weight Loss Treatment",
-      "Fillers (Face & Body) & Russian Lip Fillers",
-      "Botox, HIFU, RF Microneedling & Exosome Therapy",
-      "Hair Fall Therapy & Hair Regenera Treatment",
-      "PRP Therapy, Mesotherapy & Profhilo"
+      "Acne & acne scar treatments",
+      "Hyperpigmentation & uneven skin tone",
+      "Dark circles treatments",
+      "Double chin reduction",
+      "Medical weight-loss treatments",
+      "Face & body fillers",
+      "Russian technique lip fillers",
+      "Botox (specially Migraine Botox)",
+      "Hyperhidrosis treatments",
+      "Endo-lift",
+      "Permanent white hair removal (Electrolysis)",
+      "Hair-loss therapies & Spider Veins",
+      "Exosome therapy & Hair Regenera",
+      "PRP therapy & Microneedling / RF",
+      "Mesotherapy, Profhilo & HIFU"
     ],
     languages: ["English", "Arabic"],
-    bio: "Dr. Fatma Metwally graduated from Ain Shams University, Egypt, and initiated her career in aesthetics in Egypt in 2024. She later continued her professional journey as a General Practitioner in the UAE in 2025, providing a wide range of advanced aesthetic treatments to her patients. Dr. Fatma Metwally is dedicated to delivering comprehensive, personalized, and advanced aesthetic care, consistently updating her skills and techniques to remain at the forefront of aesthetic medicine and meet the diverse needs of her patients."
+    bio: "Dr. Fatma Metwally is an experienced Aesthetic Doctor with a long-standing career in aesthetic medicine, skin health, hair restoration, and non-surgical facial and body treatments. Since continuing her professional journey in the UAE in 2023, she has provided advanced aesthetic solutions tailored to the individual needs and goals of each patient. Over the years, Dr. Fatma has remained committed to helping her patients feel confident in their appearance through carefully selected treatments and personalized care. Her approach focuses on understanding each patient’s concerns, assessing their features and skin condition, and developing a suitable treatment plan that supports natural-looking, balanced, and refined results."
   },
   {
     name: "Dr. Sidra Ejaz",
-    role: "Aesthetic Physician",
+    role: "Aesthetic General Practitioner",
     image: doctorSidra,
     education: [
-      "Bachelor of Medicine, Bachelor of Surgery (MBBS)",
-      "Board Certified in Aesthetic Medicine",
-      "Advanced Fellowship in Facial Aesthetics"
+      "Aesthetic General Practitioner (10+ Years Expertise)",
+      "Advanced Aesthetic Medicine & Rejuvenation",
+      "Non-Surgical Facial & Body Treatment Specialist"
     ],
     specialties: [
-      "Non-surgical facial rejuvenation",
-      "Botox & Dermal Filler injections",
-      "Profhilo & Skin Booster treatments",
-      "Lip enhancement and contouring"
+      "Acne & acne scar treatments",
+      "Hyperpigmentation & uneven skin tone",
+      "Spider Veins & Electrolysis hair removal",
+      "Endo-lift & Double chin reduction",
+      "Dark circles & Medical weight-loss",
+      "Face & body fillers & Russian lip fillers",
+      "Botox & Hyperhidrosis treatments",
+      "Hair-loss & Exosome therapy",
+      "Hair Regenera + Fall treatments",
+      "PRP, Microneedling & RF microneedling",
+      "Mesotherapy, Profhilo & HIFU"
     ],
     languages: ["English", "Urdu", "Hindi"],
-    bio: "Dr. Sidra Ejaz is a highly skilled Aesthetic Physician specializing in advanced non-surgical facial rejuvenation. With over 8 years of clinical experience, she blends clinical precision with an artist's eye to deliver natural-looking, balanced results that enhance each patient's unique features."
+    bio: "Dr. Sidra Ejaz is an experienced Aesthetic General Practitioner with over 10 years of expertise in advanced aesthetic medicine, skin rejuvenation, hair restoration, and non-surgical facial and body treatments. Throughout her career, Dr. Sidra has helped patients address a wide range of aesthetic concerns through personalized treatment plans designed around their individual needs, features, and desired outcomes. She combines advanced techniques with a detailed understanding of facial harmony and skin health, focusing on natural-looking results while maintaining the highest standards of patient care and safety. Known for her careful assessment and patient-focused approach, Dr. Sidra takes the time to understand each patient’s concerns before recommending the most suitable options. Her extensive experience enables her to create comprehensive treatment plans that enhance natural features, improve skin quality, and deliver balanced, refined results. Dr. Sidra remains committed to advanced aesthetic care by continuously keeping up with the latest techniques and technologies in the field, ensuring that every patient receives effective, personalized, and confidence-enhancing treatment."
   },
   {
     name: "Dr. Nisha Sasidharan",
@@ -201,22 +223,27 @@ const doctors = [
     bio: "Dr. Nisha Sasidharan has over 10 years of clinical experience in cosmetic dentistry. She is dedicated to creating healthy, beautiful smiles utilizing state-of-the-art digital smile mapping, helping patients achieve natural results with maximum comfort."
   },
   {
-    name: "Dr. Sheeraz",
-    role: "Specialist Dermatologist",
+    name: "Dr. Sheeraz Moin Muhammad",
+    role: "Dermatology Specialist",
     image: doctorMale,
     education: [
-      "Doctor of Medicine (MD) in Dermatology",
-      "MOH Licensed Specialist Dermatologist",
-      "Advanced Laser & Laser-Skin Surgery Certification"
+      "Dermatology Specialist (30+ Years Expertise)",
+      "Evidence-Based Dermatological Care",
+      "Advanced Laser, Skin Repair & Anti-Aging"
     ],
     specialties: [
-      "Clinical Dermatology & Acne Treatment",
-      "Acne Scar Revision & TCA Cross",
-      "Advanced Laser Resurfacing & Hair Removal",
-      "Medical-grade Chemical Peels & Mesotherapy"
+      "Acne & acne scar treatments",
+      "Hyperpigmentation & uneven skin tone",
+      "General skin & nail condition diagnosis",
+      "Scar management & skin repair",
+      "Hair-loss & scalp treatments",
+      "Anti-aging & skin rejuvenation",
+      "Comprehensive dermatology consultations",
+      "Spider Veins & Endo-lift",
+      "Permanent white hair removal (Electrolysis)"
     ],
     languages: ["English", "Arabic", "Urdu"],
-    bio: "Dr. Sheeraz is a highly respected Specialist Dermatologist with over 12 years of clinical experience. He provides expert medical guidance for skin disorders, lasers, and anti-aging therapies, maintaining the highest standards of safety and clinical excellence."
+    bio: "Dr. Sheeraz Moin Muhammad is a highly experienced Dermatology Specialist with over 30 years of expertise in diagnosing and treating a wide range of skin, hair, and nail conditions. Throughout his extensive career, he has remained committed to providing evidence-based dermatological care tailored to each patient’s condition, concerns, and individual needs. Known for his thorough assessment and patient-centered approach, Dr. Sheeraz takes the time to understand each patient’s concerns and accurately evaluate their condition before recommending the most appropriate treatment options. With more than three decades of clinical experience, he develops personalized treatment plans that combine extensive medical knowledge with careful follow-up. Dr. Sheeraz also ensures that every patient clearly understands their diagnosis and available treatment options, creating a comfortable and reassuring experience while maintaining high standards of dermatological care."
   }
 ];
 
