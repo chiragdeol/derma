@@ -5,7 +5,7 @@ import interiorImg from "@/assets/about-reception.jpg";
 import aboutReceptionImg from "@/assets/about-reception.jpg";
 import beforeImg from "@/assets/before.jpg";
 import afterImg from "@/assets/after.jpg";
-import { getAllTreatmentImageOverrides, getTreatmentImageOverride } from "@/lib/treatment-image-manager";
+import { getAllTreatmentImageOverrides, getTreatmentImageOverride, getTreatmentAltOverride } from "@/lib/treatment-image-manager";
 
 export type ServiceTreatment = {
   name: string;
@@ -370,7 +370,7 @@ export function ServiceTemplate({
                       {getTreatmentImageOverride(t.name) || overrides[t.name] || t.image ? (
                         <img 
                           src={getTreatmentImageOverride(t.name) || overrides[t.name] || t.image} 
-                          alt={t.name} 
+                          alt={getTreatmentAltOverride(t.name) || `${t.name} Treatment in Sharjah — Al Nemah Medical Center`} 
                           className="absolute inset-0 w-full h-full object-cover transition-all duration-300"
                         />
                       ) : (

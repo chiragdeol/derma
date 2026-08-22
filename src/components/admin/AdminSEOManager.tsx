@@ -14,9 +14,12 @@ import {
   getTreatmentImageOverride,
   saveTreatmentImageOverride, 
   removeTreatmentImageOverride, 
-  resetTreatmentImageOverrides 
+  resetTreatmentImageOverrides,
+  getAllTreatmentAltOverrides,
+  getTreatmentAltOverride,
+  saveTreatmentAltOverride
 } from "@/lib/treatment-image-manager";
-import { Globe, Lock, Save, RefreshCw, Download, Upload, CheckCircle, Search, Eye, AlertCircle, Code, FileCode, Image, Trash2, UploadCloud, Layers } from "lucide-react";
+import { Globe, Lock, Save, RefreshCw, Download, Upload, CheckCircle, Search, Eye, AlertCircle, Code, FileCode, Image, Trash2, UploadCloud, Layers, Tag } from "lucide-react";
 
 const TREATMENT_CATEGORIES = [
   {
@@ -191,6 +194,7 @@ export function AdminSEOManager() {
 
   const [activeTab, setActiveTab] = useState<"seo" | "photos" | "scripts">("seo");
   const [treatmentOverrides, setTreatmentOverrides] = useState<Record<string, string>>({});
+  const [altOverrides, setAltOverrides] = useState<Record<string, string>>({});
   const [selectedCategory, setSelectedCategory] = useState("Skin & HydraFacial");
   const [uploadingTreatment, setUploadingTreatment] = useState<string | null>(null);
   const [photoSavedMessage, setPhotoSavedMessage] = useState<string | null>(null);
@@ -218,6 +222,7 @@ export function AdminSEOManager() {
       setSavedSuccess(false);
       setCustomScripts(getCustomHeaderScripts());
       setTreatmentOverrides(getAllTreatmentImageOverrides());
+      setAltOverrides(getAllTreatmentAltOverrides());
     }
   }, [selectedPath, isAuthenticated]);
 
@@ -241,16 +246,26 @@ export function AdminSEOManager() {
     }
   };
 
+  const handleSaveAltTag = (treatmentName: string, altText: string) => {
+    saveTreatmentAltOverride(treatmentName, altText);
+    setAltOverrides(getAllTreatmentAltOverrides());
+    setPhotoSavedMessage(`SEO Alt Tag updated for "${treatmentName}"!`);
+    setTimeout(() => setPhotoSavedMessage(null), 3000);
+  };
+
   const handleRemovePhoto = (treatmentName: string) => {
     if (confirm(`Remove custom photo for ${treatmentName} and revert to default?`)) {
       removeTreatmentImageOverride(treatmentName);
       setTreatmentOverrides(getAllTreatmentImageOverrides());
+      setAltOverrides(getAllTreatmentAltOverrides());
     }
   };
 
   const handleExportPhotosJSON = () => {
-    const overrides = getAllTreatmentImageOverrides();
-    const data = JSON.stringify(overrides, null, 2);
+    const photos = getAllTreatmentImageOverrides();
+    const alts = getAllTreatmentAltOverrides();
+    const backupData = { photos, alts };
+    const data = JSON.stringify(backupData, null, 2);
     const blob = new Blob([data], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -266,15 +281,24 @@ export function AdminSEOManager() {
     const reader = new FileReader();
     reader.onload = (event) => {
       try {
-        const importedPhotos = JSON.parse(event.target?.result as string);
-        if (importedPhotos && typeof importedPhotos === "object") {
-          for (const [name, dataUrl] of Object.entries(importedPhotos)) {
+        const importedData = JSON.parse(event.target?.result as string);
+        if (importedData && typeof importedData === "object") {
+          const photosMap = importedData.photos || (typeof importedData === "object" && !importedData.photos ? importedData : {});
+          const altsMap = importedData.alts || {};
+
+          for (const [name, dataUrl] of Object.entries(photosMap)) {
             if (typeof dataUrl === "string") {
               saveTreatmentImageOverride(name, dataUrl);
             }
           }
+          for (const [name, altText] of Object.entries(altsMap)) {
+            if (typeof altText === "string") {
+              saveTreatmentAltOverride(name, altText);
+            }
+          }
           setTreatmentOverrides(getAllTreatmentImageOverrides());
-          alert("Treatment Photos Backup JSON imported and restored successfully!");
+          setAltOverrides(getAllTreatmentAltOverrides());
+          alert("Treatment Photos & SEO ALT Tags restored successfully!");
         }
       } catch (err) {
         alert("Failed to parse JSON backup file.");
@@ -375,7 +399,7 @@ export function AdminSEOManager() {
               <Lock className="h-6 w-6" />
             </div>
             <h1 className="font-display text-3xl font-bold text-foreground">Admin Portal</h1>
-            <p className="mt-2 text-xs text-muted-foreground">Enter passcode to manage On-Page SEO, Meta Tags & Treatment Card Photos</p>
+            <p className="mt-2 text-xs text-muted-foreground">Enter passcode to manage On-Page SEO, Image Alt Tags & Treatment Card Photos</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-4">
@@ -429,10 +453,10 @@ export function AdminSEOManager() {
             onClick={handleExportJSON}
             className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold border border-border rounded-lg bg-card hover:bg-accent/20 transition-colors"
           >
-            <Download className="w-3.5 h-3.5" /> Backup JSON
+            <Download className="w-3.5 h-3.5" /> Backup SEO JSON
           </button>
           <label className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold border border-border rounded-lg bg-card hover:bg-accent/20 cursor-pointer transition-colors">
-            <Upload className="w-3.5 h-3.5" /> Restore JSON
+            <Upload className="w-3.5 h-3.5" /> Restore SEO JSON
             <input type="file" accept=".json" onChange={handleImportJSON} className="hidden" />
           </label>
           <button
@@ -465,7 +489,7 @@ export function AdminSEOManager() {
               : "border-transparent text-muted-foreground hover:text-foreground"
           }`}
         >
-          <Image className="w-4 h-4" /> Treatment Card Photos ({treatmentOverrides && typeof treatmentOverrides === "object" ? Object.keys(treatmentOverrides).length : 0} Custom)
+          <Image className="w-4 h-4" /> Treatment Card Photos & ALT Tags ({treatmentOverrides && typeof treatmentOverrides === "object" ? Object.keys(treatmentOverrides).length : 0} Custom)
         </button>
 
         <button
@@ -603,17 +627,17 @@ export function AdminSEOManager() {
         </div>
       )}
 
-      {/* TAB 2: TREATMENT PHOTOS */}
+      {/* TAB 2: TREATMENT PHOTOS & ALT TAGS */}
       {activeTab === "photos" && (
         <div className="space-y-8">
           <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 space-y-6 shadow-sm">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-border">
               <div>
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#974d08] mb-1">
-                  <Image className="w-4 h-4" /> Treatment Card Photos Manager
+                  <Image className="w-4 h-4" /> Treatment Photos & Image ALT Tag Engine
                 </div>
-                <h2 className="font-display text-2xl font-semibold text-foreground">Upload Custom Photos for Treatment Cards</h2>
-                <p className="text-xs text-muted-foreground mt-1">Select a category and upload custom photos for individual treatment cards across all service pages.</p>
+                <h2 className="font-display text-2xl font-semibold text-foreground">Upload Photos & Edit Image ALT Tags for 100% SEO Compliance</h2>
+                <p className="text-xs text-muted-foreground mt-1">Upload custom images or drag & drop files. Set custom Image ALT tags for every treatment card to maximize Google Images & SERP ranking.</p>
               </div>
               
               <div className="flex flex-wrap items-center gap-2">
@@ -621,18 +645,18 @@ export function AdminSEOManager() {
                   type="button"
                   onClick={handleExportPhotosJSON}
                   className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-foreground bg-muted border border-border rounded-lg hover:bg-muted/80 transition-colors cursor-pointer"
-                  title="Export backup of all custom treatment photos as JSON"
+                  title="Export backup of all custom treatment photos & ALT tags as JSON"
                 >
-                  <Download className="w-3.5 h-3.5" /> Backup Photos JSON
+                  <Download className="w-3.5 h-3.5" /> Backup Photos & ALT JSON
                 </button>
 
                 <button
                   type="button"
                   onClick={() => document.getElementById("import-photos-json-input")?.click()}
                   className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-foreground bg-muted border border-border rounded-lg hover:bg-muted/80 transition-colors cursor-pointer"
-                  title="Restore custom treatment photos from a JSON backup file"
+                  title="Restore custom treatment photos & ALT tags from a JSON backup file"
                 >
-                  <Upload className="w-3.5 h-3.5" /> Restore Photos JSON
+                  <Upload className="w-3.5 h-3.5" /> Restore Photos & ALT JSON
                 </button>
                 <input
                   id="import-photos-json-input"
@@ -645,9 +669,10 @@ export function AdminSEOManager() {
                 {treatmentOverrides && typeof treatmentOverrides === "object" && Object.keys(treatmentOverrides).length > 0 && (
                   <button
                     onClick={() => {
-                      if (confirm("Reset ALL custom uploaded treatment photos back to default?")) {
+                      if (confirm("Reset ALL custom uploaded treatment photos & ALT tags back to default?")) {
                         resetTreatmentImageOverrides();
                         setTreatmentOverrides({});
+                        setAltOverrides({});
                       }
                     }}
                     className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-red-600 bg-red-50 border border-red-200 rounded-lg hover:bg-red-100 transition-colors cursor-pointer"
@@ -692,31 +717,86 @@ export function AdminSEOManager() {
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {currentCategoryObj.treatments.map((tName) => {
                   const currentImg = getTreatmentImageOverride(tName) || (treatmentOverrides ? treatmentOverrides[tName] : null);
-                  const hasCustom = !!currentImg;
+                  const currentAlt = getTreatmentAltOverride(tName) || (altOverrides ? altOverrides[tName] : "");
+                  const hasCustomImg = !!currentImg;
+                  const hasCustomAlt = !!currentAlt;
                   const inputId = `file-input-${tName.replace(/[^a-zA-Z0-9]/g, '-')}`;
 
                   return (
                     <div key={tName} className="rounded-2xl border border-border bg-card p-5 space-y-4 shadow-sm flex flex-col justify-between">
-                      <div>
-                        <div className="flex justify-between items-start mb-2">
+                      <div className="space-y-3">
+                        <div className="flex justify-between items-start">
                           <h4 className="font-display text-lg font-semibold text-foreground">{tName}</h4>
-                          {hasCustom ? (
-                            <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-green-100 text-green-700">Custom Photo</span>
+                          <div className="flex gap-1 flex-wrap justify-end">
+                            {hasCustomImg && (
+                              <span className="text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-green-100 text-green-700">Custom Photo</span>
+                            )}
+                            {hasCustomAlt && (
+                              <span className="text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">SEO ALT Tag</span>
+                            )}
+                            {!hasCustomImg && !hasCustomAlt && (
+                              <span className="text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-muted text-muted-foreground">Default</span>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Image Drag & Drop Preview Box */}
+                        <div 
+                          className="aspect-[4/3] rounded-xl overflow-hidden bg-muted border border-dashed border-border hover:border-[#974d08] transition-colors relative group cursor-pointer flex flex-col items-center justify-center"
+                          onClick={() => {
+                            const inputEl = document.getElementById(inputId);
+                            if (inputEl) inputEl.click();
+                          }}
+                          onDragOver={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                          }}
+                          onDrop={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            const file = e.dataTransfer.files?.[0];
+                            if (file) handleUploadPhoto(tName, file);
+                          }}
+                        >
+                          {currentImg ? (
+                            <>
+                              <img src={currentImg} alt={currentAlt || tName} className="w-full h-full object-cover" />
+                              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-semibold">
+                                Click or Drop Image to Replace
+                              </div>
+                            </>
                           ) : (
-                            <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-muted text-muted-foreground">Default</span>
+                            <div className="w-full h-full flex flex-col items-center justify-center text-muted-foreground p-4 text-center">
+                              <UploadCloud className="w-8 h-8 text-[#974d08] opacity-70 mb-2" />
+                              <span className="text-xs font-medium">Click or Drag & Drop Photo Here</span>
+                              <span className="text-[10px] opacity-60 mt-1">PNG, JPG, WEBP</span>
+                            </div>
                           )}
                         </div>
 
-                        {/* Image Preview Box */}
-                        <div className="aspect-[4/3] rounded-xl overflow-hidden bg-muted border border-border relative group">
-                          {currentImg ? (
-                            <img src={currentImg} alt={tName} className="w-full h-full object-cover" />
-                          ) : (
-                            <div className="w-full h-full flex flex-col items-center justify-center text-muted-foreground p-4 text-center">
-                              <Image className="w-8 h-8 opacity-40 mb-2" />
-                              <span className="text-xs">No custom photo uploaded</span>
-                            </div>
-                          )}
+                        {/* Image ALT Tag Field (SEO) */}
+                        <div className="pt-2">
+                          <label className="block text-[11px] font-semibold text-muted-foreground uppercase tracking-wider mb-1 flex items-center gap-1">
+                            <Tag className="w-3 h-3 text-[#974d08]" /> Image ALT Tag (Google SEO)
+                          </label>
+                          <div className="flex gap-2">
+                            <input
+                              type="text"
+                              defaultValue={currentAlt || ""}
+                              placeholder={`${tName} Treatment in Sharjah — Al Nemah Medical Center`}
+                              onBlur={(e) => handleSaveAltTag(tName, e.target.value)}
+                              onKeyDown={(e) => {
+                                if (e.key === "Enter") {
+                                  e.preventDefault();
+                                  handleSaveAltTag(tName, (e.target as HTMLInputElement).value);
+                                }
+                              }}
+                              className="w-full rounded-xl border border-border bg-background px-3 py-2 text-xs focus:border-[#974d08] focus:outline-none"
+                            />
+                          </div>
+                          <span className="text-[10px] text-muted-foreground mt-1 block">
+                            Press Enter or click outside to save Alt Tag
+                          </span>
                         </div>
                       </div>
 
@@ -738,7 +818,7 @@ export function AdminSEOManager() {
                             </>
                           ) : (
                             <>
-                              <UploadCloud className="w-3.5 h-3.5" /> {hasCustom ? "Change Photo" : "Upload Photo"}
+                              <UploadCloud className="w-3.5 h-3.5" /> {hasCustomImg ? "Change Photo" : "Upload Photo"}
                             </>
                           )}
                         </button>
@@ -755,12 +835,12 @@ export function AdminSEOManager() {
                           className="hidden"
                         />
 
-                        {hasCustom && (
+                        {(hasCustomImg || hasCustomAlt) && (
                           <button
                             type="button"
                             onClick={() => handleRemovePhoto(tName)}
                             className="p-2 text-red-600 bg-red-50 border border-red-200 rounded-xl hover:bg-red-100 transition-colors cursor-pointer"
-                            title="Remove custom photo"
+                            title="Remove custom photo and alt tag"
                           >
                             <Trash2 className="w-4 h-4" />
                           </button>
@@ -803,14 +883,14 @@ export function AdminSEOManager() {
 
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
-              Custom &lt;head&gt; HTML / JS Code
+              Custom &lt;head&gt; Code / Scripts
             </label>
             <textarea
               rows={12}
               value={customScripts}
               onChange={(e) => setCustomScripts(e.target.value)}
-              placeholder="<!-- Paste your Google Analytics or Meta Pixel script here -->&#10;<script>&#10;  console.log('Al Nemah Analytics Loaded');&#10;</script>"
-              className="w-full rounded-xl border border-border bg-background p-4 text-xs font-mono focus:border-[#974d08] focus:outline-none leading-relaxed"
+              placeholder="<!-- Paste Google Tag Manager or Meta Pixel script here -->"
+              className="w-full rounded-xl border border-border bg-background p-4 font-mono text-xs focus:border-[#974d08] focus:outline-none"
             />
           </div>
         </div>
