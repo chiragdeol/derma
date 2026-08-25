@@ -223,18 +223,25 @@ const doctors = [
     role: "General Dentist",
     image: doctorNisha,
     education: [
+      "General Dentist (10+ Years Clinical Experience)",
       "Bachelor of Dental Surgery (BDS)",
-      "Specialized Certification in Cosmetic Dentistry",
-      "Digital Smile Design (DSD) Accredited Specialist"
+      "Comprehensive & Restorative Dental Care Specialist"
     ],
     specialties: [
-      "Porcelain Veneers & Hollywood Smile",
-      "Teeth Whitening & Shade Analysis",
-      "Composite Tooth Bonding",
-      "Full Smile Restorations"
+      "Comprehensive oral and dental examinations",
+      "Professional teeth cleaning",
+      "Preventive dental care",
+      "Dental fillings and cavity treatment",
+      "Root canal treatment",
+      "Tooth extractions",
+      "Dental crowns and bridges",
+      "Braces and orthodontic treatments",
+      "Restorative dental procedures",
+      "Smile enhancement treatments",
+      "Dental care for patients of all ages"
     ],
     languages: ["English", "Hindi", "Malayalam"],
-    bio: "Dr. Nisha Sasidharan has over 10 years of clinical experience in cosmetic dentistry. She is dedicated to creating healthy, beautiful smiles utilizing state-of-the-art digital smile mapping, helping patients achieve natural results with maximum comfort."
+    bio: "Dr. Nisha is a skilled and compassionate General Dentist with over 10 years of experience in providing comprehensive dental care. She is committed to helping her patients achieve healthy, confident smiles through a gentle approach that prioritizes their comfort and individual needs. Dr. Nisha is known for her calm and friendly manner. She takes the time to listen to each patient’s concerns, carefully assess their oral health, and explain the available treatment options in a clear and reassuring way. Her gentle approach helps make dental visits more comfortable, particularly for patients who may feel anxious about treatment. With more than a decade of clinical experience, Dr. Nisha develops personalized treatment plans that address immediate dental concerns while supporting long-term oral health. Her approach combines clinical precision, attention to detail, and preventive care to restore dental function and create healthy, natural-looking smiles. For Dr. Nisha, dentistry is not only about treating individual concerns—it is also about building positive dental habits and helping patients feel more confident about their smiles. Her combination of clinical experience, gentle care, and long-term planning makes every visit a meaningful step toward lasting oral health."
   },
   {
     name: "Dr. Sheeraz Moin Muhammad",
