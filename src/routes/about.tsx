@@ -41,14 +41,14 @@ function About() {
       <section className="relative">
         <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12 lg:gap-16 lg:px-10">
           <div className="lg:col-span-5">
-            <div className="overflow-hidden rounded-2xl">
-              <img
-                src={aboutImg}
-                alt="Portrait reflecting Al Nemah aesthetic"
-                loading="lazy"
-                width={1400}
-                height={1600}
-                className="aspect-[4/5] w-full object-cover"
+            <div className="relative overflow-hidden rounded-2xl shadow-sm border border-border/40 group aspect-[4/5] bg-black">
+              <video
+                src="/videos/alnemah-about-video.mp4"
+                poster={aboutImg}
+                controls
+                playsInline
+                preload="metadata"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-102"
               />
             </div>
           </div>
