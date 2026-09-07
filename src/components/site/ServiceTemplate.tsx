@@ -9,12 +9,6 @@ import baLaser1Before from "@/assets/ba-laser-1-before.jpg";
 import baLaser1After from "@/assets/ba-laser-1-after.jpg";
 import baLaser2Before from "@/assets/ba-laser-2-before.jpg";
 import baLaser2After from "@/assets/ba-laser-2-after.jpg";
-import skinRf1 from "@/assets/skin-rf-roller-1.jpg";
-import skinRf2 from "@/assets/skin-rf-roller-2.jpg";
-import dentalBefore from "@/assets/dental-before.png";
-import dentalAfter from "@/assets/dental-after.png";
-import baDental1 from "@/assets/ba-dental-1.jpg";
-import baDental2 from "@/assets/ba-dental-2.jpg";
 
 import acneBefore from "@/assets/drive_beforeafter/acne_before.jpg";
 import acneAfter from "@/assets/drive_beforeafter/acne_after.jpg";
@@ -99,32 +93,37 @@ const FAQAccordionItem = ({ question, answer }: FAQItem) => {
   );
 };
 
-function getTreatmentBeforeAfter(treatmentName: string, fallbackBefore?: string, fallbackAfter?: string): [string, string] {
+function getTreatmentBeforeAfter(treatmentName: string, propBefore?: string, propAfter?: string): [string, string] | null {
   const norm = (treatmentName || "").toLowerCase();
   
-  if (norm.includes("acne") || norm.includes("peel") || norm.includes("hydrafacial") || norm.includes("mesotherapy") || norm.includes("microneedling") || norm.includes("skin")) {
+  if (norm.includes("acne") || norm.includes("peel") || norm.includes("hydrafacial")) {
     return [acneBefore, acneAfter];
   }
-  if (norm.includes("endolift") || norm.includes("morpheus") || norm.includes("hifu") || norm.includes("lifting") || norm.includes("threads")) {
+  if (norm.includes("endolift")) {
     return [endoliftBefore, endoliftAfter];
   }
-  if (norm.includes("cleaning") || norm.includes("scaling") || norm.includes("polishing") || norm.includes("clinical")) {
+  if (norm.includes("cleaning") || norm.includes("scaling") || norm.includes("polishing")) {
     return [teethCleaningBefore, teethCleaningAfter];
   }
   if (norm.includes("whitening")) {
     return [teethWhitening1, teethWhitening2];
   }
-  if (norm.includes("veneer") || norm.includes("hollywood") || norm.includes("smile")) {
+  if (norm.includes("veneer") || norm.includes("hollywood")) {
     return [veneer1, veneer2];
   }
-  if (norm.includes("laser") || norm.includes("hair removal") || norm.includes("pigmentation")) {
+  if (norm.includes("hair removal") || norm.includes("full body") || (norm.includes("laser") && !norm.includes("tattoo") && !norm.includes("vascular"))) {
     return [baLaser1Before, baLaser1After];
   }
-  if (norm.includes("tattoo") || norm.includes("vascular") || norm.includes("ipl")) {
+  if (norm.includes("tattoo") || norm.includes("vascular")) {
     return [baLaser2Before, baLaser2After];
   }
   
-  return [fallbackBefore || beforeImg, fallbackAfter || afterImg];
+  // If explicitly passed prop images exist for this page:
+  if (propBefore && propAfter) {
+    return [propBefore, propAfter];
+  }
+
+  return null;
 }
 
 export function BeforeAfterSection({
@@ -136,63 +135,80 @@ export function BeforeAfterSection({
   beforeImage?: string;
   afterImage?: string;
 }) {
-  const [activeIdx, setActiveIdx] = useState(0);
-  const activeTreatment = treatments[activeIdx] || treatments[0] || { name: "Selected Treatment" };
+  // Filter treatments to ONLY those that have real before & after images
+  const uniqueItemsMap = new Map<string, { id: string; treatmentName: string; beforeImage: string; afterImage: string; category?: string }>();
 
-  const [currentBefore, currentAfter] = getTreatmentBeforeAfter(activeTreatment.name, beforeImage, afterImage);
+  for (const t of treatments) {
+    const pair = getTreatmentBeforeAfter(t.name, beforeImage, afterImage);
+    if (pair) {
+      const pairKey = pair.join("::");
+      if (!uniqueItemsMap.has(pairKey)) {
+        uniqueItemsMap.set(pairKey, {
+          id: t.name,
+          treatmentName: t.name,
+          beforeImage: pair[0],
+          afterImage: pair[1],
+          category: "Real Clinical Result",
+        });
+      }
+    }
+  }
+
+  const realItems = Array.from(uniqueItemsMap.values());
+
+  // Strict Rule: If NO real images exist for this page, hide section completely
+  if (realItems.length === 0) {
+    return null;
+  }
+
+  const [activeIdx, setActiveIdx] = useState(0);
+  const activeItem = realItems[activeIdx] || realItems[0];
 
   const prevTreatment = () => {
-    setActiveIdx((prev) => (prev - 1 + treatments.length) % treatments.length);
+    setActiveIdx((prev) => (prev - 1 + realItems.length) % realItems.length);
   };
 
   const nextTreatment = () => {
-    setActiveIdx((prev) => (prev + 1) % treatments.length);
+    setActiveIdx((prev) => (prev + 1) % realItems.length);
   };
-
-  const carouselItems = treatments.map((t) => {
-    const [b, a] = getTreatmentBeforeAfter(t.name, beforeImage, afterImage);
-    return {
-      id: t.name,
-      treatmentName: t.name,
-      beforeImage: b,
-      afterImage: a,
-      category: "Clinical Result",
-    };
-  });
 
   return (
     <section className="py-20 bg-card border-y border-border/60">
       <div className="mx-auto max-w-6xl px-6 lg:px-10 space-y-12">
-        {/* Multi-Card Carousel Header & Track */}
-        <BeforeAfterCarousel
-          items={carouselItems}
-          title="See the Difference (Clinical Carousel)"
-          subtitle="Real Transformations Before & After"
-        />
+        {/* Multi-Card Carousel Header & Track (only if > 1 item) */}
+        {realItems.length > 1 && (
+          <BeforeAfterCarousel
+            items={realItems}
+            title="Real Clinical Results"
+            subtitle="Before & After Patient Transformations"
+          />
+        )}
 
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center border-t border-border/60 pt-12">
+        <div className={`grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center ${realItems.length > 1 ? "border-t border-border/60 pt-12" : ""}`}>
           {/* Left Column: Interactive Slider */}
           <div className="w-full space-y-3">
             <BeforeAfterSlider
-              key={activeTreatment.name}
-              beforeImage={currentBefore}
-              afterImage={currentAfter}
+              key={activeItem.treatmentName}
+              beforeImage={activeItem.beforeImage}
+              afterImage={activeItem.afterImage}
             />
             <div className="flex justify-between items-center px-1">
               <span className="text-xs font-semibold uppercase tracking-wider text-[#974d08] bg-[#974d08]/10 px-3 py-1 rounded-full">
-                {activeTreatment.name}
+                {activeItem.treatmentName}
               </span>
-              <span className="text-[11px] text-muted-foreground font-mono">
-                Result {activeIdx + 1} of {treatments.length}
-              </span>
+              {realItems.length > 1 && (
+                <span className="text-[11px] text-muted-foreground font-mono">
+                  Result {activeIdx + 1} of {realItems.length}
+                </span>
+              )}
             </div>
           </div>
 
           {/* Right Column: Descriptions & Selectors */}
           <div className="flex flex-col">
             <div className="flex items-center justify-between mb-4">
-              <p className="eyebrow text-[#974d08]">Treatment Selector</p>
-              {treatments.length > 1 && (
+              <p className="eyebrow text-[#974d08]">Verified Patient Results</p>
+              {realItems.length > 1 && (
                 <div className="flex items-center gap-2">
                   <button
                     onClick={prevTreatment}
@@ -213,32 +229,36 @@ export function BeforeAfterSection({
             </div>
 
             <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              Compare by Treatment.
+              See the transformation.
             </h2>
             <p className="text-base text-muted-foreground/95 leading-relaxed mb-6">
-              Every result is a real Al Nemah patient, shared with written consent. Drag the slider to compare — and click any treatment below to view its transformation photos.
+              Every image is a real Al Nemah patient, shared with written consent. Drag the handle to compare.
             </p>
             
-            <p className="font-display italic text-xs text-muted-foreground/80 mb-3">
-              Click a treatment below to view its Before & After result:
-            </p>
-            
-            {/* Thumbnails / Pills row */}
-            <div className="flex gap-2 flex-wrap">
-              {treatments.map((t, idx) => (
-                <button
-                  key={t.name}
-                  onClick={() => setActiveIdx(idx)}
-                  className={`text-xs px-4 py-2 rounded-full border transition-all duration-300 font-sans cursor-pointer ${
-                    activeIdx === idx
-                      ? 'border-[#974d08] text-white bg-[#974d08] font-semibold shadow-sm scale-105'
-                      : 'border-border/80 text-muted-foreground bg-background hover:border-[#974d08]/60 hover:text-foreground'
-                  }`}
-                >
-                  {t.name}
-                </button>
-              ))}
-            </div>
+            {realItems.length > 1 && (
+              <>
+                <p className="font-display italic text-xs text-muted-foreground/80 mb-3">
+                  Select a treatment to view its Before & After result:
+                </p>
+                
+                {/* Thumbnails / Pills row */}
+                <div className="flex gap-2 flex-wrap">
+                  {realItems.map((item, idx) => (
+                    <button
+                      key={item.treatmentName}
+                      onClick={() => setActiveIdx(idx)}
+                      className={`text-xs px-4 py-2 rounded-full border transition-all duration-300 font-sans cursor-pointer ${
+                        activeIdx === idx
+                          ? 'border-[#974d08] text-white bg-[#974d08] font-semibold shadow-sm scale-105'
+                          : 'border-border/80 text-muted-foreground bg-background hover:border-[#974d08]/60 hover:text-foreground'
+                      }`}
+                    >
+                      {item.treatmentName}
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -518,7 +538,7 @@ export function ServiceTemplate({
         </section>
       )}
 
-      {/* BEFORE / AFTER CAROUSEL & SLIDER */}
+      {/* BEFORE / AFTER CAROUSEL & SLIDER (ONLY RENDERS IF REAL PHOTOS EXIST) */}
       <BeforeAfterSection 
         treatments={treatments} 
         beforeImage={beforeImage}
