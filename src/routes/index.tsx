@@ -16,6 +16,7 @@ import dentalImg from "@/assets/service-dental.jpg";
 import wellnessImg from "@/assets/wellness.jpg";
 import beforeImg from "@/assets/before.jpg";
 import afterImg from "@/assets/after.jpg";
+import { BeforeAfterSlider } from "@/components/site/BeforeAfterSlider";
 import baDental1 from "@/assets/ba-dental-1.jpg";
 import baDental2 from "@/assets/ba-dental-2.jpg";
 import baDental4 from "@/assets/ba-dental-4.jpg";
@@ -318,75 +319,7 @@ const testimonials = [
   },
 ];
 
-const BeforeAfterSlider = ({ before = beforeImg, after = afterImg }: { before?: string, after?: string }) => {
-  const [position, setPosition] = useState(50);
-  const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleMove = (clientX: number) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
-    setPosition(percentage);
-  };
-
-  const onMouseMove = (e: React.MouseEvent) => {
-    if (e.buttons === 1) { // Left mouse button held down
-      handleMove(e.clientX);
-    }
-  };
-
-  const onTouchMove = (e: React.TouchEvent) => {
-    if (e.touches[0]) {
-      handleMove(e.touches[0].clientX);
-    }
-  };
-
-  return (
-    <div 
-      ref={containerRef}
-      className="relative aspect-[4/3] w-full max-w-lg mx-auto select-none overflow-hidden rounded-2xl border border-border/50 shadow-lg cursor-ew-resize"
-      onMouseMove={onMouseMove}
-      onTouchMove={onTouchMove}
-      onClick={(e) => handleMove(e.clientX)}
-    >
-      {/* Before Image */}
-      <img 
-        src={before} 
-        alt="Before treatment"
-        className="absolute inset-0 h-full w-full object-cover"
-        draggable={false}
-      />
-      <span className="absolute bottom-4 left-4 z-10 rounded bg-black/60 px-3 py-1 text-xs uppercase tracking-wider text-white">
-        Before
-      </span>
-
-      {/* After Image (Clipped dynamically) */}
-      <img 
-        src={after} 
-        alt="After treatment"
-        className="absolute inset-0 h-full w-full object-cover"
-        style={{ clipPath: `inset(0 0 0 ${position}%)` }}
-        draggable={false}
-      />
-      <span className="absolute bottom-4 right-4 z-10 rounded bg-[#b8957e] px-3 py-1 text-xs uppercase tracking-wider text-black font-semibold">
-        After
-      </span>
-
-      {/* Slider Bar & Handle */}
-      <div 
-        className="absolute bottom-0 top-0 w-0.5 bg-white/80"
-        style={{ left: `${position}%` }}
-      >
-        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white text-foreground shadow-md border border-border hover:scale-105 transition-transform pointer-events-none">
-          <svg className="h-5 w-5 text-muted-foreground rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l-4 4 4 4m8-8l4 4-4 4" />
-          </svg>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 function Home() {
   const [form, setForm] = useState({
@@ -701,7 +634,7 @@ function Home() {
       </section>
 
       {/* NEW CLINICAL RESULTS GALLERY SECTION */}
-      <section id="results" className="hidden bg-[#FAF7F2] border-y border-border/40 text-foreground overflow-hidden">
+      <section id="results" className="bg-[#FAF7F2] border-y border-border/40 text-foreground overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-16">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div className="max-w-3xl">
