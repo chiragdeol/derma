@@ -78,7 +78,7 @@ export function BeforeAfterSlider({
       />
       
       {/* AFTER Label Badge (Bottom Right) */}
-      <div className="absolute bottom-4 right-4 z-10 px-3 py-1 bg-black/60 backdrop-blur-md rounded-lg text-[11px] font-bold tracking-widest text-white/90 uppercase border border-white/10 shadow-sm pointer-events-none">
+      <div className="absolute bottom-3 right-3 z-10 px-2.5 py-0.5 bg-black/60 backdrop-blur-md rounded-md text-[10px] font-bold tracking-widest text-white/90 uppercase border border-white/10 shadow-sm pointer-events-none">
         {afterLabel}
       </div>
 
@@ -94,7 +94,7 @@ export function BeforeAfterSlider({
           style={{ width: containerRef.current ? `${containerRef.current.clientWidth}px` : "100%", maxWidth: "none" }}
         />
         {/* BEFORE Label Badge (Bottom Left) */}
-        <div className="absolute bottom-4 left-4 z-10 px-3 py-1 bg-black/60 backdrop-blur-md rounded-lg text-[11px] font-bold tracking-widest text-white/90 uppercase border border-white/10 shadow-sm">
+        <div className="absolute bottom-3 left-3 z-10 px-2.5 py-0.5 bg-black/60 backdrop-blur-md rounded-md text-[10px] font-bold tracking-widest text-white/90 uppercase border border-white/10 shadow-sm">
           {beforeLabel}
         </div>
       </div>
@@ -106,10 +106,10 @@ export function BeforeAfterSlider({
         onMouseDown={handleMouseDown}
         onTouchStart={handleMouseDown}
       >
-        <div className="w-9 h-9 rounded-full bg-white text-foreground shadow-xl flex items-center justify-center border border-black/10 hover:scale-110 active:scale-95 transition-transform cursor-grab active:cursor-grabbing">
+        <div className="w-8 h-8 rounded-full bg-white text-foreground shadow-xl flex items-center justify-center border border-black/10 hover:scale-110 active:scale-95 transition-transform cursor-grab active:cursor-grabbing">
           <div className="flex items-center gap-0.5 text-foreground/80">
-            <ChevronLeft className="w-3.5 h-3.5 -mr-1" />
-            <ChevronRight className="w-3.5 h-3.5 -ml-1" />
+            <ChevronLeft className="w-3 h-3 -mr-0.5" />
+            <ChevronRight className="w-3 h-3 -ml-0.5" />
           </div>
         </div>
       </div>
@@ -124,87 +124,82 @@ interface BeforeAfterCarouselProps {
 }
 
 export function BeforeAfterCarousel({ items, title = "Clinical Transformations", subtitle = "Real Results Before & After" }: BeforeAfterCarouselProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   if (!items || items.length === 0) return null;
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % items.length);
+  const scrollLeft = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: -360, behavior: "smooth" });
+    }
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + items.length) % items.length);
+  const scrollRight = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: 360, behavior: "smooth" });
+    }
   };
-
-  const currentItem = items[currentIndex];
 
   return (
-    <div className="w-full py-8 space-y-6">
+    <div className="w-full py-12 space-y-6">
       {(title || subtitle) && (
-        <div className="flex items-end justify-between px-2">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 px-2">
           <div>
             <p className="eyebrow mb-1.5 text-[#974d08]">{subtitle}</p>
-            <h3 className="font-display text-2xl md:text-3xl font-semibold text-foreground">{title}</h3>
+            <h3 className="font-display text-3xl md:text-4xl font-semibold text-foreground">{title}</h3>
           </div>
           
-          {items.length > 1 && (
-            <div className="flex items-center gap-2">
-              <button
-                onClick={prevSlide}
-                className="w-10 h-10 rounded-full border border-border bg-card hover:bg-accent/20 flex items-center justify-center text-foreground transition-colors cursor-pointer"
-                aria-label="Previous transformation"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <span className="text-xs font-mono font-medium text-muted-foreground px-1">
-                {currentIndex + 1} / {items.length}
-              </span>
-              <button
-                onClick={nextSlide}
-                className="w-10 h-10 rounded-full border border-border bg-card hover:bg-accent/20 flex items-center justify-center text-foreground transition-colors cursor-pointer"
-                aria-label="Next transformation"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* Main Slider Card */}
-      <div className="space-y-3">
-        <BeforeAfterSlider
-          beforeImage={currentItem.beforeImage}
-          afterImage={currentItem.afterImage}
-        />
-        
-        {currentItem.treatmentName && (
-          <div className="flex justify-between items-center px-1">
-            <h4 className="font-display text-lg font-semibold text-foreground">{currentItem.treatmentName}</h4>
-            {currentItem.category && (
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-[#974d08] bg-[#974d08]/10 px-3 py-1 rounded-full">
-                {currentItem.category}
-              </span>
-            )}
-          </div>
-        )}
-      </div>
-
-      {/* Carousel Thumbnail Indicators */}
-      {items.length > 1 && (
-        <div className="flex gap-2 justify-center pt-2">
-          {items.map((_, idx) => (
+          <div className="flex items-center gap-3">
             <button
-              key={idx}
-              onClick={() => setCurrentIndex(idx)}
-              className={`h-2 rounded-full transition-all cursor-pointer ${
-                currentIndex === idx ? "w-8 bg-[#974d08]" : "w-2 bg-border hover:bg-muted-foreground/40"
-              }`}
-              aria-label={`Go to slide ${idx + 1}`}
-            />
-          ))}
+              onClick={scrollLeft}
+              className="w-11 h-11 rounded-full border border-border bg-card hover:bg-accent/20 flex items-center justify-center text-foreground transition-all cursor-pointer shadow-sm hover:scale-105"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={scrollRight}
+              className="w-11 h-11 rounded-full border border-border bg-card hover:bg-accent/20 flex items-center justify-center text-foreground transition-all cursor-pointer shadow-sm hover:scale-105"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
       )}
+
+      {/* Multi-Card Horizontal Scrollable Track */}
+      <div
+        ref={carouselRef}
+        className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 pt-2 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border/60"
+        style={{ scrollbarWidth: "thin" }}
+      >
+        {items.map((item) => (
+          <div
+            key={item.id || item.treatmentName}
+            className="flex-none w-[320px] sm:w-[380px] snap-start rounded-3xl bg-card border border-border/60 p-4 space-y-4 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <BeforeAfterSlider
+              beforeImage={item.beforeImage}
+              afterImage={item.afterImage}
+            />
+            
+            <div className="flex items-center justify-between pt-1">
+              <div>
+                <h4 className="font-display text-lg font-semibold text-foreground">{item.treatmentName}</h4>
+                {item.description && (
+                  <p className="text-xs text-muted-foreground line-clamp-1">{item.description}</p>
+                )}
+              </div>
+              {item.category && (
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#974d08] bg-[#974d08]/10 px-2.5 py-1 rounded-full">
+                  {item.category}
+                </span>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

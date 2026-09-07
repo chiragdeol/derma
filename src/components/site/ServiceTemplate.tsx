@@ -16,7 +16,7 @@ import dentalAfter from "@/assets/dental-after.png";
 import baDental1 from "@/assets/ba-dental-1.jpg";
 import baDental2 from "@/assets/ba-dental-2.jpg";
 import { getAllTreatmentImageOverrides, getTreatmentImageOverride, getTreatmentAltOverride } from "@/lib/treatment-image-manager";
-import { BeforeAfterSlider } from "./BeforeAfterSlider";
+import { BeforeAfterSlider, BeforeAfterCarousel } from "./BeforeAfterSlider";
 
 export type ServiceTreatment = {
   name: string;
@@ -131,76 +131,96 @@ export function BeforeAfterSection({
     setActiveIdx((prev) => (prev + 1) % treatments.length);
   };
 
+  const carouselItems = treatments.map((t) => {
+    const [b, a] = getTreatmentBeforeAfter(t.name, beforeImage, afterImage);
+    return {
+      id: t.name,
+      treatmentName: t.name,
+      beforeImage: b,
+      afterImage: a,
+      category: "Clinical Result",
+    };
+  });
+
   return (
     <section className="py-20 bg-card border-y border-border/60">
-      <div className="mx-auto max-w-6xl px-6 lg:px-10 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
-        {/* Left Column: Interactive Slider */}
-        <div className="w-full space-y-3">
-          <BeforeAfterSlider
-            key={activeTreatment.name}
-            beforeImage={currentBefore}
-            afterImage={currentAfter}
-          />
-          <div className="flex justify-between items-center px-1">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#974d08] bg-[#974d08]/10 px-3 py-1 rounded-full">
-              {activeTreatment.name}
-            </span>
-            <span className="text-[11px] text-muted-foreground font-mono">
-              Result {activeIdx + 1} of {treatments.length}
-            </span>
-          </div>
-        </div>
+      <div className="mx-auto max-w-6xl px-6 lg:px-10 space-y-12">
+        {/* Multi-Card Carousel Header & Track */}
+        <BeforeAfterCarousel
+          items={carouselItems}
+          title="See the Difference (Clinical Carousel)"
+          subtitle="Real Transformations Before & After"
+        />
 
-        {/* Right Column: Descriptions & Selectors */}
-        <div className="flex flex-col">
-          <div className="flex items-center justify-between mb-4">
-            <p className="eyebrow text-[#974d08]">Real results</p>
-            {treatments.length > 1 && (
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={prevTreatment}
-                  className="w-9 h-9 rounded-full border border-border bg-background hover:bg-accent/20 flex items-center justify-center text-foreground transition-colors cursor-pointer"
-                  aria-label="Previous treatment result"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={nextTreatment}
-                  className="w-9 h-9 rounded-full border border-border bg-background hover:bg-accent/20 flex items-center justify-center text-foreground transition-colors cursor-pointer"
-                  aria-label="Next treatment result"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-            )}
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center border-t border-border/60 pt-12">
+          {/* Left Column: Interactive Slider */}
+          <div className="w-full space-y-3">
+            <BeforeAfterSlider
+              key={activeTreatment.name}
+              beforeImage={currentBefore}
+              afterImage={currentAfter}
+            />
+            <div className="flex justify-between items-center px-1">
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#974d08] bg-[#974d08]/10 px-3 py-1 rounded-full">
+                {activeTreatment.name}
+              </span>
+              <span className="text-[11px] text-muted-foreground font-mono">
+                Result {activeIdx + 1} of {treatments.length}
+              </span>
+            </div>
           </div>
 
-          <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-            See the difference.
-          </h2>
-          <p className="text-base text-muted-foreground/95 leading-relaxed mb-6">
-            Every result is a real Al Nemah patient, shared with written consent. Drag the slider to compare — and click any treatment below to view its transformation photos.
-          </p>
-          
-          <p className="font-display italic text-xs text-muted-foreground/80 mb-3">
-            Click a treatment below to view its Before & After result:
-          </p>
-          
-          {/* Thumbnails / Pills row */}
-          <div className="flex gap-2 flex-wrap">
-            {treatments.map((t, idx) => (
-              <button
-                key={t.name}
-                onClick={() => setActiveIdx(idx)}
-                className={`text-xs px-4 py-2 rounded-full border transition-all duration-300 font-sans cursor-pointer ${
-                  activeIdx === idx
-                    ? 'border-[#974d08] text-white bg-[#974d08] font-semibold shadow-sm scale-105'
-                    : 'border-border/80 text-muted-foreground bg-background hover:border-[#974d08]/60 hover:text-foreground'
-                }`}
-              >
-                {t.name}
-              </button>
-            ))}
+          {/* Right Column: Descriptions & Selectors */}
+          <div className="flex flex-col">
+            <div className="flex items-center justify-between mb-4">
+              <p className="eyebrow text-[#974d08]">Treatment Selector</p>
+              {treatments.length > 1 && (
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={prevTreatment}
+                    className="w-9 h-9 rounded-full border border-border bg-background hover:bg-accent/20 flex items-center justify-center text-foreground transition-colors cursor-pointer"
+                    aria-label="Previous treatment result"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={nextTreatment}
+                    className="w-9 h-9 rounded-full border border-border bg-background hover:bg-accent/20 flex items-center justify-center text-foreground transition-colors cursor-pointer"
+                    aria-label="Next treatment result"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
+            </div>
+
+            <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
+              Compare by Treatment.
+            </h2>
+            <p className="text-base text-muted-foreground/95 leading-relaxed mb-6">
+              Every result is a real Al Nemah patient, shared with written consent. Drag the slider to compare — and click any treatment below to view its transformation photos.
+            </p>
+            
+            <p className="font-display italic text-xs text-muted-foreground/80 mb-3">
+              Click a treatment below to view its Before & After result:
+            </p>
+            
+            {/* Thumbnails / Pills row */}
+            <div className="flex gap-2 flex-wrap">
+              {treatments.map((t, idx) => (
+                <button
+                  key={t.name}
+                  onClick={() => setActiveIdx(idx)}
+                  className={`text-xs px-4 py-2 rounded-full border transition-all duration-300 font-sans cursor-pointer ${
+                    activeIdx === idx
+                      ? 'border-[#974d08] text-white bg-[#974d08] font-semibold shadow-sm scale-105'
+                      : 'border-border/80 text-muted-foreground bg-background hover:border-[#974d08]/60 hover:text-foreground'
+                  }`}
+                >
+                  {t.name}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
