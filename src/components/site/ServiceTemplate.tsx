@@ -1,10 +1,20 @@
 import { Link } from "@tanstack/react-router";
 import { useState, useRef, useEffect } from "react";
-import { Play } from "lucide-react";
+import { Play, ChevronLeft, ChevronRight } from "lucide-react";
 import interiorImg from "@/assets/about-reception.jpg";
 import aboutReceptionImg from "@/assets/about-reception.jpg";
 import beforeImg from "@/assets/before.jpg";
 import afterImg from "@/assets/after.jpg";
+import baLaser1Before from "@/assets/ba-laser-1-before.jpg";
+import baLaser1After from "@/assets/ba-laser-1-after.jpg";
+import baLaser2Before from "@/assets/ba-laser-2-before.jpg";
+import baLaser2After from "@/assets/ba-laser-2-after.jpg";
+import skinRf1 from "@/assets/skin-rf-roller-1.jpg";
+import skinRf2 from "@/assets/skin-rf-roller-2.jpg";
+import dentalBefore from "@/assets/dental-before.png";
+import dentalAfter from "@/assets/dental-after.png";
+import baDental1 from "@/assets/ba-dental-1.jpg";
+import baDental2 from "@/assets/ba-dental-2.jpg";
 import { getAllTreatmentImageOverrides, getTreatmentImageOverride, getTreatmentAltOverride } from "@/lib/treatment-image-manager";
 import { BeforeAfterSlider } from "./BeforeAfterSlider";
 
@@ -49,15 +59,15 @@ export type ServiceTemplateProps = {
   beforeImage?: string;
   afterImage?: string;
   videoSection?: {
-    videoUrl: string;
     eyebrow: string;
     title: string;
-    desc: string;
-    steps: { num: string; title: string; desc: string }[];
+    body: string;
+    videoUrl: string;
+    posterUrl: string;
   };
 };
 
-const FAQItemComponent = ({ question, answer }: FAQItem) => {
+const FAQAccordionItem = ({ question, answer }: FAQItem) => {
   const [open, setOpen] = useState(false);
   return (
     <div className="border-b border-border/60">
@@ -77,6 +87,28 @@ const FAQItemComponent = ({ question, answer }: FAQItem) => {
   );
 };
 
+function getTreatmentBeforeAfter(treatmentName: string, fallbackBefore?: string, fallbackAfter?: string): [string, string] {
+  const norm = (treatmentName || "").toLowerCase();
+  
+  if (norm.includes("laser") || norm.includes("hair removal") || norm.includes("pigmentation")) {
+    return [baLaser1Before, baLaser1After];
+  }
+  if (norm.includes("tattoo") || norm.includes("vascular") || norm.includes("ipl")) {
+    return [baLaser2Before, baLaser2After];
+  }
+  if (norm.includes("peel") || norm.includes("microneedling") || norm.includes("mesotherapy") || norm.includes("hydrafacial")) {
+    return [skinRf1, skinRf2];
+  }
+  if (norm.includes("veneer") || norm.includes("whitening") || norm.includes("smile") || norm.includes("invisalign")) {
+    return [dentalBefore, dentalAfter];
+  }
+  if (norm.includes("root canal") || norm.includes("crown") || norm.includes("filling") || norm.includes("dental")) {
+    return [baDental1, baDental2];
+  }
+  
+  return [fallbackBefore || beforeImg, fallbackAfter || afterImg];
+}
+
 export function BeforeAfterSection({
   treatments,
   beforeImage,
@@ -86,69 +118,84 @@ export function BeforeAfterSection({
   beforeImage?: string;
   afterImage?: string;
 }) {
-  const [activeTreatment, setActiveTreatment] = useState(treatments[0]?.name || "");
-  const [position, setPosition] = useState(50);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isDragging = useRef(false);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const activeTreatment = treatments[activeIdx] || treatments[0] || { name: "Selected Treatment" };
 
-  const containerBefore = beforeImage || beforeImg;
-  const containerAfter = afterImage || afterImg;
+  const [currentBefore, currentAfter] = getTreatmentBeforeAfter(activeTreatment.name, beforeImage, afterImage);
 
-  const handleMove = (clientX: number) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
-    setPosition(percentage);
+  const prevTreatment = () => {
+    setActiveIdx((prev) => (prev - 1 + treatments.length) % treatments.length);
   };
 
-  const handleMouseUp = () => {
-    isDragging.current = false;
+  const nextTreatment = () => {
+    setActiveIdx((prev) => (prev + 1) % treatments.length);
   };
-
-  useEffect(() => {
-    window.addEventListener("mouseup", handleMouseUp);
-    window.addEventListener("touchend", handleMouseUp);
-    return () => {
-      window.removeEventListener("mouseup", handleMouseUp);
-      window.removeEventListener("touchend", handleMouseUp);
-    };
-  }, []);
 
   return (
     <section className="py-20 bg-card border-y border-border/60">
       <div className="mx-auto max-w-6xl px-6 lg:px-10 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
         {/* Left Column: Interactive Slider */}
-        <div className="w-full">
+        <div className="w-full space-y-3">
           <BeforeAfterSlider
-            beforeImage={containerBefore}
-            afterImage={containerAfter}
+            key={activeTreatment.name}
+            beforeImage={currentBefore}
+            afterImage={currentAfter}
           />
+          <div className="flex justify-between items-center px-1">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#974d08] bg-[#974d08]/10 px-3 py-1 rounded-full">
+              {activeTreatment.name}
+            </span>
+            <span className="text-[11px] text-muted-foreground font-mono">
+              Result {activeIdx + 1} of {treatments.length}
+            </span>
+          </div>
         </div>
 
         {/* Right Column: Descriptions & Selectors */}
         <div className="flex flex-col">
-          <p className="eyebrow mb-4">Real results</p>
+          <div className="flex items-center justify-between mb-4">
+            <p className="eyebrow text-[#974d08]">Real results</p>
+            {treatments.length > 1 && (
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={prevTreatment}
+                  className="w-9 h-9 rounded-full border border-border bg-background hover:bg-accent/20 flex items-center justify-center text-foreground transition-colors cursor-pointer"
+                  aria-label="Previous treatment result"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={nextTreatment}
+                  className="w-9 h-9 rounded-full border border-border bg-background hover:bg-accent/20 flex items-center justify-center text-foreground transition-colors cursor-pointer"
+                  aria-label="Next treatment result"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            )}
+          </div>
+
           <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
             See the difference.
           </h2>
           <p className="text-base text-muted-foreground/95 leading-relaxed mb-6">
-            Every result is a real Al Nemah patient, shared with written consent. Drag the handle to compare — and pick a treatment below.
-          </p>
-          <p className="font-display italic text-sm text-muted-foreground/80 mb-4">
-            Slide to reveal before & after
+            Every result is a real Al Nemah patient, shared with written consent. Drag the slider to compare — and click any treatment below to view its transformation photos.
           </p>
           
-          {/* Thumbnails row */}
+          <p className="font-display italic text-xs text-muted-foreground/80 mb-3">
+            Click a treatment below to view its Before & After result:
+          </p>
+          
+          {/* Thumbnails / Pills row */}
           <div className="flex gap-2 flex-wrap">
-            {treatments.map((t) => (
+            {treatments.map((t, idx) => (
               <button
                 key={t.name}
-                onClick={() => setActiveTreatment(t.name)}
+                onClick={() => setActiveIdx(idx)}
                 className={`text-xs px-4 py-2 rounded-full border transition-all duration-300 font-sans cursor-pointer ${
-                  activeTreatment === t.name
-                    ? 'border-[#974d08] text-primary bg-background font-medium'
-                    : 'border-border/80 text-muted-foreground hover:border-[#974d08]/60'
+                  activeIdx === idx
+                    ? 'border-[#974d08] text-white bg-[#974d08] font-semibold shadow-sm scale-105'
+                    : 'border-border/80 text-muted-foreground bg-background hover:border-[#974d08]/60 hover:text-foreground'
                 }`}
               >
                 {t.name}
@@ -204,106 +251,104 @@ export function ServiceTemplate({
     };
   }, []);
 
-  const handlePlayVideo = () => {
-    setVideoPlaying(true);
+  const toggleVideo = () => {
     if (videoRef.current) {
-      videoRef.current.play();
+      if (videoPlaying) {
+        videoRef.current.pause();
+        setVideoPlaying(false);
+      } else {
+        videoRef.current.play();
+        setVideoPlaying(true);
+      }
     }
   };
 
   return (
     <>
-      {/* BREADCRUMB */}
-      <nav className="border-b border-border/60 bg-card pt-44 sm:pt-36 pb-4 text-xs text-muted-foreground">
-        <div className="mx-auto max-w-6xl px-6 lg:px-10 flex gap-2 items-center flex-wrap">
-          <Link to="/" className="hover:text-primary">Home</Link>
-          <span className="text-primary/70">›</span>
-          <Link to="/services" className="hover:text-primary">Treatments</Link>
-          <span className="text-primary/70">›</span>
-          <Link to={divisionUrl} className="hover:text-primary">{division}</Link>
-          <span className="text-primary/70">›</span>
-          <span className="text-foreground font-semibold">{categoryName}</span>
-        </div>
-      </nav>
+      {/* BREADCRUMBS & HERO */}
+      <section className="pt-36 sm:pt-32 pb-16 bg-background">
+        <div className="mx-auto max-w-6xl px-6 lg:px-10">
+          <nav className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/80 mb-6 flex items-center gap-2">
+            <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
+            <span>/</span>
+            <Link to={divisionUrl as any} className="hover:text-foreground transition-colors">{division}</Link>
+            <span>/</span>
+            <span className="text-[#974d08]">{categoryName}</span>
+          </nav>
 
-      {/* HERO SECTION */}
-      <section className="py-12 md:py-16">
-        <div className="mx-auto max-w-6xl px-6 lg:px-10 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
-          <div>
-            <p className="eyebrow mb-4">{eyebrow}</p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 leading-tight">
-              {h1.includes("Sharjah") ? (
-                <>
-                  {h1.replace("Sharjah", "")}
-                  <em className="italic text-[#974d08] font-light">Sharjah</em>
-                </>
-              ) : (
-                h1
-              )}
-            </h1>
-            <p className="text-base md:text-lg text-muted-foreground/95 leading-relaxed max-w-xl mb-8">
-              {intro}
-            </p>
-            <div className="flex gap-4 flex-wrap mb-8">
-              <a href="https://wa.me/971500999324" className="rounded-lg bg-[#974d08] text-black px-6 py-3.5 text-sm font-semibold hover:opacity-95 transition-all shadow-sm">
-                Book a consultation
-              </a>
-              <a href="https://wa.me/971500999324" className="rounded-lg bg-[#5b5e52] px-6 py-3.5 text-sm font-semibold text-white hover:opacity-95 transition-all shadow-sm flex items-center gap-1.5">
-                WhatsApp us
-              </a>
-            </div>
-            
-            {/* Highlights block */}
-            {highlights && highlights.length > 0 && (
-              <div className="grid grid-cols-3 gap-6 pt-6 border-t border-border/70">
-                {highlights.map(([val, label]) => (
-                  <div key={label} className="flex flex-col">
-                    <span className="font-display text-xl md:text-2xl text-foreground font-semibold">{val}</span>
-                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground/80 mt-1">{label}</span>
-                  </div>
-                ))}
+          <div className="grid gap-12 lg:grid-cols-2 items-center">
+            <div>
+              <span className="eyebrow text-[#974d08] block mb-3 font-semibold">{eyebrow}</span>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-foreground mb-6">
+                {h1}
+              </h1>
+              <p className="text-base md:text-lg text-muted-foreground/90 leading-relaxed max-w-xl font-light mb-8">
+                {intro}
+              </p>
+              
+              <div className="flex gap-4 flex-wrap">
+                <a href="https://wa.me/971500999324" className="rounded-full bg-[#974d08] px-7 py-3.5 text-sm font-semibold text-white hover:opacity-90 transition-all shadow-md">
+                  Book consultation
+                </a>
+                <a href="#treatments" className="rounded-full border border-border/80 bg-background px-7 py-3.5 text-sm font-semibold text-foreground hover:bg-accent/20 transition-all">
+                  Explore treatments
+                </a>
               </div>
-            )}
-          </div>
-          
-          {/* Right Column: Hero photo */}
-          <div className="relative">
-            <div className="p-3 border border-[#974d08]/30 rounded-2xl">
-              <div className="overflow-hidden rounded-xl">
-                <img
-                  src={heroImage}
-                  alt={categoryName}
-                  width={800}
-                  height={1000}
-                  className="aspect-[4/5] w-full object-cover transition-transform duration-700 hover:scale-102"
-                />
+            </div>
+
+            <div className="relative">
+              <div className="p-3.5 border border-[#974d08]/40 rounded-2xl relative">
+                <div className="overflow-hidden rounded-xl aspect-[4/3] relative shadow-lg">
+                  <img 
+                    src={heroImage} 
+                    alt={categoryName} 
+                    className="w-full h-full object-cover" 
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CONCERNS STRIP */}
+      {/* HIGHLIGHTS / SPECS */}
+      {highlights && highlights.length > 0 && (
+        <section className="py-12 bg-card border-y border-border/60">
+          <div className="mx-auto max-w-6xl px-6 lg:px-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            {highlights.map(([val, label]) => (
+              <div key={label} className="p-4 rounded-xl bg-background border border-border/60">
+                <div className="font-display text-2xl md:text-3xl text-[#974d08] font-bold mb-1">{val}</div>
+                <div className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">{label}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* CONCERNS WE TREAT */}
       {concerns && concerns.length > 0 && (
-        <div className="bg-card border-y border-border/50 py-6">
-          <div className="mx-auto max-w-6xl px-6 lg:px-10 flex items-center gap-4 flex-wrap">
-            <span className="text-xs font-semibold tracking-wider uppercase text-muted-foreground/90">Concerns we treat</span>
-            <div className="flex gap-2 flex-wrap">
+        <section className="py-16 bg-background">
+          <div className="mx-auto max-w-6xl px-6 lg:px-10">
+            <div className="max-w-xl mb-8">
+              <p className="eyebrow mb-2">Targeted solutions</p>
+              <h2 className="font-display text-2xl md:text-3xl">Concerns we address.</h2>
+            </div>
+            <div className="flex gap-2.5 flex-wrap">
               {concerns.map((c) => (
-                <span key={c} className="text-xs font-medium px-3 py-1 rounded-full bg-secondary/80 text-foreground border border-border/60">
+                <span key={c} className="text-xs font-semibold text-foreground border border-border/80 px-4 py-2 rounded-full bg-card shadow-xs">
                   {c}
                 </span>
               ))}
             </div>
           </div>
-        </div>
+        </section>
       )}
 
-      {/* TREATMENTS ROWS */}
-      <section className="py-20 lg:py-28">
+      {/* TREATMENTS LIST */}
+      <section id="treatments" className="py-20 bg-background border-t border-border/60">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
-          <div className="max-w-2xl mb-12">
-            <p className="eyebrow mb-4">Treatments in {categoryName}</p>
+          <div className="mb-14 max-w-2xl">
+            <p className="eyebrow mb-3">Customized care</p>
             <h2 className="font-display text-3xl md:text-4xl">Everything under {categoryName}.</h2>
             <p className="mt-4 text-base text-muted-foreground/90">{txIntro}</p>
           </div>
@@ -384,7 +429,7 @@ export function ServiceTemplate({
                   
                   {/* Buttons */}
                   <div className="flex gap-3 flex-wrap">
-                    <a href="https://wa.me/971500999324" className="rounded-lg bg-[#974d08] text-black px-5 py-2.5 text-xs font-semibold hover:opacity-95 transition-all shadow-sm">
+                    <a href="https://wa.me/971500999324" className="rounded-lg bg-[#974d08] text-white px-5 py-2.5 text-xs font-semibold hover:opacity-95 transition-all shadow-sm">
                       Book {t.name}
                     </a>
                     <a href="https://wa.me/971500999324" className="rounded-lg bg-[#5b5e52] px-5 py-2.5 text-xs font-semibold text-white hover:opacity-95 transition-all shadow-sm">
@@ -405,35 +450,37 @@ export function ServiceTemplate({
             <span className="eyebrow text-[#EBD9C9] mb-3 font-semibold">{videoSection.eyebrow}</span>
             <h2 className="font-display text-3xl md:text-4xl text-[#F4F1E8] mb-4">{videoSection.title}</h2>
             <p className="text-sm text-[#CBC7BA] leading-relaxed mb-10 max-w-2xl font-light">
-              {videoSection.desc}
+              {videoSection.body}
             </p>
-            
-            {/* Video Player */}
-            <div className="relative aspect-video w-full rounded-2xl overflow-hidden shadow-lg border border-white/20 bg-black group">
-              {!videoPlaying ? (
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 z-10">
-                  <button
-                    onClick={handlePlayVideo}
-                    className="flex h-16 w-16 items-center justify-center rounded-full bg-[#fbfaf8] text-[#3e4138] shadow-lg hover:scale-108 transition-all duration-300 cursor-pointer"
-                    aria-label="Play video"
-                  >
-                    <Play className="h-6 w-6 fill-[#3e4138] ml-1" />
-                  </button>
-                  <span className="mt-4 text-[10px] tracking-widest uppercase font-semibold text-[#f1eee4] select-none">Play Video</span>
-                </div>
-              ) : null}
+
+            <div className="relative w-full max-w-2xl aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 group">
               <video
                 ref={videoRef}
-                controls
-                className="w-full h-full object-cover"
                 src={videoSection.videoUrl}
+                poster={videoSection.posterUrl}
+                controls={videoPlaying}
+                playsInline
+                className="w-full h-full object-cover"
+                onEnded={() => setVideoPlaying(false)}
               />
+              {!videoPlaying && (
+                <button
+                  onClick={toggleVideo}
+                  className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 group-hover:bg-black/30 transition-all cursor-pointer"
+                  aria-label="Play video"
+                >
+                  <div className="w-16 h-16 rounded-full bg-[#974d08] text-white flex items-center justify-center shadow-xl transform group-hover:scale-110 transition-transform">
+                    <Play className="w-7 h-7 fill-current translate-x-0.5" />
+                  </div>
+                  <span className="mt-3 text-xs font-semibold tracking-wider text-white uppercase">Watch Treatment Video</span>
+                </button>
+              )}
             </div>
           </div>
         </section>
       )}
 
-      {/* BEFORE / AFTER COMPARISON SECTION */}
+      {/* BEFORE / AFTER CAROUSEL & SLIDER */}
       <BeforeAfterSection 
         treatments={treatments} 
         beforeImage={beforeImage}
@@ -489,40 +536,44 @@ export function ServiceTemplate({
       </section>
 
       {/* FAQS */}
-      <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-6xl px-6 lg:px-10">
-          <div className="max-w-2xl mb-12">
-            <p className="eyebrow mb-4">Good to know</p>
-            <h2 className="font-display text-3xl md:text-4xl">Frequently asked questions.</h2>
+      {faqs && faqs.length > 0 && (
+        <section className="py-20 lg:py-28">
+          <div className="mx-auto max-w-6xl px-6 lg:px-10">
+            <div className="max-w-2xl mb-12">
+              <p className="eyebrow mb-4">Good to know</p>
+              <h2 className="font-display text-3xl md:text-4xl">Frequently asked questions.</h2>
+            </div>
+            <div className="border-t border-border/60">
+              {faqs.map((f) => (
+                <FAQAccordionItem key={f.question} {...f} />
+              ))}
+            </div>
           </div>
-          <div className="flex flex-col">
-            {faqs.map((f) => (
-              <FAQItemComponent key={f.question} question={f.question} answer={f.answer} />
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* RELATED */}
-      <section className="py-20 bg-card border-t border-border/60">
-        <div className="mx-auto max-w-6xl px-6 lg:px-10">
-          <div className="mb-10">
-            <p className="eyebrow mb-3">Explore more</p>
-            <h2 className="font-display text-2xl md:text-3xl">Related categories.</h2>
+      {/* RELATED CATEGORIES */}
+      {related && related.length > 0 && (
+        <section className="py-20 bg-card border-t border-border/60">
+          <div className="mx-auto max-w-6xl px-6 lg:px-10">
+            <div className="mb-10">
+              <p className="eyebrow mb-3">Explore more</p>
+              <h2 className="font-display text-2xl md:text-3xl">Related categories.</h2>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-3">
+              {related.map((r) => (
+                <Link key={r.slug} to={r.slug} className="block bg-background border border-border/60 hover:border-[#974d08]/60 p-6 rounded-xl transition-all duration-300 hover:-translate-y-0.5">
+                  <span className="text-[10px] uppercase tracking-wider text-[#974d08] font-semibold mb-2 block">
+                    Explore Related
+                  </span>
+                  <h3 className="font-display text-base text-foreground font-semibold mb-2">{r.label}</h3>
+                  <span className="text-xs font-semibold text-primary">Explore →</span>
+                </Link>
+              ))}
+            </div>
           </div>
-          <div className="grid gap-6 sm:grid-cols-3">
-            {related.map((r) => (
-              <Link key={r.slug} to={r.slug} className="block bg-background border border-border/60 hover:border-[#974d08]/60 p-6 rounded-xl transition-all duration-300 hover:-translate-y-0.5">
-                <span className="text-[10px] uppercase tracking-wider text-[#974d08] font-semibold mb-2 block">
-                  Explore Related
-                </span>
-                <h3 className="font-display text-base text-foreground font-semibold mb-2">{r.label}</h3>
-                <span className="text-xs font-semibold text-primary">Explore →</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* BOOK CTA BAR */}
       <section id="book-consultation" className="bg-[#e3dec9] py-16 text-center border-t border-border/40">
