@@ -6,6 +6,7 @@ import aboutReceptionImg from "@/assets/about-reception.jpg";
 import beforeImg from "@/assets/before.jpg";
 import afterImg from "@/assets/after.jpg";
 import { getAllTreatmentImageOverrides, getTreatmentImageOverride, getTreatmentAltOverride } from "@/lib/treatment-image-manager";
+import { BeforeAfterSlider } from "./BeforeAfterSlider";
 
 export type ServiceTreatment = {
   name: string;
@@ -118,65 +119,11 @@ export function BeforeAfterSection({
     <section className="py-20 bg-card border-y border-border/60">
       <div className="mx-auto max-w-6xl px-6 lg:px-10 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
         {/* Left Column: Interactive Slider */}
-        <div 
-          ref={containerRef}
-          onMouseDown={(e) => {
-            isDragging.current = true;
-            handleMove(e.clientX);
-          }}
-          onTouchStart={(e) => {
-            isDragging.current = true;
-            handleMove(e.touches[0].clientX);
-          }}
-          onMouseMove={(e) => {
-            if (isDragging.current) handleMove(e.clientX);
-          }}
-          onTouchMove={(e) => {
-            if (isDragging.current) handleMove(e.touches[0].clientX);
-          }}
-          className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-border select-none cursor-ew-resize shadow-sm"
-        >
-          {/* After image */}
-          <div className="absolute inset-0 flex items-end justify-end p-4">
-            <img 
-              src={containerAfter}
-              alt="After treatment"
-              className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-            />
-            <span className="relative z-10 text-[10px] uppercase tracking-wider font-semibold text-white bg-black/45 px-3 py-1.5 rounded">
-              After
-            </span>
-          </div>
-          
-          {/* Before image (clipped) */}
-          <div 
-            style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
-            className="absolute inset-0 flex items-end justify-start p-4"
-          >
-            <img 
-              src={containerBefore}
-              alt="Before treatment"
-              className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-            />
-            <span className="relative z-10 text-[10px] uppercase tracking-wider font-semibold text-white bg-black/45 px-3 py-1.5 rounded">
-              Before
-            </span>
-          </div>
-
-          {/* Treatment Label Overlay */}
-          <span className="absolute left-4 top-4 font-display italic text-xs text-white bg-black/40 px-3 py-1.5 rounded shadow">
-            {activeTreatment}
-          </span>
-
-          {/* Slider Line & Knob */}
-          <div 
-            style={{ left: `${position}%` }}
-            className="absolute top-0 bottom-0 w-0.5 bg-[#974d08] -translate-x-1/2 pointer-events-none"
-          >
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card border border-[#974d08] shadow-md flex items-center justify-center text-[#974d08] font-bold text-xs select-none">
-              ⇆
-            </div>
-          </div>
+        <div className="w-full">
+          <BeforeAfterSlider
+            beforeImage={containerBefore}
+            afterImage={containerAfter}
+          />
         </div>
 
         {/* Right Column: Descriptions & Selectors */}
