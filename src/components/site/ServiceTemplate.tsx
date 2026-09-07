@@ -15,6 +15,18 @@ import dentalBefore from "@/assets/dental-before.png";
 import dentalAfter from "@/assets/dental-after.png";
 import baDental1 from "@/assets/ba-dental-1.jpg";
 import baDental2 from "@/assets/ba-dental-2.jpg";
+
+import acneBefore from "@/assets/drive_beforeafter/acne_before.jpg";
+import acneAfter from "@/assets/drive_beforeafter/acne_after.jpg";
+import endoliftBefore from "@/assets/drive_beforeafter/endolift_before.jpg";
+import endoliftAfter from "@/assets/drive_beforeafter/endolift_after.jpg";
+import teethCleaningBefore from "@/assets/drive_beforeafter/teeth_cleaning_before.jpg";
+import teethCleaningAfter from "@/assets/drive_beforeafter/teeth_cleaning_after.jpg";
+import teethWhitening1 from "@/assets/drive_beforeafter/teeth_whitening_1.jpg";
+import teethWhitening2 from "@/assets/drive_beforeafter/teeth_whitening_2.jpg";
+import veneer1 from "@/assets/drive_beforeafter/veneer_1.jpg";
+import veneer2 from "@/assets/drive_beforeafter/veneer_2.jpg";
+
 import { getAllTreatmentImageOverrides, getTreatmentImageOverride, getTreatmentAltOverride } from "@/lib/treatment-image-manager";
 import { BeforeAfterSlider, BeforeAfterCarousel } from "./BeforeAfterSlider";
 
@@ -90,20 +102,26 @@ const FAQAccordionItem = ({ question, answer }: FAQItem) => {
 function getTreatmentBeforeAfter(treatmentName: string, fallbackBefore?: string, fallbackAfter?: string): [string, string] {
   const norm = (treatmentName || "").toLowerCase();
   
+  if (norm.includes("acne") || norm.includes("peel") || norm.includes("hydrafacial") || norm.includes("mesotherapy") || norm.includes("microneedling") || norm.includes("skin")) {
+    return [acneBefore, acneAfter];
+  }
+  if (norm.includes("endolift") || norm.includes("morpheus") || norm.includes("hifu") || norm.includes("lifting") || norm.includes("threads")) {
+    return [endoliftBefore, endoliftAfter];
+  }
+  if (norm.includes("cleaning") || norm.includes("scaling") || norm.includes("polishing") || norm.includes("clinical")) {
+    return [teethCleaningBefore, teethCleaningAfter];
+  }
+  if (norm.includes("whitening")) {
+    return [teethWhitening1, teethWhitening2];
+  }
+  if (norm.includes("veneer") || norm.includes("hollywood") || norm.includes("smile")) {
+    return [veneer1, veneer2];
+  }
   if (norm.includes("laser") || norm.includes("hair removal") || norm.includes("pigmentation")) {
     return [baLaser1Before, baLaser1After];
   }
   if (norm.includes("tattoo") || norm.includes("vascular") || norm.includes("ipl")) {
     return [baLaser2Before, baLaser2After];
-  }
-  if (norm.includes("peel") || norm.includes("microneedling") || norm.includes("mesotherapy") || norm.includes("hydrafacial")) {
-    return [skinRf1, skinRf2];
-  }
-  if (norm.includes("veneer") || norm.includes("whitening") || norm.includes("smile") || norm.includes("invisalign")) {
-    return [dentalBefore, dentalAfter];
-  }
-  if (norm.includes("root canal") || norm.includes("crown") || norm.includes("filling") || norm.includes("dental")) {
-    return [baDental1, baDental2];
   }
   
   return [fallbackBefore || beforeImg, fallbackAfter || afterImg];
