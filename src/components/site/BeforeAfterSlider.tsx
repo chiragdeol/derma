@@ -43,7 +43,7 @@ export function BeforeAfterCard({
 
   return (
     <div
-      className={`relative aspect-[16/10.5] sm:aspect-[16/10] max-h-[420px] overflow-hidden rounded-2xl bg-black border border-white/10 select-none shadow-xl group ${className}`}
+      className={`relative aspect-[4/4.8] sm:aspect-[4/4.6] min-h-[460px] sm:min-h-[520px] md:min-h-[560px] overflow-hidden rounded-2xl bg-black border border-white/10 select-none shadow-2xl group ${className}`}
     >
       {/* Image Container */}
       {isSingle ? (
@@ -74,7 +74,7 @@ export function BeforeAfterCard({
       )}
 
       {/* Dark Maroon/Black Gradient Overlay at Bottom with Centered Typography */}
-      <div className="absolute inset-x-0 bottom-0 pt-16 pb-4 px-4 bg-gradient-to-t from-[#2d0507] via-black/80 to-transparent flex flex-col items-center justify-end text-center z-10 pointer-events-none">
+      <div className="absolute inset-x-0 bottom-0 pt-20 pb-5 px-4 bg-gradient-to-t from-[#2d0507] via-black/85 to-transparent flex flex-col items-center justify-end text-center z-10 pointer-events-none">
         {treatmentName && (
           <h4 className="font-display text-lg sm:text-xl md:text-2xl font-bold text-white tracking-wide mb-1 drop-shadow-md">
             {treatmentName}
@@ -124,26 +124,26 @@ export function BeforeAfterCarousel({ items, title = "Clinical Transformations",
   const handleScroll = () => {
     if (!carouselRef.current) return;
     const { scrollLeft } = carouselRef.current;
-    const cardWidth = 520;
+    const cardWidth = 420;
     const index = Math.round(scrollLeft / cardWidth);
     setActiveIndex(Math.min(Math.max(index, 0), items.length - 1));
   };
 
   const scrollLeft = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -520, behavior: "smooth" });
+      carouselRef.current.scrollBy({ left: -420, behavior: "smooth" });
     }
   };
 
   const scrollRight = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: 520, behavior: "smooth" });
+      carouselRef.current.scrollBy({ left: 420, behavior: "smooth" });
     }
   };
 
   const scrollToIndex = (idx: number) => {
     if (carouselRef.current) {
-      carouselRef.current.scrollTo({ left: idx * 520, behavior: "smooth" });
+      carouselRef.current.scrollTo({ left: idx * 420, behavior: "smooth" });
       setActiveIndex(idx);
     }
   };
@@ -186,7 +186,7 @@ export function BeforeAfterCarousel({ items, title = "Clinical Transformations",
         {items.map((item, idx) => (
           <div
             key={item.id || item.treatmentName || idx}
-            className="flex-none w-[340px] sm:w-[480px] md:w-[540px] lg:w-[580px] snap-start"
+            className="flex-none w-[320px] sm:w-[400px] md:w-[450px] snap-start"
           >
             <BeforeAfterCard
               beforeImage={item.beforeImage}

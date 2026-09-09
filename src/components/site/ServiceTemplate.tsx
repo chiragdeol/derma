@@ -187,6 +187,13 @@ export function BeforeAfterSection({
   });
 
   if (isDentalPage) {
+    // Remove old duplicate split Porcelain Veneer pair
+    for (const key of Array.from(uniqueItemsMap.keys())) {
+      if (key.includes("veneer_1") || key.includes("veneer_2") || key.toLowerCase().includes("porcelain veneers")) {
+        uniqueItemsMap.delete(key);
+      }
+    }
+
     // 1. Veneers Composite Transformations (4 cases)
     uniqueItemsMap.set("veneer_composite_1", {
       id: "veneer_composite_1",
