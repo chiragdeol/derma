@@ -36,6 +36,12 @@ import crownsComposite3 from "@/assets/drive_beforeafter/crowns_composite_3.jpg"
 import crownsComposite4 from "@/assets/drive_beforeafter/crowns_composite_4.jpg";
 import crownsComposite5 from "@/assets/drive_beforeafter/crowns_composite_5.jpg";
 
+import clinicalOrtho1 from "@/assets/drive_beforeafter/clinical_ortho_1.jpg";
+import clinicalOrtho2 from "@/assets/drive_beforeafter/clinical_ortho_2.jpg";
+import clinicalOrtho3 from "@/assets/drive_beforeafter/clinical_ortho_3.jpg";
+import clinicalOrtho4 from "@/assets/drive_beforeafter/clinical_ortho_4.jpg";
+import clinicalOrtho5 from "@/assets/drive_beforeafter/clinical_ortho_5.jpg";
+
 import { getAllTreatmentImageOverrides, getTreatmentImageOverride, getTreatmentAltOverride } from "@/lib/treatment-image-manager";
 import { BeforeAfterSlider, BeforeAfterCarousel } from "./BeforeAfterSlider";
 
@@ -268,6 +274,38 @@ export function BeforeAfterSection({
       beforeImage: teethWhitening1,
       afterImage: teethWhitening2,
       category: "TEETH WHITENING",
+    });
+
+    // 5. Orthodontics & Braces Composite Transformations (5 cases)
+    uniqueItemsMap.set("clinical_ortho_1", {
+      id: "clinical_ortho_1",
+      treatmentName: "Orthodontics & Braces Alignment (Case 1)",
+      singleImage: clinicalOrtho1,
+      category: "ORTHODONTICS & BRACES",
+    });
+    uniqueItemsMap.set("clinical_ortho_2", {
+      id: "clinical_ortho_2",
+      treatmentName: "Orthodontics & Braces Alignment (Case 2)",
+      singleImage: clinicalOrtho2,
+      category: "ORTHODONTICS & BRACES",
+    });
+    uniqueItemsMap.set("clinical_ortho_3", {
+      id: "clinical_ortho_3",
+      treatmentName: "Orthodontics & Braces Alignment (Case 3)",
+      singleImage: clinicalOrtho3,
+      category: "ORTHODONTICS & BRACES",
+    });
+    uniqueItemsMap.set("clinical_ortho_4", {
+      id: "clinical_ortho_4",
+      treatmentName: "Orthodontics & Braces Alignment (Case 4)",
+      singleImage: clinicalOrtho4,
+      category: "ORTHODONTICS & BRACES",
+    });
+    uniqueItemsMap.set("clinical_ortho_5", {
+      id: "clinical_ortho_5",
+      treatmentName: "Orthodontics & Braces Alignment (Case 5)",
+      singleImage: clinicalOrtho5,
+      category: "ORTHODONTICS & BRACES",
     });
   }
 
