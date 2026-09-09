@@ -169,12 +169,25 @@ export function BeforeAfterSection({
     }
   }
 
-  const hasVeneers = treatments.some((t) => {
+  const isDentalPage = treatments.some((t) => {
     const norm = (t.name || "").toLowerCase();
-    return norm.includes("veneer") || norm.includes("hollywood");
+    return (
+      norm.includes("veneer") ||
+      norm.includes("hollywood") ||
+      norm.includes("crown") ||
+      norm.includes("bridge") ||
+      norm.includes("dentistry") ||
+      norm.includes("whitening") ||
+      norm.includes("cleaning") ||
+      norm.includes("scaling") ||
+      norm.includes("restorative") ||
+      norm.includes("aligner") ||
+      norm.includes("smile")
+    );
   });
 
-  if (hasVeneers) {
+  if (isDentalPage) {
+    // 1. Veneers Composite Transformations (4 cases)
     uniqueItemsMap.set("veneer_composite_1", {
       id: "veneer_composite_1",
       treatmentName: "Hollywood Smile Veneers (Case 1)",
@@ -199,14 +212,8 @@ export function BeforeAfterSection({
       singleImage: veneerComposite4,
       category: "DENTAL VENEERS",
     });
-  }
 
-  const hasCrowns = treatments.some((t) => {
-    const norm = (t.name || "").toLowerCase();
-    return norm.includes("crown") || norm.includes("bridge") || norm.includes("restorative") || norm.includes("tooth") || norm.includes("filling");
-  });
-
-  if (hasCrowns) {
+    // 2. Crowns Composite Transformations (5 cases)
     uniqueItemsMap.set("crowns_composite_1", {
       id: "crowns_composite_1",
       treatmentName: "Dental Crowns & Bridges (Result 1)",
@@ -236,6 +243,24 @@ export function BeforeAfterSection({
       treatmentName: "Dental Crowns & Bridges (Result 5)",
       singleImage: crownsComposite5,
       category: "DENTAL CROWNS",
+    });
+
+    // 3. Teeth Cleaning & Scaling
+    uniqueItemsMap.set("teeth_cleaning_case", {
+      id: "teeth_cleaning_case",
+      treatmentName: "Professional Teeth Cleaning & Scaling",
+      beforeImage: teethCleaningBefore,
+      afterImage: teethCleaningAfter,
+      category: "TEETH CLEANING",
+    });
+
+    // 4. Teeth Whitening
+    uniqueItemsMap.set("teeth_whitening_case", {
+      id: "teeth_whitening_case",
+      treatmentName: "Laser Teeth Whitening",
+      beforeImage: teethWhitening1,
+      afterImage: teethWhitening2,
+      category: "TEETH WHITENING",
     });
   }
 
