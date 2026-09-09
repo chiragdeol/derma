@@ -161,106 +161,26 @@ export function BeforeAfterSection({
     return null;
   }
 
-  const [activeIdx, setActiveIdx] = useState(0);
-  const activeItem = realItems[activeIdx] || realItems[0];
-
-  const prevTreatment = () => {
-    setActiveIdx((prev) => (prev - 1 + realItems.length) % realItems.length);
-  };
-
-  const nextTreatment = () => {
-    setActiveIdx((prev) => (prev + 1) % realItems.length);
-  };
-
   return (
-    <section className="py-20 bg-card border-y border-border/60">
-      <div className="mx-auto max-w-6xl px-6 lg:px-10 space-y-12">
-        {/* Multi-Card Carousel Header & Track (only if > 1 item) */}
-        {realItems.length > 1 && (
-          <BeforeAfterCarousel
-            items={realItems}
-            title="Real Clinical Results"
-            subtitle="Before & After Patient Transformations"
-          />
-        )}
-
-        <div className={`grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center ${realItems.length > 1 ? "border-t border-border/60 pt-12" : ""}`}>
-          {/* Left Column: Interactive Slider */}
-          <div className="w-full space-y-3">
-            <BeforeAfterSlider
-              key={activeItem.treatmentName}
-              beforeImage={activeItem.beforeImage}
-              afterImage={activeItem.afterImage}
-            />
-            <div className="flex justify-between items-center px-1">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#974d08] bg-[#974d08]/10 px-3 py-1 rounded-full">
-                {activeItem.treatmentName}
-              </span>
-              {realItems.length > 1 && (
-                <span className="text-[11px] text-muted-foreground font-mono">
-                  Result {activeIdx + 1} of {realItems.length}
-                </span>
-              )}
-            </div>
-          </div>
-
-          {/* Right Column: Descriptions & Selectors */}
-          <div className="flex flex-col">
-            <div className="flex items-center justify-between mb-4">
-              <p className="eyebrow text-[#974d08]">Verified Patient Results</p>
-              {realItems.length > 1 && (
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={prevTreatment}
-                    className="w-9 h-9 rounded-full border border-border bg-background hover:bg-accent/20 flex items-center justify-center text-foreground transition-colors cursor-pointer"
-                    aria-label="Previous treatment result"
-                  >
-                    <ChevronLeft className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={nextTreatment}
-                    className="w-9 h-9 rounded-full border border-border bg-background hover:bg-accent/20 flex items-center justify-center text-foreground transition-colors cursor-pointer"
-                    aria-label="Next treatment result"
-                  >
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-                </div>
-              )}
-            </div>
-
-            <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              See the transformation.
-            </h2>
-            <p className="text-base text-muted-foreground/95 leading-relaxed mb-6">
-              Every image is a real Al Nemah patient, shared with written consent.
-            </p>
-            
-            {realItems.length > 1 && (
-              <>
-                <p className="font-display italic text-xs text-muted-foreground/80 mb-3">
-                  Select a treatment to view its Before & After result:
-                </p>
-                
-                {/* Thumbnails / Pills row */}
-                <div className="flex gap-2 flex-wrap">
-                  {realItems.map((item, idx) => (
-                    <button
-                      key={item.treatmentName}
-                      onClick={() => setActiveIdx(idx)}
-                      className={`text-xs px-4 py-2 rounded-full border transition-all duration-300 font-sans cursor-pointer ${
-                        activeIdx === idx
-                          ? 'border-[#974d08] text-white bg-[#974d08] font-semibold shadow-sm scale-105'
-                          : 'border-border/80 text-muted-foreground bg-background hover:border-[#974d08]/60 hover:text-foreground'
-                      }`}
-                    >
-                      {item.treatmentName}
-                    </button>
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
+    <section className="py-16 sm:py-20 bg-[#FAF7F2] border-y border-border/40 overflow-hidden">
+      <div className="mx-auto max-w-6xl px-6 lg:px-10">
+        <div className="max-w-3xl mb-2">
+          <p className="eyebrow text-[#974d08] mb-2 font-semibold uppercase tracking-wider">
+            BEFORE & AFTER PATIENT TRANSFORMATIONS
+          </p>
+          <h2 className="font-display text-3xl md:text-4xl text-foreground font-semibold mb-3">
+            Real Clinical Results
+          </h2>
+          <p className="text-sm md:text-base text-muted-foreground/90 leading-relaxed font-light">
+            Capture the beauty of artistry in transformation here at Al Nemah Medical Center, where every result is encompassed by precision, care and confidence!
+          </p>
         </div>
+
+        <BeforeAfterCarousel
+          items={realItems}
+          title=""
+          subtitle=""
+        />
       </div>
     </section>
   );

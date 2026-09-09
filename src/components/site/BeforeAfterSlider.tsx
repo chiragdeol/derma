@@ -1,3 +1,4 @@
+import { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export interface BeforeAfterItem {
@@ -14,46 +15,81 @@ interface BeforeAfterSliderProps {
   afterImage: string;
   beforeLabel?: string;
   afterLabel?: string;
+  treatmentName?: string;
   className?: string;
-  aspectRatio?: string; // e.g. "aspect-[4/3]" or "aspect-square"
+  aspectRatio?: string;
+}
+
+export function BeforeAfterCard({
+  beforeImage,
+  afterImage,
+  treatmentName,
+  subtitle = "AL NEMAH MEDICAL CENTER",
+  category = "SKIN | LASER | AESTHETICS",
+  className = "",
+}: {
+  beforeImage: string;
+  afterImage: string;
+  treatmentName?: string;
+  subtitle?: string;
+  category?: string;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`relative aspect-[3/4] overflow-hidden rounded-2xl bg-black border border-white/10 select-none shadow-xl group ${className}`}
+    >
+      {/* Side-by-Side Images */}
+      <div className="grid grid-cols-2 h-full w-full bg-black">
+        <div className="relative h-full w-full overflow-hidden bg-black">
+          <img
+            src={beforeImage}
+            alt={`${treatmentName || "Treatment"} Before`}
+            className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+          />
+        </div>
+        <div className="relative h-full w-full overflow-hidden bg-black">
+          <img
+            src={afterImage}
+            alt={`${treatmentName || "Treatment"} After`}
+            className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+          />
+        </div>
+      </div>
+
+      {/* Dark Maroon/Black Gradient Overlay at Bottom with Centered Typography */}
+      <div className="absolute inset-x-0 bottom-0 pt-24 pb-6 px-4 bg-gradient-to-t from-[#2d0507] via-black/85 to-transparent flex flex-col items-center justify-end text-center z-10 pointer-events-none">
+        {treatmentName && (
+          <h4 className="font-display text-xl sm:text-2xl font-bold text-white tracking-wide mb-1 drop-shadow-md">
+            {treatmentName}
+          </h4>
+        )}
+        <div className="text-[9px] font-sans font-medium tracking-[0.2em] text-[#d6aa8d] uppercase">
+          {subtitle}
+        </div>
+        {category && (
+          <div className="text-[8px] font-sans tracking-[0.15em] text-white/60 uppercase font-light mt-0.5">
+            {category}
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
 
 export function BeforeAfterSlider({
   beforeImage,
   afterImage,
-  beforeLabel = "BEFORE",
-  afterLabel = "AFTER",
+  treatmentName,
   className = "",
-  aspectRatio = "aspect-[4/3]",
 }: BeforeAfterSliderProps) {
   return (
-    <div
-      className={`relative overflow-hidden rounded-2xl border border-border/40 select-none shadow-sm grid grid-cols-2 gap-[1px] bg-border/40 ${aspectRatio} ${className}`}
-    >
-      {/* BEFORE Image (Left Half) */}
-      <div className="relative w-full h-full overflow-hidden bg-muted">
-        <img
-          src={beforeImage}
-          alt="Before treatment"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute bottom-2.5 left-2.5 z-10 px-2 py-0.5 bg-black/60 backdrop-blur-md rounded text-[9px] font-bold tracking-widest text-white uppercase border border-white/10 shadow-sm">
-          {beforeLabel}
-        </div>
-      </div>
-
-      {/* AFTER Image (Right Half) */}
-      <div className="relative w-full h-full overflow-hidden bg-muted">
-        <img
-          src={afterImage}
-          alt="After treatment result"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute bottom-2.5 right-2.5 z-10 px-2 py-0.5 bg-black/60 backdrop-blur-md rounded text-[9px] font-bold tracking-widest text-white uppercase border border-white/10 shadow-sm">
-          {afterLabel}
-        </div>
-      </div>
-    </div>
+    <BeforeAfterCard
+      beforeImage={beforeImage}
+      afterImage={afterImage}
+      treatmentName={treatmentName}
+      className={className}
+    />
   );
 }
 
@@ -65,23 +101,39 @@ interface BeforeAfterCarouselProps {
 
 export function BeforeAfterCarousel({ items, title = "Clinical Transformations", subtitle = "Real Results Before & After" }: BeforeAfterCarouselProps) {
   const carouselRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   if (!items || items.length === 0) return null;
 
+  const handleScroll = () => {
+    if (!carouselRef.current) return;
+    const { scrollLeft } = carouselRef.current;
+    const cardWidth = 320;
+    const index = Math.round(scrollLeft / cardWidth);
+    setActiveIndex(Math.min(Math.max(index, 0), items.length - 1));
+  };
+
   const scrollLeft = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -360, behavior: "smooth" });
+      carouselRef.current.scrollBy({ left: -340, behavior: "smooth" });
     }
   };
 
   const scrollRight = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: 360, behavior: "smooth" });
+      carouselRef.current.scrollBy({ left: 340, behavior: "smooth" });
+    }
+  };
+
+  const scrollToIndex = (idx: number) => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollTo({ left: idx * 340, behavior: "smooth" });
+      setActiveIndex(idx);
     }
   };
 
   return (
-    <div className="w-full py-12 space-y-6">
+    <div className="w-full py-8 space-y-6">
       {(title || subtitle) && (
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 px-2">
           <div>
@@ -108,36 +160,41 @@ export function BeforeAfterCarousel({ items, title = "Clinical Transformations",
         </div>
       )}
 
-      {/* Multi-Card Horizontal Scrollable Track */}
+      {/* Multi-Card Horizontal Scroll Track */}
       <div
         ref={carouselRef}
-        className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 pt-2 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border/60"
-        style={{ scrollbarWidth: "thin" }}
+        onScroll={handleScroll}
+        className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 pt-2 scrollbar-none"
+        style={{ scrollbarWidth: "none" }}
       >
-        {items.map((item) => (
+        {items.map((item, idx) => (
           <div
-            key={item.id || item.treatmentName}
-            className="flex-none w-[320px] sm:w-[380px] snap-start rounded-3xl bg-card border border-border/60 p-4 space-y-4 shadow-sm hover:shadow-md transition-shadow"
+            key={item.id || item.treatmentName || idx}
+            className="flex-none w-[280px] sm:w-[320px] snap-start"
           >
-            <BeforeAfterSlider
+            <BeforeAfterCard
               beforeImage={item.beforeImage}
               afterImage={item.afterImage}
+              treatmentName={item.treatmentName}
+              category={item.category}
             />
-            
-            <div className="flex items-center justify-between pt-1">
-              <div>
-                <h4 className="font-display text-lg font-semibold text-foreground">{item.treatmentName}</h4>
-                {item.description && (
-                  <p className="text-xs text-muted-foreground line-clamp-1">{item.description}</p>
-                )}
-              </div>
-              {item.category && (
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#974d08] bg-[#974d08]/10 px-2.5 py-1 rounded-full">
-                  {item.category}
-                </span>
-              )}
-            </div>
           </div>
+        ))}
+      </div>
+
+      {/* Pagination Dots Row */}
+      <div className="flex justify-center items-center gap-2 pt-2">
+        {items.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => scrollToIndex(idx)}
+            className={`rounded-full transition-all duration-300 cursor-pointer ${
+              activeIndex === idx
+                ? "w-3 h-3 bg-[#974d08] scale-110 shadow-sm"
+                : "w-2.5 h-2.5 border border-[#974d08]/50 bg-transparent hover:bg-[#974d08]/30"
+            }`}
+            aria-label={`Go to slide ${idx + 1}`}
+          />
         ))}
       </div>
     </div>
