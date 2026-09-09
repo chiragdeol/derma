@@ -37,9 +37,16 @@ import glowIvImg from "@/assets/treatments/glow-iv-drip.png";
 
 import homeAcne1 from "@/assets/drive_beforeafter/home_acne_1.jpg";
 import homeSkinLifting from "@/assets/drive_beforeafter/home_skin_lifting.jpg";
-import homeAcne2Front from "@/assets/drive_beforeafter/home_acne_2_front.jpg";
 import homeAcne2Left from "@/assets/drive_beforeafter/home_acne_2_left.jpg";
 import homeAcne2Right from "@/assets/drive_beforeafter/home_acne_2_right.jpg";
+import acneBefore from "@/assets/drive_beforeafter/acne_before.jpg";
+import acneAfter from "@/assets/drive_beforeafter/acne_after.jpg";
+import endoliftBeforePair from "@/assets/drive_beforeafter/endolift_before.jpg";
+import endoliftAfterPair from "@/assets/drive_beforeafter/endolift_after.jpg";
+import baLaser1Before from "@/assets/ba-laser-1-before.jpg";
+import baLaser1After from "@/assets/ba-laser-1-after.jpg";
+import baLaser2Before from "@/assets/ba-laser-2-before.jpg";
+import baLaser2After from "@/assets/ba-laser-2-after.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -657,102 +664,78 @@ function Home() {
             {[
               {
                 title: "Acne Clearing & Skin Restoration",
-                doctor: "AL NEMAH DERMATOLOGY",
-                tagline: "SKIN | ACNE THERAPY | CLEAR COMPLEXION",
-                image: homeAcne1
+                singleImage: homeAcne1,
               },
               {
                 title: "Facial Skin Rejuvenation & Lifting",
-                doctor: "AL NEMAH AESTHETICS",
-                tagline: "ANTI-AGING | SKIN TIGHTENING | REJUVENATION",
-                image: homeSkinLifting
+                singleImage: homeSkinLifting,
               },
               {
-                title: "Advanced Acne Scar Treatment",
-                doctor: "AL NEMAH DERMATOLOGY",
-                tagline: "DERMATOLOGY | SCAR RESURFACING | RECOVERY",
-                image: homeAcne2Front
+                title: "Acne Scar Resurfacing Treatment",
+                beforeImage: homeAcne2Left,
+                afterImage: homeAcne2Right,
               },
               {
-                title: "Profile Scar Resurfacing (Left)",
-                doctor: "AL NEMAH DERMATOLOGY",
-                tagline: "DERMATOLOGY | TEXTURE REFINEMENT",
-                image: homeAcne2Left
-              },
-              {
-                title: "Profile Scar Resurfacing (Right)",
-                doctor: "AL NEMAH DERMATOLOGY",
-                tagline: "DERMATOLOGY | TEXTURE REFINEMENT",
-                image: homeAcne2Right
-              },
-              {
-                title: "HydraFacial Glow & Rejuvenation",
-                doctor: "AL NEMAH DERMATOLOGY",
-                tagline: "SKIN | HYDRAFACIAL | GLOW PROTOCOL",
-                image: hydraFacialImg
-              },
-              {
-                title: "Lip Enhancement & Contour",
-                doctor: "AL NEMAH DERMATOLOGY",
-                tagline: "INJECTABLES | LIP FILLERS | SYMMETRY",
-                image: lipEnhancementImg
+                title: "Acne & Skin Texture Resurfacing",
+                beforeImage: acneBefore,
+                afterImage: acneAfter,
               },
               {
                 title: "Endolift Non-Surgical Facelift",
-                doctor: "AL NEMAH DERMATOLOGY",
-                tagline: "ANTI-AGING | ENDOLIFT | SUBDERMAL LIFT",
-                image: endoliftImg
+                beforeImage: endoliftBeforePair,
+                afterImage: endoliftAfterPair,
               },
               {
-                title: "Botox Wrinkle Softening",
-                doctor: "AL NEMAH DERMATOLOGY",
-                tagline: "INJECTABLES | BOTOX | NATURAL EXPRESSION",
-                image: botoxImg
-              },
-              {
-                title: "Morpheus8 Collagen Renewal",
-                doctor: "AL NEMAH DERMATOLOGY",
-                tagline: "ANTI-AGING | RF MICRONEEDLING",
-                image: morpheus8Img
+                title: "Laser Pigmentation Resurfacing",
+                beforeImage: baLaser1Before,
+                afterImage: baLaser1After,
               },
               {
                 title: "Laser Skin Resurfacing",
-                doctor: "AL NEMAH AESTHETIC CLINIC",
-                tagline: "AESTHETICS | SKIN TIGHTENING & LIFTING",
-                image: newLaser2
-              },
-              {
-                title: "Cellular IV Glow Protocol",
-                doctor: "AL NEMAH WELLNESS CLINIC",
-                tagline: "WELLNESS | GLUTATHIONE & VITAMIN C",
-                image: glowIvImg
+                beforeImage: baLaser2Before,
+                afterImage: baLaser2After,
               },
             ].map((card, idx) => (
               <div
                 key={idx}
-                className="w-[290px] sm:w-[340px] flex-shrink-0 snap-start relative aspect-[3/4] rounded-lg overflow-hidden shadow-md group"
+                className="w-[290px] sm:w-[340px] flex-shrink-0 snap-start relative aspect-[3/4] rounded-2xl overflow-hidden shadow-md group border border-white/10 select-none bg-black"
               >
-                {/* Image */}
-                <img
-                  src={card.image}
-                  alt={card.title}
-                  className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                />
+                {/* Image Container */}
+                {card.singleImage ? (
+                  <div className="relative h-full w-full overflow-hidden bg-black flex items-center justify-center">
+                    <img
+                      src={card.singleImage}
+                      alt={card.title}
+                      className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
+                    />
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-2 gap-[2px] h-full w-full bg-black">
+                    <div className="relative h-full w-full overflow-hidden bg-black flex items-center justify-center">
+                      <img
+                        src={card.beforeImage}
+                        alt={`${card.title} Before`}
+                        className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
+                      />
+                    </div>
+                    <div className="relative h-full w-full overflow-hidden bg-black flex items-center justify-center">
+                      <img
+                        src={card.afterImage}
+                        alt={`${card.title} After`}
+                        className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
+                      />
+                    </div>
+                  </div>
+                )}
                 
                 {/* Dark Burgundy/Maroon Overlay Gradient at Bottom */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#200405] via-black/30 to-transparent pointer-events-none" />
                 
-                {/* Text content inside card overlay */}
-                <div className="absolute bottom-6 left-6 right-6 text-white z-10 flex flex-col pointer-events-none">
-                  <h3 className="font-display text-xl md:text-2xl font-semibold leading-tight tracking-wide text-white">
+                {/* Text content inside card overlay - ONLY TITLE */}
+                <div className="absolute bottom-6 left-6 right-6 text-white z-10 flex flex-col items-center justify-end text-center pointer-events-none">
+                  <h3 className="font-display text-lg sm:text-xl md:text-2xl font-semibold leading-tight tracking-wide text-white drop-shadow-md">
                     {card.title}
                   </h3>
-                  <span className="text-[10px] font-sans font-medium tracking-[0.2em] text-[#b8957e] mt-2 uppercase">
-                    {card.doctor}
-                  </span>
-                  <span className="text-[9px] font-sans tracking-[0.1em] text-white/70 mt-1 uppercase font-light">
-                    {card.tagline}
-                  </span>
                 </div>
               </div>
             ))}
