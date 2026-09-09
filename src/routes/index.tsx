@@ -676,11 +676,6 @@ function Home() {
                 afterImage: homeAcne2Right,
               },
               {
-                title: "Acne & Skin Texture Resurfacing",
-                beforeImage: acneBefore,
-                afterImage: acneAfter,
-              },
-              {
                 title: "Endolift Non-Surgical Facelift",
                 beforeImage: endoliftBeforePair,
                 afterImage: endoliftAfterPair,
