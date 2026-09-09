@@ -55,7 +55,7 @@ export function BeforeAfterCard({
           />
         </div>
       ) : (
-        <div className="grid grid-cols-2 h-full w-full bg-black">
+        <div className="grid grid-cols-2 gap-[2px] h-full w-full bg-black">
           <div className="relative h-full w-full overflow-hidden bg-black flex items-center justify-center">
             <img
               src={beforeImage || ""}
@@ -180,7 +180,7 @@ export function BeforeAfterCarousel({ items, title = "Clinical Transformations",
       <div
         ref={carouselRef}
         onScroll={handleScroll}
-        className="flex gap-6 sm:gap-8 overflow-x-auto snap-x snap-mandatory pb-6 pt-2 scrollbar-none"
+        className="flex gap-8 sm:gap-10 md:gap-12 lg:gap-14 overflow-x-auto snap-x snap-mandatory pb-6 pt-2 scrollbar-none"
         style={{ scrollbarWidth: "none" }}
       >
         {items.map((item, idx) => (
