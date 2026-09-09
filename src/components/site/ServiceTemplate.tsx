@@ -41,6 +41,10 @@ import clinicalOrtho2 from "@/assets/drive_beforeafter/clinical_ortho_2.jpg";
 import clinicalOrtho3 from "@/assets/drive_beforeafter/clinical_ortho_3.jpg";
 import clinicalOrtho4 from "@/assets/drive_beforeafter/clinical_ortho_4.jpg";
 import clinicalOrtho5 from "@/assets/drive_beforeafter/clinical_ortho_5.jpg";
+import clinicalOrtho6 from "@/assets/drive_beforeafter/clinical_ortho_6.jpg";
+import clinicalFilling1 from "@/assets/drive_beforeafter/clinical_filling_1.jpg";
+import clinicalOrtho7 from "@/assets/drive_beforeafter/clinical_ortho_7.jpg";
+import clinicalOrtho8 from "@/assets/drive_beforeafter/clinical_ortho_8.jpg";
 
 import { getAllTreatmentImageOverrides, getTreatmentImageOverride, getTreatmentAltOverride } from "@/lib/treatment-image-manager";
 import { BeforeAfterSlider, BeforeAfterCarousel } from "./BeforeAfterSlider";
@@ -305,6 +309,30 @@ export function BeforeAfterSection({
       id: "clinical_ortho_5",
       treatmentName: "Orthodontics & Braces Alignment (Case 5)",
       singleImage: clinicalOrtho5,
+      category: "ORTHODONTICS & BRACES",
+    });
+    uniqueItemsMap.set("clinical_ortho_6", {
+      id: "clinical_ortho_6",
+      treatmentName: "Orthodontics & Braces Alignment (Case 6)",
+      singleImage: clinicalOrtho6,
+      category: "ORTHODONTICS & BRACES",
+    });
+    uniqueItemsMap.set("clinical_filling_1", {
+      id: "clinical_filling_1",
+      treatmentName: "Restorative Cavity Filling (Composite)",
+      singleImage: clinicalFilling1,
+      category: "RESTORATIVE FILLINGS",
+    });
+    uniqueItemsMap.set("clinical_ortho_7", {
+      id: "clinical_ortho_7",
+      treatmentName: "Orthodontics & Bite Alignment (Case 7)",
+      singleImage: clinicalOrtho7,
+      category: "ORTHODONTICS & BRACES",
+    });
+    uniqueItemsMap.set("clinical_ortho_8", {
+      id: "clinical_ortho_8",
+      treatmentName: "Full Arch Orthodontic Realignment (Case 8)",
+      singleImage: clinicalOrtho8,
       category: "ORTHODONTICS & BRACES",
     });
   }
