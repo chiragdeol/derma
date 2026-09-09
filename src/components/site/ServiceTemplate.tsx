@@ -30,6 +30,12 @@ import veneerComposite2 from "@/assets/drive_beforeafter/veneer_composite_2.jpg"
 import veneerComposite3 from "@/assets/drive_beforeafter/veneer_composite_3.jpg";
 import veneerComposite4 from "@/assets/drive_beforeafter/veneer_composite_4.jpg";
 
+import crownsComposite1 from "@/assets/drive_beforeafter/crowns_composite_1.jpg";
+import crownsComposite2 from "@/assets/drive_beforeafter/crowns_composite_2.jpg";
+import crownsComposite3 from "@/assets/drive_beforeafter/crowns_composite_3.jpg";
+import crownsComposite4 from "@/assets/drive_beforeafter/crowns_composite_4.jpg";
+import crownsComposite5 from "@/assets/drive_beforeafter/crowns_composite_5.jpg";
+
 import { getAllTreatmentImageOverrides, getTreatmentImageOverride, getTreatmentAltOverride } from "@/lib/treatment-image-manager";
 import { BeforeAfterSlider, BeforeAfterCarousel } from "./BeforeAfterSlider";
 
@@ -192,6 +198,44 @@ export function BeforeAfterSection({
       treatmentName: "Hollywood Smile Veneers (Case 4)",
       singleImage: veneerComposite4,
       category: "DENTAL VENEERS",
+    });
+  }
+
+  const hasCrowns = treatments.some((t) => {
+    const norm = (t.name || "").toLowerCase();
+    return norm.includes("crown") || norm.includes("bridge") || norm.includes("restorative") || norm.includes("tooth") || norm.includes("filling");
+  });
+
+  if (hasCrowns) {
+    uniqueItemsMap.set("crowns_composite_1", {
+      id: "crowns_composite_1",
+      treatmentName: "Dental Crowns & Bridges (Result 1)",
+      singleImage: crownsComposite1,
+      category: "DENTAL CROWNS",
+    });
+    uniqueItemsMap.set("crowns_composite_2", {
+      id: "crowns_composite_2",
+      treatmentName: "Dental Crowns & Bridges (Result 2)",
+      singleImage: crownsComposite2,
+      category: "DENTAL CROWNS",
+    });
+    uniqueItemsMap.set("crowns_composite_3", {
+      id: "crowns_composite_3",
+      treatmentName: "Dental Crowns & Bridges (Result 3)",
+      singleImage: crownsComposite3,
+      category: "DENTAL CROWNS",
+    });
+    uniqueItemsMap.set("crowns_composite_4", {
+      id: "crowns_composite_4",
+      treatmentName: "Dental Crowns & Bridges (Result 4)",
+      singleImage: crownsComposite4,
+      category: "DENTAL CROWNS",
+    });
+    uniqueItemsMap.set("crowns_composite_5", {
+      id: "crowns_composite_5",
+      treatmentName: "Dental Crowns & Bridges (Result 5)",
+      singleImage: crownsComposite5,
+      category: "DENTAL CROWNS",
     });
   }
 
