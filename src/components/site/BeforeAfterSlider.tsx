@@ -37,7 +37,7 @@ export function BeforeAfterCard({
 }) {
   return (
     <div
-      className={`relative aspect-[3/4.2] sm:aspect-[3/4] min-h-[460px] sm:min-h-[540px] overflow-hidden rounded-2xl bg-black border border-white/10 select-none shadow-2xl group ${className}`}
+      className={`relative aspect-[16/10.5] sm:aspect-[16/10] max-h-[380px] overflow-hidden rounded-2xl bg-black border border-white/10 select-none shadow-xl group ${className}`}
     >
       {/* Side-by-Side Full Height Images */}
       <div className="grid grid-cols-2 h-full w-full bg-black">
@@ -58,17 +58,17 @@ export function BeforeAfterCard({
       </div>
 
       {/* Dark Maroon/Black Gradient Overlay at Bottom with Centered Typography */}
-      <div className="absolute inset-x-0 bottom-0 pt-20 pb-5 px-4 bg-gradient-to-t from-[#2d0507] via-black/80 to-transparent flex flex-col items-center justify-end text-center z-10 pointer-events-none">
+      <div className="absolute inset-x-0 bottom-0 pt-16 pb-4 px-4 bg-gradient-to-t from-[#2d0507] via-black/80 to-transparent flex flex-col items-center justify-end text-center z-10 pointer-events-none">
         {treatmentName && (
-          <h4 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-wide mb-1 drop-shadow-md">
+          <h4 className="font-display text-lg sm:text-xl md:text-2xl font-bold text-white tracking-wide mb-1 drop-shadow-md">
             {treatmentName}
           </h4>
         )}
-        <div className="text-[10px] font-sans font-medium tracking-[0.2em] text-[#d6aa8d] uppercase">
+        <div className="text-[9px] font-sans font-medium tracking-[0.2em] text-[#d6aa8d] uppercase">
           {subtitle}
         </div>
         {category && (
-          <div className="text-[9px] font-sans tracking-[0.15em] text-white/70 uppercase font-light mt-0.5">
+          <div className="text-[8px] font-sans tracking-[0.15em] text-white/70 uppercase font-light mt-0.5">
             {category}
           </div>
         )}
@@ -108,26 +108,26 @@ export function BeforeAfterCarousel({ items, title = "Clinical Transformations",
   const handleScroll = () => {
     if (!carouselRef.current) return;
     const { scrollLeft } = carouselRef.current;
-    const cardWidth = 440;
+    const cardWidth = 520;
     const index = Math.round(scrollLeft / cardWidth);
     setActiveIndex(Math.min(Math.max(index, 0), items.length - 1));
   };
 
   const scrollLeft = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -440, behavior: "smooth" });
+      carouselRef.current.scrollBy({ left: -520, behavior: "smooth" });
     }
   };
 
   const scrollRight = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: 440, behavior: "smooth" });
+      carouselRef.current.scrollBy({ left: 520, behavior: "smooth" });
     }
   };
 
   const scrollToIndex = (idx: number) => {
     if (carouselRef.current) {
-      carouselRef.current.scrollTo({ left: idx * 440, behavior: "smooth" });
+      carouselRef.current.scrollTo({ left: idx * 520, behavior: "smooth" });
       setActiveIndex(idx);
     }
   };
@@ -170,7 +170,7 @@ export function BeforeAfterCarousel({ items, title = "Clinical Transformations",
         {items.map((item, idx) => (
           <div
             key={item.id || item.treatmentName || idx}
-            className="flex-none w-[320px] sm:w-[420px] lg:w-[460px] snap-start"
+            className="flex-none w-[340px] sm:w-[480px] md:w-[540px] lg:w-[580px] snap-start"
           >
             <BeforeAfterCard
               beforeImage={item.beforeImage}
