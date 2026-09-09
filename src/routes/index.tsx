@@ -35,6 +35,12 @@ import endoliftImg from "@/assets/treatments/endolift.png";
 import morpheus8Img from "@/assets/treatments/morpheus8.png";
 import glowIvImg from "@/assets/treatments/glow-iv-drip.png";
 
+import homeAcne1 from "@/assets/drive_beforeafter/home_acne_1.jpg";
+import homeSkinLifting from "@/assets/drive_beforeafter/home_skin_lifting.jpg";
+import homeAcne2Front from "@/assets/drive_beforeafter/home_acne_2_front.jpg";
+import homeAcne2Left from "@/assets/drive_beforeafter/home_acne_2_left.jpg";
+import homeAcne2Right from "@/assets/drive_beforeafter/home_acne_2_right.jpg";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -650,6 +656,36 @@ function Home() {
           >
             {[
               {
+                title: "Acne Clearing & Skin Restoration",
+                doctor: "AL NEMAH DERMATOLOGY",
+                tagline: "SKIN | ACNE THERAPY | CLEAR COMPLEXION",
+                image: homeAcne1
+              },
+              {
+                title: "Facial Skin Rejuvenation & Lifting",
+                doctor: "AL NEMAH AESTHETICS",
+                tagline: "ANTI-AGING | SKIN TIGHTENING | REJUVENATION",
+                image: homeSkinLifting
+              },
+              {
+                title: "Advanced Acne Scar Treatment",
+                doctor: "AL NEMAH DERMATOLOGY",
+                tagline: "DERMATOLOGY | SCAR RESURFACING | RECOVERY",
+                image: homeAcne2Front
+              },
+              {
+                title: "Profile Scar Resurfacing (Left)",
+                doctor: "AL NEMAH DERMATOLOGY",
+                tagline: "DERMATOLOGY | TEXTURE REFINEMENT",
+                image: homeAcne2Left
+              },
+              {
+                title: "Profile Scar Resurfacing (Right)",
+                doctor: "AL NEMAH DERMATOLOGY",
+                tagline: "DERMATOLOGY | TEXTURE REFINEMENT",
+                image: homeAcne2Right
+              },
+              {
                 title: "HydraFacial Glow & Rejuvenation",
                 doctor: "AL NEMAH DERMATOLOGY",
                 tagline: "SKIN | HYDRAFACIAL | GLOW PROTOCOL",
@@ -684,12 +720,6 @@ function Home() {
                 doctor: "AL NEMAH AESTHETIC CLINIC",
                 tagline: "AESTHETICS | SKIN TIGHTENING & LIFTING",
                 image: newLaser2
-              },
-              {
-                title: "Hollywood Smile Makeover",
-                doctor: "AL NEMAH DENTAL CLINIC",
-                tagline: "COSMETIC DENTISTRY | VENEERS",
-                image: baDental5
               },
               {
                 title: "Cellular IV Glow Protocol",
