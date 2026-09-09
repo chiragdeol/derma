@@ -16,7 +16,6 @@ import dentalImg from "@/assets/service-dental.jpg";
 import wellnessImg from "@/assets/wellness.jpg";
 import beforeImg from "@/assets/before.jpg";
 import afterImg from "@/assets/after.jpg";
-import { BeforeAfterSlider } from "@/components/site/BeforeAfterSlider";
 import baDental1 from "@/assets/ba-dental-1.jpg";
 import baDental2 from "@/assets/ba-dental-2.jpg";
 import baDental4 from "@/assets/ba-dental-4.jpg";
@@ -605,30 +604,6 @@ function Home() {
                 </div>
               </Link>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* BEFORE / AFTER COMPARISON */}
-      <section className="bg-forest text-ivory">
-        <div className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-16">
-          <div className="grid gap-8 lg:gap-12 lg:grid-cols-2 lg:items-center">
-            <div>
-              <p className="eyebrow mb-6 text-primary">Real Results</p>
-              <h2 className="font-display text-4xl leading-tight md:text-5xl">
-                See the transformation. <br className="hidden sm:inline" />
-                Drag to compare.
-              </h2>
-              <p className="mt-6 text-base leading-relaxed text-white font-semibold">
-                Every image is a real AL Nemah patient, shown with written consent. Results vary from person to person — your consultation gives you honest, personalized expectations.
-              </p>
-              <p className="mt-8 text-xs tracking-wider uppercase opacity-60">
-                Slide the handle to compare
-              </p>
-            </div>
-            <div>
-              <BeforeAfterSlider />
-            </div>
           </div>
         </div>
       </section>

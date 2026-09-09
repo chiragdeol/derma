@@ -232,7 +232,7 @@ export function BeforeAfterSection({
               See the transformation.
             </h2>
             <p className="text-base text-muted-foreground/95 leading-relaxed mb-6">
-              Every image is a real Al Nemah patient, shared with written consent. Drag the handle to compare.
+              Every image is a real Al Nemah patient, shared with written consent.
             </p>
             
             {realItems.length > 1 && (

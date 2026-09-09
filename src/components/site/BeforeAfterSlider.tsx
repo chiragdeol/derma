@@ -1,4 +1,3 @@
-import React, { useState, useRef, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export interface BeforeAfterItem {
@@ -27,90 +26,31 @@ export function BeforeAfterSlider({
   className = "",
   aspectRatio = "aspect-[4/3]",
 }: BeforeAfterSliderProps) {
-  const [sliderPosition, setSliderPosition] = useState(50); // percentage (0 - 100)
-  const [isDragging, setIsDragging] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const handleMove = useCallback((clientX: number) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = clientX - rect.left;
-    let percentage = (x / rect.width) * 100;
-    if (percentage < 0) percentage = 0;
-    if (percentage > 100) percentage = 100;
-    setSliderPosition(percentage);
-  }, []);
-
-  const handleTouchMove = useCallback(
-    (e: React.TouchEvent) => {
-      if (!isDragging) return;
-      handleMove(e.touches[0].clientX);
-    },
-    [isDragging, handleMove]
-  );
-
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent) => {
-      if (!isDragging) return;
-      handleMove(e.clientX);
-    },
-    [isDragging, handleMove]
-  );
-
-  const handleMouseDown = () => setIsDragging(true);
-  const handleMouseUp = () => setIsDragging(false);
-
   return (
     <div
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseUp}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleMouseUp}
-      className={`relative overflow-hidden rounded-3xl border border-border/40 select-none shadow-lg cursor-ew-resize ${aspectRatio} ${className}`}
+      className={`relative overflow-hidden rounded-2xl border border-border/40 select-none shadow-sm grid grid-cols-2 gap-[1px] bg-border/40 ${aspectRatio} ${className}`}
     >
-      {/* AFTER Image (Full background layer) */}
-      <img
-        src={afterImage}
-        alt="After treatment result"
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-      />
-      
-      {/* AFTER Label Badge (Bottom Right) */}
-      <div className="absolute bottom-3 right-3 z-10 px-2.5 py-0.5 bg-black/60 backdrop-blur-md rounded-md text-[10px] font-bold tracking-widest text-white/90 uppercase border border-white/10 shadow-sm pointer-events-none">
-        {afterLabel}
-      </div>
-
-      {/* BEFORE Image (Clipped overlay layer) */}
-      <div
-        className="absolute inset-0 overflow-hidden pointer-events-none"
-        style={{ width: `${sliderPosition}%` }}
-      >
+      {/* BEFORE Image (Left Half) */}
+      <div className="relative w-full h-full overflow-hidden bg-muted">
         <img
           src={beforeImage}
           alt="Before treatment"
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-          style={{ width: containerRef.current ? `${containerRef.current.clientWidth}px` : "100%", maxWidth: "none" }}
+          className="w-full h-full object-cover"
         />
-        {/* BEFORE Label Badge (Bottom Left) */}
-        <div className="absolute bottom-3 left-3 z-10 px-2.5 py-0.5 bg-black/60 backdrop-blur-md rounded-md text-[10px] font-bold tracking-widest text-white/90 uppercase border border-white/10 shadow-sm">
+        <div className="absolute bottom-2.5 left-2.5 z-10 px-2 py-0.5 bg-black/60 backdrop-blur-md rounded text-[9px] font-bold tracking-widest text-white uppercase border border-white/10 shadow-sm">
           {beforeLabel}
         </div>
       </div>
 
-      {/* Vertical Slider Line & Center Drag Handle Button */}
-      <div
-        className="absolute top-0 bottom-0 z-20 w-0.5 bg-white/90 shadow-[0_0_10px_rgba(0,0,0,0.5)] transform -translate-x-1/2 flex items-center justify-center cursor-ew-resize"
-        style={{ left: `${sliderPosition}%` }}
-        onMouseDown={handleMouseDown}
-        onTouchStart={handleMouseDown}
-      >
-        <div className="w-8 h-8 rounded-full bg-white text-foreground shadow-xl flex items-center justify-center border border-black/10 hover:scale-110 active:scale-95 transition-transform cursor-grab active:cursor-grabbing">
-          <div className="flex items-center gap-0.5 text-foreground/80">
-            <ChevronLeft className="w-3 h-3 -mr-0.5" />
-            <ChevronRight className="w-3 h-3 -ml-0.5" />
-          </div>
+      {/* AFTER Image (Right Half) */}
+      <div className="relative w-full h-full overflow-hidden bg-muted">
+        <img
+          src={afterImage}
+          alt="After treatment result"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute bottom-2.5 right-2.5 z-10 px-2 py-0.5 bg-black/60 backdrop-blur-md rounded text-[9px] font-bold tracking-widest text-white uppercase border border-white/10 shadow-sm">
+          {afterLabel}
         </div>
       </div>
     </div>
