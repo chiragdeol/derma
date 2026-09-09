@@ -46,6 +46,11 @@ import clinicalFilling1 from "@/assets/drive_beforeafter/clinical_filling_1.jpg"
 import clinicalOrtho7 from "@/assets/drive_beforeafter/clinical_ortho_7.jpg";
 import clinicalOrtho8 from "@/assets/drive_beforeafter/clinical_ortho_8.jpg";
 
+import homeAcne1 from "@/assets/drive_beforeafter/home_acne_1.jpg";
+import homeSkinLifting from "@/assets/drive_beforeafter/home_skin_lifting.jpg";
+import homeAcne2Left from "@/assets/drive_beforeafter/home_acne_2_left.jpg";
+import homeAcne2Right from "@/assets/drive_beforeafter/home_acne_2_right.jpg";
+
 import { getAllTreatmentImageOverrides, getTreatmentImageOverride, getTreatmentAltOverride } from "@/lib/treatment-image-manager";
 import { BeforeAfterSlider, BeforeAfterCarousel } from "./BeforeAfterSlider";
 
@@ -118,39 +123,6 @@ const FAQAccordionItem = ({ question, answer }: FAQItem) => {
   );
 };
 
-function getTreatmentBeforeAfter(treatmentName: string, propBefore?: string, propAfter?: string): [string, string] | null {
-  const norm = (treatmentName || "").toLowerCase();
-  
-  if (norm.includes("acne") || norm.includes("peel") || norm.includes("hydrafacial")) {
-    return [acneBefore, acneAfter];
-  }
-  if (norm.includes("endolift")) {
-    return [endoliftBefore, endoliftAfter];
-  }
-  if (norm.includes("cleaning") || norm.includes("scaling") || norm.includes("polishing")) {
-    return [teethCleaningBefore, teethCleaningAfter];
-  }
-  if (norm.includes("whitening")) {
-    return [teethWhitening1, teethWhitening2];
-  }
-  if (norm.includes("veneer") || norm.includes("hollywood")) {
-    return [veneer1, veneer2];
-  }
-  if (norm.includes("hair removal") || norm.includes("full body") || (norm.includes("laser") && !norm.includes("tattoo") && !norm.includes("vascular"))) {
-    return [baLaser1Before, baLaser1After];
-  }
-  if (norm.includes("tattoo") || norm.includes("vascular")) {
-    return [baLaser2Before, baLaser2After];
-  }
-  
-  // If explicitly passed prop images exist for this page:
-  if (propBefore && propAfter) {
-    return [propBefore, propAfter];
-  }
-
-  return null;
-}
-
 export function BeforeAfterSection({
   treatments,
   categoryName,
@@ -162,214 +134,62 @@ export function BeforeAfterSection({
   beforeImage?: string;
   afterImage?: string;
 }) {
-  // Filter treatments to ONLY those that have real before & after images
   const uniqueItemsMap = new Map<string, { id: string; treatmentName: string; beforeImage?: string; afterImage?: string; singleImage?: string; category?: string }>();
 
-  for (const t of treatments) {
-    const pair = getTreatmentBeforeAfter(t.name, beforeImage, afterImage);
-    if (pair) {
-      const pairKey = pair.join("::");
-      if (!uniqueItemsMap.has(pairKey)) {
-        uniqueItemsMap.set(pairKey, {
-          id: t.name,
-          treatmentName: t.name,
-          beforeImage: pair[0],
-          afterImage: pair[1],
-          category: "Real Clinical Result",
-        });
-      }
-    }
+  // If explicit page prop before & after images are provided:
+  if (beforeImage && afterImage) {
+    uniqueItemsMap.set("explicit_page_result", {
+      id: "explicit_page_result",
+      treatmentName: categoryName || "Clinical Transformation",
+      beforeImage,
+      afterImage,
+      category: "REAL CLINICAL RESULT",
+    });
   }
 
   const catLower = (categoryName || "").toLowerCase();
-  const isAestheticPage =
-    catLower.includes("aesthetic") ||
-    (treatments.some((t) => {
-      const norm = (t.name || "").toLowerCase();
-      return norm.includes("hollywood") || norm.includes("composite veneers");
-    }) && !catLower.includes("clinical"));
 
-  const isClinicalPage =
-    catLower.includes("clinical") ||
-    (treatments.some((t) => {
-      const norm = (t.name || "").toLowerCase();
-      return norm.includes("examination") || norm.includes("root canal") || norm.includes("pediatric");
-    }) && !catLower.includes("aesthetic"));
-
-  const isDentalPage =
-    isAestheticPage ||
-    isClinicalPage ||
-    treatments.some((t) => {
-      const norm = (t.name || "").toLowerCase();
-      return (
-        norm.includes("veneer") ||
-        norm.includes("hollywood") ||
-        norm.includes("crown") ||
-        norm.includes("bridge") ||
-        norm.includes("dentistry") ||
-        norm.includes("whitening") ||
-        norm.includes("cleaning") ||
-        norm.includes("scaling") ||
-        norm.includes("restorative") ||
-        norm.includes("aligner") ||
-        norm.includes("smile") ||
-        norm.includes("ortho") ||
-        norm.includes("brace") ||
-        norm.includes("filling")
-      );
-    });
-
-  if (isDentalPage) {
-    // Remove old duplicate split Porcelain Veneer pair
-    for (const key of Array.from(uniqueItemsMap.keys())) {
-      if (key.includes("veneer_1") || key.includes("veneer_2") || key.toLowerCase().includes("porcelain veneers")) {
-        uniqueItemsMap.delete(key);
-      }
-    }
-
-    // AESTHETIC DENTISTRY CARDS (Crowns, Veneers, Cleaning, Whitening)
-    if (isAestheticPage || (!isAestheticPage && !isClinicalPage)) {
-      // 1. Veneers Composite Transformations (4 cases)
-      uniqueItemsMap.set("veneer_composite_1", {
-        id: "veneer_composite_1",
-        treatmentName: "Hollywood Smile Veneers",
-        singleImage: veneerComposite1,
-        category: "DENTAL VENEERS",
-      });
-      uniqueItemsMap.set("veneer_composite_2", {
-        id: "veneer_composite_2",
-        treatmentName: "Hollywood Smile Veneers",
-        singleImage: veneerComposite2,
-        category: "DENTAL VENEERS",
-      });
-      uniqueItemsMap.set("veneer_composite_3", {
-        id: "veneer_composite_3",
-        treatmentName: "Hollywood Smile Veneers",
-        singleImage: veneerComposite3,
-        category: "DENTAL VENEERS",
-      });
-      uniqueItemsMap.set("veneer_composite_4", {
-        id: "veneer_composite_4",
-        treatmentName: "Hollywood Smile Veneers",
-        singleImage: veneerComposite4,
-        category: "DENTAL VENEERS",
-      });
-
-      // 2. Crowns Composite Transformations (5 cases)
-      uniqueItemsMap.set("crowns_composite_1", {
-        id: "crowns_composite_1",
-        treatmentName: "Dental Crowns & Bridges",
-        singleImage: crownsComposite1,
-        category: "DENTAL CROWNS",
-      });
-      uniqueItemsMap.set("crowns_composite_2", {
-        id: "crowns_composite_2",
-        treatmentName: "Dental Crowns & Bridges",
-        singleImage: crownsComposite2,
-        category: "DENTAL CROWNS",
-      });
-      uniqueItemsMap.set("crowns_composite_3", {
-        id: "crowns_composite_3",
-        treatmentName: "Dental Crowns & Bridges",
-        singleImage: crownsComposite3,
-        category: "DENTAL CROWNS",
-      });
-      uniqueItemsMap.set("crowns_composite_4", {
-        id: "crowns_composite_4",
-        treatmentName: "Dental Crowns & Bridges",
-        singleImage: crownsComposite4,
-        category: "DENTAL CROWNS",
-      });
-      uniqueItemsMap.set("crowns_composite_5", {
-        id: "crowns_composite_5",
-        treatmentName: "Dental Crowns & Bridges",
-        singleImage: crownsComposite5,
-        category: "DENTAL CROWNS",
-      });
-
-      // 3. Teeth Cleaning & Scaling
-      uniqueItemsMap.set("teeth_cleaning_case", {
-        id: "teeth_cleaning_case",
-        treatmentName: "Professional Teeth Cleaning & Scaling",
-        beforeImage: teethCleaningBefore,
-        afterImage: teethCleaningAfter,
-        category: "TEETH CLEANING",
-      });
-
-      // 4. Teeth Whitening
-      uniqueItemsMap.set("teeth_whitening_case", {
-        id: "teeth_whitening_case",
-        treatmentName: "Laser Teeth Whitening",
-        beforeImage: teethWhitening1,
-        afterImage: teethWhitening2,
-        category: "TEETH WHITENING",
-      });
-    }
-
-    // CLINICAL DENTISTRY CARDS (Orthodontics & Braces, Restorative Fillings)
-    if (isClinicalPage || (!isAestheticPage && !isClinicalPage)) {
-      if (isClinicalPage) {
-        uniqueItemsMap.clear();
-      }
-
-      // 1. Orthodontics & Braces Composite Transformations (8 cases)
-      uniqueItemsMap.set("clinical_ortho_1", {
-        id: "clinical_ortho_1",
-        treatmentName: "Orthodontics & Braces Alignment",
-        singleImage: clinicalOrtho1,
-        category: "ORTHODONTICS & BRACES",
-      });
-      uniqueItemsMap.set("clinical_ortho_2", {
-        id: "clinical_ortho_2",
-        treatmentName: "Orthodontics & Braces Alignment",
-        singleImage: clinicalOrtho2,
-        category: "ORTHODONTICS & BRACES",
-      });
-      uniqueItemsMap.set("clinical_ortho_3", {
-        id: "clinical_ortho_3",
-        treatmentName: "Orthodontics & Braces Alignment",
-        singleImage: clinicalOrtho3,
-        category: "ORTHODONTICS & BRACES",
-      });
-      uniqueItemsMap.set("clinical_ortho_4", {
-        id: "clinical_ortho_4",
-        treatmentName: "Orthodontics & Braces Alignment",
-        singleImage: clinicalOrtho4,
-        category: "ORTHODONTICS & BRACES",
-      });
-      uniqueItemsMap.set("clinical_ortho_5", {
-        id: "clinical_ortho_5",
-        treatmentName: "Orthodontics & Braces Alignment",
-        singleImage: clinicalOrtho5,
-        category: "ORTHODONTICS & BRACES",
-      });
-      uniqueItemsMap.set("clinical_ortho_6", {
-        id: "clinical_ortho_6",
-        treatmentName: "Orthodontics & Braces Alignment",
-        singleImage: clinicalOrtho6,
-        category: "ORTHODONTICS & BRACES",
-      });
-      uniqueItemsMap.set("clinical_ortho_7", {
-        id: "clinical_ortho_7",
-        treatmentName: "Orthodontics & Braces Alignment",
-        singleImage: clinicalOrtho7,
-        category: "ORTHODONTICS & BRACES",
-      });
-      uniqueItemsMap.set("clinical_ortho_8", {
-        id: "clinical_ortho_8",
-        treatmentName: "Orthodontics & Braces Alignment",
-        singleImage: clinicalOrtho8,
-        category: "ORTHODONTICS & BRACES",
-      });
-
-      // 2. Restorative Cavity Fillings (1 case)
-      uniqueItemsMap.set("clinical_filling_1", {
-        id: "clinical_filling_1",
-        treatmentName: "Restorative Cavity Filling",
-        singleImage: clinicalFilling1,
-        category: "RESTORATIVE FILLINGS",
-      });
-    }
+  // 1. AESTHETIC DENTISTRY
+  if (catLower.includes("aesthetic") && catLower.includes("dentistry")) {
+    uniqueItemsMap.set("veneer_composite_1", { id: "veneer_composite_1", treatmentName: "Hollywood Smile Veneers", singleImage: veneerComposite1, category: "DENTAL VENEERS" });
+    uniqueItemsMap.set("veneer_composite_2", { id: "veneer_composite_2", treatmentName: "Hollywood Smile Veneers", singleImage: veneerComposite2, category: "DENTAL VENEERS" });
+    uniqueItemsMap.set("veneer_composite_3", { id: "veneer_composite_3", treatmentName: "Hollywood Smile Veneers", singleImage: veneerComposite3, category: "DENTAL VENEERS" });
+    uniqueItemsMap.set("veneer_composite_4", { id: "veneer_composite_4", treatmentName: "Hollywood Smile Veneers", singleImage: veneerComposite4, category: "DENTAL VENEERS" });
+    uniqueItemsMap.set("crowns_composite_1", { id: "crowns_composite_1", treatmentName: "Dental Crowns & Bridges", singleImage: crownsComposite1, category: "DENTAL CROWNS" });
+    uniqueItemsMap.set("crowns_composite_2", { id: "crowns_composite_2", treatmentName: "Dental Crowns & Bridges", singleImage: crownsComposite2, category: "DENTAL CROWNS" });
+    uniqueItemsMap.set("crowns_composite_3", { id: "crowns_composite_3", treatmentName: "Dental Crowns & Bridges", singleImage: crownsComposite3, category: "DENTAL CROWNS" });
+    uniqueItemsMap.set("crowns_composite_4", { id: "crowns_composite_4", treatmentName: "Dental Crowns & Bridges", singleImage: crownsComposite4, category: "DENTAL CROWNS" });
+    uniqueItemsMap.set("crowns_composite_5", { id: "crowns_composite_5", treatmentName: "Dental Crowns & Bridges", singleImage: crownsComposite5, category: "DENTAL CROWNS" });
+    uniqueItemsMap.set("teeth_cleaning_case", { id: "teeth_cleaning_case", treatmentName: "Professional Teeth Cleaning & Scaling", beforeImage: teethCleaningBefore, afterImage: teethCleaningAfter, category: "TEETH CLEANING" });
+    uniqueItemsMap.set("teeth_whitening_case", { id: "teeth_whitening_case", treatmentName: "Laser Teeth Whitening", beforeImage: teethWhitening1, afterImage: teethWhitening2, category: "TEETH WHITENING" });
+  } 
+  // 2. CLINICAL DENTISTRY
+  else if (catLower.includes("clinical") && catLower.includes("dentistry")) {
+    uniqueItemsMap.set("clinical_ortho_1", { id: "clinical_ortho_1", treatmentName: "Orthodontics & Braces Alignment", singleImage: clinicalOrtho1, category: "ORTHODONTICS & BRACES" });
+    uniqueItemsMap.set("clinical_ortho_2", { id: "clinical_ortho_2", treatmentName: "Orthodontics & Braces Alignment", singleImage: clinicalOrtho2, category: "ORTHODONTICS & BRACES" });
+    uniqueItemsMap.set("clinical_ortho_3", { id: "clinical_ortho_3", treatmentName: "Orthodontics & Braces Alignment", singleImage: clinicalOrtho3, category: "ORTHODONTICS & BRACES" });
+    uniqueItemsMap.set("clinical_ortho_4", { id: "clinical_ortho_4", treatmentName: "Orthodontics & Braces Alignment", singleImage: clinicalOrtho4, category: "ORTHODONTICS & BRACES" });
+    uniqueItemsMap.set("clinical_ortho_5", { id: "clinical_ortho_5", treatmentName: "Orthodontics & Braces Alignment", singleImage: clinicalOrtho5, category: "ORTHODONTICS & BRACES" });
+    uniqueItemsMap.set("clinical_ortho_6", { id: "clinical_ortho_6", treatmentName: "Orthodontics & Braces Alignment", singleImage: clinicalOrtho6, category: "ORTHODONTICS & BRACES" });
+    uniqueItemsMap.set("clinical_ortho_7", { id: "clinical_ortho_7", treatmentName: "Orthodontics & Braces Alignment", singleImage: clinicalOrtho7, category: "ORTHODONTICS & BRACES" });
+    uniqueItemsMap.set("clinical_ortho_8", { id: "clinical_ortho_8", treatmentName: "Orthodontics & Braces Alignment", singleImage: clinicalOrtho8, category: "ORTHODONTICS & BRACES" });
+    uniqueItemsMap.set("clinical_filling_1", { id: "clinical_filling_1", treatmentName: "Restorative Cavity Filling", singleImage: clinicalFilling1, category: "RESTORATIVE FILLINGS" });
+  }
+  // 3. SKIN & HYDRAFACIAL
+  else if (catLower.includes("skin") || catLower.includes("hydrafacial")) {
+    uniqueItemsMap.set("skin_acne_1", { id: "skin_acne_1", treatmentName: "Acne Clearing & Skin Restoration", singleImage: homeAcne1, category: "ACNE THERAPY" });
+    uniqueItemsMap.set("skin_male_acne", { id: "skin_male_acne", treatmentName: "Acne Scar Resurfacing Treatment", beforeImage: homeAcne2Left, afterImage: homeAcne2Right, category: "ACNE SCAR RESURFACING" });
+    uniqueItemsMap.set("skin_acne_pair", { id: "skin_acne_pair", treatmentName: "Acne & Skin Texture Resurfacing", beforeImage: acneBefore, afterImage: acneAfter, category: "SKIN RESURFACING" });
+  }
+  // 4. ANTI-AGING & LIFTING
+  else if (catLower.includes("lifting") || catLower.includes("anti-aging") || catLower.includes("aging")) {
+    uniqueItemsMap.set("lifting_endolift", { id: "lifting_endolift", treatmentName: "Endolift Non-Surgical Facelift", beforeImage: endoliftBefore, afterImage: endoliftAfter, category: "ENDOLIFT LIFTING" });
+    uniqueItemsMap.set("lifting_rejuvenation", { id: "lifting_rejuvenation", treatmentName: "Facial Skin Rejuvenation & Lifting", singleImage: homeSkinLifting, category: "SKIN REJUVENATION" });
+  }
+  // 5. LASER & HAIR REMOVAL
+  else if (catLower.includes("laser")) {
+    uniqueItemsMap.set("laser_pigmentation", { id: "laser_pigmentation", treatmentName: "Laser Pigmentation Resurfacing", beforeImage: baLaser1Before, afterImage: baLaser1After, category: "LASER RESURFACING" });
+    uniqueItemsMap.set("laser_skin_resurfacing", { id: "laser_skin_resurfacing", treatmentName: "Laser Skin Resurfacing", beforeImage: baLaser2Before, afterImage: baLaser2After, category: "LASER RESURFACING" });
   }
 
   const realItems = Array.from(uniqueItemsMap.values());
