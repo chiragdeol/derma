@@ -37,38 +37,38 @@ export function BeforeAfterCard({
 }) {
   return (
     <div
-      className={`relative aspect-[3/4] overflow-hidden rounded-2xl bg-black border border-white/10 select-none shadow-xl group ${className}`}
+      className={`relative aspect-[3/4.2] sm:aspect-[3/4] min-h-[460px] sm:min-h-[540px] overflow-hidden rounded-2xl bg-black border border-white/10 select-none shadow-2xl group ${className}`}
     >
-      {/* Side-by-Side Images */}
+      {/* Side-by-Side Full Height Images */}
       <div className="grid grid-cols-2 h-full w-full bg-black">
-        <div className="relative h-full w-full overflow-hidden bg-black">
+        <div className="relative h-full w-full overflow-hidden bg-black flex items-center justify-center">
           <img
             src={beforeImage}
             alt={`${treatmentName || "Treatment"} Before`}
-            className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+            className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
           />
         </div>
-        <div className="relative h-full w-full overflow-hidden bg-black">
+        <div className="relative h-full w-full overflow-hidden bg-black flex items-center justify-center">
           <img
             src={afterImage}
             alt={`${treatmentName || "Treatment"} After`}
-            className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+            className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
           />
         </div>
       </div>
 
       {/* Dark Maroon/Black Gradient Overlay at Bottom with Centered Typography */}
-      <div className="absolute inset-x-0 bottom-0 pt-24 pb-6 px-4 bg-gradient-to-t from-[#2d0507] via-black/85 to-transparent flex flex-col items-center justify-end text-center z-10 pointer-events-none">
+      <div className="absolute inset-x-0 bottom-0 pt-20 pb-5 px-4 bg-gradient-to-t from-[#2d0507] via-black/80 to-transparent flex flex-col items-center justify-end text-center z-10 pointer-events-none">
         {treatmentName && (
-          <h4 className="font-display text-xl sm:text-2xl font-bold text-white tracking-wide mb-1 drop-shadow-md">
+          <h4 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-wide mb-1 drop-shadow-md">
             {treatmentName}
           </h4>
         )}
-        <div className="text-[9px] font-sans font-medium tracking-[0.2em] text-[#d6aa8d] uppercase">
+        <div className="text-[10px] font-sans font-medium tracking-[0.2em] text-[#d6aa8d] uppercase">
           {subtitle}
         </div>
         {category && (
-          <div className="text-[8px] font-sans tracking-[0.15em] text-white/60 uppercase font-light mt-0.5">
+          <div className="text-[9px] font-sans tracking-[0.15em] text-white/70 uppercase font-light mt-0.5">
             {category}
           </div>
         )}
@@ -108,26 +108,26 @@ export function BeforeAfterCarousel({ items, title = "Clinical Transformations",
   const handleScroll = () => {
     if (!carouselRef.current) return;
     const { scrollLeft } = carouselRef.current;
-    const cardWidth = 320;
+    const cardWidth = 440;
     const index = Math.round(scrollLeft / cardWidth);
     setActiveIndex(Math.min(Math.max(index, 0), items.length - 1));
   };
 
   const scrollLeft = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -340, behavior: "smooth" });
+      carouselRef.current.scrollBy({ left: -440, behavior: "smooth" });
     }
   };
 
   const scrollRight = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: 340, behavior: "smooth" });
+      carouselRef.current.scrollBy({ left: 440, behavior: "smooth" });
     }
   };
 
   const scrollToIndex = (idx: number) => {
     if (carouselRef.current) {
-      carouselRef.current.scrollTo({ left: idx * 340, behavior: "smooth" });
+      carouselRef.current.scrollTo({ left: idx * 440, behavior: "smooth" });
       setActiveIndex(idx);
     }
   };
@@ -164,13 +164,13 @@ export function BeforeAfterCarousel({ items, title = "Clinical Transformations",
       <div
         ref={carouselRef}
         onScroll={handleScroll}
-        className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 pt-2 scrollbar-none"
+        className="flex gap-6 sm:gap-8 overflow-x-auto snap-x snap-mandatory pb-6 pt-2 scrollbar-none"
         style={{ scrollbarWidth: "none" }}
       >
         {items.map((item, idx) => (
           <div
             key={item.id || item.treatmentName || idx}
-            className="flex-none w-[280px] sm:w-[320px] snap-start"
+            className="flex-none w-[320px] sm:w-[420px] lg:w-[460px] snap-start"
           >
             <BeforeAfterCard
               beforeImage={item.beforeImage}
@@ -190,7 +190,7 @@ export function BeforeAfterCarousel({ items, title = "Clinical Transformations",
             onClick={() => scrollToIndex(idx)}
             className={`rounded-full transition-all duration-300 cursor-pointer ${
               activeIndex === idx
-                ? "w-3 h-3 bg-[#974d08] scale-110 shadow-sm"
+                ? "w-3.5 h-3.5 bg-[#974d08] scale-110 shadow-sm"
                 : "w-2.5 h-2.5 border border-[#974d08]/50 bg-transparent hover:bg-[#974d08]/30"
             }`}
             aria-label={`Go to slide ${idx + 1}`}
