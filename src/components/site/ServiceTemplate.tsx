@@ -232,25 +232,25 @@ export function BeforeAfterSection({
       // 1. Veneers Composite Transformations (4 cases)
       uniqueItemsMap.set("veneer_composite_1", {
         id: "veneer_composite_1",
-        treatmentName: "Hollywood Smile Veneers (Case 1)",
+        treatmentName: "Hollywood Smile Veneers",
         singleImage: veneerComposite1,
         category: "DENTAL VENEERS",
       });
       uniqueItemsMap.set("veneer_composite_2", {
         id: "veneer_composite_2",
-        treatmentName: "Hollywood Smile Veneers (Case 2)",
+        treatmentName: "Hollywood Smile Veneers",
         singleImage: veneerComposite2,
         category: "DENTAL VENEERS",
       });
       uniqueItemsMap.set("veneer_composite_3", {
         id: "veneer_composite_3",
-        treatmentName: "Hollywood Smile Veneers (Case 3)",
+        treatmentName: "Hollywood Smile Veneers",
         singleImage: veneerComposite3,
         category: "DENTAL VENEERS",
       });
       uniqueItemsMap.set("veneer_composite_4", {
         id: "veneer_composite_4",
-        treatmentName: "Hollywood Smile Veneers (Case 4)",
+        treatmentName: "Hollywood Smile Veneers",
         singleImage: veneerComposite4,
         category: "DENTAL VENEERS",
       });
@@ -258,31 +258,31 @@ export function BeforeAfterSection({
       // 2. Crowns Composite Transformations (5 cases)
       uniqueItemsMap.set("crowns_composite_1", {
         id: "crowns_composite_1",
-        treatmentName: "Dental Crowns & Bridges (Result 1)",
+        treatmentName: "Dental Crowns & Bridges",
         singleImage: crownsComposite1,
         category: "DENTAL CROWNS",
       });
       uniqueItemsMap.set("crowns_composite_2", {
         id: "crowns_composite_2",
-        treatmentName: "Dental Crowns & Bridges (Result 2)",
+        treatmentName: "Dental Crowns & Bridges",
         singleImage: crownsComposite2,
         category: "DENTAL CROWNS",
       });
       uniqueItemsMap.set("crowns_composite_3", {
         id: "crowns_composite_3",
-        treatmentName: "Dental Crowns & Bridges (Result 3)",
+        treatmentName: "Dental Crowns & Bridges",
         singleImage: crownsComposite3,
         category: "DENTAL CROWNS",
       });
       uniqueItemsMap.set("crowns_composite_4", {
         id: "crowns_composite_4",
-        treatmentName: "Dental Crowns & Bridges (Result 4)",
+        treatmentName: "Dental Crowns & Bridges",
         singleImage: crownsComposite4,
         category: "DENTAL CROWNS",
       });
       uniqueItemsMap.set("crowns_composite_5", {
         id: "crowns_composite_5",
-        treatmentName: "Dental Crowns & Bridges (Result 5)",
+        treatmentName: "Dental Crowns & Bridges",
         singleImage: crownsComposite5,
         category: "DENTAL CROWNS",
       });
@@ -315,49 +315,49 @@ export function BeforeAfterSection({
       // 1. Orthodontics & Braces Composite Transformations (8 cases)
       uniqueItemsMap.set("clinical_ortho_1", {
         id: "clinical_ortho_1",
-        treatmentName: "Orthodontics & Braces Alignment (Case 1)",
+        treatmentName: "Orthodontics & Braces Alignment",
         singleImage: clinicalOrtho1,
         category: "ORTHODONTICS & BRACES",
       });
       uniqueItemsMap.set("clinical_ortho_2", {
         id: "clinical_ortho_2",
-        treatmentName: "Orthodontics & Braces Alignment (Case 2)",
+        treatmentName: "Orthodontics & Braces Alignment",
         singleImage: clinicalOrtho2,
         category: "ORTHODONTICS & BRACES",
       });
       uniqueItemsMap.set("clinical_ortho_3", {
         id: "clinical_ortho_3",
-        treatmentName: "Orthodontics & Braces Alignment (Case 3)",
+        treatmentName: "Orthodontics & Braces Alignment",
         singleImage: clinicalOrtho3,
         category: "ORTHODONTICS & BRACES",
       });
       uniqueItemsMap.set("clinical_ortho_4", {
         id: "clinical_ortho_4",
-        treatmentName: "Orthodontics & Braces Alignment (Case 4)",
+        treatmentName: "Orthodontics & Braces Alignment",
         singleImage: clinicalOrtho4,
         category: "ORTHODONTICS & BRACES",
       });
       uniqueItemsMap.set("clinical_ortho_5", {
         id: "clinical_ortho_5",
-        treatmentName: "Orthodontics & Braces Alignment (Case 5)",
+        treatmentName: "Orthodontics & Braces Alignment",
         singleImage: clinicalOrtho5,
         category: "ORTHODONTICS & BRACES",
       });
       uniqueItemsMap.set("clinical_ortho_6", {
         id: "clinical_ortho_6",
-        treatmentName: "Orthodontics & Braces Alignment (Case 6)",
+        treatmentName: "Orthodontics & Braces Alignment",
         singleImage: clinicalOrtho6,
         category: "ORTHODONTICS & BRACES",
       });
       uniqueItemsMap.set("clinical_ortho_7", {
         id: "clinical_ortho_7",
-        treatmentName: "Orthodontics & Bite Alignment (Case 7)",
+        treatmentName: "Orthodontics & Braces Alignment",
         singleImage: clinicalOrtho7,
         category: "ORTHODONTICS & BRACES",
       });
       uniqueItemsMap.set("clinical_ortho_8", {
         id: "clinical_ortho_8",
-        treatmentName: "Full Arch Orthodontic Realignment (Case 8)",
+        treatmentName: "Orthodontics & Braces Alignment",
         singleImage: clinicalOrtho8,
         category: "ORTHODONTICS & BRACES",
       });
@@ -365,7 +365,7 @@ export function BeforeAfterSection({
       // 2. Restorative Cavity Fillings (1 case)
       uniqueItemsMap.set("clinical_filling_1", {
         id: "clinical_filling_1",
-        treatmentName: "Restorative Cavity Filling (Composite)",
+        treatmentName: "Restorative Cavity Filling",
         singleImage: clinicalFilling1,
         category: "RESTORATIVE FILLINGS",
       });
