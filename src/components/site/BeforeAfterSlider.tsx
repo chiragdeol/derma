@@ -4,15 +4,17 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 export interface BeforeAfterItem {
   id: string;
   treatmentName: string;
-  beforeImage: string;
-  afterImage: string;
+  beforeImage?: string;
+  afterImage?: string;
+  singleImage?: string;
   category?: string;
   description?: string;
 }
 
 interface BeforeAfterSliderProps {
-  beforeImage: string;
-  afterImage: string;
+  beforeImage?: string;
+  afterImage?: string;
+  singleImage?: string;
   beforeLabel?: string;
   afterLabel?: string;
   treatmentName?: string;
@@ -23,39 +25,53 @@ interface BeforeAfterSliderProps {
 export function BeforeAfterCard({
   beforeImage,
   afterImage,
+  singleImage,
   treatmentName,
   subtitle = "AL NEMAH MEDICAL CENTER",
   category = "SKIN | LASER | AESTHETICS",
   className = "",
 }: {
-  beforeImage: string;
-  afterImage: string;
+  beforeImage?: string;
+  afterImage?: string;
+  singleImage?: string;
   treatmentName?: string;
   subtitle?: string;
   category?: string;
   className?: string;
 }) {
+  const isSingle = singleImage || (beforeImage && beforeImage === afterImage);
+
   return (
     <div
-      className={`relative aspect-[16/10.5] sm:aspect-[16/10] max-h-[380px] overflow-hidden rounded-2xl bg-black border border-white/10 select-none shadow-xl group ${className}`}
+      className={`relative aspect-[16/10.5] sm:aspect-[16/10] max-h-[420px] overflow-hidden rounded-2xl bg-black border border-white/10 select-none shadow-xl group ${className}`}
     >
-      {/* Side-by-Side Full Height Images */}
-      <div className="grid grid-cols-2 h-full w-full bg-black">
+      {/* Image Container */}
+      {isSingle ? (
         <div className="relative h-full w-full overflow-hidden bg-black flex items-center justify-center">
           <img
-            src={beforeImage}
-            alt={`${treatmentName || "Treatment"} Before`}
+            src={singleImage || beforeImage}
+            alt={`${treatmentName || "Treatment"} Transformation`}
             className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
           />
         </div>
-        <div className="relative h-full w-full overflow-hidden bg-black flex items-center justify-center">
-          <img
-            src={afterImage}
-            alt={`${treatmentName || "Treatment"} After`}
-            className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
-          />
+      ) : (
+        <div className="grid grid-cols-2 h-full w-full bg-black">
+          <div className="relative h-full w-full overflow-hidden bg-black flex items-center justify-center">
+            <img
+              src={beforeImage || ""}
+              alt={`${treatmentName || "Treatment"} Before`}
+              className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
+            />
+          </div>
+          <div className="relative h-full w-full overflow-hidden bg-black flex items-center justify-center">
+            <img
+              src={afterImage || ""}
+              alt={`${treatmentName || "Treatment"} After`}
+              className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
+            />
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Dark Maroon/Black Gradient Overlay at Bottom with Centered Typography */}
       <div className="absolute inset-x-0 bottom-0 pt-16 pb-4 px-4 bg-gradient-to-t from-[#2d0507] via-black/80 to-transparent flex flex-col items-center justify-end text-center z-10 pointer-events-none">
@@ -175,6 +191,7 @@ export function BeforeAfterCarousel({ items, title = "Clinical Transformations",
             <BeforeAfterCard
               beforeImage={item.beforeImage}
               afterImage={item.afterImage}
+              singleImage={item.singleImage}
               treatmentName={item.treatmentName}
               category={item.category}
             />

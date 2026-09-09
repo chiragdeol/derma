@@ -25,6 +25,11 @@ import veneer4 from "@/assets/drive_beforeafter/veneer_4.jpg";
 import veneer5 from "@/assets/drive_beforeafter/veneer_5.jpg";
 import veneer7 from "@/assets/drive_beforeafter/veneer_7.jpg";
 
+import veneerComposite1 from "@/assets/drive_beforeafter/veneer_composite_1.jpg";
+import veneerComposite2 from "@/assets/drive_beforeafter/veneer_composite_2.jpg";
+import veneerComposite3 from "@/assets/drive_beforeafter/veneer_composite_3.jpg";
+import veneerComposite4 from "@/assets/drive_beforeafter/veneer_composite_4.jpg";
+
 import { getAllTreatmentImageOverrides, getTreatmentImageOverride, getTreatmentAltOverride } from "@/lib/treatment-image-manager";
 import { BeforeAfterSlider, BeforeAfterCarousel } from "./BeforeAfterSlider";
 
@@ -164,25 +169,28 @@ export function BeforeAfterSection({
   });
 
   if (hasVeneers) {
-    uniqueItemsMap.set("veneer_pair_1", {
-      id: "veneer_pair_1",
-      treatmentName: "Hollywood Veneers (Case 1)",
-      beforeImage: veneer1,
-      afterImage: veneer2,
+    uniqueItemsMap.set("veneer_composite_1", {
+      id: "veneer_composite_1",
+      treatmentName: "Hollywood Smile Veneers (Case 1)",
+      singleImage: veneerComposite1,
       category: "DENTAL VENEERS",
     });
-    uniqueItemsMap.set("veneer_pair_2", {
-      id: "veneer_pair_2",
-      treatmentName: "Hollywood Veneers (Case 2)",
-      beforeImage: veneer3,
-      afterImage: veneer4,
+    uniqueItemsMap.set("veneer_composite_2", {
+      id: "veneer_composite_2",
+      treatmentName: "Hollywood Smile Veneers (Case 2)",
+      singleImage: veneerComposite2,
       category: "DENTAL VENEERS",
     });
-    uniqueItemsMap.set("veneer_pair_3", {
-      id: "veneer_pair_3",
-      treatmentName: "Hollywood Veneers (Case 3)",
-      beforeImage: veneer5,
-      afterImage: veneer7,
+    uniqueItemsMap.set("veneer_composite_3", {
+      id: "veneer_composite_3",
+      treatmentName: "Hollywood Smile Veneers (Case 3)",
+      singleImage: veneerComposite3,
+      category: "DENTAL VENEERS",
+    });
+    uniqueItemsMap.set("veneer_composite_4", {
+      id: "veneer_composite_4",
+      treatmentName: "Hollywood Smile Veneers (Case 4)",
+      singleImage: veneerComposite4,
       category: "DENTAL VENEERS",
     });
   }
