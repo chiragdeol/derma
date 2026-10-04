@@ -32,7 +32,10 @@ const TREATMENT_CATEGORIES = [
       "Microneedling", 
       "Skin Boosters", 
       "Carbon Laser Peel (Hollywood Peel)", 
-      "PRP Facial (Vampire Facial)"
+      "PRP Facial (Vampire Facial)",
+      "Under Eye Treatment",
+      "Lip Booster",
+      "Lip Fillers"
     ]
   },
   {
@@ -45,14 +48,16 @@ const TREATMENT_CATEGORIES = [
       "Lip Enhancement", 
       "Sculptra", 
       "Rejuran / PN Therapy", 
-      "Peptide Pens"
+      "Peptide Pens",
+      "PDRN Treatment",
+      "Salmon DNA Treatment"
     ]
   },
   {
     category: "Laser & Hair Removal",
     route: "/services/laser",
     treatments: [
-      "Laser Hair Removal (Full Body)", 
+      "Laser Hair Removal (Candela GentleMax Pro Plus)",
       "Pigmentation Laser", 
       "Vascular Laser", 
       "Tattoo Removal", 
@@ -60,7 +65,14 @@ const TREATMENT_CATEGORIES = [
       "IPL Photofacial", 
       "Laser Skin Resurfacing", 
       "Vaginal Tightening", 
-      "Electrolysis White Hair Removal"
+      "Electrolysis (Decoblend)",
+      "Wart Removal",
+      "Fractional Laser",
+      "Scar Removal",
+      "Acne Scar Removal",
+      "Freckle Removal",
+      "Mole Removal",
+      "Syringoma Treatment"
     ]
   },
   {
@@ -72,7 +84,13 @@ const TREATMENT_CATEGORIES = [
       "HIFU", 
       "PDO Threads", 
       "Fotona 4D", 
-      "Ultherapy"
+      "Ultherapy",
+      "Varicose Vein Treatment",
+      "Radiesse",
+      "RF Microneedling",
+      "Collagen Stimulators",
+      "Salmon DNA",
+      "PDRN"
     ]
   },
   {
@@ -103,7 +121,21 @@ const TREATMENT_CATEGORIES = [
       "Orthodontic Braces & Retainers", 
       "Complete Dentures & RPD", 
       "Pediatric Dentistry (Pedodontics)", 
-      "Night Guard & Bruxism Care"
+      "Night Guard & Bruxism Care",
+      "Braces Removal",
+      "Aligners (Invisaligners)",
+      "Temporary Filling",
+      "Direct Pulp Capping",
+      "Indirect Pulp Capping",
+      "Re-RCT",
+      "Post and Core",
+      "Inlay",
+      "Onlay",
+      "Veneer Removal (per jaw)",
+      "Space Maintainer",
+      "Dry Socket Management",
+      "Brackets Injury Treatment",
+      "Suture Removal"
     ]
   },
   {
@@ -116,7 +148,10 @@ const TREATMENT_CATEGORIES = [
       "Immune Boost IV", 
       "Hydration IV Therapy", 
       "Beauty Drip", 
-      "Anti-Aging IV Therapy"
+      "Anti-Aging IV Therapy",
+      "GFC Treatment",
+      "Exosome Treatment",
+      "Stem Cells Treatment"
     ]
   },
   {

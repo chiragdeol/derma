@@ -398,7 +398,7 @@ export function ServiceTemplate({
                 {/* Right Column: Content */}
                 <div className="flex flex-col">
                   <span className="text-xs font-semibold tracking-widest text-[#974d08] uppercase mb-3">
-                    Treatment 0{idx + 1}
+                    Treatment {String(idx + 1).padStart(2, "0")}
                   </span>
                   <h3 className="font-display text-2xl md:text-3xl text-foreground mb-3">{t.name}</h3>
                   <p className="text-sm md:text-base text-muted-foreground/90 leading-relaxed mb-4 max-w-xl">{t.body}</p>

@@ -23,7 +23,7 @@ const services = [
     num: "01", 
     to: "/services/injectables", 
     title: "Cosmetic Injectables", 
-    tags: ["Botox", "Dermal Fillers", "Profhilo", "Lip Enhancement", "Sculptra", "Rejuran", "Peptide Pens"],
+    tags: ["Botox", "Dermal Fillers", "Profhilo", "Lip Enhancement", "Sculptra", "Rejuran", "Peptide Pens", "PDRN Treatment", "Salmon DNA"],
     body: "Botox, fillers, Profhilo, Sculptra, Rejuran and lip enhancement — subtle, anatomical results.", 
     image: injectables 
   },
@@ -31,7 +31,7 @@ const services = [
     num: "02", 
     to: "/services/skin", 
     title: "Skin & HydraFacial", 
-    tags: ["HydraFacial", "Chemical Peels", "Mesotherapy", "Microneedling", "Skin Boosters", "Carbon Laser", "PRP Facial"],
+    tags: ["HydraFacial", "Chemical Peels", "Mesotherapy", "Microneedling", "Skin Boosters", "Carbon Laser", "PRP Facial", "Under Eye Treatment", "Lip Booster", "Lip Fillers"],
     body: "Medical-grade facials, HydraFacial, peels, mesotherapy and resurfacing for luminous skin.", 
     image: skin 
   },
@@ -39,7 +39,7 @@ const services = [
     num: "03", 
     to: "/services/laser", 
     title: "Laser & Hair Removal", 
-    tags: ["Laser Hair Removal", "Pigmentation Laser", "Vascular Laser", "Tattoo Removal", "IPL Photofacial", "Laser Resurfacing", "Vaginal Tightening"],
+    tags: ["Laser Hair Removal", "Pigmentation Laser", "Vascular Laser", "Tattoo Removal", "IPL Photofacial", "Laser Resurfacing", "Vaginal Tightening", "Wart Removal", "Fractional Laser", "Mole Removal", "Syringoma"],
     body: "Multi-wavelength laser platforms for hair removal, pigmentation, and specialized body lasers.", 
     image: laser 
   },
@@ -47,7 +47,7 @@ const services = [
     num: "04", 
     to: "/services/lifting", 
     title: "Anti-Aging & Lifting", 
-    tags: ["Morpheus8", "Ultherapy", "PDO Threads", "Fotona 4D", "HIFU", "Endolift"],
+    tags: ["Morpheus8", "Ultherapy", "PDO Threads", "Fotona 4D", "HIFU", "Endolift", "Radiesse", "RF Microneedling", "Varicose Veins", "PDRN"],
     body: "Morpheus8, Ultherapy, PDO threads, Fotona 4D and HIFU for non-surgical lift.", 
     image: lifting 
   },
@@ -63,7 +63,7 @@ const services = [
     num: "06", 
     to: "/services/wellness", 
     title: "Wellness & Longevity", 
-    tags: ["Glow IV Drip", "Vitamin C IV", "NAD+ Therapy", "Immune Boost IV", "Hydration IV", "Beauty Drip", "Anti-Aging IV"],
+    tags: ["Glow IV Drip", "Vitamin C IV", "NAD+ Therapy", "Immune Boost IV", "Hydration IV", "Beauty Drip", "Anti-Aging IV", "GFC", "Exosome", "Stem Cells"],
     body: "Clinical IV drips, NAD+ therapy, immunity boosters, and cellular anti-aging protocols.", 
     image: wellness 
   },

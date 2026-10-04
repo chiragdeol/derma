@@ -91,6 +91,22 @@ export const Route = createFileRoute("/services/injectables")({
           price: "AED 1,200",
           image: botoxImg,
         },
+        {
+          name: "PDRN Treatment",
+          body: "Polydeoxyribonucleotide therapy to support skin repair, elasticity, and a healthier skin barrier.",
+          tags: ["Skin Repair", "PDRN"],
+          duration: "30 min · Minimal downtime",
+          price: "AED 999",
+          image: rejuranImg,
+        },
+        {
+          name: "Salmon DNA Treatment",
+          body: "Salmon-derived DNA therapy used to calm, repair, and improve skin quality and elasticity.",
+          tags: ["Salmon DNA", "Repair"],
+          duration: "30 min · Minimal downtime",
+          price: "AED 999",
+          image: rejuranImg,
+        },
       ]}
       faqs={[
         {

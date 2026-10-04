@@ -129,6 +129,42 @@ export const Route = createFileRoute("/services/skin")({
             "Combines microneedling with PRP for maximum impact",
           ],
         },
+        {
+          name: "Under Eye Treatment",
+          body: "Targeted under-eye care to brighten dark circles, smooth fine creasing, and refresh a tired look.",
+          tags: ["Under Eye", "Brightening"],
+          duration: "30 min · Minimal downtime",
+          price: "AED 499",
+          points: [
+            "Focused care for dark circles and crepey under-eye skin",
+            "Refreshes a tired appearance",
+            "Can be booked on its own or with a facial plan",
+          ],
+        },
+        {
+          name: "Lip Booster",
+          body: "A hydrating lip treatment that improves softness, moisture, and a natural plump look.",
+          tags: ["Lip Hydration", "Soft Volume"],
+          duration: "30 min · Minimal downtime",
+          price: "AED 499",
+          points: [
+            "Boosts lip moisture and softness",
+            "Subtle natural-looking plumpness",
+            "A lighter option alongside lip enhancement",
+          ],
+        },
+        {
+          name: "Lip Fillers",
+          body: "Lip filler to add volume, define the border, and balance lip shape.",
+          tags: ["Lip Volume", "Definition"],
+          duration: "30 min · Minimal downtime",
+          price: "AED 499",
+          points: [
+            "Adds volume and border definition",
+            "Shaped to suit facial balance",
+            "Doctor-planned dosing for a natural result",
+          ],
+        },
       ]}
       faqs={[
         {

@@ -513,7 +513,15 @@ function LaserHairRemovalLanding() {
             { name: "IPL Photofacial", price: "AED 799", body: "Intense Pulsed Light therapy for even skin tone, sun spots, and rosacea." },
             { name: "Laser Skin Resurfacing", price: "AED 750", body: "Fractional laser resurfacing to smooth fine lines, acne scars, and skin texture." },
             { name: "Vaginal Tightening", price: "AED 999 / session", body: "Non-surgical laser thermal therapy for tissue tightening and intimate wellness." },
-            { name: "Electrolysis White Hair Removal", price: "AED 300 / hr", body: "Permanent hair removal specially designed for white, gray, and blonde hairs." },
+            { name: "Electrolysis (Decoblend)", price: "AED 300 / hr", body: "Permanent electrolysis for white, gray, and blonde hairs that laser cannot treat." },
+            { name: "Laser Hair Removal (Candela GentleMax Pro Plus)", price: "Starting from AED 99", body: "Candela GentleMax Pro Plus laser hair removal, safe across skin tones, with sessions starting from AED 99." },
+            { name: "Wart Removal", price: "AED 299", body: "Clinical removal of warts with minimal disruption to the surrounding skin." },
+            { name: "Fractional Laser", price: "AED 699", body: "Fractional laser resurfacing to improve texture, fine lines, and uneven tone." },
+            { name: "Scar Removal", price: "AED 499", body: "Laser treatment to soften the look of scars and blend them with surrounding skin." },
+            { name: "Acne Scar Removal", price: "AED 499", body: "Targeted laser care for acne scars, pits, and uneven skin texture." },
+            { name: "Freckle Removal", price: "AED 499", body: "Laser lightening of freckles and sun spots for a more even complexion." },
+            { name: "Mole Removal", price: "AED 299", body: "Clinical assessment and removal of unwanted moles." },
+            { name: "Syringoma Treatment", price: "AED 399", body: "Treatment for small syringoma bumps, commonly around the eyes." },
           ].map((t) => (
             <div key={t.name} className="bg-card border border-border/60 rounded-xl p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
               <div>
@@ -670,7 +678,7 @@ function LaserHairRemovalLanding() {
               },
               {
                 q: "How much does laser hair removal cost?",
-                a: "Laser hair removal at Al Nemah starts from AED 300 per small area, with discounted full-body and package pricing. Your final price is confirmed at a free consultation.",
+                a: "Laser hair removal on the Candela GentleMax Pro Plus starts from AED 99. Larger areas and packages are confirmed at a free consultation.",
               },
               {
                 q: "Does it hurt?",

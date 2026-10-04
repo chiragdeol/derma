@@ -22,6 +22,8 @@ const treatments = [
   { name: "Sculptra", body: "Poly-L-lactic acid biostimulator that stimulates your body's own collagen production for long-lasting facial volumization.", time: "AED 1,999" },
   { name: "Rejuran / PN Therapy", body: "Salmon DNA Polynucleotide cellular therapy to repair skin barrier, heal damaged tissue, and restore skin elasticity.", time: "AED 1,999" },
   { name: "Peptide Pens", body: "Advanced therapeutic peptide delivery to enhance skin cellular energy, fat metabolism, and skin regeneration.", time: "AED 1,200" },
+  { name: "PDRN Treatment", body: "Polydeoxyribonucleotide therapy to support skin repair, elasticity, and a healthier skin barrier.", time: "AED 999" },
+  { name: "Salmon DNA Treatment", body: "Salmon-derived DNA therapy used to calm, repair, and improve skin quality and elasticity.", time: "AED 999" },
 ];
 
 const journey = [

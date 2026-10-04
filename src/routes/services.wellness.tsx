@@ -128,6 +128,42 @@ export const Route = createFileRoute("/services/wellness")({
             "Improves overall vital energy and skin firmness",
           ],
         },
+        {
+          name: "GFC Treatment",
+          body: "Growth Factor Concentrate prepared from your own blood to support hair and skin regeneration.",
+          tags: ["Growth Factors", "Regeneration"],
+          duration: "45 min · Clinic visit",
+          price: "AED 399",
+          points: [
+            "Uses your own growth factors",
+            "Supports hair and skin renewal",
+            "Performed in clinic as a single session",
+          ],
+        },
+        {
+          name: "Exosome Treatment",
+          body: "Exosome therapy to support cellular repair, skin quality, and hair regeneration.",
+          tags: ["Exosomes", "Repair"],
+          duration: "45 min · Clinic visit",
+          price: "AED 999",
+          points: [
+            "Supports cellular repair and skin quality",
+            "Used in hair and skin regeneration plans",
+            "Doctor-guided session",
+          ],
+        },
+        {
+          name: "Stem Cells Treatment",
+          body: "Stem cell therapy aimed at tissue repair, skin renewal, and longer-term rejuvenation.",
+          tags: ["Stem Cells", "Renewal"],
+          duration: "Session · Clinic visit",
+          price: "AED 999",
+          points: [
+            "Focused on tissue repair and renewal",
+            "Planned around your rejuvenation goals",
+            "Delivered in a clinical setting",
+          ],
+        },
       ]}
       faqs={[
         {

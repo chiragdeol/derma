@@ -84,6 +84,49 @@ export const Route = createFileRoute("/services/lifting")({
           price: "AED 2,999",
           image: ultherapyImg,
         },
+        {
+          name: "Varicose Vein Treatment",
+          body: "Treatment for visible varicose and spider veins to improve comfort and the look of the legs.",
+          tags: ["Veins", "Legs"],
+          duration: "Session · Clinic visit",
+          price: "AED 999",
+        },
+        {
+          name: "Radiesse",
+          body: "Calcium hydroxylapatite filler that restores volume and encourages collagen for firmer facial contour.",
+          tags: ["Collagen", "Volume"],
+          duration: "40 min · Minimal downtime",
+          price: "AED 1,499",
+        },
+        {
+          name: "RF Microneedling",
+          body: "Radiofrequency microneedling to tighten skin, refine texture, and stimulate collagen.",
+          tags: ["RF", "Texture"],
+          duration: "60 min · 1–2 days pinkness",
+          price: "AED 999",
+          image: morpheusImg,
+        },
+        {
+          name: "Collagen Stimulators",
+          body: "Biostimulatory treatment that prompts your own collagen for gradual, longer-lasting firmness and volume.",
+          tags: ["Biostimulator", "Firmness"],
+          duration: "40 min · Minimal downtime",
+          price: "AED 1,499",
+        },
+        {
+          name: "Salmon DNA",
+          body: "Salmon DNA regenerative treatment to support skin repair and elasticity as part of an anti-aging plan.",
+          tags: ["Salmon DNA", "Repair"],
+          duration: "30 min · Minimal downtime",
+          price: "AED 999",
+        },
+        {
+          name: "PDRN",
+          body: "PDRN regenerative treatment to improve skin quality, healing, and firmness.",
+          tags: ["PDRN", "Regeneration"],
+          duration: "30 min · Minimal downtime",
+          price: "AED 999",
+        },
       ]}
       faqs={[
         {
