@@ -8,6 +8,9 @@ import microneedlingImg from "@/assets/treatments/microneedling.png";
 import skinBoostersImg from "@/assets/treatments/skin-boosters.png";
 import carbonLaserPeelImg from "@/assets/treatments/carbon-laser-peel.png";
 import prpFacialImg from "@/assets/treatments/prp-facial-vampire-facial.png";
+import underEyeImg from "@/assets/treatments/under-eye-treatment.jpg";
+import lipBoosterImg from "@/assets/treatments/lip-booster.jpg";
+import lipFillersImg from "@/assets/treatments/lip-fillers.jpg";
 
 export const Route = createFileRoute("/services/skin")({
   head: () => ({
@@ -135,6 +138,7 @@ export const Route = createFileRoute("/services/skin")({
           tags: ["Under Eye", "Brightening"],
           duration: "30 min · Minimal downtime",
           price: "AED 499",
+          image: underEyeImg,
           points: [
             "Focused care for dark circles and crepey under-eye skin",
             "Refreshes a tired appearance",
@@ -147,6 +151,7 @@ export const Route = createFileRoute("/services/skin")({
           tags: ["Lip Hydration", "Soft Volume"],
           duration: "30 min · Minimal downtime",
           price: "AED 499",
+          image: lipBoosterImg,
           points: [
             "Boosts lip moisture and softness",
             "Subtle natural-looking plumpness",
@@ -159,6 +164,7 @@ export const Route = createFileRoute("/services/skin")({
           tags: ["Lip Volume", "Definition"],
           duration: "30 min · Minimal downtime",
           price: "AED 499",
+          image: lipFillersImg,
           points: [
             "Adds volume and border definition",
             "Shaped to suit facial balance",

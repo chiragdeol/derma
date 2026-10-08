@@ -6,6 +6,8 @@ import dermalFillersImg from "@/assets/treatments/dermal-fillers.png";
 import lipEnhancementImg from "@/assets/treatments/lip-enhancement.png";
 import rejuranImg from "@/assets/treatments/rejuran-pn-therapy.png";
 import sculptraImg from "@/assets/treatments/sculptra.png";
+import pdrnImg from "@/assets/treatments/pdrn-treatment.jpg";
+import salmonDnaImg from "@/assets/treatments/salmon-dna.jpg";
 
 export const Route = createFileRoute("/services/injectables")({
   head: () => ({
@@ -97,7 +99,7 @@ export const Route = createFileRoute("/services/injectables")({
           tags: ["Skin Repair", "PDRN"],
           duration: "30 min · Minimal downtime",
           price: "AED 999",
-          image: rejuranImg,
+          image: pdrnImg,
         },
         {
           name: "Salmon DNA Treatment",
@@ -105,7 +107,7 @@ export const Route = createFileRoute("/services/injectables")({
           tags: ["Salmon DNA", "Repair"],
           duration: "30 min · Minimal downtime",
           price: "AED 999",
-          image: rejuranImg,
+          image: salmonDnaImg,
         },
       ]}
       faqs={[
