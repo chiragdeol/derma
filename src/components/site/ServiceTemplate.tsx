@@ -64,6 +64,11 @@ export type ServiceTreatment = {
   image?: string;
 };
 
+export type MenuTreatment = {
+  name: string;
+  price: string;
+};
+
 export type FAQItem = {
   question: string;
   answer: string;
@@ -87,6 +92,7 @@ export type ServiceTemplateProps = {
   concerns: string[];
   txIntro: string;
   treatments: ServiceTreatment[];
+  moreTreatments?: MenuTreatment[];
   faqs: FAQItem[];
   related: RelatedItem[];
   heroImage: string;
@@ -102,6 +108,72 @@ export type ServiceTemplateProps = {
     posterUrl: string;
   };
 };
+
+export function TreatmentMenuCarousel({
+  items,
+  heading = "More treatments",
+}: {
+  items: MenuTreatment[];
+  heading?: string;
+}) {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  if (!items.length) return null;
+
+  const scrollByCard = (direction: number) => {
+    scrollerRef.current?.scrollBy({ left: direction * 300, behavior: "smooth" });
+  };
+
+  return (
+    <div className="mt-6 border-t border-border/60 pt-14">
+      <div className="mb-8 flex items-end justify-between gap-4">
+        <div>
+          <p className="eyebrow mb-3">Also on the menu</p>
+          <h3 className="font-display text-2xl md:text-3xl text-foreground">{heading}</h3>
+        </div>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={() => scrollByCard(-1)}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-border/80 bg-card text-foreground hover:border-[#974d08] transition-colors"
+            aria-label="Previous treatments"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollByCard(1)}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-border/80 bg-card text-foreground hover:border-[#974d08] transition-colors"
+            aria-label="Next treatments"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </button>
+        </div>
+      </div>
+      <div
+        ref={scrollerRef}
+        className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 scrollbar-none"
+      >
+        {items.map((item) => (
+          <article
+            key={item.name}
+            className="snap-start flex w-[240px] shrink-0 flex-col justify-between rounded-2xl border border-border/70 bg-card p-6 shadow-sm sm:w-[270px] min-h-[168px]"
+          >
+            <h4 className="font-display text-xl leading-snug text-foreground">{item.name}</h4>
+            <div className="mt-6 flex items-center justify-between gap-3 border-t border-border/50 pt-4">
+              <span className="font-display text-lg font-semibold text-[#974d08]">{item.price}</span>
+              <a
+                href={`https://wa.me/971500999324?text=${encodeURIComponent(`Hi, I'd like to book ${item.name}.`)}`}
+                className="rounded-lg bg-[#974d08] px-3.5 py-2 text-xs font-semibold text-white hover:opacity-95"
+              >
+                Book
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const FAQAccordionItem = ({ question, answer }: FAQItem) => {
   const [open, setOpen] = useState(false);
@@ -237,6 +309,7 @@ export function ServiceTemplate({
   concerns = [],
   txIntro,
   treatments = [],
+  moreTreatments = [],
   faqs = [],
   related = [],
   heroImage,
@@ -456,6 +529,7 @@ export function ServiceTemplate({
               </div>
             ))}
           </div>
+          <TreatmentMenuCarousel items={moreTreatments} />
         </div>
       </section>
 

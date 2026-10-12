@@ -35,7 +35,16 @@ const TREATMENT_CATEGORIES = [
       "PRP Facial (Vampire Facial)",
       "Under Eye Treatment",
       "Lip Booster",
-      "Lip Fillers"
+      "Lip Fillers",
+      "MYSHAPE Elixir Plus",
+      "Lip Blush",
+      "Microblading",
+      "Microshading",
+      "Brow Sculpting & Mapping",
+      "Facial Lymphatic Drainage",
+      "Acne Treatment",
+      "Pigmentation Treatment",
+      "Glow Facial"
     ]
   },
   {
@@ -50,7 +59,11 @@ const TREATMENT_CATEGORIES = [
       "Rejuran / PN Therapy", 
       "Peptide Pens",
       "PDRN Treatment",
-      "Salmon DNA Treatment"
+      "Salmon DNA Treatment",
+      "Filler Dissolver",
+      "Dark Lips Treatment",
+      "Under Eye Dark Circle Treatment",
+      "Velvet Lips Treatment"
     ]
   },
   {
@@ -72,7 +85,11 @@ const TREATMENT_CATEGORIES = [
       "Acne Scar Removal",
       "Freckle Removal",
       "Mole Removal",
-      "Syringoma Treatment"
+      "Syringoma Treatment",
+      "Laser Hair Removal",
+      "Soft Light",
+      "White Hair Removal",
+      "Varicose Veins Treatment"
     ]
   },
   {
@@ -90,7 +107,9 @@ const TREATMENT_CATEGORIES = [
       "RF Microneedling",
       "Collagen Stimulators",
       "Salmon DNA",
-      "PDRN"
+      "PDRN",
+      "Croma Polyphil Next",
+      "Genefill Dx"
     ]
   },
   {
@@ -151,7 +170,10 @@ const TREATMENT_CATEGORIES = [
       "Anti-Aging IV Therapy",
       "GFC Treatment",
       "Exosome Treatment",
-      "Stem Cells Treatment"
+      "Stem Cells Treatment",
+      "Weight Loss Treatment",
+      "Skin Whitening Treatment",
+      "Skin Rejuvenation Treatment"
     ]
   },
   {

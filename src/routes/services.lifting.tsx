@@ -128,6 +128,10 @@ export const Route = createFileRoute("/services/lifting")({
           price: "AED 999",
         },
       ]}
+      moreTreatments={[
+        { name: "Croma Polyphil Next", price: "AED 1,499" },
+        { name: "Genefill Dx", price: "AED 1,499" },
+      ]}
       faqs={[
         {
           question: "Is there downtime?",

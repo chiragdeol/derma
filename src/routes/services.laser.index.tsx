@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { TreatmentMenuCarousel } from "@/components/site/ServiceTemplate";
 import { useState, useRef, useEffect } from "react";
 import { Check, Play, Phone, HelpCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import heroImg from "@/assets/service-laser.jpg";
@@ -535,6 +536,15 @@ function LaserHairRemovalLanding() {
             </div>
           ))}
         </div>
+        <TreatmentMenuCarousel
+          heading="More laser treatments"
+          items={[
+            { name: "Laser Hair Removal", price: "AED 59" },
+            { name: "Soft Light", price: "AED 249" },
+            { name: "White Hair Removal", price: "AED 300" },
+            { name: "Varicose Veins Treatment", price: "AED 699" },
+          ]}
+        />
       </section>
 
       {/* PRICING */}

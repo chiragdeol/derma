@@ -172,6 +172,17 @@ export const Route = createFileRoute("/services/skin")({
           ],
         },
       ]}
+      moreTreatments={[
+        { name: "MYSHAPE Elixir Plus", price: "AED 999" },
+        { name: "Lip Blush", price: "AED 699" },
+        { name: "Microblading", price: "AED 599" },
+        { name: "Microshading", price: "AED 799" },
+        { name: "Brow Sculpting & Mapping", price: "AED 249" },
+        { name: "Facial Lymphatic Drainage", price: "AED 499" },
+        { name: "Acne Treatment", price: "AED 499" },
+        { name: "Pigmentation Treatment", price: "AED 499" },
+        { name: "Glow Facial", price: "AED 499" },
+      ]}
       faqs={[
         {
           question: "How do I know which skin treatment I need?",

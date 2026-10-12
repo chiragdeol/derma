@@ -110,6 +110,12 @@ export const Route = createFileRoute("/services/injectables")({
           image: salmonDnaImg,
         },
       ]}
+      moreTreatments={[
+        { name: "Filler Dissolver", price: "AED 499" },
+        { name: "Dark Lips Treatment", price: "AED 499" },
+        { name: "Under Eye Dark Circle Treatment", price: "AED 499" },
+        { name: "Velvet Lips Treatment", price: "AED 499" },
+      ]}
       faqs={[
         {
           question: "Will I look frozen?",

@@ -165,6 +165,11 @@ export const Route = createFileRoute("/services/wellness")({
           ],
         },
       ]}
+      moreTreatments={[
+        { name: "Weight Loss Treatment", price: "AED 599" },
+        { name: "Skin Whitening Treatment", price: "AED 499" },
+        { name: "Skin Rejuvenation Treatment", price: "AED 499" },
+      ]}
       faqs={[
         {
           question: "What is inside your IV drips?",
