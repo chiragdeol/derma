@@ -144,7 +144,7 @@ const doctors = [
     name: "Dr. Rahul Patel",
     role: "Specialist Prosthodontist & Implant Privilege",
     image: doctorRahul,
-    imageClass: "object-contain object-center",
+    imageClass: "object-cover object-left",
     education: [
       "Specialist Prosthodontist",
       "Almost 10 years of clinical experience",
