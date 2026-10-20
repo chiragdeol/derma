@@ -7,6 +7,7 @@ import doctorSidra from "@/assets/doctor-sidra.png";
 import doctorNisha from "@/assets/doctor-nisha.png";
 import doctorMenna from "@/assets/doctor-menna.png";
 import doctorFatma from "@/assets/doctor-fatma.png";
+import doctorRahul from "@/assets/doctor-rahul-patel.jpg";
 import doctorMale from "@/assets/doctor-male.png";
 import injectablesImg from "@/assets/service-injectables.jpg";
 import skinImg from "@/assets/service-skin.jpg";
@@ -139,6 +140,27 @@ const services = [
 ] as const;
 
 const doctors = [
+  {
+    name: "Dr. Rahul Patel",
+    role: "Specialist Prosthodontist & Implant Privilege",
+    image: doctorRahul,
+    imageClass: "object-contain object-center",
+    education: [
+      "Specialist Prosthodontist",
+      "Almost 10 years of clinical experience",
+      "Implant privilege"
+    ],
+    specialties: [
+      "Complex full-mouth rehabilitation",
+      "Advanced implant dentistry",
+      "Aesthetic dentistry",
+      "Veneers and cosmetic restoration",
+      "Precise occlusion",
+      "Complex smile design"
+    ],
+    languages: [] as string[],
+    bio: "Dr. Rahul Patel is our Specialist Prosthodontist with almost 10 years of experience, excelling in complex full-mouth rehabilitation and advanced implant dentistry. He has extensive expertise in aesthetic dentistry, successfully recreating patient smiles through veneers, cosmetic restoration, and precise occlusion. His focus is full-mouth rehabilitation, aesthetic dentistry, and complex smile design."
+  },
   {
     name: "Dr. Menna",
     role: "General Dentist",
@@ -876,7 +898,7 @@ function Home() {
                   src={d.image}
                   alt={d.name}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                  className={`h-full w-full transition-transform duration-[1200ms] group-hover:scale-105 ${"imageClass" in d && d.imageClass ? d.imageClass : "object-cover"}`}
                 />
                 {/* Visual hover cue */}
                 <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -1175,7 +1197,7 @@ function Home() {
               <img
                 src={selectedDoctor.image}
                 alt={selectedDoctor.name}
-                className="h-full w-full object-cover"
+                className={`h-full w-full ${"imageClass" in selectedDoctor && selectedDoctor.imageClass ? selectedDoctor.imageClass : "object-cover"}`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent md:hidden" />
               <div className="absolute bottom-6 left-6 right-6 text-white md:hidden">
@@ -1224,10 +1246,12 @@ function Home() {
                 </div>
 
                 {/* Languages */}
-                <div>
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-foreground mb-2">Languages Spoken</h4>
-                  <p className="text-xs text-muted-foreground font-medium">{selectedDoctor.languages.join(", ")}</p>
-                </div>
+                {selectedDoctor.languages.length > 0 && (
+                  <div>
+                    <h4 className="text-xs font-semibold uppercase tracking-wider text-foreground mb-2">Languages Spoken</h4>
+                    <p className="text-xs text-muted-foreground font-medium">{selectedDoctor.languages.join(", ")}</p>
+                  </div>
+                )}
               </div>
 
               {/* Action Button */}
