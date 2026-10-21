@@ -142,13 +142,13 @@ const services = [
 const doctors = [
   {
     name: "Dr. Rahul Patel",
-    role: "Specialist Prosthodontist & Implant Privilege",
+    role: "Specialist Prosthodontist & Implantologist",
     image: doctorRahul,
     imageClass: "object-cover object-left",
     education: [
       "Specialist Prosthodontist",
       "Almost 10 years of clinical experience",
-      "Implant privilege"
+      "Implantologist"
     ],
     specialties: [
       "Complex full-mouth rehabilitation",
